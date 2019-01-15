@@ -1,18 +1,45 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1, shrink-to-fit=no"
-    />
+<head>
+<title>ACE in Action</title>
+<link rel="stylesheet" type="text/css" href="reset.css">
+<style>
+  html {
+    height: 100%;
+  }
+  body {
+    height: 100%;
+  }
+  .panel { grid-area: panel; background-color: grey; height: 100%;}
+  .editor { grid-area: editor;}
+  .terminal { grid-area: terminal; background-color: black}
+  .main {
+    height: 100vh;
+            display: grid;
+            grid:
+                    'panel editor editor editor'
+                    'panel editor editor editor'
+                    'panel terminal terminal terminal';
+            grid-gap: 0;
+        }
+      </style>
+</head>
+<body>
 
+<<<<<<< HEAD
+<div class="main">
+    <div class="panel">kavo <br></div>
+    <div class="editor" id="editor"></div>
+    <div class="terminal"></div>
+</div>
+=======
     <title>Project</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.3.3/ace.js" type="text/javascript" charset="utf-8"></script>
   </head>
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>
     <div id="root"></div>
+>>>>>>> c048b3d433bb32659ce33844b711d2b786ccc2c0
 
-  </body>
+</body>
 </html>
