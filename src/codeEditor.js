@@ -1,5 +1,10 @@
 import ReactAce from 'react-ace-editor';
 import React, { Component } from 'react';
+const terminal = document.querySelector('.terminal'),
+      debug = document.getElementById('debug'),
+      aceEditor = document.querySelector('.ace_editor');
+
+
 
 class CodeEditor extends Component {
   constructor() {
@@ -11,6 +16,21 @@ class CodeEditor extends Component {
 
     const editor = this.ace.editor; // The editor object is from Ace's API
     console.log(editor.getValue()); // Outputs the value of the editor
+
+
+      try {
+        terminal.textContent = eval(editor.getValue());
+        if (editor.getValue().length < 10){
+          terminal.textContent = 'short';
+        } else{
+          terminal.textContent = 'long';
+        }
+        terminal.textContent =  terminal.textContent + ' and everything is fine';
+      } catch{
+        terminal.textContent = 'error';
+      }
+
+
   }
   render() {
     return (
@@ -24,5 +44,9 @@ class CodeEditor extends Component {
     );
   }
 }
+
+
+
+
 
 export default CodeEditor;
