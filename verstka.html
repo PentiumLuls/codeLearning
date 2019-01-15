@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Functional Hell</title>
+    <style>
+        .panel { grid-area: panel; background-color: grey;}
+        .aeditor { grid-area: aeditor;}
+        .terminal { grid-area: terminal;}
+        .main {
+            display: grid;
+            grid:
+                    'panel aeditor aeditor aeditor'
+                    'panel terminal terminal terminal';
+            grid-gap: 0;
+        }
+    </style>
+</head>
+<body>
+<div class="main">
+    <div class="panel"></div>
+    <div class="aeditor"></div>
+    <div class="terminal"></div>
+</div>
+</body>
+</html>
