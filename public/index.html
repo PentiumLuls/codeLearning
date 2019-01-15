@@ -12,24 +12,25 @@
   }
   .panel { grid-area: panel; background-color: grey; height: 100%;}
   .editor { grid-area: editor;}
-  .terminal { grid-area: terminal; background-color: black}
+  .terminal { grid-area: terminal; background-color: black; position: relative;}
   .main {
-    height: 100vh;
-            display: grid;
-            grid:
-                    'panel editor editor editor'
-                    'panel editor editor editor'
-                    'panel terminal terminal terminal';
-            grid-gap: 0;
-        }
-      </style>
+      height: 100vh;
+      display: grid;
+      grid: 'panel editor editor editor' 'panel editor editor editor' 'panel terminal terminal terminal';
+      grid-gap: 0;
+  }
+  #debug {
+      position: absolute;
+      top: 5px;
+      left: 5px;
+    }
+</style>
 </head>
 <body>
-
 <div class="main">
     <div class="panel">kavo <br></div>
     <div class="editor" id="editor"></div>
-    <div class="terminal"></div>
+    <div class="terminal"><button id="debug">KNOPKA</button></div>
 </div>
 
 </body>
