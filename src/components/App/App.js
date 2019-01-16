@@ -19,7 +19,7 @@ class App extends Component {
     }
 
     updateTerminal(code) {
-        this.textInConsole = code;
+        this.setState({textInConsole:code});
         console.log(code)
     }
 
@@ -31,7 +31,7 @@ class App extends Component {
                     <Codeditor updateTerminal={this.updateTerminal.bind(this)}></Codeditor>
                 </div>
                 <div className="terminal">
-                    <Terminal textInConsole={this.textInConsole} className="terminal"></Terminal>
+                    <Terminal textInConsole={this.state.textInConsole} className="terminal"></Terminal>
                 </div>
 
 

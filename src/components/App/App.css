@@ -1,18 +1,43 @@
 
-html {
+html, body {
   height: 100%;
 }
-body {
-  height: 100%;
+
+.panel { 
+  grid-area: panel; 
+  background-color: grey; 
+  width: 25vw;
 }
-.panel { grid-area: panel; background-color: grey; height: 100%;}
-.editor { grid-area: editor; min-height: 75%;}
-.terminal{ grid-area: terminal; background-color: black; position: relative; color: blanchedalmond}
+.editor { 
+  grid-area: editor; 
+  min-height: 75%; 
+  width: 100%;}
+.terminal{ 
+  grid-area: terminal; 
+  background-color: black; 
+  position: relative; 
+  color: blanchedalmond; }
 .main {
     height: 100vh;
     display: grid;
-    grid: 'panel editor editor editor' 'panel editor editor editor' 'panel editor editor editor' 'panel editor editor editor' 'panel terminal terminal terminal';
+    grid: 'panel editor editor editor'
+          'panel editor editor editor'
+          'panel editor editor editor'
+          'panel editor editor editor'
+          'panel terminal terminal terminal';
     grid-gap: 0;
+    width: 100vw;
 }
-.terminal-text {box-sizing:border-box; border-top: 5px solid red; width: 100%; padding: 5px 10px; min-height: 200px;}
-.button-line {padding: 5px;}
+.terminal-text {
+  box-sizing:border-box; 
+  padding: 5px 10px; 
+  min-height: 200px; 
+  width: 75vw;
+  word-break: break-all;
+  word-wrap: break-word;
+}
+
+.button-line {
+  padding: 5px; 
+  border-bottom: 5px solid red;}
+
