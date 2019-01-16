@@ -18,15 +18,20 @@ class App extends Component {
         });
     }
 
+    updateTerminal(code) {
+        this.textInConsole = code;
+        console.log(code)
+    }
+
     render() {
         return (
             <div className="main">
                 <div className="panel">kavo</div>
                 <div className="editor">
-                    <Codeditor></Codeditor>
+                    <Codeditor updateTerminal={this.updateTerminal.bind(this)}></Codeditor>
                 </div>
                 <div className="terminal">
-                    <Terminal className="terminal"></Terminal>
+                    <Terminal textInConsole={this.textInConsole} className="terminal"></Terminal>
                 </div>
 
 

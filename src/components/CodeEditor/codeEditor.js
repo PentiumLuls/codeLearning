@@ -9,7 +9,10 @@ class CodeEditor extends Component {
     this.onChange = this.onChange.bind(this);
   }
   onChange(newValue, e) {
+
+    const editor = this.ace.editor; // The editor object is from Ace's API
     
+    this.props.updateTerminal(editor.getValue())
 
   }
   render() {
