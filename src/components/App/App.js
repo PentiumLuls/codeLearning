@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
 import Codeditor from '../CodeEditor/codeEditor'
+import Terminal from '../Terminal/Terminal'
 
 class App extends Component {
   render() {
@@ -10,12 +11,7 @@ class App extends Component {
         <div className="editor">
           <Codeditor ></Codeditor>
         </div>
-        <div className="terminal">
-            <div className="button-line">
-                <button id="debug">KNOPKA</button>
-            </div>
-            <div className="terminal-text"></div>
-        </div>
+        <Terminal className="terminal"></Terminal>
       </div>
       )
       

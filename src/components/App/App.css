@@ -7,7 +7,7 @@ body {
 }
 .panel { grid-area: panel; background-color: grey; height: 100%;}
 .editor { grid-area: editor; min-height: 75%;}
-.terminal { grid-area: terminal; background-color: black; position: relative; color: blanchedalmond}
+.terminalComponent { grid-area: terminal; background-color: black; position: relative; color: blanchedalmond}
 .main {
     height: 100vh;
     display: grid;
