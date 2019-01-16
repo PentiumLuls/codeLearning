@@ -14,5 +14,5 @@ body {
     grid: 'panel editor editor editor' 'panel editor editor editor' 'panel editor editor editor' 'panel editor editor editor' 'panel terminal terminal terminal';
     grid-gap: 0;
 }
-.terminal-text {box-sizing:border-box; width: 400px; padding: 5px 10px; min-height: 200px;}
+.terminal-text {box-sizing:border-box; border-top: 5px solid red; width: 100%; padding: 5px 10px; min-height: 200px;}
 .button-line {padding: 5px;}

@@ -1,10 +1,19 @@
 
 import React, { Component } from 'react';
+import { Terminal } from 'xterm';
 
 
 
 
 class CodeEditor extends Component {
+
+    componentDidMount() {
+        let term = new Terminal();
+        term.open(document.querySelector('.terminal-text'));
+        term.write('Hello from \x1B[1;3;31mxterm.js\x1B[0m $ ')
+        document.querySelector('.xterm-helpers').style.display = 'none';
+        term.write(' fgfdjgnjfkdgkdfgdfkgiuiuiiui');
+    }
 
   render() {
     return (
@@ -12,7 +21,9 @@ class CodeEditor extends Component {
             <div className="button-line">
                 <button id="debug">KNOPKA</button>
             </div>
-            <div className="terminal-text"></div>
+            <div className="terminal-text">
+                
+            </div>
         </div>
     );
   }
