@@ -8,7 +8,7 @@ import Codeditor from './components/CodeEditor/codeEditor';
 
 
 
-ReactDOM.render(<Codeditor />, document.getElementById('editor'));
+ReactDOM.render(<App />, document.body);
 
 
 

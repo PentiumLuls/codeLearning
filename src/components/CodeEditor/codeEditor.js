@@ -1,8 +1,6 @@
 import ReactAce from 'react-ace-editor';
 import React, { Component } from 'react';
-const terminal = document.querySelector('.terminal'),
-      debug = document.getElementById('debug'),
-      aceEditor = document.querySelector('.ace_editor');
+const terminal = document.querySelector('.terminal');
 
 
 
@@ -21,13 +19,13 @@ class CodeEditor extends Component {
       try {
         terminal.textContent = eval(editor.getValue());
         if (editor.getValue().length < 10){
-          terminal.textContent = 'short';
+          console.log('short');
         } else{
-          terminal.textContent = 'long';
+          console.log('long');
         }
-        terminal.textContent =  terminal.textContent + ' and everything is fine';
-      } catch{
-        terminal.textContent = 'error';
+        console.log('Everything is fine');
+      } catch(err){
+        console.log(err);
       }
 
 
@@ -38,7 +36,7 @@ class CodeEditor extends Component {
         mode="javascript"
         theme="dracula"
         onChange={this.onChange}
-        style={{ height: '100%', fontSize: '20px', position: 'static'} }
+        style={{ height: '100%', fontSize: '20px', position: 'relative'} }
         ref={instance => { this.ace = instance; }} // Let's put things into scope
       />
     );
