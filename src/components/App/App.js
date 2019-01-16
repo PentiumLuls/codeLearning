@@ -1,8 +1,7 @@
 import React, {Component} from 'react';
 import './App.css';
 import Codeditor from '../CodeEditor/codeEditor'
-import PureModal from 'react-pure-modal';
-import 'react-pure-modal/dist/react-pure-modal.min.css';
+import Popup from "../Popup/Popup";
 
 class App extends Component {
     constructor() {
@@ -14,10 +13,9 @@ class App extends Component {
 
     togglePopup() {
         this.setState({
-            showPopup: !this.state.showPopup
+            showPopup: !this.state.showPopup,
         });
     }
-
 
     render() {
         return (
@@ -33,20 +31,8 @@ class App extends Component {
 
                 {//POPUP
                     this.state.showPopup ?
-                    <PureModal
-                        header="Functional programming. Getting started"
-                        footer={<div><button onClick={this.togglePopup.bind(this)}>Понятноб</button></div>}
-                        onClose={() => {
-                            console.log('handle closing');
-                            return true;
-                        }}
-                        isOpen
-                        ref="modal"
-                    >
-                        <p>SOME text about functional programming</p>
-                        <p>task text?</p>
-                    </PureModal>
-                        : null
+                    <Popup togglePopup={this.togglePopup.bind(this)} />
+                        : null }
                 }
             </div>
         )
