@@ -10,7 +10,12 @@ class App extends Component {
         <div className="editor">
           <Codeditor ></Codeditor>
         </div>
-        <div className="terminal"><button id="debug">KNOPKA</button></div>
+        <div className="terminal">
+            <div className="button-line">
+                <button id="debug">KNOPKA</button>
+            </div>
+            <div className="terminal-text"></div>
+        </div>
       </div>
       )
       

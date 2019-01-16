@@ -1,6 +1,6 @@
 import ReactAce from 'react-ace-editor';
 import React, { Component } from 'react';
-const terminal = document.querySelector('.terminal');
+const terminal = document.querySelector('.terminal-text');
 
 
 
