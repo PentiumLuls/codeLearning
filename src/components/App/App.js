@@ -2,20 +2,43 @@ import React, { Component } from 'react';
 import './App.css';
 import Codeditor from '../CodeEditor/codeEditor'
 import Terminal from '../Terminal/Terminal'
+import Popup from "../Popup/Popup";
 
 class App extends Component {
-  render() {
-    return (
-      <div className="main">
-        <div className="panel">kavo </div>
-        <div className="editor">
-          <Codeditor ></Codeditor>
-        </div>
-        <Terminal className="terminal"></Terminal>
-      </div>
-      )
-      
-  }
+    constructor() {
+        super();
+        this.state = {
+            showPopup: true //SHOW POPUP ON START
+        }
+    }
+
+    togglePopup() {
+        this.setState({
+            showPopup: !this.state.showPopup,
+        });
+    }
+
+    render() {
+        return (
+            <div className="main">
+                <div className="panel">kavo</div>
+                <div className="editor">
+                    <Codeditor></Codeditor>
+                </div>
+                <div className="terminal">
+                    <Terminal className="terminal"></Terminal>
+                </div>
+
+
+                {//POPUP
+                    this.state.showPopup ?
+                    <Popup togglePopup={this.togglePopup.bind(this)} />
+                        : null }
+                
+            </div>
+        )
+
+    }
 }
 
 export default App;

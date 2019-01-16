@@ -12,7 +12,10 @@ class CodeEditor extends Component {
         term.open(document.querySelector('.terminal-text'));
         term.write('Hello from \x1B[1;3;31mxterm.js\x1B[0m $ ')
         document.querySelector('.xterm-helpers').style.display = 'none';
-        term.write(' fgfdjgnjfkdgkdfgdfkgiuiuiiui');
+        document.querySelector('.xterm-selection-layer').style.display = 'none';
+        document.querySelector('.xterm-link-layer').style.display = 'none';
+        document.querySelector('.xterm-cursor-layer').style.display = 'none';
+        term.write(' ');
     }
 
   render() {
