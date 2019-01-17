@@ -1,32 +1,38 @@
 
 import React, { Component } from 'react';
-import { Terminal } from 'xterm';
-
-
-
+import { svictor } from '../../plot/devil';
 
 class CodeEditor extends Component {
 
-    componentDidMount() {
-        document.querySelector('.terminal-text').textContent = "som"
-        // this.term = new Terminal();
-        // this.term.open(document.querySelector('.terminal-text'));
-        // this.term.write('Hello from \x1B[1;3;31mxterm.js\x1B[0m $ ');
-
-        // document.querySelector('.xterm-helpers').style.display = 'none';
-        // document.querySelector('.xterm-selection-layer').style.display = 'none';
-        // document.querySelector('.xterm-link-layer').style.display = 'none';
-        // document.querySelector('.xterm-cursor-layer').style.display = 'none';
-       
-        
-        
+    constructor() {
+        super();
+        // this.SVictor = SVictor;
+        this.state = {
+            replics: []
+        }
     }
 
-    componentWillReceiveProps() {
-        document.querySelector('.terminal-text').textContent = this.props.textInConsole;
-        if(document.querySelector('.terminal-text').textContent.length > 50) {
-            document.querySelector('.terminal-text').textContent = document.querySelector('.terminal-text').textContent + <br/>
+    componentDidMount() {
+        const writeReplics = (replics) => {
+            let x = 0;
+            let interval = setInterval(() => {
+                let replic = `${replics.constructor.name}: ${replics[x++]} ${x}`;
+                this.setState({
+                    replics: [...this.state.replics, replic]
+                });
+                if (x >= replics.length) {
+                    clearInterval(interval);
+                }
+            }, 1000);
+
+          
         }
+        console.log(svictor);
+        writeReplics(svictor);
+    }
+    
+
+    componentWillReceiveProps() {
         console.log('component will update')
     }
 
@@ -36,17 +42,14 @@ class CodeEditor extends Component {
             <div className="button-line">
                 <button id="debug">KNOPKA</button>
             </div>
-            <div className="terminal-text">
-                
-            </div>
+            <ul className="terminal-text">
+                { this.state.replics.map(r => <li>{r}</li>) }
+            </ul>
         </div>
     );
   }
+
 }
-
-
-
-
 
 export default CodeEditor;
 
