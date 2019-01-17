@@ -4,14 +4,14 @@ import React, { Component } from 'react';
 class Tasklist extends Component {
   
   
-  state={title:"6789",
-  tasks:[ 1,8,9,5,8],
-  footValue:"jjjjj"
+  state={title:"Quests",
+  tasks:[ 'z','h','o','p','a'],
+  footValue:"© Ricardo Milos"
   }
   renderTaskList(){
     const tasks = this.state.tasks;
     const Tlis = tasks.map((el)=>
-      <li>{el}</li>
+      <li className="questlist">{el}</li>
     )
     return(
       <ul>{Tlis}</ul>
@@ -21,11 +21,11 @@ class Tasklist extends Component {
     return (
           <div>
           <div className="Tlist">
-           <header>{this.state.title}</header>
+              <header className="listheader dashed"><p>{this.state.title}</p></header>
           
             {this.renderTaskList()}
           </div>
-           <footer className="footer">{this.state.footValue}</footer> 
+              <footer className="footer"><p>{this.state.footValue}</p></footer>
            
            </div>
           

@@ -6,10 +6,9 @@ class Leftpanel extends Component {
    
     render() {
       return (
-        <div >
+        <div>
            <Header/>
            <Tasklist title="hhhhh"/>
-            
         </div>
       );
     }

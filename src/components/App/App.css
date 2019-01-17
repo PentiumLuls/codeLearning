@@ -3,6 +3,7 @@
 html, body {
   height: 100%;
   font-family: 'Press Start 2P', cursive;
+  text-transform: uppercase;
 }
 
 ul {
@@ -55,7 +56,7 @@ ul {
 .button-line {
   padding: 5px; 
   border-bottom: 5px solid red;}
-.userinfo {display: flex; flex-flow: row; width: 25vw; }
+.userinfo {display: flex; flex-flow: row; width: 25vw; height: 8vw;}
 .avatar{width: 7vw; height: 7vw; background-color: white; border-radius: 50%; overflow: hidden; margin: 0.5vw}
 .avatar img {width: 7vw; height: 7vw;}
 .usebuttons {display: flex; flex-flow: column; }
@@ -68,13 +69,53 @@ ul {
 .active p {color: #000;}
 .Tlist{
     width:25vw;
-    height: 65vh;
-    background-color:black;
-    color:white
+    box-sizing: border-box;
+    padding-top: 10px;
+    min-height: calc(100vh - 10vh - 8vw);
+    color:white;
 }
 .footer{
     width:25vw;
-    height:5vh;
-    color:white;
+    height:10vh;
     background-color:red;
+    display: flex;
+    text-align: center;
+    margin: auto;
+}
+.footer p {color:white; margin: auto}
+.listheader {
+    display: flex;
+    width: 25vw;
+    height: 10vh;
+    text-align: center;
+    margin: auto;
+}
+.listheader p {margin: auto}
+.dashed {
+    background:
+            linear-gradient(90deg, red 50%, transparent 50%),
+            linear-gradient(0deg, red 50%, transparent 50%),
+            linear-gradient(90deg, red 50%, transparent 50%),
+            linear-gradient(0deg, red 50%, transparent 50%);
+    background-repeat: repeat-x, repeat-y, repeat-x, repeat-y;
+    background-size: 15px 5px, 5px 15px, 15px 5px, 5px 15px;
+    background-position: left top, right top, left bottom, left top;
+    padding: 5px;
+    animation: border-dance 6s infinite linear;
+    box-sizing:border-box;
+}
+ul {padding: 0;}
+.questlist {background-color: white; color: black; text-align: center; padding: 20px; border-bottom: 2px dashed grey}
+.questlist:hover {background-color: black; color: white;}
+.questlist:last-of-type {border: 0;}
+@keyframes border-dance
+{
+    0%
+    {
+        background-position: left top, right top, right bottom, left bottom;
+    }
+    100%
+    {
+        background-position: right top, right bottom, left bottom, left top;
+    }
 }

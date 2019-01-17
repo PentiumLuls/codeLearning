@@ -4,7 +4,6 @@ class Header extends Component {
   
     render() {
       return (
-        <div >
             <header className="userinfo">
                         <div className="avatar"><img alt="avatar" src="https://pbs.twimg.com/media/DYzVb6jX4AEuvrJ.jpg"/></div>
                         <div className="userbuttons">
@@ -12,9 +11,6 @@ class Header extends Component {
                             <span className="userbutton active"><p>Knopka2</p></span>
                         </div>
                     </header>
-            
-            
-        </div>
       );
     }
   }
