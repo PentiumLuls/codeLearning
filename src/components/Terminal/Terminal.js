@@ -12,7 +12,6 @@ class CodeEditor extends Component {
         }
     }
 
-
     run=  () => {
         try {
             document.querySelector('.terminal-text').textContent = eval(this.state.code);
@@ -24,11 +23,7 @@ class CodeEditor extends Component {
 
     async componentDidMount() {
 
-        const promise = new Promise((resolve, reject) => {
-            resolve()
-        })
-
-        const writeReplics = (replics, name) => {
+        const writeReplics = (replics, name, func) => {
             let x = 0;
             let interval = setInterval(() => {
                 let replic = `${name}:~$ ${replics[x++]}`;
@@ -37,13 +32,14 @@ class CodeEditor extends Component {
                 });
                 if (x >= replics.length) {
                     clearInterval(interval);
+                    if (func != undefined) {
+                        func(replics, "Object");
+                    }
                 }
-            }, 2000);  
+            }, 500);  
         }
         console.log(svictor);
-        promise
-        .then(writeReplics(svictor, "SVictor"))
-        .then(writeReplics(replics, "Object"))
+         writeReplics(svictor, "SVictor", writeReplics);
         // writeReplics(svictor, "SVictor");
         // writeReplics(replics, "Object");
 

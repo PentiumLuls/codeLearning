@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, {Component} from 'react';
 import './App.css';
 import Codeditor from '../CodeEditor/codeEditor'
 import Terminal from '../Terminal/Terminal'
@@ -19,37 +19,44 @@ class App extends Component {
     }
 
     updateTerminal(code) {
-        this.setState({textInConsole:code});
+        this.setState({textInConsole: code});
     }
 
     render() {
-        return (
-            <div className="main">
-                <div className="panel">
-                    <header className="userinfo">
-                        <div className="avatar"><img alt="avatar" src="https://pbs.twimg.com/media/DYzVb6jX4AEuvrJ.jpg"/></div>
-                        <div className="userbuttons">
-                            <span className="userbutton"><p>Knopka1</p></span>
-                            <span className="userbutton active"><p>Knopka2</p></span>
-                        </div>
-                    </header>
+        if (!this.state.showPopup) {
+            return (
+                <div className="main">
+                    <div className="panel">
+                        <header className="userinfo">
+                            <div className="avatar"><img alt="avatar"
+                                                         src="https://pbs.twimg.com/media/DYzVb6jX4AEuvrJ.jpg"/></div>
+                            <div className="userbuttons">
+                                <span className="userbutton"><p>Knopka1</p></span>
+                                <span className="userbutton active"><p>Knopka2</p></span>
+                            </div>
+                        </header>
+                    </div>
+                    <div className="editor">
+                        <Codeditor updateTerminal={this.updateTerminal.bind(this)}></Codeditor>
+                    </div>
+                    <div className="terminal">
+                        <Terminal textInConsole={this.state.textInConsole} className="terminal"></Terminal>
+                    </div>
                 </div>
-                <div className="editor">
-                    <Codeditor updateTerminal={this.updateTerminal.bind(this)}></Codeditor>
+            )
+        } else {
+            return (
+                <div>
+                    {//POPUP
+                        <Popup togglePopup={this.togglePopup.bind(this)}/>
+                    }
                 </div>
-                <div className="terminal">
-                    <Terminal textInConsole={this.state.textInConsole} className="terminal"></Terminal>
-                </div>
+            )
+        }
 
-
-                {//POPUP
-                    this.state.showPopup ?
-                    <Popup togglePopup={this.togglePopup.bind(this)} />
-                        : null }
-            </div>
-        )
 
     }
 }
+
 
 export default App;
