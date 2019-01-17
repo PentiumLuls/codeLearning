@@ -20,13 +20,20 @@ class App extends Component {
 
     updateTerminal(code) {
         this.setState({textInConsole:code});
-        console.log(code)
     }
 
     render() {
         return (
             <div className="main">
-                <div className="panel">kavo</div>
+                <div className="panel">
+                    <header className="userinfo">
+                        <div className="avatar"><img alt="avatar" src="https://pbs.twimg.com/media/DYzVb6jX4AEuvrJ.jpg"/></div>
+                        <div className="userbuttons">
+                            <span className="userbutton"><p>Knopka1</p></span>
+                            <span className="userbutton active"><p>Knopka2</p></span>
+                        </div>
+                    </header>
+                </div>
                 <div className="editor">
                     <Codeditor updateTerminal={this.updateTerminal.bind(this)}></Codeditor>
                 </div>
@@ -39,7 +46,6 @@ class App extends Component {
                     this.state.showPopup ?
                     <Popup togglePopup={this.togglePopup.bind(this)} />
                         : null }
-                
             </div>
         )
 

@@ -1,17 +1,28 @@
+@import url('https://fonts.googleapis.com/css?family=Press+Start+2P');
 
 html, body {
   height: 100%;
+  font-family: 'Press Start 2P', cursive;
 }
+
+ul {
+  list-style: none;
+}
+
+
+
 
 .panel { 
   grid-area: panel; 
-  background-color: grey; 
+  background-color: #111;
   width: 25vw;
 }
 .editor { 
   grid-area: editor; 
   min-height: 75%; 
-  width: 100%;}
+  width: 100%;
+
+}
 .terminal{ 
   grid-area: terminal; 
   background-color: black; 
@@ -27,12 +38,14 @@ html, body {
           'panel terminal terminal terminal';
     grid-gap: 0;
     width: 100vw;
+    
 }
 .terminal-text {
   box-sizing:border-box; 
   padding: 5px 10px; 
   min-height: 200px; 
   width: 75vw;
+  height: 25vh;
   word-break: break-all;
   word-wrap: break-word;
 }
@@ -40,4 +53,14 @@ html, body {
 .button-line {
   padding: 5px; 
   border-bottom: 5px solid red;}
-
+.userinfo {display: flex; flex-flow: row; width: 25vw; }
+.avatar{width: 7vw; height: 7vw; background-color: white; border-radius: 50%; overflow: hidden; margin: 0.5vw}
+.avatar img {width: 7vw; height: 7vw;}
+.usebuttons {display: flex; flex-flow: column; }
+.userbutton {cursor: pointer; display: flex; background-color: red; width: 17vw; box-sizing: border-box; border: 5px solid white; text-align: center; text-transform: uppercase; height: 50%; margin: auto;}
+.userbutton p {margin: auto; color: #fff; user-select: none;}
+.userbutton:active {background-color: #fff; border: 5px solid #000}
+.userbutton:active p {color: #000;}
+.avatar img:hover {-webkit-filter: contrast(10000%) grayscale(1);filter: contrast(10000%) grayscale(1);}
+.active {background-color: #fff; border: 5px solid #000;}
+.active p {color: #000;}

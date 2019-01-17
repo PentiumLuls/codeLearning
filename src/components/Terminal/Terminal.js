@@ -1,22 +1,31 @@
-
-import React, { Component } from 'react';
+import React, {Component} from 'react';
 import { svictor } from '../../plot/devil';
 
 class CodeEditor extends Component {
 
     constructor() {
         super();
-        // this.SVictor = SVictor;
-        this.state = {
+        this.state={
+            code: "NO CODE",
             replics: []
         }
     }
 
+
+    run=  () => {
+        try {
+            document.querySelector('.terminal-text').textContent = eval(this.state.code);
+        } catch (err) {
+            document.querySelector('.terminal-text').textContent = err;
+        }
+    }
+
+
     componentDidMount() {
-        const writeReplics = (replics) => {
+        const writeReplics = (replics, name) => {
             let x = 0;
             let interval = setInterval(() => {
-                let replic = `${replics.constructor.name}: ${replics[x++]} ${x}`;
+                let replic = `${name}:~$ ${replics[x++]}`;
                 this.setState({
                     replics: [...this.state.replics, replic]
                 });
@@ -28,19 +37,22 @@ class CodeEditor extends Component {
           
         }
         console.log(svictor);
-        writeReplics(svictor);
+        writeReplics(svictor, "SVictor");
+        
+
     }
     
-
-    componentWillReceiveProps() {
-        console.log('component will update')
-    }
+componentWillReceiveProps(nextValue) {
+    this.setState({
+        code: this.props.textInConsole
+    })
+}
 
   render() {
     return (
         <div className="terminalComponent">
             <div className="button-line">
-                <button id="debug">KNOPKA</button>
+                <button id="debug" onClick={this.run}>KNOPKA</button>
             </div>
             <ul className="terminal-text">
                 { this.state.replics.map(r => <li>{r}</li>) }
@@ -52,8 +64,6 @@ class CodeEditor extends Component {
 }
 
 export default CodeEditor;
-
-
 
 
 
