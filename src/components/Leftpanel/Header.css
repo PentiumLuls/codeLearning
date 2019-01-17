@@ -1,0 +1,6 @@
+
+  .userinfo {display: flex; flex-flow: row; width: 25vw; }
+  .avatar{width: 7vw; height: 7vw; background-color: white; border-radius: 50%; overflow: hidden; margin: 0.5vw}
+  .usebuttons {display: flex; flex-flow: column; }
+  .userbutton {cursor: pointer; display: flex; background-color: red; width: 17vw; box-sizing: border-box; border: 5px solid white; text-align: center; text-transform: uppercase; height: 50%; margin: auto;}
+  .userbutton:active {background-color: #fff; border: 5px solid #000}
