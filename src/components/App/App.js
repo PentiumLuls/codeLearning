@@ -20,7 +20,6 @@ class App extends Component {
 
     updateTerminal(code) {
         this.setState({textInConsole:code});
-        console.log(code)
     }
 
     render() {
@@ -47,7 +46,6 @@ class App extends Component {
                     this.state.showPopup ?
                     <Popup togglePopup={this.togglePopup.bind(this)} />
                         : null }
-                
             </div>
         )
 

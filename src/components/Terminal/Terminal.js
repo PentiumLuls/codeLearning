@@ -1,11 +1,21 @@
-
-import React, { Component } from 'react';
-import { Terminal } from 'xterm';
-
-
-
+import React, {Component} from 'react';
 
 class CodeEditor extends Component {
+
+    constructor() {
+        super();
+        this.state={
+            code: "NO CODE"
+        }
+    }
+
+    run=  () => {
+        try {
+            document.querySelector('.terminal-text').textContent = eval(this.state.code);
+        } catch (err) {
+            document.querySelector('.terminal-text').textContent = err;
+        }
+    }
 
     componentDidMount() {
         document.querySelector('.terminal-text').textContent = "som"
@@ -17,40 +27,28 @@ class CodeEditor extends Component {
         // document.querySelector('.xterm-selection-layer').style.display = 'none';
         // document.querySelector('.xterm-link-layer').style.display = 'none';
         // document.querySelector('.xterm-cursor-layer').style.display = 'none';
-       
-        
-        
+
+
     }
 
-    componentWillReceiveProps() {
-        document.querySelector('.terminal-text').textContent = this.props.textInConsole;
-        if(document.querySelector('.terminal-text').textContent.length > 50) {
-            document.querySelector('.terminal-text').textContent = document.querySelector('.terminal-text').textContent + <br/>
-        }
-        console.log('component will update')
+    componentWillReceiveProps(nextValue) {
+        this.setState({
+            code: this.props.textInConsole
+        })
     }
 
-  render() {
-    return (
-        <div className="terminalComponent">
-            <div className="button-line">
-                <button id="debug">KNOPKA</button>
+    render() {
+        return (
+            <div className="terminalComponent">
+                <div className="button-line">
+                    <button id="debug" onClick={this.run}>RUN</button>
+                </div>
+                <div className="terminal-text">
+
+                </div>
             </div>
-            <div className="terminal-text">
-                
-            </div>
-        </div>
-    );
-  }
+        );
+    }
 }
 
-
-
-
-
 export default CodeEditor;
-
-
-
-
-
