@@ -5,6 +5,13 @@ html, body {
   font-family: 'Press Start 2P', cursive;
 }
 
+ul {
+  list-style: none;
+}
+
+
+
+
 .panel { 
   grid-area: panel; 
   background-color: #111;
@@ -13,7 +20,9 @@ html, body {
 .editor { 
   grid-area: editor; 
   min-height: 75%; 
-  width: 100%;}
+  width: 100%;
+
+}
 .terminal{ 
   grid-area: terminal; 
   background-color: black; 
@@ -29,12 +38,14 @@ html, body {
           'panel terminal terminal terminal';
     grid-gap: 0;
     width: 100vw;
+    
 }
 .terminal-text {
   box-sizing:border-box; 
   padding: 5px 10px; 
   min-height: 200px; 
   width: 75vw;
+  height: 25vh;
   word-break: break-all;
   word-wrap: break-word;
 }
