@@ -9,9 +9,6 @@ ul {
   list-style: none;
 }
 
-
-
-
 .panel { 
   grid-area: panel; 
   background-color: #111;
@@ -69,3 +66,15 @@ ul {
 .avatar img:hover {-webkit-filter: contrast(10000%) grayscale(1);filter: contrast(10000%) grayscale(1);}
 .active {background-color: #fff; border: 5px solid #000;}
 .active p {color: #000;}
+.Tlist{
+    width:25vw;
+    height: 65vh;
+    background-color:black;
+    color:white
+}
+.footer{
+    width:25vw;
+    height:5vh;
+    color:white;
+    background-color:red;
+}
