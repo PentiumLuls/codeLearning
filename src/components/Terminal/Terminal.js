@@ -1,11 +1,14 @@
 import React, {Component} from 'react';
+import { svictor } from '../../plot/devil';
+import { replics } from '../../plot/Object';
 
 class CodeEditor extends Component {
 
     constructor() {
         super();
         this.state={
-            code: "NO CODE"
+            code: "NO CODE",
+            replics: []
         }
     }
 
@@ -17,38 +20,54 @@ class CodeEditor extends Component {
         }
     }
 
-    componentDidMount() {
-        document.querySelector('.terminal-text').textContent = "som"
-        // this.term = new Terminal();
-        // this.term.open(document.querySelector('.terminal-text'));
-        // this.term.write('Hello from \x1B[1;3;31mxterm.js\x1B[0m $ ');
 
-        // document.querySelector('.xterm-helpers').style.display = 'none';
-        // document.querySelector('.xterm-selection-layer').style.display = 'none';
-        // document.querySelector('.xterm-link-layer').style.display = 'none';
-        // document.querySelector('.xterm-cursor-layer').style.display = 'none';
+    async componentDidMount() {
+
+        const writeReplics = (replics, name, func) => {
+            let x = 0;
+            let interval = setInterval(() => {
+                let replic = `${name}:~$ ${replics[x++]}`;
+                this.setState({
+                    replics: [...this.state.replics, replic]
+                });
+                if (x >= replics.length) {
+                    clearInterval(interval);
+                    if (func != undefined) {
+                        func(replics, "Object");
+                    }
+                }
+            }, 500);  
+        }
+        console.log(svictor);
+         writeReplics(svictor, "SVictor", writeReplics);
+        // writeReplics(svictor, "SVictor");
+        // writeReplics(replics, "Object");
 
 
     }
+    
+componentWillReceiveProps(nextValue) {
+    this.setState({
+        code: this.props.textInConsole
+    })
+}
 
-    componentWillReceiveProps(nextValue) {
-        this.setState({
-            code: this.props.textInConsole
-        })
-    }
-
-    render() {
-        return (
-            <div className="terminalComponent">
-                <div className="button-line">
-                    <button id="debug" onClick={this.run}>RUN</button>
-                </div>
-                <div className="terminal-text">
-
-                </div>
+  render() {
+    return (
+        <div className="terminalComponent">
+            <div className="button-line">
+                <button id="debug" onClick={this.run}>KNOPKA</button>
             </div>
-        );
-    }
+            <ul className="terminal-text">
+                { this.state.replics.map(r => <li>{r}</li>) }
+            </ul>
+        </div>
+    );
+  }
+
 }
 
 export default CodeEditor;
+
+
+
