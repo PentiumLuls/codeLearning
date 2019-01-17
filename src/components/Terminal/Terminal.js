@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import { svictor } from '../../plot/devil';
+import { replics } from '../../plot/Object';
 
 class CodeEditor extends Component {
 
@@ -21,7 +22,12 @@ class CodeEditor extends Component {
     }
 
 
-    componentDidMount() {
+    async componentDidMount() {
+
+        const promise = new Promise((resolve, reject) => {
+            resolve()
+        })
+
         const writeReplics = (replics, name) => {
             let x = 0;
             let interval = setInterval(() => {
@@ -32,13 +38,15 @@ class CodeEditor extends Component {
                 if (x >= replics.length) {
                     clearInterval(interval);
                 }
-            }, 1000);
-
-          
+            }, 2000);  
         }
         console.log(svictor);
-        writeReplics(svictor, "SVictor");
-        
+        promise
+        .then(writeReplics(svictor, "SVictor"))
+        .then(writeReplics(replics, "Object"))
+        // writeReplics(svictor, "SVictor");
+        // writeReplics(replics, "Object");
+
 
     }
     

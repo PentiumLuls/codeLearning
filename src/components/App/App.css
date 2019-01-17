@@ -21,12 +21,15 @@ ul {
   grid-area: editor; 
   min-height: 75%; 
   width: 100%;
+  height: 65vh;
 
 }
 .terminal{ 
   grid-area: terminal; 
-  background-color: black; 
+  background-color: black;
+  height: 35vh; 
   position: relative; 
+  overflow: hidden;
   color: blanchedalmond; }
 .main {
     height: 100vh;
@@ -41,13 +44,15 @@ ul {
     
 }
 .terminal-text {
-  box-sizing:border-box; 
-  padding: 5px 10px; 
-  min-height: 200px; 
+   padding: 0;
+   margin: 0;
   width: 75vw;
-  height: 25vh;
+  height: 30vh;
   word-break: break-all;
   word-wrap: break-word;
+  overflow: scroll;
+  padding-bottom: 10px;
+  box-sizing:border-box;
 }
 
 .button-line {
