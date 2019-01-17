@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 
-class CodeEditor extends Component {
+class Terminal extends Component {
 
     constructor() {
         super();
@@ -10,12 +10,17 @@ class CodeEditor extends Component {
     }
 
     run=  () => {
+        //////////PUBLIC VAR////////
+        const console = {};
+        console.log = (props) => {this.log(props)};
+        ////////////////////////////
+
         try {
             document.querySelector('.terminal-text').textContent = eval(this.state.code);
         } catch (err) {
             document.querySelector('.terminal-text').textContent = err;
         }
-    }
+    };
 
     componentDidMount() {
         document.querySelector('.terminal-text').textContent = "som"
@@ -49,6 +54,10 @@ class CodeEditor extends Component {
             </div>
         );
     }
+
+    log = (props) => {
+        document.querySelector('.terminal-text').textContent = props
+    }
 }
 
-export default CodeEditor;
+export default Terminal;
