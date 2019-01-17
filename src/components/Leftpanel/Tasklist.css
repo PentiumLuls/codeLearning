@@ -1,0 +1,21 @@
+.Tlist{
+    width:25vw;
+    height: 65vh;
+    background-color:black;
+    color:white
+}
+.footer{
+    width:25vw;
+    height:5vh;
+    color:white;
+    background-color:red;
+}
+ul{
+    font-size:  18pt;
+    margin:0;
+}
+header{
+    font-size:  26pt;
+    text-align:center;
+}
+
