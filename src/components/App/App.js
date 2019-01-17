@@ -18,15 +18,19 @@ class App extends Component {
         });
     }
 
+    updateTerminal(code) {
+        this.setState({textInConsole:code});
+    }
+
     render() {
         return (
             <div className="main">
                 <div className="panel">kavo</div>
                 <div className="editor">
-                    <Codeditor></Codeditor>
+                    <Codeditor updateTerminal={this.updateTerminal.bind(this)}></Codeditor>
                 </div>
                 <div className="terminal">
-                    <Terminal className="terminal"></Terminal>
+                    <Terminal textInConsole={this.state.textInConsole} className="terminal"></Terminal>
                 </div>
 
 
@@ -34,7 +38,6 @@ class App extends Component {
                     this.state.showPopup ?
                     <Popup togglePopup={this.togglePopup.bind(this)} />
                         : null }
-                
             </div>
         )
 
