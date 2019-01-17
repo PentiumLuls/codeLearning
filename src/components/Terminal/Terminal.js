@@ -47,12 +47,14 @@ class CodeEditor extends Component {
         this.setState({
             replics: []
         });
+        //document.querySelector('.terminal-text').textContent = '';
+
     }
 
 
     componentDidMount() {
         console.log(svictor);
-         this.writeReplics(svictor, "SVictor");
+         this.writeReplics(svictor[0], "SVictor");
     }
     
     componentWillReceiveProps(nextValue) {

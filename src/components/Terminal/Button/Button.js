@@ -1,29 +1,22 @@
 
 import React, { Component } from 'react';
-
 class Button extends Component {
   constructor() {
     super();
-    this.onChange = this.onChange.bind(this);
-    this.state={
-      code:''
+    this.click = () => {
+      this.props.func();
+      this.click = () => {}
     }
   }
 
-  onChange(newValue, e) {
-    
-  }
   render() {
     return (
-      <button onClick={this.props.func}>
+      <button onClick={this.click}>
         {this.props.text}
       </button>
     );
   }
 }
-
-
-
 
 
 export default Button;

@@ -1,4 +1,4 @@
-export const svictor = [
+export const svictor = [[
     "Та как ты воще посмел\n",
     "Вот ответь мне КАК?!?!",
     "Как можно нарушыть все 6 функциональных грехов!?!",
@@ -11,5 +11,5 @@ export const svictor = [
     "И куча других функциональных прелестей",
     "http://www.dbnet.ece.ntua.gr/~adamo/languages/books/p359-hudak.pdf",
     "Прочитаешь, потом поговорим"
-];
+]];
 
