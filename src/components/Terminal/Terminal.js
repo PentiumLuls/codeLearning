@@ -1,18 +1,37 @@
 import React, {Component} from 'react';
 import { svictor } from '../../plot/devil';
 import { replics } from '../../plot/Object';
+import Button from './Button/Button'
+
 
 class CodeEditor extends Component {
 
+
     constructor() {
         super();
+        this.writeReplics = (replica, name, func) => {
+            let x = 0;
+            let interval = setInterval(() => {
+                let replic = `${name}:~$ ${replica[x++]}`;
+                this.setState({
+                    replics: [...this.state.replics, replic]
+                });
+                if (x >= replics.length) {
+                    clearInterval(interval);
+                    if (func !== undefined) {
+                        func(replics, "Object");
+                    }
+                }
+            }, 500);  
+        };
         this.state={
             code: "NO CODE",
             replics: []
         }
+        
     }
 
-    run=  () => {
+    run = () => {
         try {
             document.querySelector('.terminal-text').textContent = eval(this.state.code);
         } catch (err) {
@@ -20,43 +39,36 @@ class CodeEditor extends Component {
         }
     }
 
+    nextReplic = () => {
+        this.writeReplics(replics, "Object");
+    }
 
-    async componentDidMount() {
+    clearTerminal = () => {
+        this.setState({
+            replics: []
+        });
+    }
 
-        const writeReplics = (replics, name, func) => {
-            let x = 0;
-            let interval = setInterval(() => {
-                let replic = `${name}:~$ ${replics[x++]}`;
-                this.setState({
-                    replics: [...this.state.replics, replic]
-                });
-                if (x >= replics.length) {
-                    clearInterval(interval);
-                    if (func != undefined) {
-                        func(replics, "Object");
-                    }
-                }
-            }, 500);  
-        }
+
+    componentDidMount() {
         console.log(svictor);
-         writeReplics(svictor, "SVictor", writeReplics);
-        // writeReplics(svictor, "SVictor");
-        // writeReplics(replics, "Object");
-
-
+         this.writeReplics(svictor, "SVictor");
     }
     
-componentWillReceiveProps(nextValue) {
-    this.setState({
-        code: this.props.textInConsole
-    })
-}
+    componentWillReceiveProps(nextValue) {
+        this.setState({
+            code: this.props.textInConsole
+        })
+    }
+
 
   render() {
     return (
         <div className="terminalComponent">
             <div className="button-line">
-                <button id="debug" onClick={this.run}>KNOPKA</button>
+                <Button text="RUN CODE" className="debug" func={this.run}></Button>
+                <Button text="CLEAR TERMINAL" className="debug" func={this.clearTerminal}></Button>
+                <Button text="I VSE PONYAL" className="debug" func={this.nextReplic}></Button>
             </div>
             <ul className="terminal-text">
                 { this.state.replics.map(r => <li>{r}</li>) }
