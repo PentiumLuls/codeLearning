@@ -4,7 +4,7 @@ import { replics } from '../../plot/Object';
 import Button from './Button/Button'
 
 
-class CodeEditor extends Component {
+class Terminal extends Component {
 
 
     constructor() {
@@ -81,7 +81,7 @@ class CodeEditor extends Component {
 
 }
 
-export default CodeEditor;
+export default Terminal;
 
 
 
