@@ -39,9 +39,9 @@ class Terminal extends Component {
             let regexps = [
                 /for/,
                 /while/,
-                /filter/,
+                /*/filter/,
                 /reduce/,
-                /map/,
+                /map/,*/
                 /var/
             ]
 
