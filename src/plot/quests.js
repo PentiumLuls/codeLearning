@@ -21,9 +21,18 @@ async function summ(xxx, xxxx, xxxxx) {
 }
 }`,
                                     [
-                                     `console.log(summ(2, 3)) //5`,
-                                     `console.log(summ()) //0`,
-                                     `console.log(summ(3, 4, 0, 6, 5, 5)) //23`
+                                     ` if (summ(2, 3) != 5) {
+                                        document.querySelector('.terminal-text').textContent = "summ(2, 3) != 5"
+                                        }
+                                     } //5`,
+                                     `if (summ() != 0) {
+                                        document.querySelector('.terminal-text').textContent = "summ() != 0"
+                                        }
+                                     } //5`,
+                                     `if (summ(2, 3, 4, 5) != 14) {
+                                        document.querySelector('.terminal-text').textContent = "summ(2, 3, 4, 5) != 14"
+                                        }
+                                     } //5`
                                     ],
                                     [
                                         /for/,
@@ -31,18 +40,17 @@ async function summ(xxx, xxxx, xxxxx) {
                                         /filter/,
                                         /reduce/,
                                         /map/,
-                                        /var/,
-                                        /console/
+                                        /var/
                                     ]
                                 ]},
 
-       { "2": `1`},
+        { "БОЛЬШЕ КАМНЕЙ": `1`},
 
-        {"3": ``},
+        {"начало переворота": ``},
 
-        {"4": ``},
+        {"когда ты камень": ``},
 
-        {"5": ``}
+        {"безысходность": ``}
 
 
                             ],
