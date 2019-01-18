@@ -4,7 +4,7 @@ import { replics } from '../../plot/Object';
 import Button from './Button/Button'
 
 
-class CodeEditor extends Component {
+class Terminal extends Component {
 
 
     constructor() {
@@ -47,8 +47,6 @@ class CodeEditor extends Component {
         this.setState({
             replics: []
         });
-        //document.querySelector('.terminal-text').textContent = '';
-
     }
 
 
@@ -68,7 +66,7 @@ class CodeEditor extends Component {
     return (
         <div className="terminalComponent">
             <div className="button-line">
-                <Button text="RUN CODE" className="debug" func={this.run}></Button>
+                <Button text="RUN CODE" className="debug" onClick={this.run}></Button>
                 <Button text="CLEAR TERMINAL" className="debug" func={this.clearTerminal}></Button>
                 <Button text="I VSE PONYAL" className="debug" func={this.nextReplic}></Button>
             </div>
@@ -81,7 +79,7 @@ class CodeEditor extends Component {
 
 }
 
-export default CodeEditor;
+export default Terminal;
 
 
 

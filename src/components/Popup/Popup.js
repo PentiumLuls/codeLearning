@@ -6,9 +6,9 @@ class Popup extends React.Component {
     render() {
         return (
             <PureModal
-                header="Functional programming. Getting started"
+                header="Здраствуй странник"
                 footer={<div>
-                    <button onClick={this.props.togglePopup} ref={(node) => {this._okButton = node}}>Понятноб</button>
+                    <button onClick={this.props.togglePopup} ref={(node) => {this._okButton = node}}>КОнечно МИлорд</button>
                 </div>}
                 onClose={() => {
                     this._okButton.click();
@@ -18,8 +18,8 @@ class Popup extends React.Component {
                 isOpen
                 ref="modal"
             >
-                <p>SOME text about functional programming</p>
-                <p>task text?</p>
+                <p>Ты попал на крутой квест-рпг по функциональному программированию!</p>
+                <p>Ты готов поднапрячь мозги?</p>
             </PureModal>
         );
     }

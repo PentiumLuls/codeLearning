@@ -13,6 +13,7 @@ class App extends Component {
             showPopup: true,//SHOW POPUP ON START
             isEdit:false
         }
+        localStorage.setItem('button_run', 0);
     }
     changeButtonState = () => {
         this.setState({isEdit: true});
