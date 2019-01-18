@@ -19,7 +19,7 @@ class Terminal extends Component {
                     clearInterval(interval);
                     localStorage.button_run = key || 0;
                 }
-            }, 200);  
+            }, 500);  
             
         };
         this.state={

@@ -1,6 +1,4 @@
 
-
-
 export const quests = {
     "Кайся глупец": [
         {"Индусская катастрофа": [`Всего 30 лет назад преисподняя пустовала... И тогда появился он...
@@ -12,6 +10,12 @@ export const quests = {
                                 `//Hello may frend, my boss please me to create functional summ thet will be calculate
 //mass of stones. I must to get to number of integer and returne summ.
 //boss say thet i must read first lav
+var stones = [
+    {mass: 5},
+    {mass: 2},
+    {mass: 4}
+];
+
 var x = 0;
 async function summ(xxx, xxxx, xxxxx) {
     if(x++<xxxxx) {setTimeout(function() {
@@ -63,6 +67,3 @@ async function summ(xxx, xxxx, xxxxx) {
     }
 
 };
-
-
-
