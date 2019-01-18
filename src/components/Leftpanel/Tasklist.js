@@ -7,6 +7,7 @@ class Tasklist extends Component {
   state={title:Object.keys(quests)[0],
   tasks:quests[Object.keys(quests)[0]],
   newtitle:Object.keys(quests[Object.keys(quests)[0]][0]),
+  taskText:quests[Object.keys(quests)[0]][0][Object.keys(quests[Object.keys(quests)[0]][0])][0],
   footValue:"© Ricardo Milos",
   taskshow:false
   }
@@ -53,7 +54,9 @@ class Tasklist extends Component {
           <header className="listheader dashed"><p>{this.state.newtitle}</p></header>
       
         <button onClick={this.Opentask.bind(this)}> Назад</button>
+        <div> {this.state.taskText}</div>
       </div>
+       
           <footer className="footer"><p>{this.state.footValue}</p></footer>
        
        </div>
