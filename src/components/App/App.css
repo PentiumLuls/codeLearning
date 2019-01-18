@@ -16,11 +16,9 @@ ul {
   width: 25vw;
 }
 .editor { 
-  grid-area: editor; 
-  min-height: 75%; 
+  grid-area: editor;
   width: 100%;
   height: 65vh;
-
 }
 .terminal{ 
   grid-area: terminal; 
