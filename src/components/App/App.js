@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import './App.css';
 import Codeditor from '../CodeEditor/codeEditor'
+import HellRules from '../CodeEditor/HellRules'
 import Terminal from '../Terminal/Terminal'
 import Popup from "../Popup/Popup";
 import Leftpanel from '../Leftpanel/Leftpanel';
@@ -9,11 +10,17 @@ class App extends Component {
     constructor() {
         super();
         this.state = {
-            showPopup: true //SHOW POPUP ON START
+            showPopup: true,//SHOW POPUP ON START
+            isEdit:false
         }
         localStorage.setItem('button_run', 0);
     }
-
+    changeButtonState = () => {
+        this.setState({isEdit: true});
+    }
+    changeButtonState2 = () => {
+        this.setState({isEdit: false});
+    }
     togglePopup() {
         this.setState({
             showPopup: !this.state.showPopup,
@@ -29,10 +36,10 @@ class App extends Component {
             return (
                 <div className="main">
                     <div className="panel">
-                       <Leftpanel/>
+                       <Leftpanel func={this.changeButtonState} func2={this.changeButtonState2}/>
                     </div>
                     <div className="editor">
-                        <Codeditor updateTerminal={this.updateTerminal.bind(this)}></Codeditor>
+                        {(!this.state.isEdit) ? <Codeditor updateTerminal={this.updateTerminal.bind(this)}></Codeditor> : <HellRules/>}
                     </div>
                     <div className="terminal">
                         <Terminal textInConsole={this.state.textInConsole} className="terminal"></Terminal>
