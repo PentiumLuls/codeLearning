@@ -44,8 +44,6 @@ ul {
    margin: 0;
   width: 75vw;
   height: 30vh;
-  word-break: break-all;
-  word-wrap: break-word;
   overflow: scroll;
   padding-bottom: 10px;
   box-sizing:border-box;
@@ -103,9 +101,12 @@ ul {
     box-sizing:border-box;
 }
 ul {padding: 0;}
-.questlist {background-color: white; color: black; text-align: center; padding: 20px; border-bottom: 2px dashed grey}
+.questlist {background-color: white; color: black; text-align: center; padding: 20px; border-bottom: 2px dashed grey; width: 25vw; word-break: break-all; word-wrap: break-word; box-sizing: border-box;}
 .questlist:hover {background-color: black; color: white;}
 .questlist:last-of-type {border: 0;}
+.hell-rules {width: 100%; height: 65vh; overflow-y:scroll; box-sizing: border-box; padding: 10px;}
+.rules-wrapper {display: grid; grid-template-columns: repeat(3, 1fr); column-gap: 10px;}
+.hell-heading {text-align: center; color: red;}
 @keyframes border-dance
 {
     0%
