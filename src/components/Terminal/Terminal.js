@@ -66,7 +66,7 @@ class Terminal extends Component {
     return (
         <div className="terminalComponent">
             <div className="button-line">
-                <Button text="RUN CODE" className="debug" onClick={this.run}></Button>
+                <Button text="RUN CODE" className="debug" func={this.run}></Button>
                 <Button text="CLEAR TERMINAL" className="debug" func={this.clearTerminal}></Button>
                 <Button text="I VSE PONYAL" className="debug" func={this.nextReplic}></Button>
             </div>
