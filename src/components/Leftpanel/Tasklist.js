@@ -4,8 +4,8 @@ import {quests} from '../../plot/quests'
 class Tasklist extends Component {
   
   
-  state={title:Object.keys(quests)[0],
-  tasks:Object.keys(quests[this.state.title]),
+  state={title:Object.keys(quests[Object.keys(quests)[0]][1]),
+  tasks:[1],
   footValue:"© Ricardo Milos"
   }
   renderTaskList(){
