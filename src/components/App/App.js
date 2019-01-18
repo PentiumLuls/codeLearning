@@ -11,6 +11,7 @@ class App extends Component {
         this.state = {
             showPopup: true //SHOW POPUP ON START
         }
+        localStorage.setItem('button_run', 0);
     }
 
     togglePopup() {
