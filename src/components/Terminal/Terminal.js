@@ -9,7 +9,7 @@ class Terminal extends Component {
 
     constructor() {
         super();
-        this.writeReplics = (replica, name, func) => {
+        this.writeReplics = (replica, name, key) => {
             let x = 0;
             let interval = setInterval(() => {
                 let replic = `${name}:~$ ${replica[x++]}`;
@@ -18,11 +18,11 @@ class Terminal extends Component {
                 });
                 if (x >= replics.length) {
                     clearInterval(interval);
-                    if (func !== undefined) {
-                        func(replics, "Object");
-                    }
+                    localStorage.button_run = key || 0;
+                    
                 }
-            }, 500);  
+            }, 200);  
+            
         };
         this.state={
             code: "NO CODE",
@@ -40,7 +40,7 @@ class Terminal extends Component {
     }
 
     nextReplic = () => {
-        this.writeReplics(replics, "Object");
+        this.writeReplics(replics, "Gomuncul");
     }
 
     clearTerminal = () => {
@@ -52,7 +52,7 @@ class Terminal extends Component {
 
     componentDidMount() {
         console.log(svictor);
-         this.writeReplics(svictor[0], "SVictor");
+         this.writeReplics(svictor[0], "Mephisto", '1');
     }
     
     componentWillReceiveProps(nextValue) {
@@ -68,7 +68,7 @@ class Terminal extends Component {
             <div className="button-line">
                 <Button text="RUN CODE" className="debug" func={this.run}></Button>
                 <Button text="CLEAR TERMINAL" className="debug" func={this.clearTerminal}></Button>
-                <Button text="I VSE PONYAL" className="debug" func={this.nextReplic}></Button>
+                <Button text="I VSE PONYAL" className="debug" func={this.nextReplic} isDialog={true}></Button>
             </div>
             <ul className="terminal-text">
                 { this.state.replics.map(r => <li>{r}</li>) }
