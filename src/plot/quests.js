@@ -1,4 +1,4 @@
-export default quests = {
+export const quests = {
     "Kaisya glupets": {
         "Induscaya katastrofa": [`Vsego 30 let nazad preispodnya pustovala... I togda poyavilsa ON...
                                  PERVYI INDUS. Zrazu zhe posle nego v ad nachli pribivat tisiachi indusov,
@@ -8,15 +8,15 @@ export default quests = {
                                 'p'
                                 ],
 
-        "": ``,
+        "2": ``,
 
-        "": ``,
+        "3": ``,
 
-        "": ``,
+        "4": ``,
 
-        "": ``,
+        "5": ``,
 
-        "": ``
+        "6": ``
     },
 
     "": {

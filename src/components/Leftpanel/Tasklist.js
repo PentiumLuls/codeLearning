@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 
-
+import {quests} from '../../plot/quests'
 class Tasklist extends Component {
   
   
-  state={title:"Quests",
-  tasks:[ 'z','h','o','p','a'],
+  state={title:Object.keys(quests)[0],
+  tasks:Object.keys(quests[this.state.title]),
   footValue:"© Ricardo Milos"
   }
   renderTaskList(){
