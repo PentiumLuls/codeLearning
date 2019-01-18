@@ -3,7 +3,6 @@ import { svictor } from '../../plot/devil';
 import { replics } from '../../plot/Object';
 import Button from './Button/Button'
 
-
 class Terminal extends Component {
 
 
@@ -19,7 +18,6 @@ class Terminal extends Component {
                 if (x >= replics.length) {
                     clearInterval(interval);
                     localStorage.button_run = key || 0;
-                    
                 }
             }, 200);  
             
@@ -31,7 +29,10 @@ class Terminal extends Component {
         
     }
 
+
+
     run = () => {
+
         try {
 
             let fine = true;
