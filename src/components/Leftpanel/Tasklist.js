@@ -6,18 +6,30 @@ class Tasklist extends Component {
   
   state={title:Object.keys(quests)[0],
   tasks:quests[Object.keys(quests)[0]],
-  footValue:"© Ricardo Milos"
+  newtitle:Object.keys(quests[Object.keys(quests)[0]][0]),
+  footValue:"© Ricardo Milos",
+  taskshow:false
   }
   renderTaskList(){
     const tasks = this.state.tasks;
     const Tlis = tasks.map((el)=>
-      <li className="questlist">{Object.keys(el)}</li>
+      <li className="questlist" onClick={this.Opentask.bind(this)}>{Object.keys(el)}</li>
     )
     return(
       <ul>{Tlis}</ul>
     )
   }
+  Opentask(){
+   
+   const state = this.state;
+   state.taskshow= !state.taskshow;
+
+  
+   this.setState({state});
+
+  }
   render() {
+    {if(this.state.taskshow===false)
     return (
           <div>
           <div className="Tlist">
@@ -32,8 +44,23 @@ class Tasklist extends Component {
           
         
      
-    )
-  }
+    );
+    return (
+      
+      
+      <div>
+      <div className="Tlist">
+          <header className="listheader dashed"><p>{this.state.newtitle}</p></header>
+      
+        <button onClick={this.Opentask.bind(this)}> Назад</button>
+      </div>
+          <footer className="footer"><p>{this.state.footValue}</p></footer>
+       
+       </div>
+ 
+);
+    }  
+}
 }
 
 export default Tasklist;
