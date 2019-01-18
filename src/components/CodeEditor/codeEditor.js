@@ -4,9 +4,9 @@ import React, { Component } from 'react';
 class CodeEditor extends Component {
   constructor() {
     super();
-    this.onChange = this.onChange.bind(this);
+    this.onChange = this.onChange.bind(this)
     this.state={
-      code:''
+      code:'first'
     }
   }
 
@@ -14,11 +14,13 @@ class CodeEditor extends Component {
     this.setState({
       code: newValue
     })
-
     this.props.updateTerminal(this.state.code)
-
-
   }
+
+  componentDidMount() {
+    this.props.updateTerminal(this.state.code)
+  }
+
   render() {
     return (
       <ReactAce

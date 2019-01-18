@@ -33,7 +33,35 @@ class Terminal extends Component {
 
     run = () => {
         try {
-            document.querySelector('.terminal-text').textContent = eval(this.state.code);
+
+            let fine = true;
+            let regexps = [
+                /for/,
+                /while/,
+                /filter/,
+                /reduce/,
+                /map/,
+                /var/
+            ]
+
+            regexps.forEach((regexp) => {
+                if(regexp.test(this.state.code)) {
+                    fine = false;
+                }
+            })
+            
+
+            if(!fine){
+                document.querySelector('.terminal-text').textContent = "HEU WHATA are YOU DOing, it's a sin"
+            }
+            else{
+                
+                document.querySelector('.terminal-text').textContent = eval(this.state.code);
+            
+                 
+                
+                document.querySelector('.terminal-text').textContent = "OOO, you created it. wau i tell my friendes thet u are very cool";
+            }
         } catch (err) {
             document.querySelector('.terminal-text').textContent = err;
         }
