@@ -4,14 +4,14 @@ import {quests} from '../../plot/quests'
 class Tasklist extends Component {
   
   
-  state={title:Object.keys(quests[Object.keys(quests)[0]][1]),
-  tasks:[1],
+  state={title:Object.keys(quests)[0],
+  tasks:quests[Object.keys(quests)[0]],
   footValue:"© Ricardo Milos"
   }
   renderTaskList(){
     const tasks = this.state.tasks;
     const Tlis = tasks.map((el)=>
-      <li className="questlist">{el}</li>
+      <li className="questlist">{Object.keys(el)}</li>
     )
     return(
       <ul>{Tlis}</ul>
