@@ -1,14 +1,14 @@
 import ReactAce from 'react-ace-editor';
 import React, {Component} from 'react';
 
-
 class CodeEditor extends Component {
     constructor() {
         super();
         this.onChange = this.onChange.bind(this);
         this.state = {
-            code: 'qweqwewqe'
-        }
+            code: 'qweqwewqe',
+        };
+        this.forUpdate = 0;
     }
 
     onChange(newValue, e) {
@@ -18,29 +18,37 @@ class CodeEditor extends Component {
         this.props.updateTerminal(this.state.code)
     }
 
-    
-    componentWillReceiveProps(newProps) {
-        this.setState({
-            code: "newProps.code"
-        })
-        console.log("componentWillReceiveProps")
+    componentDidUpdate() {
+        if (this.forUpdate == 0){
+            console.log("component did update first")
+            this.forUpdate = 1
+        } else{
+            const editor = this.ace.editor
+            editor.setValue(this.props.text)
+            this.forUpdate = 0
+            console.log("component did update next")
+        }
     }
 
-    render() {
-        console.log("render")
-        console.log(this.state.code)
+    render(props) {
+        console.log("render");
         return (
             <ReactAce
                 mode="javascript"
                 theme="dracula"
                 onChange={this.onChange}
                 style={{height: '100%', fontSize: '20px', position: 'relative'}}
-                setValue={this.state.code}
+                setValue={this.props.text}
                 ref={instance => {
                     this.ace = instance;
                 }} // Let's put things into scope
             />
         );
+    }
+
+    componentDidMount() {
+        const editor = this.ace.editor
+        editor.setValue("")
     }
 }
 

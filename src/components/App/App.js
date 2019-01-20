@@ -5,8 +5,7 @@ import HellRules from '../CodeEditor/HellRules'
 import Terminal from '../Terminal/Terminal'
 import Popup from "../Popup/Popup";
 import Leftpanel from '../Leftpanel/Leftpanel';
-import {plot} from '../../plot/quests'
-
+import {quests} from '../../plot/quests';
 
 class App extends Component {
     constructor() {
@@ -14,7 +13,7 @@ class App extends Component {
         this.state = {
             showPopup: true,//SHOW POPUP ON START
             isEdit:false,
-            stage: 1,
+            stage: 0,
             quest: 0
         }
         localStorage.setItem('button_run', 0);
@@ -32,7 +31,7 @@ class App extends Component {
     }
 
     updateTerminal(code) {
-        this.setState({textInConsole: code});
+        this.setState({textInEditor: code});
     }
 
     writeQuest = (stageN, questN) => {
@@ -45,7 +44,7 @@ class App extends Component {
             stage: newStage,
             quest: newQuest
         })
-        console.log(stageN, questN)
+        console.log(this.state.stage, this.state.quest)
     }
 
 
@@ -57,11 +56,14 @@ class App extends Component {
                        <Leftpanel writeQuest={this.writeQuest} func={this.changeButtonState} func2={this.changeButtonState2}/>
                     </div>
                     <div className="editor">
-                        {(!this.state.isEdit) ? <Codeditor code={plot[this.state.stage].quests[this.state.quest].code}
-                         updateTerminal={this.updateTerminal.bind(this)}></Codeditor> : <HellRules/>}
+                        {
+                            (!this.state.isEdit)
+                                ? <Codeditor updateTerminal={this.updateTerminal.bind(this)}
+                                    text={quests[this.state.stage].quests[this.state.quest].code}/>
+                                : <HellRules/>}
                     </div>
                     <div className="terminal">
-                        <Terminal textInConsole={this.state.textInConsole} className="terminal"></Terminal>
+                        <Terminal textInEditor={this.state.textInEditor} className="terminal"/>
                     </div>
                 </div>
             )
