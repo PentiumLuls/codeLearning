@@ -24,7 +24,8 @@ class Terminal extends Component {
         };
         this.state = {
             code: "NO CODE",
-            replics: []
+            replics: [],
+            testCode: "testCode"
         }
 
     }
@@ -33,9 +34,13 @@ class Terminal extends Component {
     run = () => {
         try {
             const vm = require('vm');
-
-            document.querySelector('.terminal-text').textContent = "> " + vm.runInThisContext(localStorage.getItem("code"))
-                + "\nOOO, you created it. wau i tell my friendes thet u are very cool";
+            let codeToEvaluate = this.state.code + "\n" + this.state.testCode;
+            if (vm.runInThisContext(codeToEvaluate) === true) {
+                document.querySelector('.terminal-text').textContent = "> " + localStorage.getItem("code")
+                    + "\nOOO, you created it. wau i tell my friendes thet u are very cool";
+            } else {
+                document.querySelector('.terminal-text').textContent = "Hmmm... It doesn`t seem to work. Try again!"
+            }
         } catch (err) {
             //PARSE ERROR
             err = err.stack.split("\n", 2);
@@ -66,7 +71,8 @@ class Terminal extends Component {
 
     componentWillReceiveProps(nextValue) {
         this.setState({
-            code: nextValue.textInEditor
+            code: nextValue.textInEditor,
+            testCode: nextValue.testCode
         });
     }
 
