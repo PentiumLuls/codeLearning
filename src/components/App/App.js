@@ -43,7 +43,7 @@ class App extends Component {
                         {
                             (!this.state.isEdit)
                                 ? <Codeditor updateTerminal={this.updateTerminal.bind(this)}
-                                    text={quests["Кайся глупец"][0]["Индусская катастрофа"][1]}/>
+                                    text={quests[0]["quests"][0]["code"]}/>
                                 : <HellRules/>}
                     </div>
                     <div className="terminal">

@@ -1,5 +1,5 @@
 import React, {Component} from 'react'
-import {plot} from '../../plot/quests'
+import {quests} from '../../plot/quests'
 
 export default class Tasklist2 extends Component {
 
@@ -43,19 +43,19 @@ export default class Tasklist2 extends Component {
     generateList = () => {
         if (this.state.step == 0) {
             return (
-                plot.map((stage, index) => {
+                quests.map((stage, index) => {
                     return (<li key={index} onClick={this.next.bind(this, index)} className="listheader dashed">{stage.title}</li>)
                 })
             )
         } else if (this.state.step == 1) {
             return (
-                plot[this.state.stage].quests.map((quest, index) => {
+                quests[this.state.stage].quests.map((quest, index) => {
                     return (<li key={index} onClick={this.next.bind(this, index)} className="questlist">{quest.title}</li>)
                 })
             )
         }   else if (this.state.step == 2) {
             return (
-                <li className="questlist">{plot[this.state.stage].quests[this.state.quest].text}</li>
+                <li className="questlist">{quests[this.state.stage].quests[this.state.quest].text}</li>
             )
         }
     }
@@ -67,9 +67,9 @@ export default class Tasklist2 extends Component {
                 ? <button onClick={this.back}>Назад</button>
                 : null }
                 {this.state.step == 1 
-                    ? <li className="listheader dashed">{plot[this.state.stage].title}</li>
+                    ? <li className="listheader dashed">{quests[this.state.stage].title}</li>
                     : this.state.step == 2 
-                        ? <li className="listheader dashed">{plot[this.state.stage].quests[this.state.quest].title}</li> 
+                        ? <li className="listheader dashed">{quests[this.state.stage].quests[this.state.quest].title}</li>
                         : null}
                 {this.generateList()}
             </ul>
