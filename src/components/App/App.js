@@ -44,7 +44,6 @@ class App extends Component {
             stage: newStage,
             quest: newQuest
         })
-        console.log(this.state.stage, this.state.quest)
     }
 
 

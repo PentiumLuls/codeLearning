@@ -12,33 +12,31 @@ class CodeEditor extends Component {
     }
 
     onChange(newValue, e) {
-        this.setState({
-            code: newValue
-        })
-        this.props.updateTerminal(this.state.code)
+        if (this.forUpdate == 0){
+            this.setState({
+                code: newValue
+            })
+            this.props.updateTerminal(this.state.code)
+        }
     }
 
-    componentDidUpdate() {
+    componentWillReceiveProps() {
         if (this.forUpdate == 0){
-            console.log("component did update first")
             this.forUpdate = 1
         } else{
             const editor = this.ace.editor
             editor.setValue(this.props.text)
             this.forUpdate = 0
-            console.log("component did update next")
         }
     }
 
     render(props) {
-        console.log("render");
         return (
             <ReactAce
                 mode="javascript"
                 theme="dracula"
                 onChange={this.onChange}
                 style={{height: '100%', fontSize: '20px', position: 'relative'}}
-                setValue={this.props.text}
                 ref={instance => {
                     this.ace = instance;
                 }} // Let's put things into scope
