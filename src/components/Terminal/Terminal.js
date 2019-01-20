@@ -5,7 +5,6 @@ import Button from './Button/Button'
 
 class Terminal extends Component {
 
-
     constructor() {
         super();
         this.writeReplics = (replica, name, key) => {
@@ -20,26 +19,30 @@ class Terminal extends Component {
                     localStorage.button_run = key || 0;
                 }
             }, 500);
-
         };
         this.state = {
             replics: [],
-            testCode: "testCode"
+            testCode: "testCode",
+            regexps: ""
         }
-
     }
 
-
     run = () => {
+
         try {
             const vm = require('vm');
-            let codeToEvaluate = localStorage.getItem("code") + "\n" + this.state.testCode;
-            if (vm.runInThisContext(codeToEvaluate) === true) {
-                document.querySelector('.terminal-text').textContent = "> " + localStorage.getItem("code")
+            const codeToEvaluate = localStorage.getItem("code") + "\n" + this.state.testCode["code"]
+                + "===" + this.state.testCode["answer"];
+            const evaluatedAnswer = vm.runInThisContext(localStorage.getItem("code") + "\n" + this.state.testCode["answer"])
+
+            if (vm.runInThisContext(codeToEvaluate) == true && this.checkForRegexp() === true) {
+                document.querySelector('.terminal-text').textContent = "> " + this.state.testCode["code"] + "==" + evaluatedAnswer
                     + "\nOOO, you created it. wau i tell my friendes thet u are very cool";
+
             } else {
                 document.querySelector('.terminal-text').textContent = "Hmmm... It doesn`t seem to work. Try again!"
             }
+
         } catch (err) {
             //PARSE ERROR
             err = err.stack.split("\n", 2);
@@ -48,9 +51,21 @@ class Terminal extends Component {
             err[1] = "at (" + err[1][1] + ":" + err[1][2];
             err = err[0] + "\n" + err[1];
 
-
             document.querySelector('.terminal-text').textContent = err;
         }
+    }
+
+    checkForRegexp = () => {
+        var fine = true;
+
+        this.state.regexps.forEach((regexp) => {
+                if(!(regexp.test(this.state.code))) {
+                    //TODO FIX REGEXP CHECKING
+                    console.log("regexp false")
+                    fine = false;
+                }
+            })
+        return fine;
     }
 
     nextReplic = () => {
@@ -70,7 +85,8 @@ class Terminal extends Component {
 
     componentWillReceiveProps(nextValue) {
         this.setState({
-            testCode: nextValue.testCode
+            testCode: nextValue.testCode,
+            regexps: nextValue.regexps
         });
     }
 
@@ -89,10 +105,6 @@ class Terminal extends Component {
             </div>
         );
     }
-
 }
 
 export default Terminal;
-
-
-

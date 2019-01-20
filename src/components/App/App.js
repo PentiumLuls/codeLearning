@@ -60,7 +60,8 @@ class App extends Component {
                     <div className="terminal">
                         <Terminal 
                             className="terminal"
-                            testCode={quests[this.state.stage].quests[this.state.quest].test}/>
+                            testCode={quests[this.state.stage].quests[this.state.quest].test}
+                            regexps={quests[this.state.stage].quests[this.state.quest].regexps}/>
                     </div>
                 </div>
             )

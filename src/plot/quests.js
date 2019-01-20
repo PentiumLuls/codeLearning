@@ -10,16 +10,19 @@ export const quests = [
                 их код был просто ужесен но и стоял дешево. И тогда большые компании поняли,
                 что вместо 1 программиста с Европи, они могут нанять 20 индусов...
                 Вот код одного из них... какой же он ужасный(. Помоги глупцу з его задачей!`,
-                regexps: "",
+                regexps: [/(return)/, /(reduce)/],
                 code: "//Hello may frend, my boss please me to create functional summ thet will be calculate\n" +
                     "//mass of stones. I must to get to number of integer and returne summ.\n" +
                     "//boss say thet i must read first lav\n" +
-                    "var stonesMass = [1, 3, 5]\n" +
+                    "let stonesMass = [1, 3, 5]\n" +
                     "\n" +
-                    "function calculateSumm() {\n" +
+                    "function calculateSumm(stones) {\n" +
                     "    //???\n" +
                     "}",
-                test: "calculateSumm(stonesMass) === 9"
+                test: {
+                    code: "calculateSumm(stonesMass)",
+                    answer: "stonesMass.reduce((a,b) => {return a+b})"
+                }
             },
             {
                 title: "квест 2 с1",
