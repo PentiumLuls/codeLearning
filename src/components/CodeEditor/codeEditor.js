@@ -4,10 +4,6 @@ import React, {Component} from 'react';
 class CodeEditor extends Component {
     constructor() {
         super();
-        this.onChange = this.onChange.bind(this);
-        this.state = {
-            code: 'qweqwewqe',
-        };
         this.forUpdate = false;
     }
 

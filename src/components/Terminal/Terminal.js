@@ -23,7 +23,6 @@ class Terminal extends Component {
 
         };
         this.state = {
-            code: "NO CODE",
             replics: [],
             testCode: "testCode"
         }
@@ -34,7 +33,7 @@ class Terminal extends Component {
     run = () => {
         try {
             const vm = require('vm');
-            let codeToEvaluate = this.state.code + "\n" + this.state.testCode;
+            let codeToEvaluate = localStorage.getItem("code") + "\n" + this.state.testCode;
             if (vm.runInThisContext(codeToEvaluate) === true) {
                 document.querySelector('.terminal-text').textContent = "> " + localStorage.getItem("code")
                     + "\nOOO, you created it. wau i tell my friendes thet u are very cool";
@@ -71,7 +70,6 @@ class Terminal extends Component {
 
     componentWillReceiveProps(nextValue) {
         this.setState({
-            code: nextValue.textInEditor,
             testCode: nextValue.testCode
         });
     }

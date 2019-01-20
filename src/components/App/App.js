@@ -30,10 +30,6 @@ class App extends Component {
         });
     }
 
-    updateTerminal(code) {
-        this.setState({textInEditor: code});
-    }
-
     writeQuest = (stageN, questN) => {
         let newStage = this.state.stage;
         let newQuest = this.state.quest;
@@ -57,12 +53,12 @@ class App extends Component {
                     <div className="editor">
                         {
                             (!this.state.isEdit)
-                                ? <Codeditor updateTerminal={this.updateTerminal.bind(this)}
+                                ? <Codeditor
                                     text={quests[this.state.stage].quests[this.state.quest].code}/>
                                 : <HellRules/>}
                     </div>
                     <div className="terminal">
-                        <Terminal textInEditor={this.state.textInEditor} 
+                        <Terminal 
                             className="terminal"
                             testCode={quests[this.state.stage].quests[this.state.quest].test}/>
                     </div>
