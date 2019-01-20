@@ -21,7 +21,8 @@ ul {
   width: 100%;
   height: 65vh;
 }
-.terminal{ 
+.terminal{
+  white-space: pre-line; /*TO FIX DEPRECATED \n*/
   text-transform: uppercase;
   grid-area: terminal; 
   background-color: black;

@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
-import { svictor } from '../../plot/devil';
-import { replics } from '../../plot/Object';
+import {svictor} from '../../plot/devil';
+import {replics} from '../../plot/Object';
 import Button from './Button/Button'
 
 class Terminal extends Component {
@@ -19,51 +19,32 @@ class Terminal extends Component {
                     clearInterval(interval);
                     localStorage.button_run = key || 0;
                 }
-            }, 500);  
-            
+            }, 500);
+
         };
-        this.state={
+        this.state = {
             code: "NO CODE",
             replics: []
         }
-        
+
     }
 
 
-
     run = () => {
-
         try {
+            const vm = require('vm');
 
-            let fine = true;
-            let regexps = [
-                /for/,
-                /while/,
-                /*/filter/,
-                /reduce/,
-                /map/,*/
-                /var/
-            ]
-
-            regexps.forEach((regexp) => {
-                if(regexp.test(this.state.code)) {
-                    fine = false;
-                }
-            })
-            
-
-            if(!fine){
-                document.querySelector('.terminal-text').textContent = "HEU WHATA are YOU DOing, it's a sin"
-            }
-            else{
-                
-                document.querySelector('.terminal-text').textContent = eval(this.state.code);
-            
-                 
-                
-                document.querySelector('.terminal-text').textContent = "OOO, you created it. wau i tell my friendes thet u are very cool";
-            }
+            document.querySelector('.terminal-text').textContent = "> " + vm.runInThisContext(this.state.code)
+                + "\nOOO, you created it. wau i tell my friendes thet u are very cool";
         } catch (err) {
+            //PARSE ERROR
+            err = err.stack.split("\n", 2);
+            err[1] = err[1].split(" ").slice(-1) + ' ';
+            err[1] = err[1].split(":");
+            err[1] = "at (" + err[1][1] + ":" + err[1][2];
+            err = err[0] + "\n" + err[1];
+            /////////////
+
             document.querySelector('.terminal-text').textContent = err;
         }
     }
@@ -80,31 +61,30 @@ class Terminal extends Component {
 
 
     componentDidMount() {
-        console.log(svictor);
-         this.writeReplics(svictor[0], "Mephisto", '1');
+        this.writeReplics(svictor[0], "Mephisto", '1');
     }
-    
+
     componentWillReceiveProps(nextValue) {
         this.setState({
-            code: this.props.textInConsole
-        })
+            code: nextValue.textInEditor
+        });
     }
 
 
-  render() {
-    return (
-        <div className="terminalComponent">
-            <div className="button-line">
-                <Button text="RUN CODE" className="debug" func={this.run}></Button>
-                <Button text="CLEAR TERMINAL" className="debug" func={this.clearTerminal}></Button>
-                <Button text="I VSE PONYAL" className="debug" func={this.nextReplic} isDialog={true}></Button>
+    render() {
+        return (
+            <div className="terminalComponent">
+                <div className="button-line">
+                    <Button text="RUN CODE" className="debug" func={this.run}/>
+                    <Button text="CLEAR TERMINAL" className="debug" func={this.clearTerminal}/>
+                    <Button text="I VSE PONYAL" className="debug" func={this.nextReplic} isDialog={true}/>
+                </div>
+                <ul className="terminal-text">
+                    {this.state.replics.map(r => <li>{r}</li>)}
+                </ul>
             </div>
-            <ul className="terminal-text">
-                { this.state.replics.map(r => <li>{r}</li>) }
-            </ul>
-        </div>
-    );
-  }
+        );
+    }
 
 }
 
