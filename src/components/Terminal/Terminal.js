@@ -32,9 +32,7 @@ class Terminal extends Component {
 
 
     run = () => {
-
         try {
-
             let fine = true;
             let regexps = [
                 /for/,
@@ -58,9 +56,6 @@ class Terminal extends Component {
             else{
                 
                 document.querySelector('.terminal-text').textContent = eval(this.state.code);
-            
-                 
-                
                 document.querySelector('.terminal-text').textContent = "OOO, you created it. wau i tell my friendes thet u are very cool";
             }
         } catch (err) {
@@ -80,7 +75,6 @@ class Terminal extends Component {
 
 
     componentDidMount() {
-        console.log(svictor);
          this.writeReplics(svictor[0], "Mephisto", '1');
     }
     
@@ -100,7 +94,7 @@ class Terminal extends Component {
                 <Button text="I VSE PONYAL" className="debug" func={this.nextReplic} isDialog={true}></Button>
             </div>
             <ul className="terminal-text">
-                { this.state.replics.map(r => <li>{r}</li>) }
+                { this.state.replics.map((r, i) => <li key={i}>{r}</li>) }
             </ul>
         </div>
     );

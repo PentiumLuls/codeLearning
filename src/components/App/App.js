@@ -5,13 +5,17 @@ import HellRules from '../CodeEditor/HellRules'
 import Terminal from '../Terminal/Terminal'
 import Popup from "../Popup/Popup";
 import Leftpanel from '../Leftpanel/Leftpanel';
+import {plot} from '../../plot/quests'
+
 
 class App extends Component {
     constructor() {
         super();
         this.state = {
             showPopup: true,//SHOW POPUP ON START
-            isEdit:false
+            isEdit:false,
+            stage: 1,
+            quest: 0
         }
         localStorage.setItem('button_run', 0);
     }
@@ -31,15 +35,30 @@ class App extends Component {
         this.setState({textInConsole: code});
     }
 
+    writeQuest = (stageN, questN) => {
+        let newStage = this.state.stage;
+        let newQuest = this.state.quest;
+        newStage = stageN;
+        newQuest = questN;
+
+        this.setState({
+            stage: newStage,
+            quest: newQuest
+        })
+        console.log(stageN, questN)
+    }
+
+
     render() {
         if (!this.state.showPopup) {
             return (
                 <div className="main">
                     <div className="panel">
-                       <Leftpanel func={this.changeButtonState} func2={this.changeButtonState2}/>
+                       <Leftpanel writeQuest={this.writeQuest} func={this.changeButtonState} func2={this.changeButtonState2}/>
                     </div>
                     <div className="editor">
-                        {(!this.state.isEdit) ? <Codeditor updateTerminal={this.updateTerminal.bind(this)}></Codeditor> : <HellRules/>}
+                        {(!this.state.isEdit) ? <Codeditor code={plot[this.state.stage].quests[this.state.quest].code}
+                         updateTerminal={this.updateTerminal.bind(this)}></Codeditor> : <HellRules/>}
                     </div>
                     <div className="terminal">
                         <Terminal textInConsole={this.state.textInConsole} className="terminal"></Terminal>

@@ -55,7 +55,8 @@ export default class Tasklist2 extends Component {
             )
         }   else if (this.state.step == 2) {
             return (
-                <li className="questlist">{plot[this.state.stage].quests[this.state.quest].text}</li>
+                <li onClick={this.props.writeQuest.bind(this, this.state.stage, this.state.quest)}
+                 className="questlist">{plot[this.state.stage].quests[this.state.quest].text}</li>
             )
         }
     }

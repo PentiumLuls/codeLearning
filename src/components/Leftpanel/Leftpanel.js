@@ -16,12 +16,16 @@ class Leftpanel extends Component {
         }
     }
 
+    writeQuest = (stage, quest) => {
+        this.props.writeQuest(stage, quest);
+    }
+
     render() {
       return (
         <div>
            <Header func={this.click} func2={this.click2}/>
            {/* <Tasklist title="hhhhh"/> */}
-           <Tasklist2 />
+           <Tasklist2 writeQuest={this.writeQuest}/>
         </div>
       );
     }
