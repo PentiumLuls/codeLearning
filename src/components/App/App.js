@@ -62,7 +62,9 @@ class App extends Component {
                                 : <HellRules/>}
                     </div>
                     <div className="terminal">
-                        <Terminal textInEditor={this.state.textInEditor} className="terminal"/>
+                        <Terminal textInEditor={this.state.textInEditor} 
+                            className="terminal"
+                            testCode={quests[this.state.stage].quests[this.state.quest].test}/>
                     </div>
                 </div>
             )
