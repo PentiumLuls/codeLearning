@@ -34,7 +34,7 @@ class Terminal extends Component {
         try {
             const vm = require('vm');
 
-            document.querySelector('.terminal-text').textContent = "> " + vm.runInThisContext(this.state.code)
+            document.querySelector('.terminal-text').textContent = "> " + vm.runInThisContext(localStorage.getItem("code"))
                 + "\nOOO, you created it. wau i tell my friendes thet u are very cool";
         } catch (err) {
             //PARSE ERROR

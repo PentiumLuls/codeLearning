@@ -8,29 +8,25 @@ class CodeEditor extends Component {
         this.state = {
             code: 'qweqwewqe',
         };
-        this.forUpdate = 0;
+        this.forUpdate = false;
     }
 
     onChange(newValue, e) {
-        if (this.forUpdate == 0){
-            this.setState({
-                code: newValue
-            })
-            this.props.updateTerminal(this.state.code)
-        }
+        localStorage["code"] = newValue;
     }
 
+
     componentWillReceiveProps() {
-        if (this.forUpdate == 0){
-            this.forUpdate = 1
+        if (this.forUpdate == false){
+            this.forUpdate = true
         } else{
             const editor = this.ace.editor
             editor.setValue(this.props.text)
-            this.forUpdate = 0
+            this.forUpdate = false
         }
     }
 
-    render(props) {
+    render() {
         return (
             <ReactAce
                 mode="javascript"
