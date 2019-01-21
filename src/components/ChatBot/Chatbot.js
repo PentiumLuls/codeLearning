@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import {dialogs} from "../../plot/dialogs";
+import {quests} from "../../plot/quests";
 
 export default class Chatbot extends Component {
 
@@ -11,6 +12,7 @@ export default class Chatbot extends Component {
             replics: [],
             content: [],
             dialogN: 0,
+            hintsN: 0,
         }
     }
 
@@ -36,7 +38,6 @@ export default class Chatbot extends Component {
             });
             if (x >= replics.text.length) {
                 clearInterval(interval);
-                localStorage.button_run = key || 0;
             }
         }, 1000);
     };
@@ -47,21 +48,22 @@ export default class Chatbot extends Component {
         this.setState({state})
     }
 
-    getContent() {
-        return (this.state.content)
-    }
-
-
     getDialogs = () => {
-        return (
-            this.state.replics.map((r, i) => <li key={i}>{r}</li>)
-        );
+        this.setState({
+            content: this.state.replics.map((r, i) => <li key={i}>{r}</li>)
+        });
     };
 
     getHints() {
-        this.setState({
-            content: this.state.content + "\n"
-        })
+        const hints = quests[localStorage.passStages].quests[localStorage.passQuests].hints;
+        if (this.state.hintsN < hints.length) {
+            this.setState({
+                content: this.state.content + "\n" + hints[this.state.hintsN],
+                hintsN: this.state.hintsN + 1,
+            });
+        }
+
+        console.log(hints[this.state.hintsN])
     }
 
     componentDidMount() {
@@ -74,7 +76,7 @@ export default class Chatbot extends Component {
                 return (
                     <div className='chatbot'>
                         <buttun className='buttonchatclose' onClick={this.showChat.bind(this)}>Close</buttun>
-                        <div className="dialogbox">{this.getContent.bind(this)}</div>
+                        <div className="dialogbox">{this.state.content}</div>
                         <button className='chatbutton' >nextDialog</button>
                         <button className='chatbutton' onClick={this.getHints.bind(this)} >getHint</button>
                     </div>
