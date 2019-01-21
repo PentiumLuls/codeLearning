@@ -30,14 +30,17 @@ class Terminal extends Component {
 
 
     unlockQuest = () => {
-        if (quests[localStorage.passStages].quests.length == localStorage.passQuests + 1) {
-            localStorage.passStages =  +localStorage.passStages + 1;
-            localStorage.passQuests = 0;
-        } else {
-            localStorage.passQuests = +localStorage.passQuests + 1
+        if (this.props.stage >= localStorage.passStages) {
+            if (this.props.quest >= localStorage.passQuests) {
+                if (quests[localStorage.passStages].quests.length == localStorage.passQuests + 1) {
+                    localStorage.passStages = +localStorage.passStages + 1;
+                    localStorage.passQuests = 0;
+                } else {
+                    localStorage.passQuests = +localStorage.passQuests + 1
+                }
+                this.props.updateLeftPanel();
+            }
         }
-
-        this.props.updateLeftPanel();
     }
 
 

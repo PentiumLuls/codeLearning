@@ -78,6 +78,8 @@ class App extends Component {
                         <Terminal
                             updateLeftPanel={this.updateLeftPanel}
                             className="terminal"
+                            stage={this.state.stage}
+                            quest={this.state.quest}
                             testCode={quests[this.state.stage].quests[this.state.quest].test}
                             regexps={quests[this.state.stage].quests[this.state.quest].regexps}
                             regexpsNone={quests[this.state.stage].quests[this.state.quest].regexpsNone}/>
