@@ -6,6 +6,7 @@ import Terminal from '../Terminal/Terminal'
 import Popup from "../Popup/Popup";
 import Leftpanel from '../Leftpanel/Leftpanel';
 import {quests} from '../../plot/quests';
+import Chatbot from  '../ChatBot/Chatbot';
 
 class App extends Component {
     constructor() {
@@ -17,6 +18,12 @@ class App extends Component {
             quest: 0
         }
         localStorage.setItem('button_run', 0);
+        if (!localStorage['passStages']) {
+            localStorage['passStages'] = 0
+        }
+        if (!localStorage['passQuests']) {
+            localStorage['passQuests'] = 0
+        }
     }
     changeButtonState = () => {
         this.setState({isEdit: true});
@@ -63,6 +70,10 @@ class App extends Component {
                             testCode={quests[this.state.stage].quests[this.state.quest].test}
                             regexps={quests[this.state.stage].quests[this.state.quest].regexps}/>
                     </div>
+                    <div >
+                        <Chatbot/>
+                    </div>
+                    
                 </div>
             )
         } else {

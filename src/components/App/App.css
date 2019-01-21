@@ -110,6 +110,14 @@ ul {padding: 0;}
 .hell-rules {width: 100%; height: 65vh; overflow-y:scroll; box-sizing: border-box; padding: 10px;}
 .rules-wrapper {display: grid; grid-template-columns: repeat(3, 1fr); column-gap: 10px;}
 .hell-heading {text-align: center; color: red;}
+.chatbot{
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    width: 20%;
+    height: 50%;
+    background-color: #FFF9AE;
+}
 .questlist.inactive {
     cursor:default;
     color: transparent;
