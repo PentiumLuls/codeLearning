@@ -90,6 +90,13 @@ ul {
     margin: auto;
 }
 .listheader p {margin: auto}
+.chatbot{
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    width: 100px;
+    height:200px;
+}
 .dashed {
     background:
             linear-gradient(90deg, red 50%, transparent 50%),

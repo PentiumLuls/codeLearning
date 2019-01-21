@@ -6,6 +6,7 @@ import Terminal from '../Terminal/Terminal'
 import Popup from "../Popup/Popup";
 import Leftpanel from '../Leftpanel/Leftpanel';
 import {quests} from '../../plot/quests';
+import Chatbot from  '../ChatBot/Chatbot';
 
 class App extends Component {
     constructor() {
@@ -69,6 +70,8 @@ class App extends Component {
                             testCode={quests[this.state.stage].quests[this.state.quest].test}
                             regexps={quests[this.state.stage].quests[this.state.quest].regexps}/>
                     </div>
+                    
+                    
                 </div>
             )
         } else {
