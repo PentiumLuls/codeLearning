@@ -103,6 +103,34 @@ ul {
     animation: border-dance 6s infinite linear;
     box-sizing:border-box;
 }
+<<<<<<< HEAD
+.chatbot{
+        position: absolute;
+        right: 0;
+        bottom: 0;
+        width: 20%;
+        height: 50%;
+        background-color: #FFF9AE;
+}
+.buttonchatopen{
+    width: 3%;
+    height: 3%;
+    position: absolute;
+        right: 0;
+        bottom: 0;
+        background-color: red;
+        text-align: center
+}
+.buttonchatclose{
+    width: 3%;
+    height: 3%; 
+    position: relative;  
+        right: 0;
+        bottom: 0;
+        background-color: red;
+}
+=======
+>>>>>>> c75672479a33699a29f3b85ae8fa991b21c26299
 ul {padding: 0;}
 .questlist {cursor: pointer; background-color: white; color: black; text-align: center; padding: 20px; border-bottom: 2px dashed grey; width: 25vw; word-break: break-all; word-wrap: break-word; box-sizing: border-box;}
 .questlist:hover {background-color: black; color: white;}
