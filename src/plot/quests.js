@@ -19,6 +19,10 @@ export const quests = [
                     "function calculateSumm(stones) {\n" +
                     "    //???\n" +
                     "}",
+                hints: [
+                    "try reduce method",
+                    "Kill yourself"
+                ],
                 test: {
                     code: "calculateSumm(stonesMass)",
                     answer: "stonesMass.reduce((a,b) => {return a+b})"

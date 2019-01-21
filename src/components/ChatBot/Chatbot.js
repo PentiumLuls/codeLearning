@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import {dialogs} from "../../plot/dialogs";
+import {quests} from "../../plot/quests";
 
 export default class Chatbot extends Component {
 
@@ -9,10 +10,13 @@ export default class Chatbot extends Component {
         this.state = {
             visible: false,
             replics: [],
+            content: [],
+            dialogN: 0,
+            hintsN: 0,
         }
     }
 
-    writeReplics = (replica, name, key) => {
+    writeReplics = (replics) => {
         /*let x = 0;
         let interval = setInterval(() => {
             let replic = `${name}:~$ ${replica[x++]}`;
@@ -28,13 +32,12 @@ export default class Chatbot extends Component {
 
         let x = 0;
         let interval = setInterval(() => {
-            let replic = `${name}:~$ ${replica[x++]}`;
+            let replic = `${replics.name}:~$ ${replics.text[x++]}`;
             this.setState({
                 replics: [...this.state.replics, replic]
             });
-            if (x >= dialogs.length) {
+            if (x >= replics.text.length) {
                 clearInterval(interval);
-                localStorage.button_run = key || 0;
             }
         }, 1000);
     };
@@ -45,15 +48,27 @@ export default class Chatbot extends Component {
         this.setState({state})
     }
 
-
     getDialogs = () => {
-        return (
-            <ul className="chatDialogs">
-                {this.state.replics.map((r, i) => <li key={i}>{r}</li>)}
-            </ul>
-        )
+        this.setState({
+            content: this.state.replics.map((r, i) => <li key={i}>{r}</li>)
+        });
     };
 
+    getHints() {
+        const hints = quests[localStorage.passStages].quests[localStorage.passQuests].hints;
+        if (this.state.hintsN < hints.length) {
+            this.setState({
+                content: this.state.content + "\n" + hints[this.state.hintsN],
+                hintsN: this.state.hintsN + 1,
+            });
+        }
+
+        console.log(hints[this.state.hintsN])
+    }
+
+    componentDidMount() {
+        this.writeReplics(dialogs[localStorage.passStages][localStorage.passQuests][this.state.dialogN]);
+    }
 
     render() {
         {
@@ -61,8 +76,9 @@ export default class Chatbot extends Component {
                 return (
                     <div className='chatbot'>
                         <buttun className='buttonchatclose' onClick={this.showChat.bind(this)}>Close</buttun>
-                        <div className="dialogbox">{this.getDialogs.bind(this)}</div>
-                        <buttun className='chatbuttun'   >nextDialog</buttun> <buttun className='chatbuttun'  >getHint</buttun>
+                        <div className="dialogbox">{this.state.content}</div>
+                        <button className='chatbutton' >nextDialog</button>
+                        <button className='chatbutton' onClick={this.getHints.bind(this)} >getHint</button>
                     </div>
                 );
             return (
