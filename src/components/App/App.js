@@ -6,14 +6,14 @@ import Terminal from '../Terminal/Terminal'
 import Popup from "../Popup/Popup";
 import Leftpanel from '../Leftpanel/Leftpanel';
 import {quests} from '../../plot/quests';
-import Chatbot from  '../ChatBot/Chatbot';
+import Chatbot from '../ChatBot/Chatbot';
 
 class App extends Component {
     constructor() {
         super();
         this.state = {
             showPopup: true,//SHOW POPUP ON START
-            isEdit:false,
+            isEdit: false,
             stage: 0,
             quest: 0
         }
@@ -25,12 +25,14 @@ class App extends Component {
             localStorage['passQuests'] = 0
         }
     }
+
     changeButtonState = () => {
         this.setState({isEdit: true});
     }
     changeButtonState2 = () => {
         this.setState({isEdit: false});
     }
+
     togglePopup() {
         this.setState({
             showPopup: !this.state.showPopup,
@@ -62,7 +64,8 @@ class App extends Component {
             return (
                 <div className="main">
                     <div className="panel">
-                       <Leftpanel updateLP={this.props.updateLP} writeQuest={this.writeQuest} func={this.changeButtonState} func2={this.changeButtonState2}/>
+                        <Leftpanel updateLP={this.props.updateLP} writeQuest={this.writeQuest}
+                                   func={this.changeButtonState} func2={this.changeButtonState2}/>
                     </div>
                     <div className="editor">
                         {
@@ -73,15 +76,14 @@ class App extends Component {
                     </div>
                     <div className="terminal">
                         <Terminal
-                            updateLeftPanel={this.updateLeftPanel} 
+                            updateLeftPanel={this.updateLeftPanel}
                             className="terminal"
                             testCode={quests[this.state.stage].quests[this.state.quest].test}
-                            regexps={quests[this.state.stage].quests[this.state.quest].regexps}/>
+                            regexps={quests[this.state.stage].quests[this.state.quest].regexps}
+                            regexpsNone={quests[this.state.stage].quests[this.state.quest].regexpsNone}/>
                     </div>
-                    <div >
-                        <Chatbot/>
-                    </div>
-                    
+                    <Chatbot/>
+
                 </div>
             )
         } else {

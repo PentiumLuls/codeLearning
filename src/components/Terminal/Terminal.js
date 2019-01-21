@@ -1,6 +1,4 @@
 import React, {Component} from 'react';
-import {svictor} from '../../plot/devil';
-import {replics} from '../../plot/Object';
 import Button from './Button/Button';
 import {quests} from '../../plot/quests'
 
@@ -25,6 +23,7 @@ class Terminal extends Component {
             /*replics: [],*/
             testCode: "testCode",
             regexps: "",
+            regexpsNone: "",
             content: ""
         }
     }
@@ -86,6 +85,13 @@ class Terminal extends Component {
                     fine = false;
                 }
             });
+
+        this.state.regexpsNone.forEach((regexp) => {
+            if(!(localStorage.code.match(regexp) === null)) {
+                fine = false;
+            }
+        });
+
         return fine;
     };
 
@@ -112,7 +118,9 @@ class Terminal extends Component {
     componentWillReceiveProps(nextValue) {
         this.setState({
             testCode: nextValue.testCode,
-            regexps: nextValue.regexps
+            regexps: nextValue.regexps,
+            regexpsNone: nextValue.regexpsNone,
+
         });
     }
 
