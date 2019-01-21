@@ -1,6 +1,4 @@
 import React, {Component} from 'react';
-import {svictor} from '../../plot/devil';
-import {replics} from '../../plot/Object';
 import Button from './Button/Button';
 import {quests} from '../../plot/quests'
 
@@ -25,20 +23,24 @@ class Terminal extends Component {
             /*replics: [],*/
             testCode: "testCode",
             regexps: "",
+            regexpsNone: "",
             content: ""
         }
     }
 
 
     unlockQuest = () => {
-        if (quests[localStorage.passStages].quests.length == localStorage.passQuests + 1) {
-            localStorage.passStages =  +localStorage.passStages + 1;
-            localStorage.passQuests = 0;
-        } else {
-            localStorage.passQuests = +localStorage.passQuests + 1
+        if (this.props.stage >= localStorage.passStages) {
+            if (this.props.quest >= localStorage.passQuests) {
+                if (quests[localStorage.passStages].quests.length == localStorage.passQuests + 1) {
+                    localStorage.passStages = +localStorage.passStages + 1;
+                    localStorage.passQuests = 0;
+                } else {
+                    localStorage.passQuests = +localStorage.passQuests + 1
+                }
+                this.props.updateLeftPanel();
+            }
         }
-
-        this.props.updateLeftPanel();
     }
 
 
@@ -87,6 +89,13 @@ class Terminal extends Component {
                     fine = false;
                 }
             });
+
+        this.state.regexpsNone.forEach((regexp) => {
+            if(!(localStorage.code.match(regexp) === null)) {
+                fine = false;
+            }
+        });
+
         return fine;
     };
 
@@ -113,7 +122,9 @@ class Terminal extends Component {
     componentWillReceiveProps(nextValue) {
         this.setState({
             testCode: nextValue.testCode,
-            regexps: nextValue.regexps
+            regexps: nextValue.regexps,
+            regexpsNone: nextValue.regexpsNone,
+
         });
     }
 

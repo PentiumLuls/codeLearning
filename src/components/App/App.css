@@ -107,8 +107,8 @@ ul {
         position: absolute;
         right: 0;
         bottom: 0;
-        width: 20%;
-        height: 50%;
+        width: 35%;
+        height: 65%;
         background-color: #FFF9AE;
 }
 .buttonchatopen{
@@ -131,9 +131,10 @@ ul {
 .dialogbox{
     position: relative;
     left: 5%;
-    width: 90%;
-    height: 85%; 
+    width: 89%;
+    height: 87%; 
     background-color:#2F4F4F;
+    overflow:scroll;
 }
 .chatbuttun{
     position: relative;
