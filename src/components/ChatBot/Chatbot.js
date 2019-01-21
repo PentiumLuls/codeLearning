@@ -1,6 +1,6 @@
-import React, { Component } from 'react';
-import { dialogs } from "../../plot/dialogs";
-import { quests } from "../../plot/quests";
+import React, {Component} from 'react';
+import {dialogs} from "../../plot/dialogs";
+import {quests} from "../../plot/quests";
 
 export default class Chatbot extends Component {
 
@@ -8,7 +8,7 @@ export default class Chatbot extends Component {
         super();
 
         this.state = {
-            visible: false,
+            visible: true,
             replics: [],
             content: [],
             dialogN: 0,
@@ -19,29 +19,27 @@ export default class Chatbot extends Component {
     writeReplics = (replics) => {
         let x = 0;
         let interval = setInterval(() => {
-        let replic = `${replics.name}:~$ ${replics.text[x++]}`;
-        this.setState({
-        replics: [...this.state.replics, replic]
-        });
-        if (x >= replics.text.length) {
-        clearInterval(interval);
-        }
+            let replic = `${replics.name}:~$ ${replics.text[x++]}`;
+            this.setState({
+                replics: [...this.state.replics, replic],
+                content: this.state.content + replic,
+            });
+            if (x >= replics.text.length) {
+                clearInterval(interval);
+            }
         }, 1000);
-    }
-
+    };
 
     showChat() {
         const state = this.state;
         state.visible = !state.visible;
-        this.setState({ state })
+        this.setState({state})
     }
- 
+
     getDialogs = () => {
-
-
-
+        console.log("GET DIALOGS!!!");
         this.setState({
-            content: this.state.replics.map((r, i) => <li key={i}>{r}</li>)
+            content: this.state.content +  this.state.replics.map((r, i) => <li key={i}>{r}</li>)
         });
     };
 
@@ -66,15 +64,15 @@ export default class Chatbot extends Component {
         if (this.state.visible === true)
             return (
                 <div className='chatbot'>
-                    <buttun className='buttonchatclose' onClick={this.showChat.bind(this)}>Close</buttun>
+                    <button className='buttonchatclose' onClick={this.showChat.bind(this)}>Close</button>
                     <div className="dialogbox">{this.state.content}</div>
-                    <button className='chatbutton' onClick={this.getDialogs.bind(this)}>nextDialog</button>
+                    {/*<button className='chatbutton' onClick={this.getDialogs.bind(this)}>nextDialog</button>*/}
                     <button className='chatbutton' onClick={this.getHints.bind(this)}>getHint</button>
                 </div>
             );
         return (
             <div>
-                <buttun className='buttonchatopen' onClick={this.showChat.bind(this)}>Chat</buttun>
+                <button className='buttonchatopen' onClick={this.showChat.bind(this)}>Chat</button>
             </div>
         )
     }
