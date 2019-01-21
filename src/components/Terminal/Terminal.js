@@ -1,7 +1,8 @@
 import React, {Component} from 'react';
 import {svictor} from '../../plot/devil';
 import {replics} from '../../plot/Object';
-import Button from './Button/Button'
+import Button from './Button/Button';
+import {quests} from '../../plot/quests'
 
 class Terminal extends Component {
 
@@ -27,6 +28,19 @@ class Terminal extends Component {
         }
     }
 
+
+    unlockQuest = () => {
+        if (quests[localStorage.passStages].quests.length == localStorage.passQuests + 1) {
+            localStorage.passStages =  +localStorage.passStages + 1;
+            localStorage.passQuests = 0;
+        } else {
+            localStorage.passQuests = +localStorage.passQuests + 1
+        }
+
+        this.props.updateLeftPanel();
+    }
+
+
     run = () => {
 
         try {
@@ -38,6 +52,8 @@ class Terminal extends Component {
             if (vm.runInThisContext(codeToEvaluate) === true && this.checkForRegexp() === true) {
                 document.querySelector('.terminal-text').textContent = "> " + this.state.testCode["code"] + "==" + evaluatedAnswer
                     + "\nOOO, you created it. wau i tell my friendes thet u are very cool";
+
+                this.unlockQuest();
 
             } else {
                 document.querySelector('.terminal-text').textContent = "Hmmm... It doesn`t seem to work. Try again!"

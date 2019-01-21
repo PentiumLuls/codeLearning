@@ -20,11 +20,20 @@ class Leftpanel extends Component {
         }
     }
 
+    componentWillReceiveProps( ) {
+        console.log("PASS QUESTS" + localStorage['passQuests'])
+        this.setState({
+            passStages: localStorage['passStages'],
+            passQuests: localStorage['passQuests']
+        })
+    }
+
     writeQuest = (stage, quest) => {
         this.props.writeQuest(stage, quest);
     }
 
     render() {
+
       return (
         <div>
            <Header func={this.click} func2={this.click2}/>

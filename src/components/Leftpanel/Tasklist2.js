@@ -40,19 +40,27 @@ export default class Tasklist extends Component {
         }
     }
 
+
+
     generateList = () => {
         if (this.state.step == 0) {
             return (
                 quests.map((stage, index) => {
                     return (<li key={index} 
-                        onClick={index <= this.props.passStages ? this.next.bind(this, index) : null}
+                        onClick={index <= this.props.passStages 
+                            ? this.next.bind(this, index) 
+                            : null}
                          className="listheader dashed">{stage.title}</li>)
                 })
             )
         } else if (this.state.step == 1) {
             return (
                 quests[this.state.stage].quests.map((quest, index) => {
-                    return (<li key={index} onClick={index <= this.props.passQuests? this.next.bind(this, index) : null}
+                    return (<li key={index} onClick={ this.props.passStages > this.state.stage
+                        ? this.next.bind(this, index) 
+                        : index <= this.props.passQuests 
+                            ?  this.next.bind(this, index) 
+                            : null}
                      className="questlist">{quest.title}</li>)
                 })
             )
@@ -65,6 +73,7 @@ export default class Tasklist extends Component {
     }
 
     render(){
+        console.log("I RECEIVE PROPS" + this.props.passQuests)
         return (
             <ul>
                 {this.state.step != 0 

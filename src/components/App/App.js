@@ -44,7 +44,14 @@ class App extends Component {
 
         this.setState({
             stage: newStage,
-            quest: newQuest
+            quest: newQuest,
+            updateLP: false
+        })
+    }
+
+    updateLeftPanel = () => {
+        this.setState({
+            updateLP: !this.props.updateLP
         })
     }
 
@@ -54,7 +61,7 @@ class App extends Component {
             return (
                 <div className="main">
                     <div className="panel">
-                       <Leftpanel writeQuest={this.writeQuest} func={this.changeButtonState} func2={this.changeButtonState2}/>
+                       <Leftpanel updateLP={this.props.updateLP} writeQuest={this.writeQuest} func={this.changeButtonState} func2={this.changeButtonState2}/>
                     </div>
                     <div className="editor">
                         {
@@ -64,7 +71,8 @@ class App extends Component {
                                 : <HellRules/>}
                     </div>
                     <div className="terminal">
-                        <Terminal 
+                        <Terminal
+                            updateLeftPanel={this.updateLeftPanel} 
                             className="terminal"
                             testCode={quests[this.state.stage].quests[this.state.quest].test}
                             regexps={quests[this.state.stage].quests[this.state.quest].regexps}/>
