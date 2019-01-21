@@ -1,6 +1,6 @@
-import React, {Component} from 'react';
-import {dialogs} from "../../plot/dialogs";
-import {quests} from "../../plot/quests";
+import React, { Component } from 'react';
+import { dialogs } from "../../plot/dialogs";
+import { quests } from "../../plot/quests";
 
 export default class Chatbot extends Component {
 
@@ -17,27 +17,25 @@ export default class Chatbot extends Component {
     }
 
     writeReplics = (replics) => {
-        console.log("WRITE REPLICS!!!")
-        /*let x = 0;
+        let x = 0;
         let interval = setInterval(() => {
-            let replic = `${name}:~$ ${replica[x++]}`;
-            this.setState({
-                replics: [...this.state.replics, replic]
-            });
-            if (x >= replics.length) {
-                clearInterval(interval);
-                localStorage.button_run = key || 0;
-            }
+        let replic = `${replics.name}:~$ ${replics.text[x++]}`;
+        this.setState({
+        replics: [...this.state.replics, replic]
+        });
+        if (x >= replics.text.length) {
+        clearInterval(interval);
+        }
         }, 1000);
-*/
-    };
+    }
+
 
     showChat() {
         const state = this.state;
         state.visible = !state.visible;
-        this.setState({state})
+        this.setState({ state })
     }
-
+ 
     getDialogs = () => {
 
 

@@ -131,9 +131,10 @@ ul {
 .dialogbox{
     position: relative;
     left: 5%;
-    width: 90%;
-    height: 85%; 
+    width: 89%;
+    height: 87%; 
     background-color:#2F4F4F;
+    overflow:scroll;
 }
 .chatbuttun{
     position: relative;
