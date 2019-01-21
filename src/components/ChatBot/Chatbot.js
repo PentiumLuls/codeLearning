@@ -9,6 +9,7 @@ export default class Chatbot extends Component {
         this.state = {
             visible: false,
             replics: [],
+            content: [],
         }
     }
 
@@ -45,15 +46,28 @@ export default class Chatbot extends Component {
         this.setState({state})
     }
 
+    getContent() {
+        return (this.state.content)
+    }
+
 
     getDialogs = () => {
-        return (
+        this.setState({
+            content: this.state.replics.map((r, i) => <li key={i}>{r}</li>)
+        })
+
+        /*return (
             <ul className="chatDialogs">
                 {this.state.replics.map((r, i) => <li key={i}>{r}</li>)}
             </ul>
-        )
+        )*/
     };
 
+    getHints() {
+        this.setState({
+            content: this.state.content + "\n"
+        })
+    }
 
     render() {
         {
@@ -61,7 +75,7 @@ export default class Chatbot extends Component {
                 return (
                     <div className='chatbot'>
                         <buttun className='buttonchatclose' onClick={this.showChat.bind(this)}>Close</buttun>
-                        <div className="dialogbox">{this.getDialogs.bind(this)}</div>
+                        <div className="dialogbox">{this.getContent.bind(this)}</div>
                         <buttun className='chatbuttun'   >nextDialog</buttun> <buttun className='chatbuttun'  >getHint</buttun>
                     </div>
                 );
