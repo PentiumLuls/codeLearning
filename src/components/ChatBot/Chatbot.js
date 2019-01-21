@@ -71,7 +71,7 @@ export default class Chatbot extends Component {
     }
 
     render() {
-        {
+        
             if (this.state.visible === true)
                 return (
                     <div className='chatbot'>
@@ -83,9 +83,9 @@ export default class Chatbot extends Component {
                 );
             return (
                 <div>
-                    <buttun className='buttonchatopen' onClick={this.showChat.bind(this)}>Chat</buttun>
+                    <button className='buttonchatopen' onClick={this.showChat.bind(this)}>Chat</button>
                 </div>
             )
-        }
+
     }
 }

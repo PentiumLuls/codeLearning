@@ -5,27 +5,34 @@ export const quests = [
         [
             {
                 title: "Индусская катастрофа",
-                text: `Всего 30 лет назад преисподняя пустовала... И тогда появился он...
-                ПЕРВЫЙ ИНДУС. Зразу же после него в ад начали прибывать тысячи индусов,
-                их код был просто ужесен но и стоял дешево. И тогда большые компании поняли,
-                что вместо 1 программиста с Европи, они могут нанять 20 индусов...
-                Вот код одного из них... какой же он ужасный(. Помоги глупцу з его задачей!`,
-                regexps: [/(return)/g, /(reduce)/g],
-                code: "//Hello may frend, my boss please me to create functional summ thet will be calculate\n" +
-                    "//mass of stones. I must to get to number of integer and returne summ.\n" +
-                    "//boss say thet i must read first lav\n" +
-                    "let stonesMass = [1, 3, 5]\n" +
-                    "\n" +
-                    "function calculateSumm(stones) {\n" +
-                    "    //???\n" +
-                    "}",
+                text: ``,
+                regexps: [/(return)/g, /(function)/g],
+                regexpsNone: [/(for)/g, /(while)/g, /(var)/g, /(map)/g, /(reduce)/g, /(filter)/g,  /(filter)/g,],
+                code: `
+                       
+var cow = {
+    milk: 10
+}
+
+function milkACow(cow) {
+    cow.milk = 0
+    return cow
+}
+                       `,
                 hints: [
-                    "try reduce method",
-                    "Kill yourself"
+                    "Функция не должна изменять внешние переменные",
+                    "Попробуй как то скопировать обект коровы"
                 ],
                 test: {
-                    code: "calculateSumm(stonesMass)",
-                    answer: "stonesMass.reduce((a,b) => {return a+b})"
+                    code: "milkACow(cow)",
+                    answer: `
+function milkACow(cow) {
+    let newcow = Object.assign({}, cow);
+    newcow.milk = 0;
+    return newcow;
+}
+
+milkACow(cow)`
                 }
             },
             {

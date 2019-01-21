@@ -49,6 +49,7 @@ class Terminal extends Component {
             const codeToEvaluate = localStorage.getItem("code") + "\n" + this.state.testCode["code"]
                 + "===" + this.state.testCode["answer"];
             const evaluatedAnswer = vm.runInThisContext(localStorage.getItem("code") + "\n" + this.state.testCode["answer"])
+            console.log(evaluatedAnswer, codeToEvaluate);
 
             if (vm.runInThisContext(codeToEvaluate) === true && this.checkForRegexp() === true) {
                 this.setState({
