@@ -24,15 +24,19 @@ function milkACow(cow) {
                     "Попробуй как то скопировать обект коровы"
                 ],
                 test: {
-                    code: "milkACow(cow)",
+                    code: `let valid = true;
+                             if(JSON.stringify(milkACow(cow)) !== JSON.stringify({milk: 0})){valid = false};
+                             if(cow.milk !== 10){valid = false};
+                             if(JSON.stringify(milkACow({milk: 33})) !== JSON.stringify({milk: 0})){valid = false};
+                            valid === true`,
                     answer: `
 function milkACow(cow) {
     let newcow = Object.assign({}, cow);
     newcow.milk = 0;
     return newcow;
 }
-
-milkACow(cow)`
+milkACow(cow).milk
+`
                 }
             },
             {

@@ -56,7 +56,12 @@ export default class Chatbot extends Component {
     }
 
     componentDidMount() {
-        this.writeReplics(dialogs[localStorage.passStages][localStorage.passQuests][this.state.dialogN]);
+        try {
+            this.writeReplics(dialogs[localStorage.passStages][localStorage.passQuests][this.state.dialogN]);
+        }  catch {
+            console.log("non replics")
+        }
+        
     }
 
     render() {

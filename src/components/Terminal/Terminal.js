@@ -49,21 +49,30 @@ class Terminal extends Component {
         try {
             const vm = require('vm');
             const codeToEvaluate = localStorage.getItem("code") + "\n" + this.state.testCode["code"]
-                + "===" + this.state.testCode["answer"];
-            const evaluatedAnswer = vm.runInThisContext(localStorage.getItem("code") + "\n" + this.state.testCode["answer"])
-            console.log(evaluatedAnswer, codeToEvaluate);
+            const regexp = this.checkForRegexp();
 
-            if (vm.runInThisContext(codeToEvaluate) === true && this.checkForRegexp() === true) {
+            if (vm.runInThisContext(codeToEvaluate) === true && regexp.pass === true) {
                 this.setState({
-                    content: this.state.content + "> " + this.state.testCode["code"] + "==" + evaluatedAnswer
-                        + "\nOOO, you created it. wau i tell my friendes thet u are very cool" + "\n"
+                    content: this.state.content + "\n> " + "  OOO, you created it. wau i tell my friendes thet u are very cool" + "\n"
                 });
 
                 this.unlockQuest();
 
             } else {
+                let information = '';
+                if (regexp.useIt.length !== 0) {
+                    information += `You must to use this: ${regexp.useIt}\n`
+                }
+                if (regexp.notUseIt.length !== 0) {
+                    information += `D'nt use it: ${regexp.notUseIt}\n`
+                }
+                if (regexp.pass) {
+                    information += "You d'nt pass all test cases"
+                }
+                
                 this.setState({
-                    content: this.state.content + "> " + "Hmmm... It doesn`t seem to work. Try again!" + "\n"
+                    content: `${this.state.content}\n> Hmmm... It doesn't seem to work. Try again!\n\n 
+                    ${information}`
                 });
             }
 
@@ -82,21 +91,27 @@ class Terminal extends Component {
     };
 
     checkForRegexp = () => {
-        var fine = true;
+        let checkRegExp = {
+            pass: true,
+            useIt: '',
+            notUseIt: ''
+        };
 
         this.state.regexps.forEach((regexp) => {
                 if(localStorage.code.match(regexp) === null) {
-                    fine = false;
+                    checkRegExp.pass = false;
+                    checkRegExp['useIt'] += regexp
                 }
             });
 
         this.state.regexpsNone.forEach((regexp) => {
             if(!(localStorage.code.match(regexp) === null)) {
-                fine = false;
+                checkRegExp.pass= false;
+                checkRegExp['notUseIt'] += regexp
             }
         });
 
-        return fine;
+        return checkRegExp;
     };
 
     /*nextReplic = () => {
