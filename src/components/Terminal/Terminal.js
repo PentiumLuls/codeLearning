@@ -35,7 +35,7 @@ class Terminal extends Component {
                 + "===" + this.state.testCode["answer"];
             const evaluatedAnswer = vm.runInThisContext(localStorage.getItem("code") + "\n" + this.state.testCode["answer"])
 
-            if (vm.runInThisContext(codeToEvaluate) == true && this.checkForRegexp() === true) {
+            if (vm.runInThisContext(codeToEvaluate) === true && this.checkForRegexp() === true) {
                 document.querySelector('.terminal-text').textContent = "> " + this.state.testCode["code"] + "==" + evaluatedAnswer
                     + "\nOOO, you created it. wau i tell my friendes thet u are very cool";
 
@@ -53,30 +53,30 @@ class Terminal extends Component {
 
             document.querySelector('.terminal-text').textContent = err;
         }
-    }
+    };
 
     checkForRegexp = () => {
         var fine = true;
 
         this.state.regexps.forEach((regexp) => {
-                if(!(regexp.test(this.state.code))) {
-                    //TODO FIX REGEXP CHECKING
-                    console.log("regexp false")
+            console.log(localStorage.code);
+                if(localStorage.code.match(regexp) === null) {
+                    console.log("regexp false");
                     fine = false;
                 }
-            })
+            });
         return fine;
-    }
+    };
 
     nextReplic = () => {
         this.writeReplics(replics, "Gomuncul");
-    }
+    };
 
     clearTerminal = () => {
         this.setState({
             replics: []
         });
-    }
+    };
 
 
     componentDidMount() {

@@ -17,6 +17,12 @@ class App extends Component {
             quest: 0
         }
         localStorage.setItem('button_run', 0);
+        if (!localStorage['passStages']) {
+            localStorage['passStages'] = 0
+        }
+        if (!localStorage['passQuests']) {
+            localStorage['passQuests'] = 0
+        }
     }
     changeButtonState = () => {
         this.setState({isEdit: true});
