@@ -77,11 +77,16 @@ class Terminal extends Component {
         this.writeReplics(replics, "Gomuncul");
     };*/
 
-    /*clearTerminal = () => {
+    clearTerminal = () => {
         this.setState({
+            content: ""
+        })
+
+
+        /*this.setState({
             replics: []
-        });
-    };*/
+        });*/
+    };
 
 
     componentDidMount() {
