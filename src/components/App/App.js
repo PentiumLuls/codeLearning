@@ -15,7 +15,8 @@ class App extends Component {
             showPopup: true,//SHOW POPUP ON START
             isEdit: false,
             stage: 0,
-            quest: 0
+            quest: 0,
+            notUpdateEditor: 0
         }
         localStorage.setItem('button_run', 0);
         if (!localStorage['passStages']) {
@@ -48,7 +49,8 @@ class App extends Component {
         this.setState({
             stage: newStage,
             quest: newQuest,
-            updateLP: false
+            updateLP: false,
+            notUpdateEditor: 0
         })
     }
 
@@ -58,19 +60,25 @@ class App extends Component {
         })
     }
 
+    notUpdateEditor = () => {
+        this.setState({
+            notUpdateEditor: 1
+        })
+    }
 
     render() {
         if (!this.state.showPopup) {
             return (
                 <div className="main">
                     <div className="panel">
-                        <Leftpanel updateLP={this.props.updateLP} writeQuest={this.writeQuest}
+                        <Leftpanel notUpdateEditor={this.notUpdateEditor} updateLP={this.props.updateLP} writeQuest={this.writeQuest}
                                    func={this.changeButtonState} func2={this.changeButtonState2}/>
                     </div>
                     <div className="editor">
                         {
                             (!this.state.isEdit)
                                 ? <Codeditor
+                                    notUpdateEditor={this.state.notUpdateEditor} 
                                     text={quests[this.state.stage].quests[this.state.quest].code}/>
                                 : <HellRules/>}
                     </div>
@@ -97,8 +105,6 @@ class App extends Component {
                 </div>
             )
         }
-
-
     }
 }
 

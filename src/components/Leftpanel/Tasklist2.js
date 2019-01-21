@@ -14,13 +14,16 @@ export default class Tasklist extends Component {
 
     back = () => {
         let newStep = this.state.step - 1;
-
         this.setState({
             step: newStep
         })
+        if (this.state.step === 2) {
+            this.props.notUpdateEditor();
+        }
     }
 
     next = (index) => {
+
         if (this.state.step == 0) {
             let newStep = this.state.step + 1;
             let newStage = index;
@@ -30,6 +33,7 @@ export default class Tasklist extends Component {
                 stage: newStage
             })
         } else if (this.state.step == 1) {
+            this.props.writeQuest(this.state.stage, this.state.quest)
             let newStep = this.state.step + 1;
             let newQuest = index;
 

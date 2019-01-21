@@ -12,12 +12,18 @@ class CodeEditor extends Component {
     }
 
 
-    componentWillReceiveProps() {
-        if (this.forUpdate == false){
-            this.forUpdate = true
-        } else{
-            const editor = this.ace.editor
-            editor.setValue(this.props.text)
+    componentWillReceiveProps(nextProps) {
+        if (nextProps.notUpdateEditor == 0){
+            if (this.forUpdate == false){
+                this.forUpdate = true
+                console.log("rofl1")
+            } else{
+                const editor = this.ace.editor
+                editor.setValue(this.props.text)
+                this.forUpdate = false
+                console.log("rofl2")
+            }
+        } else {
             this.forUpdate = false
         }
     }
