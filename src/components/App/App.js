@@ -70,7 +70,9 @@ class App extends Component {
                             testCode={quests[this.state.stage].quests[this.state.quest].test}
                             regexps={quests[this.state.stage].quests[this.state.quest].regexps}/>
                     </div>
-                    
+                    <div >
+                        <Chatbot/>
+                    </div>
                     
                 </div>
             )
