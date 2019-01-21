@@ -8,7 +8,7 @@ class Terminal extends Component {
 
     constructor() {
         super();
-        this.writeReplics = (replica, name, key) => {
+        /*this.writeReplics = (replica, name, key) => {
             let x = 0;
             let interval = setInterval(() => {
                 let replic = `${name}:~$ ${replica[x++]}`;
@@ -20,11 +20,12 @@ class Terminal extends Component {
                     localStorage.button_run = key || 0;
                 }
             }, 500);
-        };
+        };*/
         this.state = {
-            replics: [],
+            /*replics: [],*/
             testCode: "testCode",
-            regexps: ""
+            regexps: "",
+            content: ""
         }
     }
 
@@ -50,13 +51,17 @@ class Terminal extends Component {
             const evaluatedAnswer = vm.runInThisContext(localStorage.getItem("code") + "\n" + this.state.testCode["answer"])
 
             if (vm.runInThisContext(codeToEvaluate) === true && this.checkForRegexp() === true) {
-                document.querySelector('.terminal-text').textContent = "> " + this.state.testCode["code"] + "==" + evaluatedAnswer
-                    + "\nOOO, you created it. wau i tell my friendes thet u are very cool";
+                this.setState({
+                    content: this.state.content + "> " + this.state.testCode["code"] + "==" + evaluatedAnswer
+                        + "\nOOO, you created it. wau i tell my friendes thet u are very cool" + "\n"
+                });
 
                 this.unlockQuest();
 
             } else {
-                document.querySelector('.terminal-text').textContent = "Hmmm... It doesn`t seem to work. Try again!"
+                this.setState({
+                    content: this.state.content + "> " + "Hmmm... It doesn`t seem to work. Try again!" + "\n"
+                });
             }
 
         } catch (err) {
@@ -67,7 +72,9 @@ class Terminal extends Component {
             err[1] = "at (" + err[1][1] + ":" + err[1][2];
             err = err[0] + "\n" + err[1];
 
-            document.querySelector('.terminal-text').textContent = err;
+            this.setState({
+                content: this.state.content + "> " + err + "\n"
+            });
         }
     };
 
@@ -75,28 +82,31 @@ class Terminal extends Component {
         var fine = true;
 
         this.state.regexps.forEach((regexp) => {
-            console.log(localStorage.code);
                 if(localStorage.code.match(regexp) === null) {
-                    console.log("regexp false");
                     fine = false;
                 }
             });
         return fine;
     };
 
-    nextReplic = () => {
+    /*nextReplic = () => {
         this.writeReplics(replics, "Gomuncul");
-    };
+    };*/
 
     clearTerminal = () => {
         this.setState({
+            content: ""
+        })
+
+
+        /*this.setState({
             replics: []
-        });
+        });*/
     };
 
 
     componentDidMount() {
-        this.writeReplics(svictor[0], "Mephisto", '1');
+        /*this.writeReplics(svictor[0], "Mephisto", '1');*/
     }
 
     componentWillReceiveProps(nextValue) {
@@ -115,9 +125,15 @@ class Terminal extends Component {
                     <Button text="CLEAR TERMINAL" className="debug" func={this.clearTerminal}/>
                     <Button text="I VSE PONYAL" className="debug" func={this.nextReplic} isDialog={true}/>
                 </div>
-                <ul className="terminal-text">
+                    <ul className="terminal-text">
+                        {
+                            this.state.content
+                        }
+                    </ul>
+
+                {/*<ul className="terminal-text">
                     {this.state.replics.map((r, i) => <li key={i}>{r}</li>)}
-                </ul>
+                </ul>*/}
             </div>
         );
     }
