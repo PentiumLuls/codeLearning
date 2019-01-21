@@ -46,7 +46,7 @@ export default class Tasklist extends Component {
                 quests.map((stage, index) => {
                     return (<li key={index} 
                         onClick={index <= this.props.passStages ? this.next.bind(this, index) : null}
-                         className="listheader dashed">{stage.title}</li>)
+                         className="questlist">{stage.title}</li>)
                 })
             )
         } else if (this.state.step == 1) {
@@ -71,9 +71,9 @@ export default class Tasklist extends Component {
                 ? <button onClick={this.back}>Назад</button>
                 : null }
                 {this.state.step == 1 
-                    ? <li className="listheader dashed">{quests[this.state.stage].title}</li>
+                    ? <div className="listheader dashed"><p>{quests[this.state.stage].title}</p></div>
                     : this.state.step == 2 
-                        ? <li className="listheader dashed">{quests[this.state.stage].quests[this.state.quest].title}</li>
+                        ? <div className="listheader dashed"><p>{quests[this.state.stage].quests[this.state.quest].title}</p></div>
                         : null}
                 {this.generateList()}
             </ul>
