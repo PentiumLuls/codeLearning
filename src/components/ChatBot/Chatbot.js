@@ -17,6 +17,7 @@ export default class Chatbot extends Component {
     }
 
     writeReplics = (replics) => {
+        console.log("WRITE REPLICS!!!")
         /*let x = 0;
         let interval = setInterval(() => {
             let replic = `${name}:~$ ${replica[x++]}`;
@@ -29,17 +30,6 @@ export default class Chatbot extends Component {
             }
         }, 1000);
 */
-
-        let x = 0;
-        let interval = setInterval(() => {
-            let replic = `${replics.name}:~$ ${replics.text[x++]}`;
-            this.setState({
-                replics: [...this.state.replics, replic]
-            });
-            if (x >= replics.text.length) {
-                clearInterval(interval);
-            }
-        }, 1000);
     };
 
     showChat() {
@@ -49,6 +39,9 @@ export default class Chatbot extends Component {
     }
 
     getDialogs = () => {
+
+
+
         this.setState({
             content: this.state.replics.map((r, i) => <li key={i}>{r}</li>)
         });
@@ -71,21 +64,21 @@ export default class Chatbot extends Component {
     }
 
     render() {
-        {
-            if (this.state.visible === true)
-                return (
-                    <div className='chatbot'>
-                        <buttun className='buttonchatclose' onClick={this.showChat.bind(this)}>Close</buttun>
-                        <div className="dialogbox">{this.state.content}</div>
-                        <button className='chatbutton' >nextDialog</button>
-                        <button className='chatbutton' onClick={this.getHints.bind(this)} >getHint</button>
-                    </div>
-                );
+
+        if (this.state.visible === true)
             return (
-                <div>
-                    <buttun className='buttonchatopen' onClick={this.showChat.bind(this)}>Chat</buttun>
+                <div className='chatbot'>
+                    <buttun className='buttonchatclose' onClick={this.showChat.bind(this)}>Close</buttun>
+                    <div className="dialogbox">{this.state.content}</div>
+                    <button className='chatbutton' onClick={this.getDialogs.bind(this)}>nextDialog</button>
+                    <button className='chatbutton' onClick={this.getHints.bind(this)}>getHint</button>
                 </div>
-            )
-        }
+            );
+        return (
+            <div>
+                <buttun className='buttonchatopen' onClick={this.showChat.bind(this)}>Chat</buttun>
+            </div>
+        )
     }
+
 }
