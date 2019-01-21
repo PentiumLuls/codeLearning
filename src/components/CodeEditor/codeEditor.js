@@ -38,7 +38,7 @@ class CodeEditor extends Component {
 
     componentDidMount() {
         const editor = this.ace.editor
-        editor.setValue("")
+        editor.setValue(localStorage.code || "")
     }
 }
 

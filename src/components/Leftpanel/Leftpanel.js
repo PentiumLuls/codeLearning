@@ -21,7 +21,6 @@ class Leftpanel extends Component {
     }
 
     componentWillReceiveProps( ) {
-        console.log("PASS QUESTS" + localStorage['passQuests'])
         this.setState({
             passStages: localStorage['passStages'],
             passQuests: localStorage['passQuests']

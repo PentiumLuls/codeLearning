@@ -48,7 +48,7 @@ export default class Tasklist extends Component {
                 quests.map((stage, index) => {
                     return (<li key={index} 
                         onClick={index <= this.props.passStages ? this.next.bind(this, index) : null}
-                         className="questlist">{stage.title}</li>)
+                         className={index <= this.props.passStages ? "questlist" : "questlist inactive"}>{stage.title}</li>)
                 })
             )
         } else if (this.state.step == 1) {
@@ -59,7 +59,9 @@ export default class Tasklist extends Component {
                         : index <= this.props.passQuests 
                             ?  this.next.bind(this, index) 
                             : null}
-                     className="questlist">{quest.title}</li>)
+                        className={index <= this.props.passQuests 
+                            ? "questlist" 
+                            : "questlist inactive"}>{quest.title}</li>)
                 })
             )
         }   else if (this.state.step == 2) {
@@ -71,7 +73,6 @@ export default class Tasklist extends Component {
     }
 
     render(){
-        console.log("I RECEIVE PROPS" + this.props.passQuests)
         return (
             <ul>
                 {this.state.step != 0 
