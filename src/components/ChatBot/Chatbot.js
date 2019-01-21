@@ -7,12 +7,18 @@ export default class Chatbot extends Component {
      state.visible = !state.visible;
      this.setState({state})
     }
+
+getDialogs() {
+
+}
+
     render(){
        {if(this.state.visible === true)
         return(
             <div className='chatbot' >
             <buttun className='buttonchatclose' onClick={this.showChat.bind(this)} >Close</buttun>
-             <div dialogbox> </div>
+             <div className='dialogbox'>{this.getDialogs} </div>
+             <buttun className='chatbuttun'   >nextDialog</buttun> <buttun className='chatbuttun'  >getHint</buttun>
             </div>
             );
             return(
