@@ -12,6 +12,7 @@ export default class Chatbot extends Component {
         return(
             <div className='chatbot' >
             <buttun className='buttonchatclose' onClick={this.showChat.bind(this)} >Close</buttun>
+             <div dialogbox> </div>
             </div>
             );
             return(
