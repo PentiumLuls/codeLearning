@@ -40,19 +40,25 @@ export default class Tasklist extends Component {
         }
     }
 
+
+
     generateList = () => {
         if (this.state.step == 0) {
             return (
                 quests.map((stage, index) => {
                     return (<li key={index} 
                         onClick={index <= this.props.passStages ? this.next.bind(this, index) : null}
-                         className="listheader dashed">{stage.title}</li>)
+                         className="questlist">{stage.title}</li>)
                 })
             )
         } else if (this.state.step == 1) {
             return (
                 quests[this.state.stage].quests.map((quest, index) => {
-                    return (<li key={index} onClick={index <= this.props.passQuests? this.next.bind(this, index) : null}
+                    return (<li key={index} onClick={ this.props.passStages > this.state.stage
+                        ? this.next.bind(this, index) 
+                        : index <= this.props.passQuests 
+                            ?  this.next.bind(this, index) 
+                            : null}
                      className="questlist">{quest.title}</li>)
                 })
             )
@@ -65,15 +71,16 @@ export default class Tasklist extends Component {
     }
 
     render(){
+        console.log("I RECEIVE PROPS" + this.props.passQuests)
         return (
             <ul>
                 {this.state.step != 0 
                 ? <button onClick={this.back}>Назад</button>
                 : null }
                 {this.state.step == 1 
-                    ? <li className="listheader dashed">{quests[this.state.stage].title}</li>
+                    ? <div className="listheader dashed"><p>{quests[this.state.stage].title}</p></div>
                     : this.state.step == 2 
-                        ? <li className="listheader dashed">{quests[this.state.stage].quests[this.state.quest].title}</li>
+                        ? <div className="listheader dashed"><p>{quests[this.state.stage].quests[this.state.quest].title}</p></div>
                         : null}
                 {this.generateList()}
             </ul>
