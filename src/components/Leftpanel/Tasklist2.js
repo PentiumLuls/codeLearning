@@ -1,7 +1,7 @@
 import React, {Component} from 'react'
 import {quests} from '../../plot/quests'
 
-export default class Tasklist2 extends Component {
+export default class Tasklist extends Component {
 
     constructor(props) {
         super(props);
@@ -13,7 +13,7 @@ export default class Tasklist2 extends Component {
     }
 
     back = () => {
-        let newStep = --this.state.step;
+        let newStep = this.state.step - 1;
 
         this.setState({
             step: newStep
@@ -22,7 +22,7 @@ export default class Tasklist2 extends Component {
 
     next = (index) => {
         if (this.state.step == 0) {
-            let newStep = ++this.state.step;
+            let newStep = this.state.step + 1;
             let newStage = index;
 
             this.setState({
@@ -30,7 +30,7 @@ export default class Tasklist2 extends Component {
                 stage: newStage
             })
         } else if (this.state.step == 1) {
-            let newStep = ++this.state.step;
+            let newStep = this.state.step + 1;
             let newQuest = index;
 
             this.setState({
@@ -44,13 +44,16 @@ export default class Tasklist2 extends Component {
         if (this.state.step == 0) {
             return (
                 quests.map((stage, index) => {
-                    return (<li key={index} onClick={this.next.bind(this, index)} className="listheader dashed">{stage.title}</li>)
+                    return (<li key={index} 
+                        onClick={index <= this.props.passStages ? this.next.bind(this, index) : null}
+                         className="listheader dashed">{stage.title}</li>)
                 })
             )
         } else if (this.state.step == 1) {
             return (
                 quests[this.state.stage].quests.map((quest, index) => {
-                    return (<li key={index} onClick={this.next.bind(this, index)} className="questlist">{quest.title}</li>)
+                    return (<li key={index} onClick={index <= this.props.passQuests? this.next.bind(this, index) : null}
+                     className="questlist">{quest.title}</li>)
                 })
             )
         }   else if (this.state.step == 2) {
