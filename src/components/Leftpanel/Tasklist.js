@@ -48,18 +48,13 @@ class Tasklist extends Component {
     );
     return (
       
-      
-      <div>
+
       <div className="Tlist">
           <header className="listheader dashed"><p>{this.state.newtitle}</p></header>
       
         <button onClick={this.Opentask.bind(this)}> Назад</button>
         <div> {this.state.taskText}</div>
       </div>
-       
-          <footer className="footer"><p>{this.state.footValue}</p></footer>
-       
-       </div>
  
 );
     }  

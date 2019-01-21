@@ -26,6 +26,7 @@ class Leftpanel extends Component {
            <Header func={this.click} func2={this.click2}/>
            {/* <Tasklist title="hhhhh"/> */}
            <Tasklist2 writeQuest={this.writeQuest}/>
+            <footer className="footer"><p>Ricardo Milos</p></footer>
         </div>
       );
     }

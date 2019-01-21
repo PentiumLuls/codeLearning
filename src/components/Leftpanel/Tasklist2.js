@@ -44,7 +44,7 @@ export default class Tasklist2 extends Component {
         if (this.state.step == 0) {
             return (
                 quests.map((stage, index) => {
-                    return (<li key={index} onClick={this.next.bind(this, index)} className="listheader dashed">{stage.title}</li>)
+                    return (<li key={index} onClick={this.next.bind(this, index)} className="questlist">{stage.title}</li>)
                 })
             )
         } else if (this.state.step == 1) {
@@ -68,9 +68,9 @@ export default class Tasklist2 extends Component {
                 ? <button onClick={this.back}>Назад</button>
                 : null }
                 {this.state.step == 1 
-                    ? <li className="listheader dashed">{quests[this.state.stage].title}</li>
+                    ? <div className="listheader dashed"><p>{quests[this.state.stage].title}</p></div>
                     : this.state.step == 2 
-                        ? <li className="listheader dashed">{quests[this.state.stage].quests[this.state.quest].title}</li>
+                        ? <div className="listheader dashed"><p>{quests[this.state.stage].quests[this.state.quest].title}</p></div>
                         : null}
                 {this.generateList()}
             </ul>
