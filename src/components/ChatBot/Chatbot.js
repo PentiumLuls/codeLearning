@@ -10,10 +10,11 @@ export default class Chatbot extends Component {
             visible: false,
             replics: [],
             content: [],
+            dialogN: 0,
         }
     }
 
-    writeReplics = (replica, name, key) => {
+    writeReplics = (replics) => {
         /*let x = 0;
         let interval = setInterval(() => {
             let replic = `${name}:~$ ${replica[x++]}`;
@@ -29,11 +30,11 @@ export default class Chatbot extends Component {
 
         let x = 0;
         let interval = setInterval(() => {
-            let replic = `${name}:~$ ${replica[x++]}`;
+            let replic = `${replics.name}:~$ ${replics.text[x++]}`;
             this.setState({
                 replics: [...this.state.replics, replic]
             });
-            if (x >= dialogs.length) {
+            if (x >= replics.text.length) {
                 clearInterval(interval);
                 localStorage.button_run = key || 0;
             }
@@ -52,21 +53,19 @@ export default class Chatbot extends Component {
 
 
     getDialogs = () => {
-        this.setState({
-            content: this.state.replics.map((r, i) => <li key={i}>{r}</li>)
-        })
-
-        /*return (
-            <ul className="chatDialogs">
-                {this.state.replics.map((r, i) => <li key={i}>{r}</li>)}
-            </ul>
-        )*/
+        return (
+            this.state.replics.map((r, i) => <li key={i}>{r}</li>)
+        );
     };
 
     getHints() {
         this.setState({
             content: this.state.content + "\n"
         })
+    }
+
+    componentDidMount() {
+        this.writeReplics(dialogs[localStorage.passStages][localStorage.passQuests][this.state.dialogN]);
     }
 
     render() {
@@ -76,7 +75,8 @@ export default class Chatbot extends Component {
                     <div className='chatbot'>
                         <buttun className='buttonchatclose' onClick={this.showChat.bind(this)}>Close</buttun>
                         <div className="dialogbox">{this.getContent.bind(this)}</div>
-                        <buttun className='chatbuttun'   >nextDialog</buttun> <buttun className='chatbuttun'  >getHint</buttun>
+                        <button className='chatbutton' >nextDialog</button>
+                        <button className='chatbutton' onClick={this.getHints.bind(this)} >getHint</button>
                     </div>
                 );
             return (
