@@ -38,29 +38,38 @@ class Terminal extends Component {
             const codeToEvaluate = localStorage.getItem("code") + "\n" + this.state.testCode["code"]
             const regexp = this.checkForRegexp();
 
-            if (vm.runInThisContext(codeToEvaluate) === true && regexp.pass === true) {
+            //IF LEVEL IS NOT CHOSEN
+            if (regexp == null) {
+                console.log("null regexp");
                 this.setState({
-                    content: this.state.content + "\n> " + "  OOO, you created it. wau i tell my friendes thet u are very cool" + "\n"
+                    content: this.state.content + "\n> " + "Please choose the quest before running your code!" + "\n"
                 });
-
-                this.unlockQuest();
- 
             } else {
-                let information = '';
-                if (regexp.useIt.length !== 0) {
-                    information += `You must to use this: ${this.parseRegexp(regexp.useIt)}\n`
-                }
-                if (regexp.notUseIt.length !== 0) {
-                    information += `Don't use it: ${regexp.notUseIt}\n`
-                }
-                if (regexp.pass) {
-                    information += "You don't pass all test cases"
-                }
-                
-                this.setState({
-                    content: `${this.state.content}\n> Hmmm... It doesn't seem to work. Try again!\n\n 
+
+                if (vm.runInThisContext(codeToEvaluate) === true && regexp.pass === true) {
+                    this.setState({
+                        content: this.state.content + "\n> " + "  OOO, you created it. wau i tell my friendes thet u are very cool" + "\n"
+                    });
+
+                    this.unlockQuest();
+
+                } else {
+                    let information = '';
+                    if (regexp.useIt.length !== 0) {
+                        information += `You must to use this: ${this.parseRegexp(regexp.useIt)}\n`
+                    }
+                    if (regexp.notUseIt.length !== 0) {
+                        information += `Don't use it: ${this.parseRegexp(regexp.notUseIt)}\n`
+                    }
+                    if (regexp.pass) {
+                        information += "You don't pass all test cases"
+                    }
+
+                    this.setState({
+                        content: `${this.state.content}\n> Hmmm... It doesn't seem to work. Try again!\n\n 
                     ${information}`
-                });
+                    });
+                }
             }
 
         } catch (err) {
@@ -88,21 +97,26 @@ class Terminal extends Component {
             notUseIt: ''
         };
 
-        this.state.regexps.forEach((regexp) => {
-                if(localStorage.code.match(regexp) === null) {
+        try {
+            this.state.regexps.forEach((regexp) => {
+                if (localStorage.code.match(regexp) === null) {
                     checkRegExp.pass = false;
                     checkRegExp['useIt'] += regexp
                 }
             });
 
-        this.state.regexpsNone.forEach((regexp) => {
-            if(!(localStorage.code.match(regexp) === null)) {
-                checkRegExp.pass= false;
-                checkRegExp['notUseIt'] += regexp
-            }
-        });
+            this.state.regexpsNone.forEach((regexp) => {
+                if (!(localStorage.code.match(regexp) === null)) {
+                    checkRegExp.pass = false;
+                    checkRegExp['notUseIt'] += regexp
+                }
+            });
 
-        return checkRegExp;
+            return checkRegExp;
+        } catch (e) {
+            console.log("err in regexp check");
+            return null;
+        }
     };
 
     clearTerminal = () => {
@@ -128,11 +142,11 @@ class Terminal extends Component {
                     <Button text="RUN CODE" className="debug" func={this.run}/>
                     <Button text="CLEAR TERMINAL" className="debug" func={this.clearTerminal}/>
                 </div>
-                    <ul className="terminal-text">
-                        {
-                            this.state.content
-                        }
-                    </ul>
+                <ul className="terminal-text">
+                    {
+                        this.state.content
+                    }
+                </ul>
             </div>
         );
     }
