@@ -38,7 +38,102 @@ export const dialogs = [
                         "Жердяй уже открыл нам вход в честилище, так что читай о грехах и пойдем посмотрим что там"
                     ]
                 }
-            ]
+            ],
+            //2Quest
+            [
+                //1 Dialogs
+                {
+                    name: "Unknown",
+                    text: [
+                        "Sample dialog",
+                        "Sample dialog",
+                    ]
+                },
+                {
+                    name: "Unknown",
+                    text: [
+                        "Sample dialog",
+                        "Sample dialog",
+                    ]
+                },
+
+            ],
+            //3Quest
+            [
+                //1 Dialogs
+                {
+                    name: "Unknown",
+                    text: [
+                        "Sample dialog",
+                        "Sample dialog",
+                    ]
+                },
+                {
+                    name: "Unknown",
+                    text: [
+                        "Sample dialog",
+                        "Sample dialog",
+                    ]
+                },
+
+            ],
+            //4Quest
+            [
+                //1 Dialogs
+                {
+                    name: "Unknown",
+                    text: [
+                        "Sample dialog",
+                        "Sample dialog",
+                    ]
+                },
+                {
+                    name: "Unknown",
+                    text: [
+                        "Sample dialog",
+                        "Sample dialog",
+                    ]
+                },
+
+            ],
+            //5Quest
+            [
+                //1 Dialogs
+                {
+                    name: "Unknown",
+                    text: [
+                        "Sample dialog",
+                        "Sample dialog",
+                    ]
+                },
+                {
+                    name: "Unknown",
+                    text: [
+                        "Sample dialog",
+                        "Sample dialog",
+                    ]
+                },
+
+            ],
+            //6Quest
+            [
+                //1 Dialogs
+                {
+                    name: "Unknown",
+                    text: [
+                        "Sample dialog",
+                        "Sample dialog",
+                    ]
+                },
+                {
+                    name: "Unknown",
+                    text: [
+                        "Sample dialog",
+                        "Sample dialog",
+                    ]
+                },
+
+            ],
         ],
 
         //2 Chapter

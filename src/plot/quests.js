@@ -56,6 +56,10 @@ milkACow(cow).milk
                     "function calculateSumm(stones) {\n" +
                     "    //???\n" +
                     "}",
+                hints: [
+                    "hint sample",
+                    "hint sample2"
+                ],
                 test: {
                     code: "calculateSumm(stonesMass)",
                     answer: "stonesMass.reduce((a,b) => {return a+b})"
@@ -77,6 +81,10 @@ milkACow(cow).milk
                     "function calculateSumm(stones) {\n" +
                     "    //???\n" +
                     "}",
+                hints: [
+                    "hint sample",
+                    "hint sample2"
+                ],
                 test: {
                     code: "calculateSumm(stonesMass)",
                     answer: "stonesMass.reduce((a,b) => {return a+b})"
@@ -98,6 +106,10 @@ milkACow(cow).milk
                     "function calculateSumm(stones) {\n" +
                     "    //???\n" +
                     "}",
+                hints: [
+                    "hint sample",
+                    "hint sample2"
+                ],
                 test: {
                     code: "calculateSumm(stonesMass)",
                     answer: "stonesMass.reduce((a,b) => {return a+b})"
@@ -116,6 +128,10 @@ milkACow(cow).milk
                     for (var i = 1; i <= 10; ++i)
                         acc += i;
                     console.log(acc);`,
+                hints: [
+                    "hint sample",
+                    "hint sample2"
+                ],
                 test: {
                     code: "sumRange(1, 10, 0)",
                     answer: `function sumRange(start, end, acc) {
@@ -141,6 +157,10 @@ milkACow(cow).milk
                     "function calculateSumm(stones) {\n" +
                     "    //???\n" +
                     "}",
+                hints: [
+                    "hint sample",
+                    "hint sample2"
+                ],
                 test: {
                     code: "calculateSumm(stonesMass)",
                     answer: "stonesMass.reduce((a,b) => {return a+b})"
