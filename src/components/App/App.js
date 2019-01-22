@@ -92,7 +92,9 @@ class App extends Component {
                             regexps={quests[this.state.stage].quests[this.state.quest].regexps}
                             regexpsNone={quests[this.state.stage].quests[this.state.quest].regexpsNone}/>
                     </div>
+                    <div>
                     <Chatbot/>
+                    </div>
 
                 </div>
             )
