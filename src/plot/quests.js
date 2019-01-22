@@ -145,6 +145,10 @@ function milkACow(cow, mass) {
                     "function calculateSumm(stones) {\n" +
                     "    //???\n" +
                     "}",
+                hints: [
+                    "hint sample",
+                    "hint sample2"
+                ],
                 test: {
                     code: "calculateSumm(stonesMass)",
                     answer: "stonesMass.reduce((a,b) => {return a+b})"
@@ -159,6 +163,10 @@ function milkACow(cow, mass) {
                     for (var i = 1; i <= 10; ++i)
                         acc += i;
                     console.log(acc);`,
+                hints: [
+                    "hint sample",
+                    "hint sample2"
+                ],
                 test: {
                     code: "sumRange(1, 10, 0)",
                     answer: `function sumRange(start, end, acc) {
@@ -180,6 +188,10 @@ function milkACow(cow, mass) {
                     "function calculateSumm(stones) {\n" +
                     "    //???\n" +
                     "}",
+                hints: [
+                    "hint sample",
+                    "hint sample2"
+                ],
                 test: {
                     code: "calculateSumm(stonesMass)",
                     answer: "stonesMass.reduce((a,b) => {return a+b})"
