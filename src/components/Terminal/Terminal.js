@@ -6,19 +6,6 @@ class Terminal extends Component {
 
     constructor() {
         super();
-        /*this.writeReplics = (replica, name, key) => {
-            let x = 0;
-            let interval = setInterval(() => {
-                let replic = `${name}:~$ ${replica[x++]}`;
-                this.setState({
-                    replics: [...this.state.replics, replic]
-                });
-                if (x >= replics.length) {
-                    clearInterval(interval);
-                    localStorage.button_run = key || 0;
-                }
-            }, 500);
-        };*/
         this.state = {
             /*replics: [],*/
             testCode: "testCode",
@@ -57,17 +44,17 @@ class Terminal extends Component {
                 });
 
                 this.unlockQuest();
-
+ 
             } else {
                 let information = '';
                 if (regexp.useIt.length !== 0) {
-                    information += `You must to use this: ${regexp.useIt}\n`
+                    information += `You must to use this: ${this.parseRegexp(regexp.useIt)}\n`
                 }
                 if (regexp.notUseIt.length !== 0) {
-                    information += `D'nt use it: ${regexp.notUseIt}\n`
+                    information += `Don't use it: ${regexp.notUseIt}\n`
                 }
                 if (regexp.pass) {
-                    information += "You d'nt pass all test cases"
+                    information += "You don't pass all test cases"
                 }
                 
                 this.setState({
@@ -88,6 +75,10 @@ class Terminal extends Component {
                 content: this.state.content + "> " + err + "\n"
             });
         }
+    };
+
+    parseRegexp = (target) => {
+        return target.split("/")[1];
     };
 
     checkForRegexp = () => {
@@ -114,25 +105,11 @@ class Terminal extends Component {
         return checkRegExp;
     };
 
-    /*nextReplic = () => {
-        this.writeReplics(replics, "Gomuncul");
-    };*/
-
     clearTerminal = () => {
         this.setState({
             content: ""
         })
-
-
-        /*this.setState({
-            replics: []
-        });*/
     };
-
-
-    componentDidMount() {
-        /*this.writeReplics(svictor[0], "Mephisto", '1');*/
-    }
 
     componentWillReceiveProps(nextValue) {
         this.setState({
@@ -150,17 +127,12 @@ class Terminal extends Component {
                 <div className="button-line">
                     <Button text="RUN CODE" className="debug" func={this.run}/>
                     <Button text="CLEAR TERMINAL" className="debug" func={this.clearTerminal}/>
-                    <Button text="I VSE PONYAL" className="debug" func={this.nextReplic} isDialog={true}/>
                 </div>
                     <ul className="terminal-text">
                         {
                             this.state.content
                         }
                     </ul>
-
-                {/*<ul className="terminal-text">
-                    {this.state.replics.map((r, i) => <li key={i}>{r}</li>)}
-                </ul>*/}
             </div>
         );
     }
