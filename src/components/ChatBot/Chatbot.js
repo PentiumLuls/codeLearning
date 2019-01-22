@@ -19,10 +19,10 @@ export default class Chatbot extends Component {
     writeReplics = (replics) => {
         let x = 0;
         let interval = setInterval(() => {
-            let replic = `${replics.name}:~$ ${replics.text[x++]}`;
+            let replic =  `${replics.name}:~$ ${replics.text[x++]} ` ;
             this.setState({
                 replics: [...this.state.replics, replic],
-                content: this.state.content + replic,
+               
             });
             if (x >= replics.text.length) {
                 clearInterval(interval);
@@ -39,7 +39,7 @@ export default class Chatbot extends Component {
     getDialogs = () => {
         console.log("GET DIALOGS!!!");
         this.setState({
-            content: this.state.content +  this.state.replics.map((r, i) => <li key={i}>{r}</li>)
+            content:  this.state.replics.map((r, i) => <li key={i} className='mefistoreplic'>{r}</li>)
         });
     };
 
@@ -70,9 +70,10 @@ export default class Chatbot extends Component {
             return (
                 <div className='chatbot'>
                     <button className='buttonchatclose' onClick={this.showChat.bind(this)}>Close</button>
-                    <div className="dialogbox">{this.state.content}</div>
-                    {/*<button className='chatbutton' onClick={this.getDialogs.bind(this)}>nextDialog</button>*/}
+                    <div className="dialogbox"><ul>{this.state.content}</ul></div>
+                    <button className='chatbutton' onClick={this.getDialogs.bind(this)}>nextDialog</button>
                     <button className='chatbutton' onClick={this.getHints.bind(this)}>getHint</button>
+                    
                 </div>
             );
         return (

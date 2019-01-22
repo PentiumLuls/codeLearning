@@ -129,7 +129,7 @@ ul {
     height: 5%; 
     position: relative;  
         
-        background-color: red;
+    background-color: red;
 }
 .dialogbox{
     position: relative;
@@ -144,6 +144,9 @@ ul {
     left: 5%;
     top:2% ;
     background-color:white;
+}
+.mefistoreplic{
+    margin-top:8px;
 }
 
 ul {padding: 0;}
