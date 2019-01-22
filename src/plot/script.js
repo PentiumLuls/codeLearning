@@ -1,4 +1,4 @@
-var cow = {
+var cows = {
     milk: 10
 }
 
@@ -19,7 +19,7 @@ function milkACow(cow) {
 
 
 
-let milcthisCOW = milkACow(cow)
+let milcthisCOW = milkACow(cows)
 
 console.log(milcthisCOW(4));
 console.log(milcthisCOW(4));
