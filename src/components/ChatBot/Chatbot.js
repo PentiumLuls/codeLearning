@@ -11,6 +11,7 @@ export default class Chatbot extends Component {
             visible: true,
             replics: [],
             content: [],
+            replicN:0,
             dialogN: 0,
             hintsN: 0,
         }
@@ -19,7 +20,7 @@ export default class Chatbot extends Component {
     writeReplics = (replics) => {
         let x = 0;
         let interval = setInterval(() => {
-            let replic =  `${replics.name}:~$ ${replics.text[x++]} ` ;
+            let replic = <li className='mefistoreplic'> {replics.name}:~$ {replics.text[x++]} </li> ;
             this.setState({
                 replics: [...this.state.replics, replic],
                
@@ -38,9 +39,19 @@ export default class Chatbot extends Component {
 
     getDialogs = () => {
         console.log("GET DIALOGS!!!");
-        this.setState({
+       /* this.setState({
             content:  this.state.replics.map((r, i) => <li key={i} className='mefistoreplic'>{r}</li>)
-        });
+        });*/
+        const content = this.state.content.concat();
+        let replicN = this.state.replicN;
+        
+        content.push(this.state.replics[replicN])
+        replicN += 1;
+        this.setState({
+            content,
+            replicN,
+        }
+        )
     };
 
     getHints() {
@@ -58,6 +69,7 @@ export default class Chatbot extends Component {
     componentDidMount() {
         try {
             this.writeReplics(dialogs[localStorage.passStages][localStorage.passQuests][this.state.dialogN]);
+            
         }  catch {
             console.log("non replics")
         }
