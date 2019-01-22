@@ -57,17 +57,17 @@ class Terminal extends Component {
                 });
 
                 this.unlockQuest();
-
+ 
             } else {
                 let information = '';
                 if (regexp.useIt.length !== 0) {
                     information += `You must to use this: ${regexp.useIt}\n`
                 }
                 if (regexp.notUseIt.length !== 0) {
-                    information += `D'nt use it: ${regexp.notUseIt}\n`
+                    information += `Don't use it: ${regexp.notUseIt}\n`
                 }
                 if (regexp.pass) {
-                    information += "You d'nt pass all test cases"
+                    information += "You don't pass all test cases"
                 }
                 
                 this.setState({
