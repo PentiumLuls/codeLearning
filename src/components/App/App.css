@@ -10,7 +10,7 @@ ul {
   list-style: none;
 }
 
-.panel { 
+.leftpanel { 
   text-transform: uppercase;
   grid-area: panel; 
   background-color: #111;

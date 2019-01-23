@@ -36,7 +36,12 @@ class Leftpanel extends Component {
       return (
         <div>
            <Header func={this.click} func2={this.click2}/>
-           <Tasklist notUpdateEditor={this.props.notUpdateEditor} passStages={this.state.passStages} passQuests={this.state.passQuests} writeQuest={this.writeQuest}/>
+           <Tasklist notUpdateEditor={this.props.notUpdateEditor}
+                     passStages={this.state.passStages}
+                     passQuests={this.state.passQuests}
+                     writeQuest={this.writeQuest}
+                     stage={this.props.stage}
+                     quest={this.props.quest} />
         </div>
       );
     }
