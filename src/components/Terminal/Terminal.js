@@ -34,12 +34,11 @@ class Terminal extends Component {
 
         try {
             const vm = require('vm');
-            const codeToEvaluate = localStorage.getItem("code") + "\n" + this.state.testCode["code"]
+            const codeToEvaluate = localStorage.getItem("code") + "\n" + this.props.testCode["code"]
             const regexp = this.checkForRegexp();
 
             //IF LEVEL IS NOT CHOSEN
             if (regexp == null) {
-                console.log("null regexp");
                 this.setState({
                     content: this.state.content + "\n> " + "Please choose the quest before running your code!" + "\n"
                 });
@@ -47,7 +46,7 @@ class Terminal extends Component {
 
                 if (vm.runInThisContext(codeToEvaluate) === true && regexp.pass === true) {
                     this.setState({
-                        content: this.state.content + "\n> " + "  OOO, you created it. wau i tell my friendes thet u are very cool" + "\n"
+                        content: this.state.content + "\n> " + "  OOO, you created it. wau i will tell my friendes that u are very cool" + "\n"
                     });
 
                     this.unlockQuest();
@@ -97,14 +96,14 @@ class Terminal extends Component {
         };
 
         try {
-            this.state.regexps.forEach((regexp) => {
+            this.props.regexps.forEach((regexp) => {
                 if (localStorage.code.match(regexp) === null) {
                     checkRegExp.pass = false;
                     checkRegExp['useIt'] += regexp
                 }
             });
 
-            this.state.regexpsNone.forEach((regexp) => {
+            this.props.regexpsNone.forEach((regexp) => {
                 if (!(localStorage.code.match(regexp) === null)) {
                     checkRegExp.pass = false;
                     checkRegExp['notUseIt'] += regexp
@@ -113,7 +112,6 @@ class Terminal extends Component {
 
             return checkRegExp;
         } catch (e) {
-            console.log("err in regexp check");
             return null;
         }
     };
@@ -137,17 +135,19 @@ class Terminal extends Component {
         return (
             <div className="terminalComponent">
                 <div className="button-line">
-                    <Button text="RUN CODE" className="debug" func={this.run}/>
+                    <button className="debug" onClick={this.run}>RUN CODE</button>
                     <Button text="CLEAR TERMINAL" className="debug" func={this.clearTerminal}/>
-                    <button onClick={() => {
+                    {/* <button onClick={() => {
                         this.props.showTutorial()
                     }} className="debug">TUTORIAL
-                    </button>
+                    </button> */}
                     {
                         localStorage.passQuests > this.props.quest
-                            ? <button onClick={() => {
-                                this.props.nextLevel()
-                            }} className="debug">NEXT LEVEL</button>
+                         && this.props.stage == +localStorage['passStages'] 
+                         && this.props.quest == +localStorage['passQuests'] - 1
+                            ? <button onClick={
+                                this.props.nextLevel.bind(this, this.props.stage, this.props.quest + 1)
+                            } className="debug">NEXT LEVEL</button>
                             : null
                     }
                 </div>

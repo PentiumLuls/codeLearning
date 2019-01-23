@@ -8,8 +8,9 @@ export default class Tasklist extends Component {
         this.state = {
             step: 2,
             stage: localStorage.passStages,
-            quest: localStorage.passQuests,
+            quest: localStorage.passQuests
         }
+        
     }
 
     back = () => {
@@ -33,7 +34,7 @@ export default class Tasklist extends Component {
                 stage: newStage
             })
         } else if (this.state.step == 1) {
-            this.props.writeQuest(this.state.stage, this.state.quest)
+            this.props.writeQuest(this.state.stage, index)
             let newStep = this.state.step + 1;
             let newQuest = index;
 
@@ -70,8 +71,9 @@ export default class Tasklist extends Component {
             )
         }   else if (this.state.step == 2) {
             return (
-                <li onClick={this.props.writeQuest.bind(this, this.state.stage, this.state.quest)}
-                 className="questlist">{quests[this.state.stage].quests[this.state.quest].text}</li>
+                
+                <li onClick={this.props.writeQuest.bind(this, this.props.stage, this.props.quest)}
+                 className="questlist">{quests[this.props.stage].quests[this.props.quest].text}</li>
             )
         }
     }

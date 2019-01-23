@@ -11,13 +11,6 @@ import Chatbot from '../ChatBot/Chatbot';
 class App extends Component {
     constructor() {
         super();
-        this.state = {
-            showPopup: true,//SHOW POPUP ON START
-            isEdit: false,
-            stage: 0,
-            quest: 0,
-            notUpdateEditor: 0
-        };
         localStorage.setItem('button_run', 0);
         if (!localStorage['passStages']) {
             localStorage['passStages'] = 0
@@ -25,6 +18,16 @@ class App extends Component {
         if (!localStorage['passQuests']) {
             localStorage['passQuests'] = 0
         }
+        if (!localStorage['whiteList']) {
+            localStorage['whiteList'] = JSON.stringify([[0, 1, 2, 5], [0, 2]]);
+        }
+        this.state = {
+            showPopup: true,//SHOW POPUP ON START
+            isEdit: false,
+            stage: +localStorage.passStages,
+            quest: +localStorage.passQuests,
+            notUpdateEditor: 0
+        };
     }
 
     changeButtonState = () => {
@@ -40,7 +43,7 @@ class App extends Component {
         });
     }
 
-    writeQuest = (stageN, questN) => {
+    writeQuest = (stageN, questN, popup=false) => {
         let newStage = this.state.stage;
         let newQuest = this.state.quest;
         newStage = stageN;
@@ -55,6 +58,10 @@ class App extends Component {
                 updateLP: false,
                 notUpdateEditor: 0
             })
+        }
+        if(popup) {
+            this.updateLeftPanel();
+            this.showTutorial();
         }
     };
 
@@ -74,15 +81,32 @@ class App extends Component {
         this.togglePopup();
     };
 
-    nextLevel = () => {
-        console.log("NEXT LEVEL BUTTON");
-        this.setState({
-            quest: this.state.quest + 1,
-        });
-        this.showTutorial();
-    };
+    // nextLevel = () => {
+    //     console.log("NEXT LEVEL BUTTON");
+    //     if (quests[this.state.stage].quests.length === this.state.quest + 1){
+    //         this.setState({
+    //             stage: this.state.stage + 1,
+    //             quest: 0
+    //         });
+    //     } else {
+    //         this.setState({
+    //             quest: this.state.quest + 1
+    //         });
+    //     }
+        
+    //     this.showTutorial();
+    // };
 
     render() {
+        //проверка есть ли пройденый квест в вайт листе, если есть показать попап и удалить
+        const newList = JSON.parse(localStorage.whiteList)
+        const canIShowPopup = newList[this.state.stage].indexOf(+this.state.quest) !== -1;
+        let indexOfElement = newList[this.state.stage].indexOf(+this.state.quest);
+        if (canIShowPopup) {
+            
+            delete newList[this.state.stage][indexOfElement];
+            localStorage.setItem('whiteList', JSON.stringify(newList))
+        }
 
         return (
             <div className="main">
@@ -93,13 +117,16 @@ class App extends Component {
                                stage={this.state.stage}
                                quest={this.state.quest} />
                 </div>
+                {
+                (!this.state.isEdit)
+                ?
+                <div>
                 <div className="editor">
-                    {
-                        (!this.state.isEdit)
-                            ? <Codeditor
+                    
+                         <Codeditor
                                 notUpdateEditor={this.state.notUpdateEditor}
                                 text={quests[this.state.stage].quests[this.state.quest].code}/>
-                            : <HellRules/>}
+                            
                 </div>
                 <div className="terminal">
                     <Terminal
@@ -111,18 +138,21 @@ class App extends Component {
                         regexps={quests[this.state.stage].quests[this.state.quest].regexps}
                         regexpsNone={quests[this.state.stage].quests[this.state.quest].regexpsNone}
                         showTutorial={this.showTutorial}
-                        nextLevel={this.nextLevel} />
+                        nextLevel={this.writeQuest} />
                 </div>
+                </div>
+                : <HellRules/>
+            }
                 <div>
-                    
-                            <Chatbot/>
-                    
+                    <Chatbot/>
                 </div>
 
 
                 {//POPUP
-                    this.state.showPopup ?
-                        <Popup stage={this.state.stage} quest={this.state.quest} togglePopup={this.togglePopup.bind(this)}/>
+
+                
+                    this.state.showPopup && canIShowPopup?
+                        <Popup stage={this.state.stage} quest={indexOfElement} togglePopup={this.togglePopup.bind(this)}/>
                         : null
                 }
             </div>

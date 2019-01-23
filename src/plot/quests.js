@@ -162,16 +162,18 @@ function setArmor(indus) {
                 test: {
                     code: `let valid = true;
                     const indus1 = {
-                        gender: 'female'
+                        gender: 'female',
+                        armor: false
                     }
                     const indus2 = {
-                        gender: 'male'
+                        gender: 'male',
+                        armor: false
                     }
                     
                     if(setArmor(indus1)['armor'] !== true){valid = false};
-                    if(indus1['armor'] !== undefined){valid = false};
+                    if(indus1['armor'] !== false){valid = false};
                     if(setArmor(indus2)['armor'] !== true){valid = false};
-                    if(indus2['armor'] !== undefined){valid = false};
+                    if(indus2['armor'] !== false){valid = false};
                     valid === true`,
                     answer: `function setArmor(indus) {
     const newindus = Object.assign({}, indus);
@@ -217,7 +219,7 @@ function setStick(indus) {
                     }
                     
                     if(setStick(indus1)['weapon'][0] !== 'stick'){valid = false};
-                    if(indus1['weapon'] !== undefined){valid = false};
+                    if(indus1['weapon'].length !== 0){valid = false};
                     if(setStick(indus2) !== undefined){valid = false};
                     valid === true`,
                     answer: ``
@@ -257,7 +259,8 @@ function add(number1, number2) {
                 regexps: [],
                 regexpsNone: [/(for)/g, /(while)/g, /(var)/g, /(let)/g],
                 code: `//Напишы функцию createGang,которая принимает 2 карточки индусов
-//и возрощает карточку отряда такого типа: {members: [indus1, indus2], armors: [true, true], weapons: ['stick', 'stick']}.
+//и возрощает карточку отряда такого типа: 
+{members: [indus1.name, indus2.name], armors: [true, true], weapons: ['stick', 'stick']}.
 //P.S. Продумай что бы если у 1 из индусов нету оружия то функция ничего не возращала.
 //ОЧЕНЬ ВАЖНО!!! Порядок создания свойст обьекта должен быть такой как в примере выше.
 
@@ -546,32 +549,6 @@ function milkACow(cow, mass) {
                 }
             },
         ]
-    },
-    {
-        title: "3 глава",
-        quests: 
-        [
-            {
-                title: "квест 1 с2",
-                text: "задание на квест 1 с2",
-                regexps: "",
-                code: "",
-                test: ""
-            },
-            {
-                title: "квест 2 с2",
-                text: "задание на квест 2 с2",
-                regexps: "",
-                code: "",
-                test: ""
-            },
-            {
-                title: "квест 3 с2",
-                text: "задание на квест 3 с2",
-                regexps: "",
-                code: "",
-                test: ""
-            }
-        ]
     }
+    
 ]
