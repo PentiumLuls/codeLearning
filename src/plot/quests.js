@@ -29,7 +29,7 @@ function isSquare(rectangle) {
 }
                        `,
                 hints: [
-                    "Функция должна возрощать True или False"
+                    "Функция должна возрощать True или False",
                 ],
                 test: {
                     code: `let valid = true;

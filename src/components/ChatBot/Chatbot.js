@@ -59,17 +59,17 @@ export default class Chatbot extends Component {
         const hints = quests[localStorage.passStages].quests[localStorage.passQuests].hints;
         const content = this.state.content;
         if(this.state.hintsN < hints.length){
-            content.push(<li className='hint'>{hints[this.state.hintsN]}</li>);
-        
-        this.setState({
-                content,
-                hintsN: this.state.hintsN + 1,
-            });}else{
-                content.push(<li className='hint'>подсказок больше нет</li>);
-        
-        this.setState({
-                content,});    
-
+            content.push(<li className='hint'>{hints[this.state.hintsN]}</li>);        
+            this.setState({
+            content,
+            hintsN: this.state.hintsN + 1,
+            });
+        }else{
+               
+            content.push(<li className='hint'>{hints[0]}</li>);
+            this.setState({
+            content,
+            hintsN:1});    
             }
           
 
