@@ -74,7 +74,7 @@ class App extends Component {
         console.log("NEXT LEVEL BUTTON");
         this.setState({
             quest: this.state.quest + 1,
-        })
+        });
         this.showTutorial();
     };
 
@@ -85,7 +85,9 @@ class App extends Component {
                 <div className="panel">
                     <Leftpanel notUpdateEditor={this.notUpdateEditor} updateLP={this.props.updateLP}
                                writeQuest={this.writeQuest}
-                               func={this.changeButtonState} func2={this.changeButtonState2}/>
+                               func={this.changeButtonState} func2={this.changeButtonState2}
+                               stage={this.state.stage}
+                               quest={this.state.quest} />
                 </div>
                 <div className="editor">
                     {

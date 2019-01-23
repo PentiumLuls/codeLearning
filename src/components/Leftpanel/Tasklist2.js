@@ -6,9 +6,9 @@ export default class Tasklist extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            step: 0,
-            stage: 0,
-            quest: 0
+            step: 2,
+            stage: localStorage.passStages,
+            quest: localStorage.passQuests,
         }
     }
 
@@ -83,9 +83,9 @@ export default class Tasklist extends Component {
                 ? <button onClick={this.back}>Назад</button>
                 : null }
                 {this.state.step == 1 
-                    ? <div className="listheader dashed"><p>{quests[this.state.stage].title}</p></div>
+                    ? <div className="listheader dashed"><p>{quests[this.props.stage].title}</p></div>
                     : this.state.step == 2 
-                        ? <div className="listheader dashed"><p>{quests[this.state.stage].quests[this.state.quest].title}</p></div>
+                        ? <div className="listheader dashed"><p>{quests[this.props.stage].quests[this.props.quest].title}</p></div>
                         : null}
                 {this.generateList()}
             </ul>
