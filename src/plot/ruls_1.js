@@ -1,3 +1,5 @@
+import React from 'react';
+
 export const notes = [[
     {
         title: "Всем привет",
@@ -17,6 +19,13 @@ export const notes = [[
             {
                 title: "Если ты",
                 text: "что то не понял или хочеш изучить главу поподробнее переходи по сылкам в журнале"
+            },
+            {
+                title: "Tutorial part 1",
+                text: <div><hr/><p>tutorial text</p>
+                    <img src="https://mdn.mozillademos.org/files/12708/image-with-title.png"/>
+                    <p>some tutorial text</p>
+                </div>
             }
         ]
     },

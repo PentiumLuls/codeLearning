@@ -46,12 +46,16 @@ class App extends Component {
         newStage = stageN;
         newQuest = questN;
 
-        this.setState({
-            stage: newStage,
-            quest: newQuest,
-            updateLP: false,
-            notUpdateEditor: 0
-        })
+        if(newQuest == this.state.quest) {
+            console.log("Handle re-choosing quest from left panel!")
+        } else {
+            this.setState({
+                stage: newStage,
+                quest: newQuest,
+                updateLP: false,
+                notUpdateEditor: 0
+            })
+        }
     };
 
     updateLeftPanel = () => {
