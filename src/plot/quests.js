@@ -43,6 +43,7 @@ function isSquare(rectangle) {
                     answer: ``
                 }
             },
+            
             {
                 title: "Квест 2",
                 text: `Описание к квесту 2`,
