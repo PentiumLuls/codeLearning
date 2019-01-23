@@ -90,7 +90,9 @@ function isUseful(indus) {
                     if(isUseful(indus1) !== false){valid = false};
                     if(isUseful(indus2) !== true){valid = false};
                     valid === true`,
-                    answer: ``
+                    answer: `function isUseful(indus) {
+    return indus.gender == 'male';
+}`
                 }
             },
 ///////////////////////////////////////quest 3////////////////////////////////////////////////////////////
@@ -145,7 +147,8 @@ function perimeter(rectangle) {
 //и возрощает новую карточку с свойством armor: true.
 
 const Aahvan = {
-    gender: 'female'
+    gender: 'female',
+    armor: false
 }
 
 function setArmor(indus) {
@@ -154,7 +157,7 @@ function setArmor(indus) {
                        `,
                 hints: [
                     "Функция должна возрощать новую карточку индуса",
-                    "Используй concat с пустым обектом в 1 параметре"
+                    "Используй assign с пустым обектом в 1 параметре"
                 ],
                 test: {
                     code: `let valid = true;
@@ -170,7 +173,11 @@ function setArmor(indus) {
                     if(setArmor(indus2)['armor'] !== true){valid = false};
                     if(indus2['armor'] !== undefined){valid = false};
                     valid === true`,
-                    answer: ``
+                    answer: `function setArmor(indus) {
+    const newindus = Object.assign({}, indus);
+    newindus.armor = true;
+    return newindus;
+}`
                 }
             },
 ///////////////////////////////////////quest 5////////////////////////////////////////////////////////////
@@ -186,7 +193,8 @@ function setArmor(indus) {
 
 const Aadved = {
     gender: 'female',
-    armor: true
+    armor: true,
+    weapon: []
 }
 
 function setStick(indus) {
@@ -200,7 +208,8 @@ function setStick(indus) {
                 test: {
                     code: `let valid = true;
                     const indus1 = {
-                        gender: 'female'
+                        gender: 'female',
+                        weapon: []
                     }
                     const indus2 = {
                         gender: 'male',
