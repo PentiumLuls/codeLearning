@@ -10,12 +10,11 @@ class HellRules extends Component {
                     return stage.map((el, index) => {
                         return (
                         <div key={index} className="el_rules">
-                            <h1>{el.title}</h1>
-                            <hr></hr>
-                            {el.text.map((el2, index) => {
-                                console.log(el2.title)
-                                return <h3 key={index}>{el2.title}</h3>
-                            })}
+                            <h3>{el.title}</h3>
+                                {el.text.map((el2, index) => {
+                                    console.log(el2.title)
+                                    return <p key={index}>{el2.title}</p>
+                                })}
                         </div>
                         )
                     })
