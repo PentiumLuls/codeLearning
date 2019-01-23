@@ -1,5 +1,126 @@
 export const quests = [
     {
+        title: "1 глава",
+        quests: 
+        [
+            {
+                title: "Квест 1",
+                text: `Описание к квесту 1`,
+                regexps: [],
+                regexpsNone: [/(for)/g, /(while)/g, /(var)/g, /(let)/g],
+                code: `//Напишы функции isBlack и isSquare, которые принимают прямоугольник
+//и возрощают соответствующие данные.
+//P.S. Все цвета будут написаны в lowercase.
+
+const rectangle = {
+    color: 'red',
+    side1: 5,
+    side2: 5,
+    side3: 5,
+    side4: 5,
+}
+
+function isBlack(rectangle) {
+
+}
+
+function isSquare(rectangle) {
+
+}
+                       `,
+                hints: [
+                    "Функция должна возрощать True или False"
+                ],
+                test: {
+                    code: `let valid = true;
+                    const rectangle2 = {
+                        color: 'black',
+                        side1: 4,
+    side2: 1,
+    side3: 2,
+    side4: 5,
+                    }
+                             if(isBlack(rectangle2) !== true){valid = false};
+                             if(isSquare(rectangle2) !== false){valid = false};
+                            valid === true`,
+                    answer: `function isBlack(rectangle) {
+    return rectangle.color == 'black'
+}
+
+function isSquare(rectangle) {
+    return rectangle.side1 == rectangle.side2 
+        && rectangle.side1 == rectangle.side3 
+        && rectangle.side1 == rectangle.side4;
+}`
+                }
+            },
+            {
+                title: "Квест 2",
+                text: `Описание к квесту 2`,
+                regexps: [],
+                regexpsNone: [/(for)/g, /(while)/g, /(var)/g, /(let)/g],
+                code: `//Напишы функцию perimeter, которая принимает прямоугольник и возрощает его периметр.
+
+const rectangle = {
+    color: 'red',
+    side1: 5,
+    side2: 5,
+    side3: 5,
+    side4: 5
+}
+
+function perimeter(rectangle) {
+
+}
+
+                       `,
+                hints: [
+                    "Функция должна возрощать 1 число"
+                ],
+                test: {
+                    code: `let valid = true;
+                    const rectangle2 = {
+                        color: 'black',
+                        side1: 3,
+                        side2: 5,
+                        side3: 7,
+                        side4: 9
+                    }
+                             if(perimeter(rectangle2) !== 24){valid = false};
+                            valid === true`,
+                    answer: `function perimeter(rectangle) {
+    return rectangle.side1 + rectangle.side2 + rectangle.side3 + rectangle.side4;
+}`
+                }
+            },
+            {
+                title: "Квест 3",
+                text: `Описание к квесту 3`,
+                regexps: [],
+                regexpsNone: [/(for)/g, /(while)/g, /(var)/g, /(let)/g],
+                code: `//Напишы функцию add, которая принимает 2 числа и возрощает их суму.
+
+const number1 = 5;
+const number2 = 10
+
+function add(number1, number2) {
+
+}
+                       `,
+                hints: [
+                    "Функция должна возрощать 1 число"
+                ],
+                test: {
+                    code: `let valid = true;
+                             if(add(23, 76) !== 99){valid = false};
+                            valid === true`,
+                    answer: ``
+                }
+            }
+        ]
+    },
+
+    {
         title: "Кайся глупец",
         quests: 
         [
@@ -7,7 +128,7 @@ export const quests = [
                 title: "Корова функционист",
                 text: `АД, 2019 год н.э., вечер. Вы оказались в месте, отдалённо напоминающий приватный дом в Соловках. Перед вашим взором предстали   разрушенное имущество, злая корова и грустный индус.
 
-                Индус просит вас подоить корову. Корова категорически против объектно-ориентированной подойки. Вы решаете подоить её функциональным путём.`,
+                Индус просит вас подоить корову. Корова категорически против декларативной подойки. Вы решаете подоить её функциональным путём.`,
                 regexps: [/(return)/g, /(function)/g, /(cow)/g, /(milk)/g, /(milkACow)/g],
                 regexpsNone: [/(for)/g, /(while)/g, /(var)/g, /(map)/g, /(reduce)/g, /(filter)/g,  /(filter)/g,],
                 code: `//Здраствуй Брат! Клята корова хочет функциональную подойку, помоги братику индусу.
@@ -135,34 +256,66 @@ function milkACow(cow, mass) {
             },
             {
                 title: "Звезда спасения индусов",
-                text: `Вы оказались в месте, где кроме индуса и коровы вас окружает ещё и изобилие молока и сыра. На сие чудо начинают сходиться другие индусы. У вашего индуса появляется идея начать продавать сыр другим индусам, однако для этого его нужно сначала свесить. Множество индусских глаз теперь сфокусировано на вас.`,
-                regexps: [/(return)/g, /(reduce)/g],
-                code: "//Hello may frend, my boss please me to create functional summ thet will be calculate\n" +
-                    "//mass of stones. I must to get to number of integer and returne summ.\n" +
-                    "//boss say thet i must read first lav\n" +
-                    "let stonesMass = [1, 3, 5]\n" +
-                    "\n" +
-                    "function calculateSumm(stones) {\n" +
-                    "    //???\n" +
-                    "}",
+                text: `Вы оказались в месте, где кроме индуса и коровы вас окружает ещё и изобилие молока и сыра. На сие чудо начинают сходиться другие индусы. У вашего индуса появляется идея начать продавать сыр местним торгашам, однако для этого его нужно сначала свесить. Множество индусских глаз теперь сфокусировано на вас.`,
+                regexps: [/(return)/g, /(function)/g, /(cow)/g, /(milk)/g, /(milkACow)/g],
+                regexpsNone: [/(for)/g, /(while)/g, /(var)/g, /(map)/g, /(reduce)/g, /(filter)/g,  /(filter)/g,],
+                code: `//Брат!! Мы успешны! ПОмоги мне продавать сыр оптом и я посвящу тебя в истинного индуса.
+//Напишы функцию milkACow которая принимает корову,
+//доит её по заказу клиентов и когда молоко закончиться верни массу всего сыра который получился.
+//Но брат, избалованая корова хочет что бы ти использовал стрелочные функции, я думаю это 4 заповедь.
+
+var cow = {
+    milk: 10
+}
+
+let MassOfCheeses = []
+
+function milkACow(cow, mass) {
+    cow.milk -= mass
+    cheeses += mass / 2
+    if (cow.milk <= 0) {
+        return cheeses
+    }
+}
+                `,
                 hints: [
                     "hint sample",
                     "hint sample2"
                 ],
                 test: {
-                    code: "calculateSumm(stonesMass)",
-                    answer: "stonesMass.reduce((a,b) => {return a+b})"
+                    code: `let valid = true;
+                    let cow2 = {milk: 10}
+                        let myCow = milkACow(cow2)
+                        if(JSON.stringify(myCow(4)) !== JSON.stringify(undefined)){valid = false};
+                        if(JSON.stringify(myCow(4)) !== JSON.stringify(undefined)){valid = false};
+                        if(JSON.stringify(myCow(4)) !== JSON.stringify(5)){valid = false};
+                        if(cow2.milk !== 10){valid = false};
+                    valid === true`,
+                    answer: ``
                 }
             },
             {
                 title: "Легенда о великом ублажателе коров",
                 text: `Вы и ваш индусский друг смогли наладить производство сыра, после чего стали самыми успешными предприятелями в индусской деревне в Аду. Кажется, вами восхищается даже Мефистофель. На вырученные деньги вы решаете приобрести ещё несколько коров. Теперь вам каким-то образом нужно вести учёт полученного молока и сыра. Вся робота опять легла на вас. Корова понимающе вздыхает.`,
                 regexps: [/(return)/g, /(reduce)/g],
-                code: `//Brat.. hey... my boss told me create a function sumRange
-                    var acc = 0;
-                    for (var i = 1; i <= 10; ++i)
-                        acc += i;
-                    console.log(acc);`,
+                code: `//Брат!! Мы успешны! ПОмоги мне продавать сыр оптом и я посвящу тебя в истинного индуса.
+//Напишы функцию milkACow которая принимает корову,
+//доит её по заказу клиентов и когда молоко закончиться верни массу всего сыра который получился.
+//Но брат, избалованая корова хочет что бы ти использовал стрелочные функции, я думаю это 4 заповедь.
+                
+var cow = {
+    milk: 10
+}
+                
+let MassOfCheeses = []
+                
+function milkACow(cow, mass) {
+    cow.milk -= mass
+    cheeses += mass / 2
+    if (cow.milk <= 0) {
+        return cheeses
+    }
+}`,
                 hints: [
                     "hint sample",
                     "hint sample2"
@@ -200,7 +353,7 @@ function milkACow(cow, mass) {
         ]
     },
     {
-        title: "2 глава",
+        title: "3 глава",
         quests: 
         [
             {
