@@ -160,8 +160,19 @@ ul {padding: 0;}
 .questlist {cursor: pointer; background-color: white; color: black; text-align: center; padding: 20px; border-bottom: 2px dashed grey; width: 25vw; word-break: break-all; word-wrap: break-word; box-sizing: border-box;}
 .questlist:hover {background-color: black; color: white;}
 .questlist:last-of-type {border: 0;}
-.hell-rules {width: 100%; height: 65vh; overflow-y:scroll; box-sizing: border-box; padding: 10px;}
-.rules-wrapper {display: grid; grid-template-columns: repeat(3, 1fr); column-gap: 10px;}
+.hell-rules {
+    width: 100%; 
+    height: 65vh; 
+    overflow-y:scroll; 
+    box-sizing: border-box; 
+    padding: 10px;}
+.rules-wrapper {
+    display: grid; 
+    grid-template-columns: 
+    repeat(3, 1fr); 
+    column-gap: 20px;
+    row-gap: 20px;
+}
 .hell-heading {text-align: center; color: red;}
 
 .questlist.inactive {
@@ -190,4 +201,10 @@ button {
     {
         background-position: right top, right bottom, left bottom, left top;
     }
+}
+
+.el_rules {
+    border: 3px solid black;
+    cursor: pointer;
+
 }
