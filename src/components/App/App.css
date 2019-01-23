@@ -47,7 +47,7 @@ ul {
    margin: 0;
   width: 75vw;
   height: 30vh;
-  overflow: scroll;
+  overflow: auto;
   padding-bottom: 10px;
   box-sizing:border-box;
 }
