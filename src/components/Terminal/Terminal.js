@@ -140,7 +140,17 @@ class Terminal extends Component {
                 <div className="button-line">
                     <Button text="RUN CODE" className="debug" func={this.run}/>
                     <Button text="CLEAR TERMINAL" className="debug" func={this.clearTerminal}/>
-                    <button onClick={() => {this.props.showTutorial()}} className="debug">TUTORIAL</button>
+                    <button onClick={() => {
+                        this.props.showTutorial()
+                    }} className="debug">TUTORIAL
+                    </button>
+                    {
+                        localStorage.passQuests > this.props.quest
+                            ? <button onClick={() => {
+                                this.props.nextLevel()
+                            }} className="debug">NEXT LEVEL</button>
+                            : null
+                    }
                 </div>
                 <ul className="terminal-text">
                     {
