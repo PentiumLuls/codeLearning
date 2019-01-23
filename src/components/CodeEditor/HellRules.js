@@ -32,10 +32,9 @@ class HellRules extends Component {
                         return (
                         <div key={indexOfTutorial} onClick={this.openTutorial.bind(this, indexOfStage, indexOfTutorial)}
                             className="el_rules">
-                            <h1>{el.title}</h1>
-                            <hr></hr>
+                            <h3>{el.title}</h3>
                             {el.text.map((el2, index) => {
-                                return <h3 key={index}>{el2.title}</h3>
+                                return <p key={index}>{el2.title}</p>
                             })}
                         </div>
                         )

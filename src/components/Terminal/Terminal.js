@@ -3,7 +3,6 @@ import Button from './Button/Button';
 import {quests} from '../../plot/quests'
 
 class Terminal extends Component {
-
     constructor() {
         super();
         this.state = {

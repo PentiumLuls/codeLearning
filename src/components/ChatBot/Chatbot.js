@@ -104,12 +104,14 @@ export default class Chatbot extends Component {
         if (this.state.visible === true)
             return (
                 <div className='chatbot'>
-                    <button className='buttonchatclose' onClick={this.showChat.bind(this)}>Close</button>
+                    <div className="bot-top-panel">
+                    <button className='buttonchatclose' onClick={this.showChat.bind(this)}>X</button>
+                    </div>
                     <div className="dialogbox" id='box' ><ul>{this.state.content}</ul></div>
             { /*<button className='chatbutton' onClick={this.getDialogs.bind(this)}>nextDialog</button>*/}
+                <div className="bot-bottom-panel">
                     <button className='chatbutton' onClick={this.getHints.bind(this)}>getHint</button>
-                   
-                    
+                </div>
                 </div>
             );
         return (
