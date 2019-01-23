@@ -134,13 +134,13 @@ class Terminal extends Component {
         });
     }
 
-
     render() {
         return (
             <div className="terminalComponent">
                 <div className="button-line">
                     <Button text="RUN CODE" className="debug" func={this.run}/>
                     <Button text="CLEAR TERMINAL" className="debug" func={this.clearTerminal}/>
+                    <button onClick={() => {this.props.showTutorial()}} className="debug">TUTORIAL</button>
                 </div>
                 <ul className="terminal-text">
                     {
