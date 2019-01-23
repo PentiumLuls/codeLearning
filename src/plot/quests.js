@@ -35,12 +35,23 @@ function isSquare(rectangle) {
                     code: `let valid = true;
                     const rectangle2 = {
                         color: 'black',
-                        square: false
+                        side1: 4,
+    side2: 1,
+    side3: 2,
+    side4: 5,
                     }
                              if(isBlack(rectangle2) !== true){valid = false};
                              if(isSquare(rectangle2) !== false){valid = false};
                             valid === true`,
-                    answer: ``
+                    answer: `function isBlack(rectangle) {
+    return rectangle.color == 'black'
+}
+
+function isSquare(rectangle) {
+    return rectangle.side1 == rectangle.side2 
+        && rectangle.side1 == rectangle.side3 
+        && rectangle.side1 == rectangle.side4;
+}`
                 }
             },
             
@@ -78,7 +89,9 @@ function perimeter(rectangle) {
                     }
                              if(perimeter(rectangle2) !== 24){valid = false};
                             valid === true`,
-                    answer: ``
+                    answer: `function perimeter(rectangle) {
+    return rectangle.side1 + rectangle.side2 + rectangle.side3 + rectangle.side4;
+}`
                 }
             },
             {
