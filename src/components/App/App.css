@@ -175,6 +175,12 @@ ul {padding: 0;}
 }
 .hell-heading {text-align: center; color: red;}
 
+.hell-cards {width: 100%; height: 65vh; overflow-y:scroll; box-sizing: border-box; padding: 10px;}
+.cards-wrapper {display: grid; grid-template-columns: repeat(3, 1fr); column-gap: 10px;}
+.cards-heading {text-align: center; color: green;}
+.card {cursor: pointer; background-color: black; box-sizing: border-box; border-bottom: 5px solid grey; text-align: center; text-transform: uppercase; height: 10vh; margin: auto; word-break: break-all;}
+.card p {margin: auto; color: #fff; user-select: none;}
+
 .questlist.inactive {
     cursor:default;
     color: rgba(0, 0, 0, 0.7);
@@ -204,7 +210,25 @@ button {
 }
 
 .el_rules {
-    border: 3px solid black;
     cursor: pointer;
-
+    background:
+            linear-gradient(90deg, grey 50%, transparent 50%),
+            linear-gradient(0deg, black 50%, transparent 50%),
+            linear-gradient(90deg, grey 50%, transparent 50%),
+            linear-gradient(0deg, black 50%, transparent 50%);
+    background-repeat: repeat-x, repeat-y, repeat-x, repeat-y;
+    background-size: 10px 5px, 5px 10px, 10px 5px, 5px 10px;
+    background-position: left top, right top, left bottom, left top;
+    padding: 5px 15px;
+    animation: border-dance 6s infinite linear;
+    box-sizing:border-box;
+}
+.el_rules h3 {
+    color: red;
+    text-align: center;
+}
+.el_rules p {
+    margin: 0 5px;
+    border-bottom: 1px dashed grey;
+    padding: 15px 0;
 }
