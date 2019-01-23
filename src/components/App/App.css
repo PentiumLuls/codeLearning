@@ -1,0 +1,193 @@
+@import url('https://fonts.googleapis.com/css?family=Press+Start+2P');
+
+html, body {
+  height: 100%;
+  font-family: 'Press Start 2P', cursive;
+  
+}
+
+ul {
+  list-style: none;
+}
+
+.panel { 
+  text-transform: uppercase;
+  grid-area: panel; 
+  background-color: #111;
+  width: 25vw;
+}
+.editor { 
+  grid-area: editor;
+  width: 100%;
+  height: 65vh;
+}
+.terminal{
+  white-space: pre-line; /*TO FIX DEPRECATED \n*/
+  text-transform: uppercase;
+  grid-area: terminal; 
+  background-color: black;
+  height: 35vh;
+  position: relative; 
+  overflow: hidden;
+  color: blanchedalmond; }
+.main {
+    height: 100vh;
+    display: grid;
+    grid: 'panel editor editor editor'
+          'panel editor editor editor'
+          'panel editor editor editor'
+          'panel editor editor editor'
+          'panel terminal terminal terminal';
+    grid-gap: 0;
+    width: 100vw;
+    
+}
+.terminal-text {
+   padding: 0;
+   margin: 0;
+  width: 75vw;
+  height: 30vh;
+  overflow: scroll;
+  padding-bottom: 10px;
+  box-sizing:border-box;
+}
+
+.button-line {
+  padding: 5px; 
+  border-bottom: 5px solid red;}
+.userinfo {display: flex; flex-flow: row; width: 25vw; height: 8vw;}
+.avatar{width: 7vw; height: 7vw; background-color: white; border-radius: 50%; overflow: hidden; margin: 0.5vw}
+.avatar img {width: 7vw; height: 7vw;}
+.usebuttons {display: flex; flex-flow: column; }
+.userbutton {cursor: pointer; display: flex; background-color: red; width: 17vw; box-sizing: border-box; border: 5px solid white; text-align: center; text-transform: uppercase; height: 50%; margin: auto;}
+.userbutton p {margin: auto; color: #fff; user-select: none;}
+.userbutton:active {background-color: #fff; border: 5px solid #000}
+.userbutton:active p {color: #000;}
+.avatar img:hover {-webkit-filter: contrast(10000%) grayscale(1);filter: contrast(10000%) grayscale(1);}
+.active {background-color: #fff; border: 5px solid #000;}
+.active p {color: #000;}
+.Tlist{
+    width:25vw;
+    box-sizing: border-box;
+    padding-top: 10px;
+    min-height: calc(100vh - 10vh - 8vw);
+    color:white;
+}
+.footer{
+    width:25vw;
+    height:10vh;
+    background-color:red;
+    display: flex;
+    text-align: center;
+    margin: auto;
+}
+.footer p {color:white; margin: auto}
+.listheader {
+    display: flex;
+    width: 25vw;
+    height: 10vh;
+    text-align: center;
+    margin: auto;
+}
+.listheader p {margin: auto; color: #fff}
+.dashed {
+    background:
+            linear-gradient(90deg, red 50%, transparent 50%),
+            linear-gradient(0deg, red 50%, transparent 50%),
+            linear-gradient(90deg, red 50%, transparent 50%),
+            linear-gradient(0deg, red 50%, transparent 50%);
+    background-repeat: repeat-x, repeat-y, repeat-x, repeat-y;
+    background-size: 15px 5px, 5px 15px, 15px 5px, 5px 15px;
+    background-position: left top, right top, left bottom, left top;
+    padding: 5px;
+    animation: border-dance 6s infinite linear;
+    box-sizing:border-box;
+}
+.chatbot{
+        position: absolute;
+        right: 0;
+        bottom: 0;
+        width: 32%;
+        height: 60%;
+        z-index:100;
+        background-color:#333333;
+}
+.buttonchatopen{
+    width: 5%;
+    height: 3%;
+    z-index:100;
+    position: absolute;
+        right:0 ;
+        bottom: 0;
+        background-color: red;
+        text-align: center
+}
+.buttonchatclose{
+    margin:0;
+    border:0;
+    width: 23%;
+    padding: 0;
+    height: 5%; 
+    position: relative;  
+        
+    background-color: red;
+}
+.dialogbox{
+    position: relative;
+    left: 5%;
+    width: 89%;
+    height: 87%; 
+    background-color:#2F4F4F;
+    overflow:auto;
+}
+.chatbuttun{
+    position: relative;
+    left: 5%;
+    top:2% ;
+    background-color:white;
+}
+.mefistoreplic{
+    margin-top:8px;
+}
+.hint{
+ margin:20px;
+ padding:5px;
+ background-color:#FF8C00;
+}
+
+
+ul {padding: 0;}
+.questlist {cursor: pointer; background-color: white; color: black; text-align: center; padding: 20px; border-bottom: 2px dashed grey; width: 25vw; word-break: break-all; word-wrap: break-word; box-sizing: border-box;}
+.questlist:hover {background-color: black; color: white;}
+.questlist:last-of-type {border: 0;}
+.hell-rules {width: 100%; height: 65vh; overflow-y:scroll; box-sizing: border-box; padding: 10px;}
+.rules-wrapper {display: grid; grid-template-columns: repeat(3, 1fr); column-gap: 10px;}
+.hell-heading {text-align: center; color: red;}
+
+.questlist.inactive {
+    cursor:default;
+    color: rgba(0, 0, 0, 0.7);
+    background-size: contain;
+    user-select: none;
+    background: #333333 url("data:image/svg+xml,%3Csvg xmlns:dc='http://purl.org/dc/elements/1.1/' xmlns:cc='http://creativecommons.org/ns%23' xmlns:rdf='http://www.w3.org/1999/02/22-rdf-syntax-ns%23' xmlns:svg='http://www.w3.org/2000/svg' xmlns='http://www.w3.org/2000/svg' xmlns:sodipodi='http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd' xmlns:inkscape='http://www.inkscape.org/namespaces/inkscape' viewBox='0 -256 1792 1792' id='svg2989' version='1.1' inkscape:version='0.48.3.1 r9886' width='100%25' height='100%25' sodipodi:docname='lock_font_awesome.svg'%3E%3Cmetadata id='metadata2999'%3E%3Crdf:RDF%3E%3Ccc:Work rdf:about=''%3E%3Cdc:format%3Eimage/svg+xml%3C/dc:format%3E%3Cdc:type rdf:resource='http://purl.org/dc/dcmitype/StillImage'/%3E%3C/cc:Work%3E%3C/rdf:RDF%3E%3C/metadata%3E%3Cdefs id='defs2997'/%3E%3Csodipodi:namedview pagecolor='%23ffffff' bordercolor='%23666666' borderopacity='1' objecttolerance='10' gridtolerance='10' guidetolerance='10' inkscape:pageopacity='0' inkscape:pageshadow='2' inkscape:window-width='640' inkscape:window-height='480' id='namedview2995' showgrid='false' inkscape:zoom='0.13169643' inkscape:cx='896' inkscape:cy='896' inkscape:window-x='0' inkscape:window-y='25' inkscape:window-maximized='0' inkscape:current-layer='svg2989'/%3E%3Cg transform='matrix(1,0,0,-1,318.91525,1346.1695)' id='g2991'%3E%3Cpath d='m 704,512 q 0,53 -37.5,90.5 Q 629,640 576,640 523,640 485.5,602.5 448,565 448,512 q 0,-37 19,-67 19,-30 51,-47 L 449,169 q -5,-15 5,-28 10,-13 26,-13 h 192 q 16,0 26,13 10,13 5,28 l -69,229 q 32,17 51,47 19,30 19,67 z M 320,768 h 512 v 192 q 0,106 -75,181 -75,75 -181,75 -106,0 -181,-75 -75,-75 -75,-181 V 768 z m 832,-96 V 96 Q 1152,56 1124,28 1096,0 1056,0 H 96 Q 56,0 28,28 0,56 0,96 v 576 q 0,40 28,68 28,28 68,28 h 32 v 192 q 0,184 132,316 132,132 316,132 184,0 316,-132 132,-132 132,-316 V 768 h 32 q 40,0 68,-28 28,-28 28,-68 z' id='path2993' inkscape:connector-curvature='0' style='fill:grey'/%3E%3C/g%3E%3C/svg%3E") no-repeat center;
+}
+button {
+    background-color: red;
+    border: 3px solid white;
+    margin: 2px;
+    padding: 5px 10px;
+    color: white;
+    font-family: inherit;
+    cursor: pointer;
+}
+@keyframes border-dance
+{
+    0%
+    {
+        background-position: left top, right top, right bottom, left bottom;
+    }
+    100%
+    {
+        background-position: right top, right bottom, left bottom, left top;
+    }
+}
