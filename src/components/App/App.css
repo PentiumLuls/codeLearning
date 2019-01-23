@@ -1,11 +1,14 @@
 @import url('https://fonts.googleapis.com/css?family=Press+Start+2P');
 
+* {
+    scrollbar-width: none;
+    -ms-overflow-style: -ms-autohiding-scrollbar;
+    overflow: -moz-scrollbars-none;
+}
 html, body {
   height: 100vh;
   font-family: 'Press Start 2P', cursive;
-  
 }
-
 /* скрывает скроллбар в хроме */
 ::-webkit-scrollbar {
     display: none;
