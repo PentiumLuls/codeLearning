@@ -11,6 +11,7 @@ export default class Chatbot extends Component {
             visible: true,
             replics: [],
             content: [],
+            replicN:0,
             dialogN: 0,
             hintsN: 0,
         }
@@ -19,10 +20,10 @@ export default class Chatbot extends Component {
     writeReplics = (replics) => {
         let x = 0;
         let interval = setInterval(() => {
-            let replic = `${replics.name}:~$ ${replics.text[x++]}`;
+            let replic = <li className='mefistoreplic'> {replics.name}:~$ {replics.text[x++]} </li> ;
             this.setState({
                 replics: [...this.state.replics, replic],
-                content: this.state.content + replic,
+               
             });
             if (x >= replics.text.length) {
                 clearInterval(interval);
@@ -38,19 +39,41 @@ export default class Chatbot extends Component {
 
     getDialogs = () => {
         console.log("GET DIALOGS!!!");
+       /* this.setState({
+            content:  this.state.replics.map((r, i) => <li key={i} className='mefistoreplic'>{r}</li>)
+        });*/
+        const content = this.state.content.concat();
+        let replicN = this.state.replicN;
+        
+        content.push(this.state.replics[replicN])
+        replicN += 1;
         this.setState({
-            content: this.state.content +  this.state.replics.map((r, i) => <li key={i}>{r}</li>)
-        });
+            content,
+            replicN,
+        }
+        )
     };
 
     getHints() {
+        
         const hints = quests[localStorage.passStages].quests[localStorage.passQuests].hints;
-        if (this.state.hintsN < hints.length) {
+        const content = this.state.content;
+        if(this.state.hintsN < hints.length){
+            content.push(<li className='hint'>{hints[this.state.hintsN]}</li>);        
             this.setState({
-                content: this.state.content + "\n" + hints[this.state.hintsN],
-                hintsN: this.state.hintsN + 1,
+            content,
+            hintsN: this.state.hintsN + 1,
             });
-        }
+        }else{
+               
+            content.push(<li className='hint'>{hints[0]}</li>);
+            this.setState({
+            content,
+            hintsN:1});    
+            }
+          
+
+        
 
         console.log(hints[this.state.hintsN])
     }
@@ -58,6 +81,7 @@ export default class Chatbot extends Component {
     componentDidMount() {
         try {
             this.writeReplics(dialogs[localStorage.passStages][localStorage.passQuests][this.state.dialogN]);
+            
         }  catch {
             console.log("non replics")
         }
@@ -70,9 +94,10 @@ export default class Chatbot extends Component {
             return (
                 <div className='chatbot'>
                     <button className='buttonchatclose' onClick={this.showChat.bind(this)}>Close</button>
-                    <div className="dialogbox">{this.state.content}</div>
-                    {/*<button className='chatbutton' onClick={this.getDialogs.bind(this)}>nextDialog</button>*/}
+                    <div className="dialogbox"><ul>{this.state.content}</ul></div>
+            { /*<button className='chatbutton' onClick={this.getDialogs.bind(this)}>nextDialog</button>*/}
                     <button className='chatbutton' onClick={this.getHints.bind(this)}>getHint</button>
+                    
                 </div>
             );
         return (

@@ -107,26 +107,30 @@ ul {
         position: absolute;
         right: 0;
         bottom: 0;
-        width: 20%;
-        height: 50%;
-        background-color: #FFF9AE;
+        width: 32%;
+        height: 60%;
+        z-index:100;
+        background-color:#333333;
 }
 .buttonchatopen{
-    width: 3%;
+    width: 5%;
     height: 3%;
+    z-index:100;
     position: absolute;
-        right: 0;
+        right:0 ;
         bottom: 0;
         background-color: red;
         text-align: center
 }
 .buttonchatclose{
-    width: 3%;
-    height: 3%; 
+    margin:0;
+    border:0;
+    width: 23%;
+    padding: 0;
+    height: 5%; 
     position: relative;  
-        right: 0;
-        bottom: 0;
-        background-color: red;
+        
+    background-color: red;
 }
 .dialogbox{
     position: relative;
@@ -134,7 +138,7 @@ ul {
     width: 89%;
     height: 87%; 
     background-color:#2F4F4F;
-    overflow:scroll;
+    overflow:auto;
 }
 .chatbuttun{
     position: relative;
@@ -142,6 +146,15 @@ ul {
     top:2% ;
     background-color:white;
 }
+.mefistoreplic{
+    margin-top:8px;
+}
+.hint{
+ margin:20px;
+ padding:5px;
+ background-color:#FF8C00;
+}
+
 
 ul {padding: 0;}
 .questlist {cursor: pointer; background-color: white; color: black; text-align: center; padding: 20px; border-bottom: 2px dashed grey; width: 25vw; word-break: break-all; word-wrap: break-word; box-sizing: border-box;}
@@ -150,14 +163,7 @@ ul {padding: 0;}
 .hell-rules {width: 100%; height: 65vh; overflow-y:scroll; box-sizing: border-box; padding: 10px;}
 .rules-wrapper {display: grid; grid-template-columns: repeat(3, 1fr); column-gap: 10px;}
 .hell-heading {text-align: center; color: red;}
-.chatbot{
-    position: absolute;
-    right: 0;
-    bottom: 0;
-    width: 20%;
-    height: 50%;
-    background-color: #FFF9AE;
-}
+
 .questlist.inactive {
     cursor:default;
     color: rgba(0, 0, 0, 0.7);
