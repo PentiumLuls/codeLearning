@@ -55,13 +55,25 @@ export default class Chatbot extends Component {
     };
 
     getHints() {
+        
         const hints = quests[localStorage.passStages].quests[localStorage.passQuests].hints;
-        if (this.state.hintsN < hints.length) {
-            this.setState({
-                content: this.state.content + "\n" + hints[this.state.hintsN],
+        const content = this.state.content;
+        if(this.state.hintsN < hints.length){
+            content.push(<li className='hint'>{hints[this.state.hintsN]}</li>);
+        
+        this.setState({
+                content,
                 hintsN: this.state.hintsN + 1,
-            });
-        }
+            });}else{
+                content.push(<li className='hint'>подсказок больше нет</li>);
+        
+        this.setState({
+                content,});    
+
+            }
+          
+
+        
 
         console.log(hints[this.state.hintsN])
     }
@@ -83,7 +95,7 @@ export default class Chatbot extends Component {
                 <div className='chatbot'>
                     <button className='buttonchatclose' onClick={this.showChat.bind(this)}>Close</button>
                     <div className="dialogbox"><ul>{this.state.content}</ul></div>
-                    <button className='chatbutton' onClick={this.getDialogs.bind(this)}>nextDialog</button>
+            { /*<button className='chatbutton' onClick={this.getDialogs.bind(this)}>nextDialog</button>*/}
                     <button className='chatbutton' onClick={this.getHints.bind(this)}>getHint</button>
                     
                 </div>
