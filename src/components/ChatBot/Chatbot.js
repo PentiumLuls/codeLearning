@@ -58,25 +58,36 @@ export default class Chatbot extends Component {
         
         const hints = quests[localStorage.passStages].quests[localStorage.passQuests].hints;
         const content = this.state.content;
+        
         if(this.state.hintsN < hints.length){
-            content.push(<li className='hint'>{hints[this.state.hintsN]}</li>);        
+            content.push(<li className='hint'>{hints[this.state.hintsN]}</li>); 
+                
             this.setState({
             content,
             hintsN: this.state.hintsN + 1,
             });
+            
         }else{
                
             content.push(<li className='hint'>{hints[0]}</li>);
+            
             this.setState({
             content,
-            hintsN:1});    
-            }
+            hintsN:1});  
+             
+            };
+            let element = document.getElementById('box')    ;
+            element.scrollTop=element.scrollHeight  ; 
+           
+            
+       
           
 
         
 
         console.log(hints[this.state.hintsN])
     }
+   
 
     componentDidMount() {
         try {
@@ -94,9 +105,10 @@ export default class Chatbot extends Component {
             return (
                 <div className='chatbot'>
                     <button className='buttonchatclose' onClick={this.showChat.bind(this)}>Close</button>
-                    <div className="dialogbox"><ul>{this.state.content}</ul></div>
+                    <div className="dialogbox" id='box' ><ul>{this.state.content}</ul></div>
             { /*<button className='chatbutton' onClick={this.getDialogs.bind(this)}>nextDialog</button>*/}
                     <button className='chatbutton' onClick={this.getHints.bind(this)}>getHint</button>
+                   
                     
                 </div>
             );

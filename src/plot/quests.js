@@ -1,20 +1,5 @@
 export const quests = [
     {
-<<<<<<< HEAD
-        title: "Война индусов Z",
-        quests: 
-        [
-///////////////////////////////////////quest 1////////////////////////////////////////////////////////////
-            {
-                title: "Чистая функция. Туториал 1",
-                text: `В этом задании ты будешь писать функции предикаторы. Они принимают какое нибуть значение,
-                сравнивают его с каким то условием и возрощают true или false. Позже эти функции будут использоваться
-                в filter.`,
-                regexps: [],
-                regexpsNone: [/(for)/g, /(while)/g, /(var)/g, /(let)/g],
-                code: `//Напишы функции isBlack и isSquare, которые принимают прямоугольник
-//и возрощают соответствующие данные.
-=======
         title: "1 глава",
         quests:
             [
@@ -25,7 +10,6 @@ export const quests = [
                     regexpsNone: [/(for)/g, /(while)/g, /(var)/g, /(let)/g],
                     code: `//Напиши функции isBlack и isSquare, которые принимают прямоугольник
 //и возвращают соответствующие данные.
->>>>>>> 0eb51e95e28acff59c833cba0708a7002d5d4eb9
 //P.S. Все цвета будут написаны в lowercase.
 
 const rectangle = {
@@ -45,7 +29,7 @@ function isSquare(rectangle) {
 }
                        `,
                     hints: [
-                        "Функция должна возвращать True или False"
+                        "1Функция должна возвращать True или False",2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18
                     ],
                     test: {
                         code: `let valid = true;
@@ -68,55 +52,6 @@ function isSquare(rectangle) {
         && rectangle.side1 == rectangle.side3 
         && rectangle.side1 == rectangle.side4;
 }`
-<<<<<<< HEAD
-                }
-            },
-///////////////////////////////////////quest 2////////////////////////////////////////////////////////////
-            {
-                title: "Неудалимая жажда",
-                text: `Ты открываешь глаза и видишь нескольких индусов которые что то обсуждают, они говорят тебе: "Выбирай тех кто изменит этот мир!", и дают карточки нескольки сотен индусов. Ничего не понимая ты начинаеш их сортировать, чуйствуя при этом только непреодалимую жажду мести...`,
-                regexps: [],
-                regexpsNone: [/(for)/g, /(while)/g, /(var)/g, /(let)/g],
-                code: `//Напишы функцию isUseful,котрая принимает карточку индуса
-//и возрощает пригодет он к войне или нет.
-//P.S. Индус считается пригодным если он мужчина.
-
-const Aadityesh = {
-    gender: 'female'
-}
-
-function isUseful(indus) {
-
-}
-                       `,
-                hints: [
-                    "Функция должна возрощать True или False"
-                ],
-                test: {
-                    code: `let valid = true;
-                    const indus1 = {
-                        gender: 'female'
-                    }
-                    const indus2 = {
-                        gender: 'male'
-                    }
-                    
-                    if(isUseful(indus1) !== false){valid = false};
-                    if(isUseful(indus2) !== true){valid = false};
-                    valid === true`,
-                    answer: ``
-                }
-            },
-///////////////////////////////////////quest 3////////////////////////////////////////////////////////////
-            {
-                title: "Чистая функция. Туториал 2",
-                text: `В этом задании ты будешь писать функцию конвертер. Она принимает какое нибуть значение,
-                и возвращает другое значение. Позже эта функция будет использоваться
-                в map.`,
-                regexps: [],
-                regexpsNone: [/(for)/g, /(while)/g, /(var)/g, /(let)/g],
-                code: `//Напишы функцию perimeter, которая принимает прямоугольник и возрощает его периметр.
-=======
                     }
                 },
                 {
@@ -125,7 +60,6 @@ function isUseful(indus) {
                     regexps: [],
                     regexpsNone: [/(for)/g, /(while)/g, /(var)/g, /(let)/g],
                     code: `//Напиши функцию perimeter, которая принимает прямоугольник и возвращает его периметр.
->>>>>>> 0eb51e95e28acff59c833cba0708a7002d5d4eb9
 
 const rectangle = {
     color: 'red',
@@ -157,98 +91,6 @@ function perimeter(rectangle) {
                         answer: `function perimeter(rectangle) {
     return rectangle.side1 + rectangle.side2 + rectangle.side3 + rectangle.side4;
 }`
-<<<<<<< HEAD
-                }
-            },
-///////////////////////////////////////quest 4////////////////////////////////////////////////////////////
-            {
-                title: "Надевай шмотки, проваливай",
-                text: `Все в комнате поражены твоей способностью создания чистых функций! Теперь они хотят вручить солдатам броню. Ты не понемаеш почему броня сделана с ткани, но ты просто делаеш то что тебе говорят.`,
-                regexps: [],
-                regexpsNone: [/(for)/g, /(while)/g, /(var)/g, /(let)/g],
-                code: `//Напишы функцию setArmor,которая принимает карточку индуса
-//и возрощает новую карточку с свойством armor: true.
-
-const Aahvan = {
-    gender: 'female'
-}
-
-function setArmor(indus) {
-
-}
-                       `,
-                hints: [
-                    "Функция должна возрощать новую карточку индуса",
-                    "Используй concat с пустым обектом в 1 параметре"
-                ],
-                test: {
-                    code: `let valid = true;
-                    const indus1 = {
-                        gender: 'female'
-                    }
-                    const indus2 = {
-                        gender: 'male'
-                    }
-                    
-                    if(setArmor(indus1)['armor'] !== true){valid = false};
-                    if(indus1['armor'] !== undefined){valid = false};
-                    if(setArmor(indus2)['armor'] !== true){valid = false};
-                    if(indus2['armor'] !== undefined){valid = false};
-                    valid === true`,
-                    answer: ``
-                }
-            },
-///////////////////////////////////////quest 5////////////////////////////////////////////////////////////
-            {
-                title: "Говорят даже палка стреляет раз в год",
-                text: `Все радуются твоему таланту но один из индусов говорит что броня это хорошо, но чем они драться будут? Тут ты понимаешь что все проблемы теперь будеш решать ты...`,
-                regexps: [],
-                regexpsNone: [/(for)/g, /(while)/g, /(var)/g, /(let)/g],
-                code: `//Напишы функцию setStick,которая принимает карточку индуса
-//и возрощает новую карточку с свойством weapon: ['stick'].
-//И учти что у индуса может уже быть несколько оружий
-//P.S. Продумай что бы если у индуса уже есть палка то функция ничего не возращала.
-
-const Aadved = {
-    gender: 'female',
-    armor: true
-}
-
-function setStick(indus) {
-
-}
-                       `,
-                hints: [
-                    "Функция должна возрощать новую карточку индуса",
-                    "Используй indexOf что бы проверить есть ли у индуса палка"
-                ],
-                test: {
-                    code: `let valid = true;
-                    const indus1 = {
-                        gender: 'female'
-                    }
-                    const indus2 = {
-                        gender: 'male',
-                        weapon: ['sword','stick']
-                    }
-                    
-                    if(setStick(indus1)['weapon'][0] !== 'stick'){valid = false};
-                    if(indus1['weapon'] !== undefined){valid = false};
-                    if(setStick(indus2) !== undefined){valid = false};
-                    valid === true`,
-                    answer: ``
-                }
-            },
-///////////////////////////////////////quest 6////////////////////////////////////////////////////////////
-            {
-                title: "Чистая функция. Туториал 3",
-                text: `В этом задании ты будешь писать функцию аккумулятор. Она принимает 2 значения,
-                и возвращает 1 значение. Позже эта функция будет использоваться
-                в reduce.`,
-                regexps: [],
-                regexpsNone: [/(for)/g, /(while)/g, /(var)/g, /(let)/g],
-                code: `//Напишы функцию add, которая принимает 2 числа и возрощает их суму.
-=======
                     }
                 },
                 {
@@ -257,7 +99,6 @@ function setStick(indus) {
                     regexps: [],
                     regexpsNone: [/(for)/g, /(while)/g, /(var)/g, /(let)/g],
                     code: `//Напиши функцию add, которая принимает 2 числа и возвращает их сумму.
->>>>>>> 0eb51e95e28acff59c833cba0708a7002d5d4eb9
 
 const number1 = 5;
 const number2 = 10
@@ -276,72 +117,7 @@ function add(number1, number2) {
                         answer: ``
                     }
                 }
-<<<<<<< HEAD
-            },
-///////////////////////////////////////quest 7////////////////////////////////////////////////////////////
-            {
-                title: "Отряд индусов быстрого функционирования",
-                text: `Дела идут хорошо, тебе приносят стакан молока и просят объединить индусов в отряды, для лучшей продуктивности. Ты молча киваеш. Но тебя не покидает одна мысль, что ты вообще здесь делаеш и почему молоко красное...`,
-                regexps: [],
-                regexpsNone: [/(for)/g, /(while)/g, /(var)/g, /(let)/g],
-                code: `//Напишы функцию createGang,которая принимает 2 карточки индусов
-//и возрощает карточку отряда такого типа: {members: [indus1, indus2], armors: [true, true], weapons: ['stick', 'stick']}.
-//P.S. Продумай что бы если у 1 из индусов нету оружия то функция ничего не возращала.
-//ОЧЕНЬ ВАЖНО!!! Порядок создания свойст обьекта должен быть такой как в примере выше.
-
-const Aadhi = {
-    name: 'Aadhi',
-    gender: 'male',
-    armor: true,
-    weapon: ['sword', 'stick']
-}
-
-const Aadhunik = {
-    name: 'Aadhunik',
-    gender: 'male',
-    armor: true,
-    weapon: ['stick']
-}
-
-function createGang(indus1, indus2) {
-
-}
-                       `,
-                hints: [
-                    "Функция должна возрощать новую карточку индуса",
-                    "Используй spread оператор для создания масива оружий"
-                ],
-                test: {
-                    code: `let valid = true;
-                    const indus1 = {
-                        name: 'indus1',
-                        gender: 'male',
-                        armor: true,
-                        weapon: []
-                    }
-                    const indus2 = {
-                        name: 'indus2',
-                        gender: 'male',
-                        armor: true,
-                        weapon: ['sword', 'stick']
-                    }
-                    const indus3 = {
-                        name: 'indus3',
-                        gender: 'male',
-                        armor: true,
-                        weapon: ['stick']
-                    }
-                    
-                        if(JSON.stringify(createGang(indus2, indus3)) !== JSON.stringify({members: ['indus2', 'indus3'], armors: [true, true], weapons: ['sword' ,'stick', 'stick']})){valid = false};
-                        if(JSON.stringify(createGang(indus1, indus2)) !== undefined){valid = false};
-                    valid === true`,
-                    answer: ``
-                }
-            }
-        ]
-=======
             ]
->>>>>>> 0eb51e95e28acff59c833cba0708a7002d5d4eb9
     },
 ///////////////////////////////////////глава2////////////////////////////////////////////////////////////
 ///////////////////////////////////////глава2////////////////////////////////////////////////////////////
