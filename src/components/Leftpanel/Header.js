@@ -17,8 +17,8 @@ class Header extends Component {
             <header className="userinfo">
                         <div className="avatar"><img alt="avatar" src="https://pbs.twimg.com/media/DYzVb6jX4AEuvrJ.jpg"/></div>
                         <div className="userbuttons">
-                            <span className="userbutton" onClick={this.click}><p>Zhurnal</p></span>
-                            <span className="userbutton" onClick={this.click2}><p>Editor</p></span>
+                            <span className="userbutton" onClick={this.click}><p>Журнал</p></span>
+                            <span className="userbutton" onClick={this.click2}><p>Редактор кода</p></span>
                         </div>
                     </header>
       );

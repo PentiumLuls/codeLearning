@@ -1,5 +1,113 @@
 export const quests = [
     {
+        title: "1 глава",
+        quests: 
+        [
+            {
+                title: "Квест 1",
+                text: `Описание к квесту 1`,
+                regexps: [],
+                regexpsNone: [/(for)/g, /(while)/g, /(var)/g, /(let)/g],
+                code: `//Напишы функции isBlack и isSquare, которые принимают прямоугольник
+//и возрощают соответствующие данные.
+//P.S. Все цвета будут написаны в lowercase.
+
+const rectangle = {
+    color: 'red',
+    side1: 5,
+    side2: 5,
+    side3: 5,
+    side4: 5,
+}
+
+function isBlack(rectangle) {
+
+}
+
+function isSquare(rectangle) {
+
+}
+                       `,
+                hints: [
+                    "Функция должна возрощать True или False"
+                ],
+                test: {
+                    code: `let valid = true;
+                    const rectangle2 = {
+                        color: 'black',
+                        square: false
+                    }
+                             if(isBlack(rectangle2) !== true){valid = false};
+                             if(isSquare(rectangle2) !== false){valid = false};
+                            valid === true`,
+                    answer: ``
+                }
+            },
+            {
+                title: "Квест 2",
+                text: `Описание к квесту 2`,
+                regexps: [],
+                regexpsNone: [/(for)/g, /(while)/g, /(var)/g, /(let)/g],
+                code: `//Напишы функцию perimeter, которая принимает прямоугольник и возрощает его периметр.
+
+const rectangle = {
+    color: 'red',
+    side1: 5,
+    side2: 5,
+    side3: 5,
+    side4: 5
+}
+
+function perimeter(rectangle) {
+
+}
+
+                       `,
+                hints: [
+                    "Функция должна возрощать 1 число"
+                ],
+                test: {
+                    code: `let valid = true;
+                    const rectangle2 = {
+                        color: 'black',
+                        side1: 3,
+                        side2: 5,
+                        side3: 7,
+                        side4: 9
+                    }
+                             if(perimeter(rectangle2) !== 24){valid = false};
+                            valid === true`,
+                    answer: ``
+                }
+            },
+            {
+                title: "Квест 3",
+                text: `Описание к квесту 3`,
+                regexps: [],
+                regexpsNone: [/(for)/g, /(while)/g, /(var)/g, /(let)/g],
+                code: `//Напишы функцию add, которая принимает 2 числа и возрощает их суму.
+
+const number1 = 5;
+const number2 = 10
+
+function add(number1, number2) {
+
+}
+                       `,
+                hints: [
+                    "Функция должна возрощать 1 число"
+                ],
+                test: {
+                    code: `let valid = true;
+                             if(add(23, 76) !== 99){valid = false};
+                            valid === true`,
+                    answer: ``
+                }
+            }
+        ]
+    },
+
+    {
         title: "Кайся глупец",
         quests: 
         [
@@ -232,7 +340,7 @@ function milkACow(cow, mass) {
         ]
     },
     {
-        title: "2 глава",
+        title: "3 глава",
         quests: 
         [
             {
