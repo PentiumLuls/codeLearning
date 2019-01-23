@@ -17,7 +17,7 @@ class App extends Component {
             stage: 0,
             quest: 0,
             notUpdateEditor: 0
-        }
+        };
         localStorage.setItem('button_run', 0);
         if (!localStorage['passStages']) {
             localStorage['passStages'] = 0
@@ -29,10 +29,10 @@ class App extends Component {
 
     changeButtonState = () => {
         this.setState({isEdit: true});
-    }
+    };
     changeButtonState2 = () => {
         this.setState({isEdit: false});
-    }
+    };
 
     togglePopup() {
         this.setState({
@@ -52,61 +52,69 @@ class App extends Component {
             updateLP: false,
             notUpdateEditor: 0
         })
-    }
+    };
 
     updateLeftPanel = () => {
         this.setState({
             updateLP: !this.props.updateLP
         })
-    }
+    };
 
     notUpdateEditor = () => {
         this.setState({
             notUpdateEditor: 1
         })
-    }
+    };
+
+    showTutorial = () => {
+        this.togglePopup();
+    };
 
     render() {
-        if (!this.state.showPopup) {
-            return (
-                <div className="main">
-                    <div className="panel">
-                        <Leftpanel notUpdateEditor={this.notUpdateEditor} updateLP={this.props.updateLP} writeQuest={this.writeQuest}
-                                   func={this.changeButtonState} func2={this.changeButtonState2}/>
-                    </div>
-                    <div className="editor">
-                        {
-                            (!this.state.isEdit)
-                                ? <Codeditor
-                                    notUpdateEditor={this.state.notUpdateEditor} 
-                                    text={quests[this.state.stage].quests[this.state.quest].code}/>
-                                : <HellRules/>}
-                    </div>
-                    <div className="terminal">
-                        <Terminal
-                            updateLeftPanel={this.updateLeftPanel}
-                            className="terminal"
-                            stage={this.state.stage}
-                            quest={this.state.quest}
-                            testCode={quests[this.state.stage].quests[this.state.quest].test}
-                            regexps={quests[this.state.stage].quests[this.state.quest].regexps}
-                            regexpsNone={quests[this.state.stage].quests[this.state.quest].regexpsNone}/>
-                    </div>
-                    <div>
-                    <Chatbot/>
-                    </div>
 
+        return (
+            <div className="main">
+                <div className="panel">
+                    <Leftpanel notUpdateEditor={this.notUpdateEditor} updateLP={this.props.updateLP}
+                               writeQuest={this.writeQuest}
+                               func={this.changeButtonState} func2={this.changeButtonState2}/>
                 </div>
-            )
-        } else {
-            return (
+                <div className="editor">
+                    {
+                        (!this.state.isEdit)
+                            ? <Codeditor
+                                notUpdateEditor={this.state.notUpdateEditor}
+                                text={quests[this.state.stage].quests[this.state.quest].code}/>
+                            : <HellRules/>}
+                </div>
+                <div className="terminal">
+                    <Terminal
+                        updateLeftPanel={this.updateLeftPanel}
+                        className="terminal"
+                        stage={this.state.stage}
+                        quest={this.state.quest}
+                        testCode={quests[this.state.stage].quests[this.state.quest].test}
+                        regexps={quests[this.state.stage].quests[this.state.quest].regexps}
+                        regexpsNone={quests[this.state.stage].quests[this.state.quest].regexpsNone}
+                        showTutorial={this.showTutorial}/>
+                </div>
                 <div>
-                    {//POPUP
-                        <Popup togglePopup={this.togglePopup.bind(this)}/>
+                    {
+                        this.state.showPopup ?
+                            null
+                            : <Chatbot/>
                     }
                 </div>
-            )
-        }
+
+
+                {//POPUP
+                    this.state.showPopup ?
+                        <Popup togglePopup={this.togglePopup.bind(this)}/>
+                        : null
+                }
+            </div>
+        )
+
     }
 }
 
