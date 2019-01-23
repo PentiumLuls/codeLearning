@@ -82,7 +82,7 @@ class App extends Component {
 
         return (
             <div className="main">
-                <div className="panel">
+                <div className="leftpanel">
                     <Leftpanel notUpdateEditor={this.notUpdateEditor} updateLP={this.props.updateLP}
                                writeQuest={this.writeQuest}
                                func={this.changeButtonState} func2={this.changeButtonState2}/>
@@ -108,17 +108,15 @@ class App extends Component {
                         nextLevel={this.nextLevel} />
                 </div>
                 <div>
-                    {
-                        this.state.showPopup ?
-                            null
-                            : <Chatbot/>
-                    }
+                    
+                            <Chatbot/>
+                    
                 </div>
 
 
                 {//POPUP
                     this.state.showPopup ?
-                        <Popup togglePopup={this.togglePopup.bind(this)}/>
+                        <Popup stage={this.state.stage} quest={this.state.quest} togglePopup={this.togglePopup.bind(this)}/>
                         : null
                 }
             </div>
