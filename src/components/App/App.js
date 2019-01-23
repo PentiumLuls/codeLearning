@@ -70,6 +70,14 @@ class App extends Component {
         this.togglePopup();
     };
 
+    nextLevel = () => {
+        console.log("NEXT LEVEL BUTTON");
+        this.setState({
+            quest: this.state.quest + 1,
+        })
+        this.showTutorial();
+    };
+
     render() {
 
         return (
@@ -96,7 +104,8 @@ class App extends Component {
                         testCode={quests[this.state.stage].quests[this.state.quest].test}
                         regexps={quests[this.state.stage].quests[this.state.quest].regexps}
                         regexpsNone={quests[this.state.stage].quests[this.state.quest].regexpsNone}
-                        showTutorial={this.showTutorial}/>
+                        showTutorial={this.showTutorial}
+                        nextLevel={this.nextLevel} />
                 </div>
                 <div>
                     {
