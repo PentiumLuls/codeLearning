@@ -31,7 +31,6 @@ class Terminal extends Component {
 
 
     run = () => {
-
         try {
             const vm = require('vm');
             const codeToEvaluate = localStorage.getItem("code") + "\n" + this.props.testCode["code"]
