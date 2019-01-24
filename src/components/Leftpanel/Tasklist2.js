@@ -83,7 +83,7 @@ export default class Tasklist extends Component {
         return (
             <ul>
                 {this.state.step != 0 
-                ? <button onClick={this.back}>Назад</button>
+                ? <button onClick={this.back}>НАЗАД</button>
                 : null }
                 {this.state.step == 1 
                     ? <div className="listheader dashed"><p>{quests[this.state.stage].title}</p></div>

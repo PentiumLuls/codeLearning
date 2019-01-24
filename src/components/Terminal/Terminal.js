@@ -140,11 +140,11 @@ class Terminal extends Component {
                 <div className="button-line">
                     <button className="debug" onClick={this.run}>RUN CODE</button>
                     <Button text="CLEAR TERMINAL" className="debug" func={this.clearTerminal}/>
-                    <button  onClick={this.resetCodeEditor}>reset</button>
+                    <button onClick={this.resetCodeEditor}>RESET</button>
                     {
-                         this.props.stage == +localStorage['passStages'] 
-                         && this.props.quest == +localStorage['passQuests'] - 1
-                         || this.props.stage == +localStorage['passStages'] - 1
+                        this.props.stage == +localStorage['passStages']
+                        && this.props.quest == +localStorage['passQuests'] - 1
+                        || this.props.stage == +localStorage['passStages'] - 1
                             ? <button onClick={
                                 this.props.nextLevel.bind(this, localStorage.passStages, localStorage.passQuests)
                             } className="debug">LAST LEVEL</button>
