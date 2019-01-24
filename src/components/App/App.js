@@ -97,6 +97,7 @@ class App extends Component {
     //     this.showTutorial();
     // };
 
+
     render() {
         //проверка есть ли пройденый квест в вайт листе, если есть показать попап и удалить
         const newList = JSON.parse(localStorage.whiteList)

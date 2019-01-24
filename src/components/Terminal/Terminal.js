@@ -131,16 +131,17 @@ class Terminal extends Component {
         });
     }
 
+    resetCodeEditor = () => {
+        this.props.updateLeftPanel();
+    }
+
     render() {
         return (
             <div className="terminalComponent">
                 <div className="button-line">
                     <button className="debug" onClick={this.run}>RUN CODE</button>
                     <Button text="CLEAR TERMINAL" className="debug" func={this.clearTerminal}/>
-                    {/* <button onClick={() => {
-                        this.props.showTutorial()
-                    }} className="debug">TUTORIAL
-                    </button> */}
+                    <button  onClick={this.resetCodeEditor}>reset</button>
                     {
                         localStorage.passQuests > this.props.quest
                          && this.props.stage == +localStorage['passStages'] 
