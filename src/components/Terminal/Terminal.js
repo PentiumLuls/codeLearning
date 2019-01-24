@@ -4,6 +4,7 @@ import {quests} from '../../plot/quests'
 
 class Terminal extends Component {
     constructor() {
+
         super();
         this.state = {
             /*replics: [],*/
@@ -11,7 +12,13 @@ class Terminal extends Component {
             regexps: "",
             regexpsNone: "",
             content: ""
-        }
+        };
+        ///////////////////////////////
+        const self = this;
+        window.terminal = {};
+        window.terminal.log = (...args) => self.log(args.join(''));
+        window.unlockQuest = this.unlockQuest;
+        ///////////////////////////////
     }
 
 
@@ -27,6 +34,12 @@ class Terminal extends Component {
                 this.props.updateLeftPanel(false);
             }
         }
+    };
+
+    log(text) {
+        this.setState((state) => ({
+            content: state.content + "\n> " + text + "\n"
+        }));
     }
 
 
@@ -38,16 +51,11 @@ class Terminal extends Component {
 
             //IF LEVEL IS NOT CHOSEN
             if (regexp == null) {
-                this.setState({
-                    content: this.state.content + "\n> " + "Choose the quest before running your code, you mongrel." + "\n"
-                });
+                this.log("Choose the quest before running your code, you mongrel.");
             } else {
 
                 if (vm.runInThisContext(codeToEvaluate) === true && regexp.pass === true) {
-                    this.setState({
-                        content: this.state.content + "\n> " + "Oh wow, you're not entirely hopeless after all. Good job." + "\n"
-                    });
-
+                    this.log("Oh wow, you're not entirely hopeless after all. Good job.");
                     this.unlockQuest();
 
                 } else {
@@ -62,10 +70,7 @@ class Terminal extends Component {
                         information += "You don't pass all of the test cases. What a joke."
                     }
 
-                    this.setState({
-                        content: `${this.state.content}\n> This doesn't work. Nothing you ever do is good enough.\n\n 
-                    ${information}`
-                    });
+                    this.log("This doesn't work. Nothing you ever do is good enough.\n\n" + information);
                 }
             }
 
