@@ -65,9 +65,10 @@ class App extends Component {
         }
     };
 
-    updateLeftPanel = () => {
+    updateLeftPanel = (popup) => {
         this.setState({
-            updateLP: !this.props.updateLP
+            updateLP: !this.props.updateLP,
+            showPopup: popup
         })
     };
 
