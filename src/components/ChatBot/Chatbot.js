@@ -87,6 +87,16 @@ export default class Chatbot extends Component {
 
         console.log(hints[this.state.hintsN])
     }
+    clearChat(){
+        this.setState({
+            replics: [],
+            content: [],
+            replicN:0,
+            dialogN: 0,
+            hintsN: 0,
+
+        })
+    }
    
 
     componentDidMount() {
@@ -111,6 +121,7 @@ export default class Chatbot extends Component {
             { /*<button className='chatbutton' onClick={this.getDialogs.bind(this)}>nextDialog</button>*/}
                 <div className="bot-bottom-panel">
                     <button className='chatbutton' onClick={this.getHints.bind(this)}>getHint</button>
+                    <button className='chatbutton'onClick={this.clearChat.bind(this)}>clear chat</button>
                 </div>
                 </div>
             );
