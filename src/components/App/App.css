@@ -8,6 +8,7 @@
 html, body {
   height: 100vh;
   font-family: 'Press Start 2P', cursive;
+    font-size: 1vw !important;
 }
 /* скрывает скроллбар в хроме */
 ::-webkit-scrollbar {
@@ -22,20 +23,21 @@ ul {
   text-transform: uppercase;
   grid-area: panel; 
   background-color: #111;
-  border-right: 10px double white;
   width: 25vw;
+    box-shadow: 5px 0 0 0 black;
     height: 100vh;
     overflow-y: scroll;
 }
 .editor { 
   grid-area: editor;
-  width: 100%;
+  width: 75vw;
   height: 65vh;
 }
 .terminal{
   white-space: pre-line; /*TO FIX DEPRECATED \n*/
   text-transform: uppercase;
-  grid-area: terminal; 
+  grid-area: terminal;
+    width: 75vw;
   background-color: black;
   height: 35vh;
   position: relative; 
@@ -170,22 +172,24 @@ ul {padding: 0;}
 .questlist:hover {background-color: black; color: white;}
 .questlist:last-of-type {border: 0;}
 .hell-rules {
-    width: 100%; 
+    width: 75vw;
     height: 100vh; 
-    overflow-y:scroll; 
-    box-sizing: border-box; 
-    padding: 10px;}
+    overflow-y:scroll;
+    box-sizing:border-box;
+    padding: 1vw;
+}
 .rules-wrapper {
     display: grid; 
     grid-template-columns: 
-    repeat(3, 1fr); 
-    column-gap: 20px;
-    row-gap: 20px;
+    repeat(3, 1fr);
+    width: 73vw;
+    column-gap: 1vw;
+    row-gap: 1vw;
 }
 .hell-heading {text-align: center; color: red;}
 
-.hell-cards {width: 100%; height: 65vh; overflow-y:scroll; box-sizing: border-box; padding: 10px;}
-.cards-wrapper {display: grid; grid-template-columns: repeat(3, 1fr); column-gap: 10px;}
+.hell-cards {width: 100%; height: 65vh; overflow-y:scroll; box-sizing: border-box; padding: 1vw;}
+.cards-wrapper {display: grid; grid-template-columns: repeat(3, 1fr); column-gap: 1vw;}
 .cards-heading {text-align: center; color: green;}
 .card {cursor: pointer; background-color: black; box-sizing: border-box; border-bottom: 5px solid grey; text-align: center; text-transform: uppercase; height: 10vh; margin: auto; word-break: break-all;}
 .card p {margin: auto; color: #fff; user-select: none;}
@@ -206,6 +210,7 @@ button {
     font-family: inherit;
     cursor: pointer;
 }
+.image-flex {width: 25vw;}
 @keyframes border-dance
 {
     0%
