@@ -24,7 +24,7 @@ class Terminal extends Component {
                 } else {
                     localStorage.passQuests = +localStorage.passQuests + 1
                 }
-                this.props.updateLeftPanel();
+                this.props.updateLeftPanel(false);
             }
         }
     }
