@@ -14,6 +14,8 @@ export default class Chatbot extends Component {
             replicN:0,
             dialogN: 0,
             hintsN: 0,
+            
+            
         }
     }
 
@@ -94,6 +96,7 @@ export default class Chatbot extends Component {
             replicN:0,
             dialogN: 0,
             hintsN: 0,
+          
 
         })
     }
@@ -101,6 +104,7 @@ export default class Chatbot extends Component {
 
     componentDidMount() {
         try {
+            this.clearChat();
             this.writeReplics(dialogs[this.props.stage][this.props.quest][this.state.dialogN]);
             
         }  catch {
@@ -108,11 +112,18 @@ export default class Chatbot extends Component {
         }
         
     }
+    componentWillReceiveProps(){
+    
+         this.clearChat();
+         
+    }
 
     render() {
 
         if (this.state.visible === true)
+        
             return (
+                
                 <div className='chatbot'>
                     <div className="bot-top-panel">
                     <button className='buttonchatclose' onClick={this.showChat.bind(this)}>X</button>
@@ -130,6 +141,7 @@ export default class Chatbot extends Component {
                 <button className='buttonchatopen' onClick={this.showChat.bind(this)}>Chat</button>
             </div>
         )
-    }
+        
 
+}
 }
