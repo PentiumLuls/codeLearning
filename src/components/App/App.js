@@ -81,23 +81,6 @@ class App extends Component {
         this.togglePopup();
     };
 
-    // nextLevel = () => {
-    //     console.log("NEXT LEVEL BUTTON");
-    //     if (quests[this.state.stage].quests.length === this.state.quest + 1){
-    //         this.setState({
-    //             stage: this.state.stage + 1,
-    //             quest: 0
-    //         });
-    //     } else {
-    //         this.setState({
-    //             quest: this.state.quest + 1
-    //         });
-    //     }
-        
-    //     this.showTutorial();
-    // };
-
-
     render() {
         //проверка есть ли пройденый квест в вайт листе, если есть показать попап и удалить
         const newList = JSON.parse(localStorage.whiteList)
@@ -145,7 +128,9 @@ class App extends Component {
                 : <HellRules/>
             }
                 <div>
-                    <Chatbot/>
+                    {
+                        (!this.state.isEdit) ? <Chatbot/> : null
+                    }
                 </div>
 
 
