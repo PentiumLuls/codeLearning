@@ -22,6 +22,8 @@ const rectangle = {
     side4: 5,
 }
 
+terminal.log("You can log by me your info")
+
 function isBlack(rectangle) {
 
 }
