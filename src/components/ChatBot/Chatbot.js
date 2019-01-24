@@ -56,7 +56,7 @@ export default class Chatbot extends Component {
 
     getHints() {
         
-        const hints = quests[localStorage.passStages].quests[localStorage.passQuests].hints;
+        const hints = quests[this.props.stage].quests[this.props.quest].hints;
         const content = this.state.content;
         
         if(this.state.hintsN < hints.length){
@@ -101,7 +101,7 @@ export default class Chatbot extends Component {
 
     componentDidMount() {
         try {
-            this.writeReplics(dialogs[localStorage.passStages][localStorage.passQuests][this.state.dialogN]);
+            this.writeReplics(dialogs[this.props.stage][this.props.quest][this.state.dialogN]);
             
         }  catch {
             console.log("non replics")

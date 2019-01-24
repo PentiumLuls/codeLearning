@@ -129,7 +129,8 @@ class App extends Component {
             }
                 <div>
                     {
-                        (!this.state.isEdit) ? <Chatbot/> : null
+                        (!this.state.isEdit) ? <Chatbot stage={this.state.stage}
+                        quest={this.state.quest}/> : null
                     }
                 </div>
 
