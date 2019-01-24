@@ -222,7 +222,13 @@ function setStick(indus) {
                     if(indus1['weapon'].length !== 0){valid = false};
                     if(setStick(indus2) !== undefined){valid = false};
                     valid === true`,
-                    answer: ``
+                    answer: `function setStick(indus) {
+                        const newindus = Object.assign({}, indus);
+                        if (newindus.weapon.indexOf('stick') == -1) {
+                            newindus.weapon.push('stick');
+                            return newindus
+                        }
+                    }`
                 }
             },
 ///////////////////////////////////////quest 6////////////////////////////////////////////////////////////
@@ -249,7 +255,9 @@ function add(number1, number2) {
                     code: `let valid = true;
                              if(add(23, 76) !== 99){valid = false};
                             valid === true`,
-                    answer: ``
+                    answer: `function add(number1, number2) {
+                        return number1 + number2
+                    }`
                 }
             },
 ///////////////////////////////////////quest 7////////////////////////////////////////////////////////////
@@ -260,7 +268,7 @@ function add(number1, number2) {
                 regexpsNone: [/(for)/g, /(while)/g, /(var)/g, /(let)/g],
                 code: `//Напиши функцию createGang,которая принимает 2 карточки индусов
 //и возвращает карточку отряда такого типа: 
-{members: [indus1.name, indus2.name], armors: [true, true], weapons: ['stick', 'stick']}.
+//{members: [indus1.name, indus2.name], armors: [true, true], weapons: ['stick', 'stick', 'sword']}.
 //P.S. Функция ничего не должна возвращать, если у одного из индусов нет оружия.
 //ОЧЕНЬ ВАЖНО!!! Порядок создания свойств объекта должен быть такой, как в примере выше.
 
@@ -310,7 +318,16 @@ function createGang(indus1, indus2) {
                         if(JSON.stringify(createGang(indus2, indus3)) !== JSON.stringify({members: ['indus2', 'indus3'], armors: [true, true], weapons: ['sword' ,'stick', 'stick']})){valid = false};
                         if(JSON.stringify(createGang(indus1, indus2)) !== undefined){valid = false};
                     valid === true`,
-                    answer: ``
+                    answer: `function createGang(indus1, indus2) {
+                        const newindus = {}
+                        if (indus1.weapon.length !== 0 && indus2.weapon.length != 0) {
+                            newindus.members = [indus1.name, indus2.name]
+                            newindus.armors = [indus1.armor, indus2.armor]
+                            newindus.weapons = [...indus1.weapon, ...indus2.weapon]
+                            console.log(newindus)
+                            return newindus
+                        }
+                    }`
                 }
             }
         ]
