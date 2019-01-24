@@ -6,13 +6,13 @@ export const quests = [
 ///////////////////////////////////////quest 1////////////////////////////////////////////////////////////
             {
                 title: "Чистая функция. Туториал 1",
-                text: `В этом задании ты будешь писать функции предикаторы. Они принимают какое нибуть значение,
+                text: `В этом задании ты будешь писать функции предикаты. Они принимают какое нибуть значение,
                 сравнивают его с каким то условием и возрощают true или false. Позже эти функции будут использоваться
                 в filter.`,
                 regexps: [],
                 regexpsNone: [/(for)/g, /(while)/g, /(var)/g, /(let)/g],
-                code: `//Напиши функции isBlack и isSquare, которые принимают прямоугольник
-//и возвращают соответствующие данные.
+                code: `//Напишы функции isBlack и isSquare, которые принимают прямоугольник
+//и возрощают соответствующие данные.
 //P.S. Все цвета будут написаны в lowercase.
 
 const rectangle = {
@@ -32,7 +32,7 @@ function isSquare(rectangle) {
 }
                        `,
                 hints: [
-                    "Функция должна возвращать True или False"
+                    "Функция должна возрощать True или False"
                 ],
                 test: {
                     code: `let valid = true;
@@ -59,12 +59,13 @@ function isSquare(rectangle) {
             },
 ///////////////////////////////////////quest 2////////////////////////////////////////////////////////////
             {
-                title: "Неуталимая жажда",
-                text: `Ты открываешь глаза и видишь нескольких индусов, которые что-то обсуждают, они говорят тебе: "Выбирай тех, кто изменит этот мир!", и дают карточки нескольки сотен индусов. Ничего не понимая, ты начинаешь их сортировать, чувствуя при этом только непреодалимую жажду мести...`,
+                title: "Неудалимая жажда",
+                text: `Ты открываешь глаза и видишь нескольких индусов которые что то обсуждают, они говорят тебе: "Выбирай тех кто изменит этот мир!", и дают карточки нескольки сотен индусов. Ничего не понимая ты начинаеш их сортировать, чуйствуя при этом только непреодалимую жажду мести...`,
                 regexps: [],
                 regexpsNone: [/(for)/g, /(while)/g, /(var)/g, /(let)/g],
-                code: `//Напишы функцию isUseful,которая определяет пригодность к войне
-//P.S. Индус считается пригодным к войне если он мужчина.
+                code: `//Напишы функцию isUseful,котрая принимает карточку индуса
+//и возрощает пригодет он к войне или нет.
+//P.S. Индус считается пригодным если он мужчина.
 
 const Aadityesh = {
     gender: 'female'
@@ -75,7 +76,7 @@ function isUseful(indus) {
 }
                        `,
                 hints: [
-                    "Функция должна возвращать True или False"
+                    "Функция должна возрощать True или False"
                 ],
                 test: {
                     code: `let valid = true;
@@ -98,10 +99,11 @@ function isUseful(indus) {
             {
                 title: "Чистая функция. Туториал 2",
                 text: `В этом задании ты будешь писать функцию конвертер. Она принимает какое нибуть значение,
-                и возвращает другое значение.`,
+                и возвращает другое значение. Позже эта функция будет использоваться
+                в map.`,
                 regexps: [],
                 regexpsNone: [/(for)/g, /(while)/g, /(var)/g, /(let)/g],
-                code: `//Напиши функцию perimeter, которая принимает прямоугольник и возвращает его периметр.
+                code: `//Напишы функцию perimeter, которая принимает прямоугольник и возрощает его периметр.
 
 const rectangle = {
     color: 'red',
@@ -138,7 +140,7 @@ function perimeter(rectangle) {
 ///////////////////////////////////////quest 4////////////////////////////////////////////////////////////
             {
                 title: "Надевай шмотки, проваливай",
-                text: `Мастер поражен твоей способностью создания чистых функций! Теперь он хочет вручить солдатам броню. Ты не понемаеш почему броня сделана из ткани, но ты просто делаеш то, что тебе говорят.`,
+                text: `Все в комнате поражены твоей способностью создания чистых функций! Теперь они хотят вручить солдатам броню. Ты не понемаеш почему броня сделана с ткани, но ты просто делаеш то что тебе говорят.`,
                 regexps: [],
                 regexpsNone: [/(for)/g, /(while)/g, /(var)/g, /(let)/g],
                 code: `//Напишы функцию setArmor,которая принимает карточку индуса
@@ -155,7 +157,7 @@ function setArmor(indus) {
                        `,
                 hints: [
                     "Функция должна возрощать новую карточку индуса",
-                    "Используй assign чтобы скопировать карточку индуса"
+                    "Используй assign с пустым обектом в 1 параметре"
                 ],
                 test: {
                     code: `let valid = true;
@@ -182,7 +184,7 @@ function setArmor(indus) {
             },
 ///////////////////////////////////////quest 5////////////////////////////////////////////////////////////
             {
-                title: "Говорят, даже палка стреляет раз в год",
+                title: "Говорят даже палка стреляет раз в год",
                 text: `Все радуются твоему таланту но один из индусов говорит что броня это хорошо, но чем они драться будут? Тут ты понимаешь что все проблемы теперь будеш решать ты...`,
                 regexps: [],
                 regexpsNone: [/(for)/g, /(while)/g, /(var)/g, /(let)/g],
@@ -217,10 +219,15 @@ function setStick(indus) {
                     }
                     
                     if(setStick(indus1)['weapon'][0] !== 'stick'){valid = false};
-                    if(indus1['weapon'].length !== 0){valid = false};
                     if(setStick(indus2) !== undefined){valid = false};
                     valid === true`,
-                    answer: ``
+                    answer: `function setStick(indus) {
+                        const newindus = Object.assign({}, indus);
+                        if (newindus.weapon.indexOf('stick') == -1) {
+                            newindus.weapon.push('stick');
+                            return newindus
+                        }
+                    }`
                 }
             },
 ///////////////////////////////////////quest 6////////////////////////////////////////////////////////////
@@ -247,7 +254,9 @@ function add(number1, number2) {
                     code: `let valid = true;
                              if(add(23, 76) !== 99){valid = false};
                             valid === true`,
-                    answer: ``
+                    answer: `function add(number1, number2) {
+                        return number1 + number2
+                    }`
                 }
             },
 ///////////////////////////////////////quest 7////////////////////////////////////////////////////////////
@@ -258,7 +267,7 @@ function add(number1, number2) {
                 regexpsNone: [/(for)/g, /(while)/g, /(var)/g, /(let)/g],
                 code: `//Напишы функцию createGang,которая принимает 2 карточки индусов
 //и возрощает карточку отряда такого типа: 
-{members: [indus1.name, indus2.name], armors: [true, true], weapons: ['stick', 'stick']}.
+//{members: [indus1.name, indus2.name], armors: [true, true], weapons: ['stick', 'stick', 'sword']}.
 //P.S. Продумай что бы если у 1 из индусов нету оружия то функция ничего не возращала.
 //ОЧЕНЬ ВАЖНО!!! Порядок создания свойст обьекта должен быть такой как в примере выше.
 
@@ -305,10 +314,20 @@ function createGang(indus1, indus2) {
                         weapon: ['stick']
                     }
                     
-                        if(JSON.stringify(createGang(indus2, indus3)) !== JSON.stringify({members: ['indus2', 'indus3'], armors: [true, true], weapons: ['sword' ,'stick', 'stick']})){valid = false};
-                        if(JSON.stringify(createGang(indus1, indus2)) !== undefined){valid = false};
+
+                    if(JSON.stringify(createGang(indus2, indus3)) !== JSON.stringify({members: ['indus2', 'indus3'], armors: [true, true], weapons: ['sword' ,'stick', 'stick']})){valid = false};
+                    if(JSON.stringify(createGang(indus1, indus2)) !== undefined){valid = false};
                     valid === true`,
-                    answer: ``
+                    answer: `function createGang(indus1, indus2) {
+                        const newindus = {}
+                        if (indus1.weapon.length !== 0 && indus2.weapon.length != 0) {
+                            newindus.members = [indus1.name, indus2.name]
+                            newindus.armors = [indus1.armor, indus2.armor]
+                            newindus.weapons = [...indus1.weapon, ...indus2.weapon]
+                            console.log(newindus)
+                            return newindus
+                        }
+                    }`
                 }
             }
         ]
