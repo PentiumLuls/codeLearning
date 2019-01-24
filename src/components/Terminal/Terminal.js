@@ -40,13 +40,13 @@ class Terminal extends Component {
             //IF LEVEL IS NOT CHOSEN
             if (regexp == null) {
                 this.setState({
-                    content: this.state.content + "\n> " + "Please choose the quest before running your code!" + "\n"
+                    content: this.state.content + "\n> " + "Choose the quest before running your code, you mongrel." + "\n"
                 });
             } else {
 
                 if (vm.runInThisContext(codeToEvaluate) === true && regexp.pass === true) {
                     this.setState({
-                        content: this.state.content + "\n> " + "  OOO, you created it. wau i will tell my friendes that u are very cool" + "\n"
+                        content: this.state.content + "\n> " + "Oh wow, you're not entirely hopeless after all. Good job." + "\n"
                     });
 
                     this.unlockQuest();
@@ -54,17 +54,17 @@ class Terminal extends Component {
                 } else {
                     let information = '';
                     if (regexp.useIt.length !== 0) {
-                        information += `You must to use this: ${this.parseRegexp(regexp.useIt)}\n`
+                        information += `You should use ${this.parseRegexp(regexp.useIt)}\n`
                     }
                     if (regexp.notUseIt.length !== 0) {
-                        information += `Don't use it: ${this.parseRegexp(regexp.notUseIt)}\n`
+                        information += `Don't use ${this.parseRegexp(regexp.notUseIt)}\n`
                     }
                     if (regexp.pass) {
-                        information += "You don't pass all test cases"
+                        information += "You don't pass all of the test cases. What a joke."
                     }
 
                     this.setState({
-                        content: `${this.state.content}\n> Hmmm... It doesn't seem to work. Try again!\n\n 
+                        content: `${this.state.content}\n> This doesn't work. Nothing you ever do is good enough.\n\n 
                     ${information}`
                     });
                 }
