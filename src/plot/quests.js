@@ -219,7 +219,6 @@ function setStick(indus) {
                     }
                     
                     if(setStick(indus1)['weapon'][0] !== 'stick'){valid = false};
-                    if(indus1['weapon'].length !== 0){valid = false};
                     if(setStick(indus2) !== undefined){valid = false};
                     valid === true`,
                     answer: `function setStick(indus) {
