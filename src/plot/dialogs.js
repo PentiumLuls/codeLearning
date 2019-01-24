@@ -7,35 +7,27 @@ export const dialogs = [
                 {
                     name: "Mephisto",
                     text: [
-                        "Та как ты воще посмел\n",
-                        "Вот ответь мне КАК?!?!",
-                        "Как можно нарушыть все 6 функциональных грехов!?!",
-                        "При чем в 1 приложении и по несколько раз?!?!",
-                        "Ой все, видеть тебя не хочу...",
-                        "Такие как ты, жалкие ООПешники, никогда не смогут пройти через функционилище\n",
-                        "И обречены на вечное функционирование в функциональном аду",
-                        "Так что устраюйся поудобнее...",
-                        "У нас тут есть функции, монады, функторы, замыкания, отсутствие побочных еффектов\n",
-                        "И куча других функциональных прелестей",
-                        "http://www.dbnet.ece.ntua.gr/~adamo/languages/books/p359-hudak.pdf",
-                        "Прочитаешь, потом поговорим"
+                        "--- MEPHISTO HAS ENTERED THE CHAT ---",
+                        "Mephisto: Приветствую тебя, о грешник.",
+                        "Mephisto: Оказался здесь так как  согрешил ты.",
+                        "Mephisto: Функции святы и чисты, их не смеет осквернять никто. За грех сей ты и оказался здесь.",
+                        "Mephisto: Никогда не покинуть тебе функциональное чистилище сие, обречён ты  на функционирование вечное в аду.",
+                        "Mephisto: Приятного времяпровождения~",
+                        "--- MEPHISTO HAS LEFT THE CHAT ---"
                     ]
                 },
                 {
-                    name: "Gomunckul",
+                    name: "Karada",
                     text: [
-                        "Еей парень, я здесь, слышеш меня?!",
-                        "Ты иммеш честь говорить со мной, великим Обектом!!!",
-                        "Значит так парень, я не знаю что ты натворил...",
-                        "Но я сидел себе спокойно, смотрел аниме, никого не трогал...",
-                        "А тут БАЦ, и я уже внутри чистилища в теле гомункула",
-                        "Что уж тут сказать, жызнь полна сюрпризов)",
-                        "И как выиснилось я попал сюда благодаря тебе...",
-                        "Так что ты просто обязан вытащить нас от сюдова",
-                        "Я сламал их базу и получил доступ к части данных",
-                        "Но большая часть заблокирована, и в процесе прохождения преисподней ты получиш к ней доступ",
-                        "Я нашел инфу о каких то 6 функциональных грехах и кунул ее к тебе в журнал",
-                        "Жердяй уже открыл нам вход в честилище, так что читай о грехах и пойдем посмотрим что там"
+                        "--- KARADA HAS ENTERED THE CHAT ---",
+                        "Karada: I honestly can’t even believe it.",
+                        "Karada: That dirty mongrel. How dare he trap me into this ugly form?",
+                        "Karada: This Mephisto guy, some nerve he has.",
+                        "Karada: But you are no better. Thanks to your inability to code eloquently, we are trapped here together.",
+                        "Karada: I guess, our only way from this conundrum is cooperation. I’ll try to hack into this demon’s database and see what he’s got.",
+                        "Karada: But don’t get the wrong idea! I’m only doing this because I have no other choice.",
+                        "Karada: No one dares to mess with the goddess of object-oriented world Karada.",
+                        "--- KARADA HAS LEFT THE CHAT ---"
                     ]
                 }
             ],
