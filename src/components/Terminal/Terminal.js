@@ -148,7 +148,7 @@ class Terminal extends Component {
                          || this.props.stage == +localStorage['passStages'] - 1
                             ? <button onClick={
                                 this.props.nextLevel.bind(this, localStorage.passStages, localStorage.passQuests)
-                            } className="debug">NEXT LEVEL</button>
+                            } className="debug">LAST LEVEL</button>
                             : null
                     }
                 </div>

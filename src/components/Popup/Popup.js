@@ -7,7 +7,7 @@ class Popup extends React.Component {
     render() {
         return (
             <PureModal
-                header={notes[this.props.stage][this.props.quest].title}
+                header={notes[localStorage.passStages][localStorage.passQuests].title}
                 footer={<div>
                     <button onClick={this.props.togglePopup} ref={(node) => {this._okButton = node}}>Я готов</button>
                 </div>}
@@ -19,7 +19,7 @@ class Popup extends React.Component {
                 isOpen
                 ref="modal"
             >
-                {notes[this.props.stage][this.props.quest].text.map((el) => {
+                {notes[localStorage.passStages][localStorage.passQuests].text.map((el) => {
                     return (
                         <React.Fragment>
                              <h3>{el.title}</h3>

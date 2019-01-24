@@ -65,6 +65,7 @@ export default class Tasklist extends Component {
                             ?  this.next.bind(this, index) 
                             : null}
                         className={index <= this.props.passQuests 
+                            || this.state.stage < localStorage.passStages
                             ? "questlist" 
                             : "questlist inactive"}>{quest.title}</li>)
                 })
@@ -85,7 +86,7 @@ export default class Tasklist extends Component {
                 ? <button onClick={this.back}>Назад</button>
                 : null }
                 {this.state.step == 1 
-                    ? <div className="listheader dashed"><p>{quests[this.props.stage].title}</p></div>
+                    ? <div className="listheader dashed"><p>{quests[this.state.stage].title}</p></div>
                     : this.state.step == 2 
                         ? <div className="listheader dashed"><p>{quests[this.props.stage].quests[this.props.quest].title}</p></div>
                         : null}

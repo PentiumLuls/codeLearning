@@ -45,21 +45,20 @@ class App extends Component {
     }
 
     writeQuest = (stageN, questN, popup=false) => {
+        console.log()
         let newStage = this.state.stage;
         let newQuest = this.state.quest;
         newStage = stageN;
         newQuest = questN;
 
-        if(newQuest == this.state.quest) {
-            console.log("Handle re-choosing quest from left panel!")
-        } else {
+        
             this.setState({
                 stage: newStage,
                 quest: newQuest,
                 updateLP: false,
                 notUpdateEditor: 0
             })
-        }
+        
         if(popup) {
             this.updateLeftPanel();
             this.showTutorial();
@@ -123,7 +122,8 @@ class App extends Component {
                         regexps={quests[this.state.stage].quests[this.state.quest].regexps}
                         regexpsNone={quests[this.state.stage].quests[this.state.quest].regexpsNone}
                         showTutorial={this.showTutorial}
-                        nextLevel={this.writeQuest} />
+                        nextLevel={this.writeQuest}
+                        />
                 </div>
                 </div>
                 : <HellRules/>
