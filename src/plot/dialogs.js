@@ -129,7 +129,26 @@ export const dialogs = [
         ],
 
         //2 Chapter
-        []
+        [
+            [
+                //1 Dialogs
+                {
+                    name: "Unknown",
+                    text: [
+                        "Sample dialog",
+                        "Sample dialog",
+                    ]
+                },
+                {
+                    name: "Unknown",
+                    text: [
+                        "Sample dialog",
+                        "Sample dialog",
+                    ]
+                },
+
+            ]
+        ]
     ]
 ;
 
