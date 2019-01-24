@@ -18,7 +18,7 @@ class Terminal extends Component {
     unlockQuest = () => {
         if (this.props.stage >= localStorage.passStages) {
             if (this.props.quest >= localStorage.passQuests) {
-                if (quests[localStorage.passStages].quests.length == localStorage.passQuests + 1) {
+                if (quests[localStorage.passStages].quests.length == +localStorage.passQuests + 1) {
                     localStorage.passStages = +localStorage.passStages + 1;
                     localStorage.passQuests = 0;
                 } else {
@@ -143,11 +143,11 @@ class Terminal extends Component {
                     <Button text="CLEAR TERMINAL" className="debug" func={this.clearTerminal}/>
                     <button  onClick={this.resetCodeEditor}>reset</button>
                     {
-                        localStorage.passQuests > this.props.quest
-                         && this.props.stage == +localStorage['passStages'] 
+                         this.props.stage == +localStorage['passStages'] 
                          && this.props.quest == +localStorage['passQuests'] - 1
+                         || this.props.stage == +localStorage['passStages'] - 1
                             ? <button onClick={
-                                this.props.nextLevel.bind(this, this.props.stage, this.props.quest + 1)
+                                this.props.nextLevel.bind(this, localStorage.passStages, localStorage.passQuests)
                             } className="debug">NEXT LEVEL</button>
                             : null
                     }

@@ -41,6 +41,7 @@ class App extends Component {
         this.setState({
             showPopup: !this.state.showPopup,
         });
+        console.log(this.state.showPopup)
     }
 
     writeQuest = (stageN, questN, popup=false) => {
@@ -84,11 +85,11 @@ class App extends Component {
     render() {
         //проверка есть ли пройденый квест в вайт листе, если есть показать попап и удалить
         const newList = JSON.parse(localStorage.whiteList)
-        const canIShowPopup = newList[this.state.stage].indexOf(+this.state.quest) !== -1;
-        let indexOfElement = newList[this.state.stage].indexOf(+this.state.quest);
-        if (canIShowPopup) {
+        const canIShowPopup = newList[localStorage.passStages].indexOf(+localStorage.passQuests) !== -1;
+        let indexOfElement = newList[localStorage.passStages].indexOf(+localStorage.passQuests);
+        if (canIShowPopup && this.state.showPopup) {
             
-            delete newList[this.state.stage][indexOfElement];
+            delete newList[localStorage.passStages][indexOfElement];
             localStorage.setItem('whiteList', JSON.stringify(newList))
         }
 
