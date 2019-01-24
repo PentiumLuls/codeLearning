@@ -19,7 +19,7 @@ class App extends Component {
             localStorage['passQuests'] = 0
         }
         if (!localStorage['whiteList']) {
-            localStorage['whiteList'] = JSON.stringify([[0, 1, 2, 5], [0, 2]]);
+            localStorage['whiteList'] = JSON.stringify([[0, 1, 2, 4, 5], [0, 2]]);
         }
         this.state = {
             showPopup: true,//SHOW POPUP ON START
