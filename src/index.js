@@ -3,8 +3,13 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './components/App/App';
 
-ReactDOM.render(<App />, document.body);
+window.terminal = {};
+window.terminal.log = (props) => {
+    console.log(props)
+};
+window.unlockQuest
 
+ReactDOM.render(<App />, document.body);
 
 
 // If you want your app to work offline and load faster, you can change

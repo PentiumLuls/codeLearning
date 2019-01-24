@@ -66,7 +66,7 @@ function isSquare(rectangle) {
 //И возвращает его пригодность к войне.
 //P.S. Индус считается пригодным, если он мужчина.
 
-const Aadityesh = {
+const person = {
     gender: 'female'
 }
 
@@ -141,14 +141,14 @@ function perimeter(rectangle) {
                 text: `Все в комнате поражены твоей способностью создания чистых функций! Теперь они хотят вручить солдатам броню. Ты не понимаешь почему броня сделана из ткани, но ты просто чувствуешь, что это жизненно важно.`,
                 regexps: [],
                 regexpsNone: [/(for)/g, /(while)/g, /(var)/g, /(let)/g],
-                code: `//Напиши функцию setArmor.
+                code: `//Напиши функцию equipArmor.
 
-const Aahvan = {
+const person = {
     gender: 'female',
     armor: false
 }
 
-function setArmor(indus) {
+function equipArmor(indus) {
 
 }
                        `,
@@ -185,42 +185,40 @@ function setArmor(indus) {
                 text: `Все радуются твоему таланту, но один из индусов говорит, что броня - это хорошо, но чем они драться будут? Тут ты понимаешь что все проблемы теперь будешь решать ты...`,
                 regexps: [],
                 regexpsNone: [/(for)/g, /(while)/g, /(var)/g, /(let)/g],
-                code: `//Напиши функцию setStick, только не забывай про чистоту твоей функции
+                code: `//Напиши функцию equipStick, только не забывай про чистоту твоей функции
 //И учти, что у индуса может уже быть несколько оружий разных типов.
-//P.S. Если у индуса уже есть палка, функция ничего не должна возвращать.
 
-const Aadved = {
+const person = {
     gender: 'female',
     armor: true,
-    weapon: []
+    weapons: []
 }
 
-function setStick(indus) {
+function equipStick(indus) {
 
 }
                        `,
                 hints: [
-                    "Функция должна возвращать новую карточку индуса",
                     "Используй indexOf, чтобы проверить наличие палки у индуса"
                 ],
                 test: {
                     code: `let valid = true;
                     const indus1 = {
                         gender: 'female',
-                        weapon: []
+                        weapons: []
                     }
                     const indus2 = {
                         gender: 'male',
-                        weapon: ['sword','stick']
+                        weapons: ['sword','stick']
                     }
                     
-                    if(setStick(indus1)['weapon'][0] !== 'stick'){valid = false};
-                    if(setStick(indus2) !== undefined){valid = false};
+                    if(setStick(indus1)['weapons'][0] !== 'stick'){valid = false};
+                    if(setStick(indus2) !== {gender: 'male',weapons: ['sword','stick']}){valid = false};
                     valid === true`,
                     answer: `function setStick(indus) {
                         const newindus = Object.assign({}, indus);
-                        if (newindus.weapon.indexOf('stick') == -1) {
-                            newindus.weapon.push('stick');
+                        if (newindus.weapons.indexOf('stick') == -1) {
+                            newindus.weapons.push('stick');
                             return newindus
                         }
                     }`
@@ -234,10 +232,10 @@ function setStick(indus) {
                 regexpsNone: [/(for)/g, /(while)/g, /(var)/g, /(let)/g],
                 code: `//Напиши функцию add, которая возвращает суму.
 
-const number1 = 5;
-const number2 = 10
+const a = 5;
+const b = 10
 
-function add(number1, number2) {
+function add(a, b) {
 
 }
                        `,
@@ -264,18 +262,18 @@ function add(number1, number2) {
 //P.S. Функция ничего не должна возвращать, если у одного из индусов нет оружия.
 //ОЧЕНЬ ВАЖНО!!! Порядок создания свойств объекта должен быть такой, как в примере выше.
 
-const Aadhi = {
+const person1 = {
     name: 'Aadhi',
     gender: 'male',
     armor: true,
-    weapon: ['sword', 'stick']
+    weapons: ['sword', 'stick']
 }
 
-const Aadhunik = {
+const person2 = {
     name: 'Aadhunik',
     gender: 'male',
     armor: true,
-    weapon: ['stick']
+    weapons: ['stick']
 }
 
 function createGang(indus1, indus2) {
@@ -292,19 +290,19 @@ function createGang(indus1, indus2) {
                         name: 'indus1',
                         gender: 'male',
                         armor: true,
-                        weapon: []
+                        weapons: []
                     }
                     const indus2 = {
                         name: 'indus2',
                         gender: 'male',
                         armor: true,
-                        weapon: ['sword', 'stick']
+                        weapons: ['sword', 'stick']
                     }
                     const indus3 = {
                         name: 'indus3',
                         gender: 'male',
                         armor: true,
-                        weapon: ['stick']
+                        weapons: ['stick']
                     }
                     
                         if(JSON.stringify(createGang(indus2, indus3)) !== JSON.stringify({members: ['indus2', 'indus3'], armors: [true, true], weapons: ['sword' ,'stick', 'stick']})){valid = false};
@@ -312,10 +310,10 @@ function createGang(indus1, indus2) {
                     valid === true`,
                     answer: `function createGang(indus1, indus2) {
                         const newindus = {}
-                        if (indus1.weapon.length !== 0 && indus2.weapon.length != 0) {
+                        if (indus1.weapons.length !== 0 && indus2.weapons.length != 0) {
                             newindus.members = [indus1.name, indus2.name]
                             newindus.armors = [indus1.armor, indus2.armor]
-                            newindus.weapons = [...indus1.weapon, ...indus2.weapon]
+                            newindus.weapons = [...indus1.weapons, ...indus2.weapons]
                             console.log(newindus)
                             return newindus
                         }
