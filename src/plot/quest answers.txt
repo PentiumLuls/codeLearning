@@ -1,7 +1,7 @@
 ///////////////////////////////////////quest 1////////////////////////////////////////////////////////////
 
 function isBlack(rectangle) {
-    return rectangle.color == 'black'
+    return rectangle.color == 'black';
 }
 
 function isSquare(rectangle) {
@@ -33,26 +33,26 @@ function equipStick(hindu) {
     const newhindu = Object.assign({}, hindu);
     if (newhindu.weapons.indexOf('stick') == -1) {
         newhindu.weapons.push('stick');
-        return newhindu
+        return newhindu;
     }
 }
 
 ///////////////////////////////////////quest 6////////////////////////////////////////////////////////////
 
 function add(number1, number2) {
-   return number1 + number2
+   return number1 + number2;
 }
 
 ///////////////////////////////////////quest 7////////////////////////////////////////////////////////////
 
 function createGang(hindu1, hindu2) {
-    const newhindu = {}
+    const newhindu = {};
     if (hindu1.weapon.length !== 0 && hindu2.weapon.length != 0) {
-        newhindu.members = [hindu1.name, hindu2.name]
-        newhindu.armors = [hindu1.armor, hindu2.armor]
-        newhindu.weapons = [...hindu1.weapons, ...hindu2.weapons]
-        console.log(newhindu)
-        return newhindu
+        newhindu.members = [hindu1.name, hindu2.name];
+        newhindu.armors = [hindu1.armor, hindu2.armor];
+        newhindu.weapons = [...hindu1.weapons, ...hindu2.weapons];
+        console.log(newhindu);
+        return newhindu;
     }
 }
 

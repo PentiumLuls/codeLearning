@@ -52,7 +52,7 @@ function isSquare(rectangle) {
                              if(isSquare(rectangle3) !== true){valid = false};
                             valid === true`,
                     answer: `function isBlack(rectangle) {
-    return rectangle.color == 'black'
+    return rectangle.color == 'black';
 }
 
 function isSquare(rectangle) {
@@ -228,7 +228,7 @@ function equipStick(hindu) {
                         const newhindu = Object.assign({}, hindu);
                         if (newhindu.weapons.indexOf('stick') == -1) {
                             newhindu.weapons.push('stick');
-                            return newhindu
+                            return newhindu;
                         }
                     }`
                 }
@@ -256,7 +256,7 @@ function add(a, b) {
                              if(add(23, 76) !== 99){valid = false};
                             valid === true`,
                     answer: `function add(number1, number2) {
-                        return number1 + number2
+                        return number1 + number2;
                     }`
                 }
             },
