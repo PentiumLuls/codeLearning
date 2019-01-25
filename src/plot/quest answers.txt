@@ -21,19 +21,19 @@ function perimeter(rectangle) {
 
 ///////////////////////////////////////quest 4////////////////////////////////////////////////////////////
 
-function setArmor(indus) {
-    const newindus = Object.assign({}, indus);
-    newindus.armor = true;
-    return newindus;
+function equipArmor(hindu) {
+    const newhindu = Object.assign({}, hindu);
+    newhindu.armor = true;
+    return newhindu;
 }
 
 ///////////////////////////////////////quest 5////////////////////////////////////////////////////////////
 
-function setStick(indus) {
-    const newindus = Object.assign({}, indus);
-    if (newindus.weapon.indexOf('stick') == -1) {
-        newindus.weapon.push('stick');
-        return newindus
+function setStick(hindu) {
+    const newhindu = Object.assign({}, hindu);
+    if (newhindu.weapon.indexOf('stick') == -1) {
+        newhindu.weapon.push('stick');
+        return newhindu
     }
 }
 
@@ -45,14 +45,14 @@ function add(number1, number2) {
 
 ///////////////////////////////////////quest 7////////////////////////////////////////////////////////////
 
-function createGang(indus1, indus2) {
-    const newindus = {}
-    if (indus1.weapon.length !== 0 && indus2.weapon.length != 0) {
-        newindus.members = [indus1.name, indus2.name]
-        newindus.armors = [indus1.armor, indus2.armor]
-        newindus.weapons = [...indus1.weapon, ...indus2.weapon]
-        console.log(newindus)
-        return newindus
+function createGang(hindu1, hindu2) {
+    const newhindu = {}
+    if (hindu1.weapon.length !== 0 && hindu2.weapon.length != 0) {
+        newhindu.members = [hindu1.name, hindu2.name]
+        newhindu.armors = [hindu1.armor, hindu2.armor]
+        newhindu.weapons = [...hindu1.weapon, ...hindu2.weapon]
+        console.log(newhindu)
+        return newhindu
     }
 }
 
