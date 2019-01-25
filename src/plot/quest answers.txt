@@ -12,7 +12,7 @@ function isSquare(rectangle) {
 
 ///////////////////////////////////////quest 2////////////////////////////////////////////////////////////
 
-function isUseful(indus) {
+function isMale(indus) {
     return indus.gender == 'male';
 }
 
