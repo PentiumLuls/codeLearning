@@ -5,11 +5,8 @@ function isBlack(rectangle) {
 }
 
 function isSquare(rectangle) {
-    return rectangle.side1 == rectangle.side2
-        && rectangle.side1 == rectangle.side3
-        && rectangle.side1 == rectangle.side4;
+    return rectangle.width == rectangle.height ;
 }
-
 ///////////////////////////////////////quest 2////////////////////////////////////////////////////////////
 
 function isMale(hindu) {

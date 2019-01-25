@@ -16,10 +16,8 @@ export const quests = [
 
 const rectangle = {
     color: 'red',
-    side1: 5,
-    side2: 5,
-    side3: 5,
-    side4: 5,
+    width:4,
+    height:4,
 }
 
 terminal.log("You can log by me your info")
@@ -39,22 +37,26 @@ function isSquare(rectangle) {
                     code: `let valid = true;
                     const rectangle2 = {
                         color: 'black',
-                        side1: 4,
-    side2: 1,
-    side3: 2,
-    side4: 5,
+                        width:4,
+                        height: 3,
                     }
+                    const rectangle3 = {
+                        color: 'red',
+                        width:8,
+                        height: 8,
+                    }
+
                              if(isBlack(rectangle2) !== true){valid = false};
                              if(isSquare(rectangle2) !== false){valid = false};
+                             if(isBlack(rectangle3) !== false){valid = false};
+                             if(isSquare(rectangle3) !== true){valid = false};
                             valid === true`,
                     answer: `function isBlack(rectangle) {
     return rectangle.color == 'black'
 }
 
 function isSquare(rectangle) {
-    return rectangle.side1 == rectangle.side2 
-        && rectangle.side1 == rectangle.side3 
-        && rectangle.side1 == rectangle.side4;
+    return rectangle.width == rectangle.height ;
 }`
                 }
             },
