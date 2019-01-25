@@ -72,7 +72,7 @@ const person = {
     gender: 'female'
 }
 
-function isMale(indus) {
+function isMale(hindu) {
 
 }
                        `,
@@ -81,18 +81,18 @@ function isMale(indus) {
                 ],
                 test: {
                     code: `let valid = true;
-                    const indus1 = {
+                    const hindu1 = {
                         gender: 'female'
                     }
-                    const indus2 = {
+                    const hindu2 = {
                         gender: 'male'
                     }
                     
-                    if(isMale(indus1) !== false){valid = false};
-                    if(isMale(indus2) !== true){valid = false};
+                    if(isMale(hindu1) !== false){valid = false};
+                    if(isMale(hindu2) !== true){valid = false};
                     valid === true`,
-                    answer: `function isMale(indus) {
-    return indus.gender == 'male';
+                    answer: `function isMale(hindu) {
+    return hindu.gender == 'male';
 }`
                 }
             },
