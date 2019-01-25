@@ -64,7 +64,7 @@ function isSquare(rectangle) {
                 text: `Ты открываешь глаза и видишь нескольких индусов, которые что-то обсуждают. Они говорят тебе: "Выбирай тех, кто изменит этот мир!", и дают карточки нескольки сотен индусов. Ничего не понимая, ты начинаешь их сортировать, чувствуя при этом только непреодалимую жажду мести...`,
                 regexps: [],
                 regexpsNone: [/(for)/g, /(while)/g, /(var)/g, /(let)/g],
-                code: `//Напиши функцию isUseful, которая принимает карточку индуса
+                code: `//Напиши функцию isMale, которая принимает карточку индуса
 //И возвращает его пригодность к войне.
 //P.S. Индус считается пригодным, если он мужчина.
 
@@ -72,7 +72,7 @@ const person = {
     gender: 'female'
 }
 
-function isUseful(indus) {
+function isMale(hindu) {
 
 }
                        `,
@@ -81,18 +81,18 @@ function isUseful(indus) {
                 ],
                 test: {
                     code: `let valid = true;
-                    const indus1 = {
+                    const hindu1 = {
                         gender: 'female'
                     }
-                    const indus2 = {
+                    const hindu2 = {
                         gender: 'male'
                     }
                     
-                    if(isUseful(indus1) !== false){valid = false};
-                    if(isUseful(indus2) !== true){valid = false};
+                    if(isMale(hindu1) !== false){valid = false};
+                    if(isMale(hindu2) !== true){valid = false};
                     valid === true`,
-                    answer: `function isUseful(indus) {
-    return indus.gender == 'male';
+                    answer: `function isMale(hindu) {
+    return hindu.gender == 'male';
 }`
                 }
             },
