@@ -6,7 +6,8 @@ import Terminal from '../Terminal/Terminal'
 import Popup from "../Popup/Popup";
 import Leftpanel from '../Leftpanel/Leftpanel';
 import {quests} from '../../plot/quests';
-import Chatbot from '../ChatBot/Chatbot';
+import Chatbot from '../ChatBot/Chatbot'; 
+
 
 class App extends Component {
     constructor() {
