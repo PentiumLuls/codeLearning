@@ -7,6 +7,7 @@ import Popup from "../Popup/Popup";
 import Leftpanel from '../Leftpanel/Leftpanel';
 import {quests} from '../../plot/quests';
 import Chatbot from '../ChatBot/Chatbot'; 
+import { formatWithOptions } from 'util';
 
 
 class App extends Component {
@@ -27,7 +28,8 @@ class App extends Component {
             isEdit: false,
             stage: +localStorage.passStages,
             quest: +localStorage.passQuests,
-            notUpdateEditor: 0
+            notUpdateEditor: 0,
+            answer: false
         };
     }
 
@@ -42,24 +44,33 @@ class App extends Component {
         this.setState({
             showPopup: !this.state.showPopup,
         });
-        console.log(this.state.showPopup)
     }
 
-    writeQuest = (stageN, questN, popup=false) => {
-        console.log()
+    writeQuest = (stageN, questN, popup=false, answer=false) => {
+
         let newStage = this.state.stage;
         let newQuest = this.state.quest;
-        newStage = stageN;
-        newQuest = questN;
-
         
+
+        if (answer) {
+
+            this.setState({
+                answer: answer
+            }, () => console.log(answer))
+            
+            
+        } else {
+            newStage = stageN;
+            newQuest = questN;
             this.setState({
                 stage: newStage,
                 quest: newQuest,
                 updateLP: false,
-                notUpdateEditor: 0
+                notUpdateEditor: 0,
+                answer: answer
             })
-        
+        }
+
         if(popup) {
             this.updateLeftPanel();
             this.showTutorial();
@@ -73,6 +84,7 @@ class App extends Component {
         })
     };
 
+
     notUpdateEditor = () => {
         this.setState({
             notUpdateEditor: 1
@@ -82,6 +94,18 @@ class App extends Component {
     showTutorial = () => {
         this.togglePopup();
     };
+
+    renderCodeEditor = () => {
+        return (
+            <Codeditor
+                                notUpdateEditor={this.state.notUpdateEditor}
+                                textAnswer={quests[this.state.stage].quests[this.state.quest].test.answer}
+                                text={quests[this.state.stage].quests[this.state.quest].code}
+                                answer={this.state.answer}/>
+        )
+    }
+
+    
 
     render() {
         //проверка есть ли пройденый квест в вайт листе, если есть показать попап и удалить
@@ -109,9 +133,7 @@ class App extends Component {
                 <div>
                 <div className="editor">
                     
-                         <Codeditor
-                                notUpdateEditor={this.state.notUpdateEditor}
-                                text={quests[this.state.stage].quests[this.state.quest].code}/>
+                         {this.renderCodeEditor()}
                             
                 </div>
                 <div className="terminal">
