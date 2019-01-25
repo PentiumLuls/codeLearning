@@ -16,7 +16,7 @@ class Terminal extends Component {
         ///////////////////////////////
         const self = this;
         window.terminal = {};
-        window.terminal.log = (...args) => self.log(args.join(''));
+        window.terminal.log = (...args) => {self.log(JSON.stringify(args), "logger")};
         window.unlockQuest = this.unlockQuest;
         ///////////////////////////////
     }
@@ -36,12 +36,11 @@ class Terminal extends Component {
         }
     };
 
-    log(text) {
+    log(text, logger) {
         this.setState((state) => ({
-            content: state.content + "\n> " + text + "\n"
+            content: state.content + "\n" + logger + "> " + text + "\n"
         }));
     }
-
 
     run = () => {
         try {
@@ -51,11 +50,11 @@ class Terminal extends Component {
 
             //IF LEVEL IS NOT CHOSEN
             if (regexp == null) {
-                this.log("Choose the quest before running your code, you mongrel.");
+                this.log("Choose the quest before running your code, you mongrel.", '');
             } else {
 
                 if (vm.runInThisContext(codeToEvaluate) === true && regexp.pass === true) {
-                    this.log("Oh wow, you're not entirely hopeless after all. Good job.");
+                    this.log("Oh wow, you're not entirely hopeless after all. Good job.", '');
                     this.unlockQuest();
 
                 } else {
@@ -70,7 +69,7 @@ class Terminal extends Component {
                         information += "You don't pass all of the test cases. What a joke."
                     }
 
-                    this.log("This doesn't work. Nothing you ever do is good enough.\n\n" + information);
+                    this.log("This doesn't work. Nothing you ever do is good enough.\n\n" + information, '');
                 }
             }
 
@@ -155,7 +154,7 @@ class Terminal extends Component {
                         || this.props.stage == +localStorage['passStages'] - 1
                             ? <button onClick={
                                 this.props.nextLevel.bind(this, localStorage.passStages, localStorage.passQuests)
-                            } className="debug">LAST LEVEL</button>
+                            } className="debug">NEXT LEVEL</button>
                             : null
                     }
                 </div>
