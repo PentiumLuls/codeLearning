@@ -221,10 +221,10 @@ function equipStick(hindu) {
                         weapons: ['sword','stick']
                     }
                     
-                    if(setStick(hindu1)['weapons'][0] !== 'stick'){valid = false};
-                    if(setStick(hindu2) !== {gender: 'male',weapons: ['sword','stick']}){valid = false};
+                    if(equipStick(hindu1)['weapons'][0] !== 'stick'){valid = false};
+                    
                     valid === true`,
-                    answer: `function setStick(hindu) {
+                    answer: `function equipStick(hindu) {
                         const newhindu = Object.assign({}, hindu);
                         if (newhindu.weapons.indexOf('stick') == -1) {
                             newhindu.weapons.push('stick');

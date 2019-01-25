@@ -29,10 +29,10 @@ function equipArmor(hindu) {
 
 ///////////////////////////////////////quest 5////////////////////////////////////////////////////////////
 
-function setStick(hindu) {
+function equipStick(hindu) {
     const newhindu = Object.assign({}, hindu);
-    if (newhindu.weapon.indexOf('stick') == -1) {
-        newhindu.weapon.push('stick');
+    if (newhindu.weapons.indexOf('stick') == -1) {
+        newhindu.weapons.push('stick');
         return newhindu
     }
 }
@@ -50,7 +50,7 @@ function createGang(hindu1, hindu2) {
     if (hindu1.weapon.length !== 0 && hindu2.weapon.length != 0) {
         newhindu.members = [hindu1.name, hindu2.name]
         newhindu.armors = [hindu1.armor, hindu2.armor]
-        newhindu.weapons = [...hindu1.weapon, ...hindu2.weapon]
+        newhindu.weapons = [...hindu1.weapons, ...hindu2.weapons]
         console.log(newhindu)
         return newhindu
     }
