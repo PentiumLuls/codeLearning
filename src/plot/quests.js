@@ -20,16 +20,15 @@ const rectangle = {
     height:4,
 };
 
-terminal.log("You can log by me your info");
+terminal.log("Hello world");
 
 function isBlack(rectangle) {
-
+    
 }
 
 function isSquare(rectangle) {
-
-}
-                       `,
+    
+}`,
                 hints: [
                     "Функция должна возвращать True или False"
                 ],
@@ -51,12 +50,24 @@ function isSquare(rectangle) {
                              if(isBlack(rectangle3) !== false){valid = false};
                              if(isSquare(rectangle3) !== true){valid = false};
                             valid === true`,
-                    answer: `function isBlack(rectangle) {
+                    answer: `//Напиши функции isBlack и isSquare, которые принимают прямоугольник
+//И возвращают соответствующие данные.
+//P.S. Все цвета будут написаны в lowercase.
+
+const rectangle = {
+    color: 'red',
+    width:4,
+    height:4,
+};
+
+terminal.log("You can log by me your info");
+
+function isBlack(rectangle) {
     return rectangle.color == 'black';
 }
 
 function isSquare(rectangle) {
-    return rectangle.width == rectangle.height ;
+    return rectangle.width == rectangle.height;
 }`
                 }
             },
@@ -74,10 +85,9 @@ const person = {
     gender: 'female'
 };
 
-function isMale(hindu) {
-
-}
-                       `,
+function isMale(hinduCard) {
+    
+} `,
                 hints: [
                     "Функция должна возвращать True или False"
                 ],
@@ -93,8 +103,16 @@ function isMale(hindu) {
                     if(isMale(hindu1) !== false){valid = false};
                     if(isMale(hindu2) !== true){valid = false};
                     valid === true`,
-                    answer: `function isMale(hindu) {
-    return hindu.gender == 'male';
+                    answer: `//Напиши функцию isMale, которая принимает карточку индуса
+//И возвращает его пригодность к войне.
+//P.S. Индус считается пригодным, если он мужчина.
+
+const person = {
+    gender: 'female'
+};
+
+function isMale(hinduCard) {
+    return hinduCard.gender == 'male';
 }`
                 }
             },
@@ -105,7 +123,8 @@ function isMale(hindu) {
                 и возвращает другое значение. Позже, эта функция тебе пригодится.`,
                 regexps: [],
                 regexpsNone: [/(for)/g, /(while)/g, /(var)/g, /(let)/g],
-                code: `//Напиши функцию perimeter, которая принимает прямоугольник и возвращает результат проверки.
+                code: `//Напиши функцию perimeter, которая принимает прямоугольник
+//и возвращает результат проверки.
 
 const rectangle = {
     color: 'red',
@@ -115,10 +134,8 @@ const rectangle = {
 };
 
 function perimeter(rectangle) {
-
-}
-
-                       `,
+    
+}`,
                 hints: [
                     "Функция должна возвращать 1 число"
                 ],
@@ -139,7 +156,17 @@ function perimeter(rectangle) {
                              if(perimeter(rectangle2) !== 16){valid = false};
                             
                             valid === true`,
-                    answer: `function perimeter(rectangle) {
+                    answer: `//Напиши функцию perimeter, которая принимает прямоугольник
+//и возвращает результат проверки.
+
+const rectangle = {
+    color: 'red',
+    width: 5,
+    height: 5,
+    
+};
+
+function perimeter(rectangle) {
     return rectangle.width*2 + rectangle.height*2;
 }`
                 }
@@ -150,17 +177,18 @@ function perimeter(rectangle) {
                 text: `Все в комнате поражены твоей способностью создания чистых функций! Теперь они хотят вручить солдатам броню. Ты не понимаешь почему броня сделана из ткани, но ты просто чувствуешь, что это жизненно важно.`,
                 regexps: [],
                 regexpsNone: [/(for)/g, /(while)/g, /(var)/g, /(let)/g],
-                code: `//Напиши функцию equipArmor.
+                code: `//Напиши функцию equipArmor, которая принимает карточку индуса
+//И возвращает новую, со свойством "armor: true" 
+//Если у индуса уже есть броня, просто возврати этого индуса
 
 const person = {
     gender: 'female',
     armor: false
 };
 
-function equipArmor(hindu) {
-
-}
-                       `,
+function equipArmor(hinduCard) {
+    
+}`,
                 hints: [
                     "Функция должна возвращать новую карточку индуса",
                     "Используй assign с пустым объектом в первом параметре"
@@ -170,21 +198,35 @@ function equipArmor(hindu) {
                     const hindu1 = {
                         gender: 'female',
                         armor: false
-                    }
+                    };
                     const hindu2 = {
                         gender: 'male',
                         armor: false
-                    }
+                    };
+                    const hindu3 = {
+                        gender: 'male', armor: true
+                    };
                     
                     if(equipArmor(hindu1)['armor'] !== true){valid = false};
                     if(hindu1['armor'] !== false){valid = false};
                     if(equipArmor(hindu2)['armor'] !== true){valid = false};
                     if(hindu2['armor'] !== false){valid = false};
+                    if(equipArmor(hindu3) != hindu3) valid = false;
                     valid === true`,
-                    answer: `function setArmor(hindu) {
-    const newhindu = Object.assign({}, hindu);
-    newhindu.armor = true;
-    return newhindu;
+                    answer: `//Напиши функцию equipArmor, которая принимает карточку индуса
+//И возвращает новую, со свойством "armor: true" 
+//Если у индуса уже есть броня, просто возврати этого индуса
+
+const person = {
+    gender: 'female',
+    armor: false
+};
+
+function equipArmor(hinduCard) {
+    if (hinduCard.armor === true) return hinduCard;
+    const newHinduCard = Object.assign({}, hinduCard);
+    newHinduCard.armor = true;
+    return newHinduCard;
 }`
                 }
             },
@@ -194,7 +236,9 @@ function equipArmor(hindu) {
                 text: `Все радуются твоему таланту, но один из индусов говорит, что броня - это хорошо, но чем они драться будут? Тут ты понимаешь что все проблемы теперь будешь решать ты...`,
                 regexps: [],
                 regexpsNone: [/(for)/g, /(while)/g, /(var)/g, /(let)/g],
-                code: `//Напиши функцию equipStick, только не забывай про чистоту твоей функции
+                code: `//Напиши функцию equipStick, которая возвращает карточку индуса с палкой.
+//И если у индуса уже есть палка, то возвращает эту же карточку.
+//Только не забывай про чистоту твоей функции.
 //И учти, что у индуса может уже быть несколько оружий разных типов.
 
 const person = {
@@ -203,10 +247,9 @@ const person = {
     weapons: []
 };
 
-function equipStick(hindu) {
-
-}
-                       `,
+function equipStick(hinduCard) {
+    
+}`,
                 hints: [
                     "Используй indexOf, чтобы проверить наличие палки у индуса"
                 ],
@@ -218,19 +261,32 @@ function equipStick(hindu) {
                     }
                     const hindu2 = {
                         gender: 'male',
-                        weapons: ['sword','stick']
+                        weapons: ['stick, sword']
                     }
                     
                     if(equipStick(hindu1)['weapons'][0] !== 'stick'){valid = false};
-                    
+                    if(equipStick(hindu2)['weapons'].length !== 2){valid = false};
+                    if(equipStick(hindu2) != hindu2){valid = false};
                     valid === true`,
-                    answer: `function equipStick(hindu) {
-                        const newhindu = Object.assign({}, hindu);
-                        if (newhindu.weapons.indexOf('stick') == -1) {
-                            newhindu.weapons.push('stick');
-                            return newhindu;
-                        }
-                    }`
+                    answer: `//Напиши функцию equipStick, которая возвращает карточку индуса с палкой.
+//И если у индуса уже есть палка, то возвращает этого индуса.
+//Только не забывай про чистоту твоей функции.
+//И учти, что у индуса может уже быть несколько оружий разных типов.
+
+const person = {
+    gender: 'female',
+    armor: true,
+    weapons: []
+};
+
+function equipStick(hinduCard) {
+    const newHinduCard = Object.assign({}, hinduCard);
+    if (newHinduCard.weapons.indexOf('stick') == -1) {
+        newHinduCard.weapons.push('stick');
+        return newHinduCard;
+    }
+    return hinduCard;
+}`
                 }
             },
 ///////////////////////////////////////quest 6////////////////////////////////////////////////////////////
@@ -239,15 +295,14 @@ function equipStick(hindu) {
                 text: `В этом задании ты будешь писать функцию-аккумулятор. Позже эта функция тебе пригодится.`,
                 regexps: [],
                 regexpsNone: [/(for)/g, /(while)/g, /(var)/g, /(let)/g],
-                code: `//Напиши функцию add, которая возвращает суму.
+                code: `//Напиши функцию add, которая возвращает суму двух чисел.
 
 const a = 5;
 const b = 10;
 
 function add(a, b) {
-
-}
-                       `,
+    
+}`,
                 hints: [
                     "Функция должна возвращать одно число"
                 ],
@@ -255,9 +310,14 @@ function add(a, b) {
                     code: `let valid = true;
                              if(add(23, 76) !== 99){valid = false};
                             valid === true`,
-                    answer: `function add(number1, number2) {
-                        return number1 + number2;
-                    }`
+                    answer: `//Напиши функцию add, которая возвращает суму двух чисел.
+
+const a = 5;
+const b = 10;
+
+function add(a, b) {
+    return a + b;
+}`
                 }
             },
 ///////////////////////////////////////quest 7////////////////////////////////////////////////////////////
@@ -267,9 +327,11 @@ function add(a, b) {
                 regexps: [],
                 regexpsNone: [/(for)/g, /(while)/g, /(var)/g, /(let)/g],
                 code: `//Напиши функцию createGang,которая возвращает отряд такого типа: 
-//{members: [hindu1.name, hindu2.name], armors: [true, true], weapons: ['stick', 'stick', 'sword']}.
+//{members: [hindu1.name, hindu2.name], armors: [true, true],
+//weapons: ['stick', 'stick', 'sword']}.
 //P.S. Функция ничего не должна возвращать, если у одного из индусов нет оружия.
-//ОЧЕНЬ ВАЖНО!!! Порядок создания свойств объекта должен быть такой, как в примере выше.
+//ОЧЕНЬ ВАЖНО!!! Порядок создания свойств объекта должен быть такой,
+//как в примере выше.
 
 const person1 = {
     name: 'Aadhi',
@@ -285,10 +347,9 @@ const person2 = {
     weapons: ['stick']
 };
 
-function createGang(hindu1, hindu2) {
-
-}
-                       `,
+function joinGang(gangCard, hinduCard) {
+    
+} `,
                 hints: [
                     "Функция должна возвращать новый отряд индусов",
                     "Используй spread-оператор для создания массива оружий"
