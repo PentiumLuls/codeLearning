@@ -8,7 +8,7 @@ export default class Chatbot extends Component {
         super();
 
         this.state = {
-            visible: true,
+            visible: false,
             replics: [],
             content: [],
             replicN:0,
@@ -104,8 +104,8 @@ export default class Chatbot extends Component {
 
     componentDidMount() {
         try {
-            this.clearChat();
-            this.writeReplics(dialogs[this.props.stage][this.props.quest][this.state.dialogN]);
+           // this.clearChat();
+          //  this.writeReplics(dialogs[this.props.stage][this.props.quest][this.state.dialogN]);
             
         }  catch {
             console.log("non replics")
