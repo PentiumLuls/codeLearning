@@ -138,6 +138,8 @@ class Terminal extends Component {
         this.props.updateLeftPanel();
     }
 
+
+
     render() {
         return (
             <div className="terminalComponent">
@@ -145,6 +147,7 @@ class Terminal extends Component {
                     <button className="debug" onClick={this.run}>RUN CODE</button>
                     <Button text="CLEAR TERMINAL" className="debug" func={this.clearTerminal}/>
                     <button onClick={this.resetCodeEditor}>RESET</button>
+                    {/*<button onClick={this.props.nextLevel.bind(this, 0 , 0, false, true)}>SHOW ANSWER</button>*/}
                     {
                         this.props.stage == +localStorage['passStages']
                         && this.props.quest == +localStorage['passQuests'] - 1

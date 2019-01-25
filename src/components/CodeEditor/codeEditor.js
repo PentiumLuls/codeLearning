@@ -15,9 +15,15 @@ class CodeEditor extends Component {
     componentWillReceiveProps(nextProps) {
         if (nextProps.notUpdateEditor == 0) {
             if (this.forUpdate == false) {
-                const editor = this.ace.editor;
-                editor.setValue(nextProps.text);
-                this.forUpdate = false
+                if (this.props.answer){
+                    const editor = this.ace.editor;
+                    editor.setValue(nextProps.textAnswer);
+                    this.forUpdate = false
+                } else {
+                    const editor = this.ace.editor;
+                    editor.setValue(nextProps.text);
+                    this.forUpdate = false
+                }
             }
         }
     }
