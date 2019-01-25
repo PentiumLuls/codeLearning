@@ -3,7 +3,7 @@
 Learn how to make thing in JS using **functional programming** in JavaScript with this web-quest, that tell us a story of 'functional hell'.
 
 You can also try to complete this quests:
-+ [WEB version](https://someReference)
++ [WEB version](http://functional-hell.herokuapp.com/)
 
 ## Requirements
 

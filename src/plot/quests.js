@@ -16,13 +16,11 @@ export const quests = [
 
 const rectangle = {
     color: 'red',
-    side1: 5,
-    side2: 5,
-    side3: 5,
-    side4: 5,
-}
+    width:4,
+    height:4,
+};
 
-terminal.log("You can log by me your info")
+terminal.log("You can log by me your info");
 
 function isBlack(rectangle) {
 
@@ -39,22 +37,26 @@ function isSquare(rectangle) {
                     code: `let valid = true;
                     const rectangle2 = {
                         color: 'black',
-                        side1: 4,
-    side2: 1,
-    side3: 2,
-    side4: 5,
+                        width:4,
+                        height: 3,
                     }
+                    const rectangle3 = {
+                        color: 'red',
+                        width:8,
+                        height: 8,
+                    }
+
                              if(isBlack(rectangle2) !== true){valid = false};
                              if(isSquare(rectangle2) !== false){valid = false};
+                             if(isBlack(rectangle3) !== false){valid = false};
+                             if(isSquare(rectangle3) !== true){valid = false};
                             valid === true`,
                     answer: `function isBlack(rectangle) {
-    return rectangle.color == 'black'
+    return rectangle.color == 'black';
 }
 
 function isSquare(rectangle) {
-    return rectangle.side1 == rectangle.side2 
-        && rectangle.side1 == rectangle.side3 
-        && rectangle.side1 == rectangle.side4;
+    return rectangle.width == rectangle.height ;
 }`
                 }
             },
@@ -70,7 +72,7 @@ function isSquare(rectangle) {
 
 const person = {
     gender: 'female'
-}
+};
 
 function isMale(hindu) {
 
@@ -107,11 +109,10 @@ function isMale(hindu) {
 
 const rectangle = {
     color: 'red',
-    side1: 5,
-    side2: 5,
-    side3: 5,
-    side4: 5
-}
+    width: 5,
+    height: 5,
+    
+};
 
 function perimeter(rectangle) {
 
@@ -125,15 +126,21 @@ function perimeter(rectangle) {
                     code: `let valid = true;
                     const rectangle2 = {
                         color: 'black',
-                        side1: 3,
-                        side2: 5,
-                        side3: 7,
-                        side4: 9
+                        width: 3,
+                        height: 5,
+                        
                     }
-                             if(perimeter(rectangle2) !== 24){valid = false};
+                    const rectangle3 = {
+                        color: 'black',
+                        width: 10,
+                        height: 20,
+                        
+                    }
+                             if(perimeter(rectangle2) !== 16){valid = false};
+                            
                             valid === true`,
                     answer: `function perimeter(rectangle) {
-    return rectangle.side1 + rectangle.side2 + rectangle.side3 + rectangle.side4;
+    return rectangle.width*2 + rectangle.height*2;
 }`
                 }
             },
@@ -148,9 +155,9 @@ function perimeter(rectangle) {
 const person = {
     gender: 'female',
     armor: false
-}
+};
 
-function equipArmor(indus) {
+function equipArmor(hindu) {
 
 }
                        `,
@@ -160,24 +167,24 @@ function equipArmor(indus) {
                 ],
                 test: {
                     code: `let valid = true;
-                    const indus1 = {
+                    const hindu1 = {
                         gender: 'female',
                         armor: false
                     }
-                    const indus2 = {
+                    const hindu2 = {
                         gender: 'male',
                         armor: false
                     }
                     
-                    if(setArmor(indus1)['armor'] !== true){valid = false};
-                    if(indus1['armor'] !== false){valid = false};
-                    if(setArmor(indus2)['armor'] !== true){valid = false};
-                    if(indus2['armor'] !== false){valid = false};
+                    if(equipArmor(hindu1)['armor'] !== true){valid = false};
+                    if(hindu1['armor'] !== false){valid = false};
+                    if(equipArmor(hindu2)['armor'] !== true){valid = false};
+                    if(hindu2['armor'] !== false){valid = false};
                     valid === true`,
-                    answer: `function setArmor(indus) {
-    const newindus = Object.assign({}, indus);
-    newindus.armor = true;
-    return newindus;
+                    answer: `function setArmor(hindu) {
+    const newhindu = Object.assign({}, hindu);
+    newhindu.armor = true;
+    return newhindu;
 }`
                 }
             },
@@ -194,9 +201,9 @@ const person = {
     gender: 'female',
     armor: true,
     weapons: []
-}
+};
 
-function equipStick(indus) {
+function equipStick(hindu) {
 
 }
                        `,
@@ -205,23 +212,23 @@ function equipStick(indus) {
                 ],
                 test: {
                     code: `let valid = true;
-                    const indus1 = {
+                    const hindu1 = {
                         gender: 'female',
                         weapons: []
                     }
-                    const indus2 = {
+                    const hindu2 = {
                         gender: 'male',
                         weapons: ['sword','stick']
                     }
                     
-                    if(setStick(indus1)['weapons'][0] !== 'stick'){valid = false};
-                    if(setStick(indus2) !== {gender: 'male',weapons: ['sword','stick']}){valid = false};
+                    if(equipStick(hindu1)['weapons'][0] !== 'stick'){valid = false};
+                    
                     valid === true`,
-                    answer: `function setStick(indus) {
-                        const newindus = Object.assign({}, indus);
-                        if (newindus.weapons.indexOf('stick') == -1) {
-                            newindus.weapons.push('stick');
-                            return newindus
+                    answer: `function equipStick(hindu) {
+                        const newhindu = Object.assign({}, hindu);
+                        if (newhindu.weapons.indexOf('stick') == -1) {
+                            newhindu.weapons.push('stick');
+                            return newhindu;
                         }
                     }`
                 }
@@ -235,7 +242,7 @@ function equipStick(indus) {
                 code: `//Напиши функцию add, которая возвращает суму.
 
 const a = 5;
-const b = 10
+const b = 10;
 
 function add(a, b) {
 
@@ -249,7 +256,7 @@ function add(a, b) {
                              if(add(23, 76) !== 99){valid = false};
                             valid === true`,
                     answer: `function add(number1, number2) {
-                        return number1 + number2
+                        return number1 + number2;
                     }`
                 }
             },
@@ -260,7 +267,7 @@ function add(a, b) {
                 regexps: [],
                 regexpsNone: [/(for)/g, /(while)/g, /(var)/g, /(let)/g],
                 code: `//Напиши функцию createGang,которая возвращает отряд такого типа: 
-//{members: [indus1.name, indus2.name], armors: [true, true], weapons: ['stick', 'stick', 'sword']}.
+//{members: [hindu1.name, hindu2.name], armors: [true, true], weapons: ['stick', 'stick', 'sword']}.
 //P.S. Функция ничего не должна возвращать, если у одного из индусов нет оружия.
 //ОЧЕНЬ ВАЖНО!!! Порядок создания свойств объекта должен быть такой, как в примере выше.
 
@@ -269,16 +276,16 @@ const person1 = {
     gender: 'male',
     armor: true,
     weapons: ['sword', 'stick']
-}
+};
 
 const person2 = {
     name: 'Aadhunik',
     gender: 'male',
     armor: true,
     weapons: ['stick']
-}
+};
 
-function createGang(indus1, indus2) {
+function createGang(hindu1, hindu2) {
 
 }
                        `,
@@ -288,36 +295,36 @@ function createGang(indus1, indus2) {
                 ],
                 test: {
                     code: `let valid = true;
-                    const indus1 = {
-                        name: 'indus1',
+                    const hindu1 = {
+                        name: 'hindu1',
                         gender: 'male',
                         armor: true,
                         weapons: []
                     }
-                    const indus2 = {
-                        name: 'indus2',
+                    const hindu2 = {
+                        name: 'hindu2',
                         gender: 'male',
                         armor: true,
                         weapons: ['sword', 'stick']
                     }
-                    const indus3 = {
-                        name: 'indus3',
+                    const hindu3 = {
+                        name: 'hindu3',
                         gender: 'male',
                         armor: true,
                         weapons: ['stick']
                     }
                     
-                        if(JSON.stringify(createGang(indus2, indus3)) !== JSON.stringify({members: ['indus2', 'indus3'], armors: [true, true], weapons: ['sword' ,'stick', 'stick']})){valid = false};
-                        if(JSON.stringify(createGang(indus1, indus2)) !== undefined){valid = false};
+                        if(JSON.stringify(createGang(hindu2, hindu3)) !== JSON.stringify({members: ['hindu2', 'hindu3'], armors: [true, true], weapons: ['sword' ,'stick', 'stick']})){valid = false};
+                        if(JSON.stringify(createGang(hindu1, hindu2)) !== undefined){valid = false};
                     valid === true`,
-                    answer: `function createGang(indus1, indus2) {
-                        const newindus = {}
-                        if (indus1.weapons.length !== 0 && indus2.weapons.length != 0) {
-                            newindus.members = [indus1.name, indus2.name]
-                            newindus.armors = [indus1.armor, indus2.armor]
-                            newindus.weapons = [...indus1.weapons, ...indus2.weapons]
-                            console.log(newindus)
-                            return newindus
+                    answer: `function createGang(hindu1, hindu2) {
+                        const newhindu = {};
+                        if (hindu1.weapons.length !== 0 && hindu2.weapons.length != 0) {
+                            newhindu.members = [hindu1.name, hindu2.name];
+                            newhindu.armors = [hindu1.armor, hindu2.armor];
+                            newhindu.weapons = [...hindu1.weapons, ...hindu2.weapons];
+                            console.log(newhindu);
+                            return newhindu;
                         }
                     }`
                 }
