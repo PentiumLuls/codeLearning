@@ -18,9 +18,9 @@ const rectangle = {
     color: 'red',
     width:4,
     height:4,
-}
+};
 
-terminal.log("You can log by me your info")
+terminal.log("You can log by me your info");
 
 function isBlack(rectangle) {
 
@@ -72,7 +72,7 @@ function isSquare(rectangle) {
 
 const person = {
     gender: 'female'
-}
+};
 
 function isMale(hindu) {
 
@@ -112,7 +112,7 @@ const rectangle = {
     width: 5,
     height: 5,
     
-}
+};
 
 function perimeter(rectangle) {
 
@@ -155,7 +155,7 @@ function perimeter(rectangle) {
 const person = {
     gender: 'female',
     armor: false
-}
+};
 
 function equipArmor(hindu) {
 
@@ -201,7 +201,7 @@ const person = {
     gender: 'female',
     armor: true,
     weapons: []
-}
+};
 
 function equipStick(hindu) {
 
@@ -242,7 +242,7 @@ function equipStick(hindu) {
                 code: `//Напиши функцию add, которая возвращает суму.
 
 const a = 5;
-const b = 10
+const b = 10;
 
 function add(a, b) {
 
@@ -276,14 +276,14 @@ const person1 = {
     gender: 'male',
     armor: true,
     weapons: ['sword', 'stick']
-}
+};
 
 const person2 = {
     name: 'Aadhunik',
     gender: 'male',
     armor: true,
     weapons: ['stick']
-}
+};
 
 function createGang(hindu1, hindu2) {
 
@@ -318,13 +318,13 @@ function createGang(hindu1, hindu2) {
                         if(JSON.stringify(createGang(hindu1, hindu2)) !== undefined){valid = false};
                     valid === true`,
                     answer: `function createGang(hindu1, hindu2) {
-                        const newhindu = {}
+                        const newhindu = {};
                         if (hindu1.weapons.length !== 0 && hindu2.weapons.length != 0) {
-                            newhindu.members = [hindu1.name, hindu2.name]
-                            newhindu.armors = [hindu1.armor, hindu2.armor]
-                            newhindu.weapons = [...hindu1.weapons, ...hindu2.weapons]
-                            console.log(newhindu)
-                            return newhindu
+                            newhindu.members = [hindu1.name, hindu2.name];
+                            newhindu.armors = [hindu1.armor, hindu2.armor];
+                            newhindu.weapons = [...hindu1.weapons, ...hindu2.weapons];
+                            console.log(newhindu);
+                            return newhindu;
                         }
                     }`
                 }
