@@ -109,10 +109,9 @@ function isMale(hindu) {
 
 const rectangle = {
     color: 'red',
-    side1: 5,
-    side2: 5,
-    side3: 5,
-    side4: 5
+    width: 5,
+    height: 5,
+    
 }
 
 function perimeter(rectangle) {
@@ -127,15 +126,21 @@ function perimeter(rectangle) {
                     code: `let valid = true;
                     const rectangle2 = {
                         color: 'black',
-                        side1: 3,
-                        side2: 5,
-                        side3: 7,
-                        side4: 9
+                        width: 3,
+                        height: 5,
+                        
                     }
-                             if(perimeter(rectangle2) !== 24){valid = false};
+                    const rectangle3 = {
+                        color: 'black',
+                        width: 10,
+                        height: 20,
+                        
+                    }
+                             if(perimeter(rectangle2) !== 16){valid = false};
+                            
                             valid === true`,
                     answer: `function perimeter(rectangle) {
-    return rectangle.side1 + rectangle.side2 + rectangle.side3 + rectangle.side4;
+    return rectangle.width*2 + rectangle.height*2;
 }`
                 }
             },
