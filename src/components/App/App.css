@@ -4,6 +4,7 @@
     scrollbar-width: none;
     -ms-overflow-style: -ms-autohiding-scrollbar;
     overflow: -moz-scrollbars-none;
+
 }
 html, body {
   height: 100vh;

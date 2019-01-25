@@ -26,7 +26,7 @@ class CodeEditor extends Component {
         return (
             <ReactAce
                 mode="javascript"
-                theme="dracula"
+                theme="terminal"
                 onChange={this.onChange}
                 style={{height: '100%', fontSize: '20px', position: 'relative'}}
                 ref={instance => {
@@ -39,6 +39,7 @@ class CodeEditor extends Component {
     componentDidMount() {
         const editor = this.ace.editor
         editor.setValue(localStorage.code || "")
+        
     }
 }
 

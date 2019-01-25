@@ -73,8 +73,7 @@ export default class Tasklist extends Component {
         }   else if (this.state.step == 2) {
             return (
                 
-                <li onClick={this.props.writeQuest.bind(this, this.props.stage, this.props.quest)}
-                 className="questlist">{quests[this.props.stage].quests[this.props.quest].text}</li>
+                <li className="questlist">{quests[this.props.stage].quests[this.props.quest].text}</li>
             )
         }
     }
