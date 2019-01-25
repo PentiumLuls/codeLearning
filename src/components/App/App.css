@@ -211,7 +211,7 @@ button {
     font-family: inherit;
     cursor: pointer;
 }
-.image-flex {width: 25vw;}
+.image-flex {width: 22vw;}
 @keyframes border-dance
 {
     0%
@@ -241,3 +241,4 @@ button {
 .el_rules p:last-of-type {
     border-bottom: none;
 }
+.questlist2 {color: #fff; padding: 10px 15px;}

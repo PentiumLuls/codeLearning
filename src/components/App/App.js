@@ -20,8 +20,14 @@ class App extends Component {
         if (!localStorage['passQuests']) {
             localStorage['passQuests'] = 0
         }
+        if (!localStorage['currentStage']) {
+            localStorage['currentStage'] = localStorage.passStages;
+        }
+        if (!localStorage['currentQuest']) {
+            localStorage['currentQuest'] = localStorage.passQuests;
+        }
         if (!localStorage['whiteList']) {
-            localStorage['whiteList'] = JSON.stringify([[0, 1, 2, 3, 4], [0, 2]]);
+            localStorage['whiteList'] = JSON.stringify([[0, 1, 2, 3, 4, 6], [0, 2]]);
         }
         this.state = {
             showPopup: true,//SHOW POPUP ON START
@@ -70,7 +76,9 @@ class App extends Component {
                 answer: answer
             })
         }
-
+        localStorage.currentStage = stageN;
+        localStorage.currentQuest = questN;
+        
         if(popup) {
             this.updateLeftPanel();
             this.showTutorial();
@@ -109,7 +117,7 @@ class App extends Component {
 
     render() {
         //проверка есть ли пройденый квест в вайт листе, если есть показать попап и удалить
-        const newList = JSON.parse(localStorage.whiteList)
+        const newList = JSON.parse(localStorage.whiteList);
         const canIShowPopup = newList[localStorage.passStages].indexOf(+localStorage.passQuests) !== -1;
         let indexOfElement = newList[localStorage.passStages].indexOf(+localStorage.passQuests);
         if (canIShowPopup && this.state.showPopup) {
