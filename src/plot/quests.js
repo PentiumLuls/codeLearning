@@ -328,23 +328,17 @@ function add(a, b) {
                 regexpsNone: [/(for)/g, /(while)/g, /(var)/g, /(let)/g],
                 code: `//Напиши функцию createGang,которая возвращает отряд такого типа: 
 //{members: [hindu1.name, hindu2.name], armors: [true, true],
-//weapons: ['stick', 'stick', 'sword']}.
-//P.S. Функция ничего не должна возвращать, если у одного из индусов нет оружия.
+//weapons: {sticks: 2, swords: 1}}.
+//P.S. Функция должна возвращать исходную карточку отряда,
+//если рекрута нет оружия.
 //ОЧЕНЬ ВАЖНО!!! Порядок создания свойств объекта должен быть такой,
 //как в примере выше.
 
-const person1 = {
+const person = {
     name: 'Aadhi',
     gender: 'male',
     armor: true,
     weapons: ['sword', 'stick']
-};
-
-const person2 = {
-    name: 'Aadhunik',
-    gender: 'male',
-    armor: true,
-    weapons: ['stick']
 };
 
 function joinGang(gangCard, hinduCard) {
@@ -355,39 +349,59 @@ function joinGang(gangCard, hinduCard) {
                     "Используй spread-оператор для создания массива оружий"
                 ],
                 test: {
-                    code: `let valid = true;
-                    const hindu1 = {
-                        name: 'hindu1',
-                        gender: 'male',
-                        armor: true,
-                        weapons: []
-                    }
-                    const hindu2 = {
-                        name: 'hindu2',
-                        gender: 'male',
-                        armor: true,
-                        weapons: ['sword', 'stick']
-                    }
-                    const hindu3 = {
-                        name: 'hindu3',
-                        gender: 'male',
-                        armor: true,
-                        weapons: ['stick']
-                    }
+                    code: `const person1 = {
+    name: 'Aadhi1',
+    gender: 'male',
+    armor: true,
+    weapons: ['sword', 'stick']
+};
+const person2 = {
+    name: 'Aadhi2',
+    gender: 'male',
+    armor: false,
+    weapons: []
+};
+const gang1 = {
+    members: ['indus1name'],
+    membersAmount: 1,
+    armors: [true],
+    weapons: {sticks: 1, swords: 0}
+};
+
+                       let valid = true;
+                    if (joinGang(gang1, person1) !== {members: ['indus1name', 'Aadhi1'],
+    membersAmount: 2,
+    armors: [true, true],
+    weapons: {sticks: 2, swords: 1}}) {valid = false};
                     
-                        if(JSON.stringify(createGang(hindu2, hindu3)) !== JSON.stringify({members: ['hindu2', 'hindu3'], armors: [true, true], weapons: ['sword' ,'stick', 'stick']})){valid = false};
-                        if(JSON.stringify(createGang(hindu1, hindu2)) !== undefined){valid = false};
                     valid === true`,
-                    answer: `function createGang(hindu1, hindu2) {
-                        const newhindu = {};
-                        if (hindu1.weapons.length !== 0 && hindu2.weapons.length != 0) {
-                            newhindu.members = [hindu1.name, hindu2.name];
-                            newhindu.armors = [hindu1.armor, hindu2.armor];
-                            newhindu.weapons = [...hindu1.weapons, ...hindu2.weapons];
-                            console.log(newhindu);
-                            return newhindu;
-                        }
-                    }`
+                    answer: `//Напиши функцию createGang,которая возвращает отряд такого типа: 
+//{members: [hindu1.name, hindu2.name], armors: [true, true],
+//weapons: {sticks: 2, swords: 1}}.
+//P.S. Функция должна возвращать исходную карточку отряда,
+//если рекрута нет оружия.
+//ОЧЕНЬ ВАЖНО!!! Порядок создания свойств объекта должен быть такой,
+//как в примере выше.
+
+const person = {
+    name: 'Aadhi',
+    gender: 'male',
+    armor: true,
+    weapons: ['sword', 'stick']
+};
+
+function joinGang(gangCard, hinduCard) {
+    if (hinduCard.weapons.length === 0) return gangCard;
+    const newGangCard = Object.assign({}, gangCard);
+    newGangCard.members.push(hinduCard.name);
+    newGangCard.membersAmount += 1;
+    newGangCard.armors.push(hinduCard.armor);
+    if (hinduCard.weapons.indexOf('sword') != -1)
+        newGangCard.weapons.swords += 1;
+    if (hinduCard.weapons.indexOf('stick') != -1)
+        newGangCard.weapons.sticks += 1;
+    return newGangCard;
+}`
                 }
             }
         ]
@@ -397,7 +411,7 @@ function joinGang(gangCard, hinduCard) {
 ///////////////////////////////////////глава2////////////////////////////////////////////////////////////
     {
         title: "Кайся глупец",
-        quests: 
+        quests:
         [
             {
                 title: "Корова-функционист",
@@ -627,5 +641,5 @@ function milkACow(cow, mass) {
             },
         ]
     }
-    
+
 ]
