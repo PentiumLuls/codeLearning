@@ -55,7 +55,7 @@
             log('=> ' + result.status);
             for(var i = 0; i < result.failedExpectations.length; i++) {
                 log('Failure: ' + result.failedExpectations[i].message);
-                log(result.failedExpectations[i].stack);
+                //log(result.failedExpectations[i].stack);
             }
         };
 
@@ -99,7 +99,7 @@
 
         // print JSON report
         //console.log(JSON.stringify(finalReport));
-        return finalReport.logs.toString();
+        return finalReport.logs;
     };
 
 
