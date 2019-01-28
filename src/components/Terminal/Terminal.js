@@ -1,13 +1,14 @@
 import React, {Component} from 'react';
-import Button from './Button/Button';
 import {quests} from '../../plot/quests'
+import { connect } from 'react-redux';
+import { selectStage, selectQuest, nextStep, prevStep, nextLevel } from '../../store/actions/questActions'
+import { resetCode, writeCode } from '../../store/actions/codeActions'
 
 class Terminal extends Component {
     constructor() {
 
         super();
         this.state = {
-            /*replics: [],*/
             testCode: "testCode",
             regexps: "",
             regexpsNone: "",
@@ -130,31 +131,36 @@ class Terminal extends Component {
             testCode: nextValue.testCode,
             regexps: nextValue.regexps,
             regexpsNone: nextValue.regexpsNone,
-
         });
     }
 
-    resetCodeEditor = () => {
-        this.props.updateLeftPanel();
+    resetCode = () => {
+        this.props.writeCode(true)
+        this.props.resetCode()
     }
 
 
-
     render() {
+        this.passStages = this.props.passStages;
+        this.passQuests = this.props.passQuests;
+        this.currentStage = this.props.currentStage;
+        this.currentQuest = this.props.currentQuest;
+        this.step = this.props.step
+
         return (
             <div className="terminalComponent">
                 <div className="button-line">
                     <button className="debug" onClick={this.run}>RUN CODE</button>
-                    <Button text="CLEAR TERMINAL" className="debug" func={this.clearTerminal}/>
-                    <button onClick={this.resetCodeEditor}>RESET</button>
+                    <button className="debug" onClick={this.clearTerminal}>CLEAR TERMINAL</button>
+                    <button onClick={this.resetCode}>RESET</button>
                     {/*<button onClick={this.props.nextLevel.bind(this, 0 , 0, false, true)}>SHOW ANSWER</button>*/}
                     {
                         this.props.stage == +localStorage['passStages']
                         && this.props.quest == +localStorage['passQuests'] - 1
                         || this.props.stage == +localStorage['passStages'] - 1
                             ? <button onClick={
-                                this.props.nextLevel.bind(this, localStorage.passStages, localStorage.passQuests)
-                            } className="debug">NEXT LEVEL</button>
+                                this.props.nextLevel} 
+                            className="debug">NEXT LEVEL</button>
                             : null
                     }
                 </div>
@@ -168,4 +174,27 @@ class Terminal extends Component {
     }
 }
 
-export default Terminal;
+const mapStateToProps = store => {
+    return {
+        passStages: store.passStages,
+        passQuests: store.passQuests,
+        currentStage: store.currentStage,
+        currentQuest: store.currentQuest,
+        step: store.step
+    }
+}
+
+const mapDispatchToProps = dispatch => {
+    return {
+        selectStage: index => dispatch(selectStage(index)),
+        selectQuest: index => dispatch(selectQuest(index)),
+        nextStep: () => dispatch(nextStep()),
+        prevStep: () => dispatch(prevStep()),
+        resetCode: () => dispatch(resetCode()),
+        writeCode: (can) => dispatch(writeCode(can)),
+        nextLevel: () => dispatch(nextLevel())
+    }
+}
+
+
+export default connect(mapStateToProps, mapDispatchToProps)(Terminal);

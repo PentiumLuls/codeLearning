@@ -13,7 +13,8 @@ class CodeEditor extends Component {
 
 
     componentWillReceiveProps(nextProps) {
-        if (nextProps.notUpdateEditor == 0) {
+        console.log("I AM EDITOR", nextProps.writeCode)
+        if (nextProps.writeCode) {
             if (this.forUpdate == false) {
                 if (this.props.answer){
                     const editor = this.ace.editor;
