@@ -390,6 +390,7 @@ const person = {
     weapons: ['sword', 'stick']
 };
 
+
 function joinGang(gangCard, hinduCard) {
     if (hinduCard.weapons.length === 0) return gangCard;
     const newGangCard = Object.assign({}, gangCard);
@@ -408,7 +409,337 @@ function joinGang(gangCard, hinduCard) {
     },
 ///////////////////////////////////////глава2////////////////////////////////////////////////////////////
 ///////////////////////////////////////глава2////////////////////////////////////////////////////////////
-///////////////////////////////////////глава2////////////////////////////////////////////////////////////
+///////////////////////////////////////глава2////////////////////////////////////////////////////////////    
+    {
+        title: "",
+        quests:[
+
+ ///////////////////////////////////////quest 1////////////////////////////////////////////////////////////           
+            {
+                title: "filter. Туториал 1",
+                text: ``,
+                regexps: [],
+                regexpsNone: [/(for)/g, /(while)/g, /(var)/g, /(let)/g],
+                code: `
+                const rectangles = [{
+                    color: 'red',
+                    width:4,
+                    height:4,
+                },{
+                    color: 'black',
+                    width:3,
+                    height:2,
+                },{
+                    color: 'white',
+                    width:6,
+                    height:9,
+                },
+                {
+                    color: 'black',
+                    width:3,
+                    height:3,
+                },{
+                    color: 'green',
+                    width:4,
+                    height:7,
+                },
+                {
+                    color: 'black',
+                    width:3,
+                    height:5,
+                },
+                {
+                    color: 'black',
+                    width:4,
+                    height:2,
+                },]
+                
+                function isBlack(rectangle) {
+                    return rectangle.color == 'black';
+                }
+`,
+                hints: [
+                    "Функция должна возвращать True или False"
+                ],
+                test: {
+                    code: `let valid = true;
+                    const rectangle2 = {
+                        color: 'black',
+                        width:4,
+                        height: 3,
+                    }
+                    const rectangle3 = {
+                        color: 'red',
+                        width:8,
+                        height: 8,
+                    }
+
+                            `,
+                    answer: `
+        const rectangles = [{
+                        color: 'red',
+                        width:4,
+                        height:4,
+                    },{
+                        color: 'black',
+                        width:3,
+                        height:2,
+                    },{
+                        color: 'white',
+                        width:6,
+                        height:9,
+                    },
+                    {
+                        color: 'black',
+                        width:3,
+                        height:3,
+                    },{
+                        color: 'green',
+                        width:4,
+                        height:7,
+                    },
+                    {
+                        color: 'black',
+                        width:3,
+                        height:5,
+                    },
+                    {
+                        color: 'black',
+                        width:4,
+                        height:2,
+                    },];
+                    
+                    function isBlack(rectangle) {
+                        return rectangle.color == 'black';
+                    };
+                    
+                    
+                     var newArr=rectangles.filter(isBlack).map(color);
+
+`
+                }
+            },
+ ///////////////////////////////////////quest 2////////////////////////////////////////////////////////////             
+            {
+                title: "filter сюжетное задание",
+                text: ``,
+                regexps: [],
+                regexpsNone: [/(for)/g, /(while)/g, /(var)/g, /(let)/g],
+                code: `
+                const persons = [{name:'Aadhi1',gender:'male',},{name:'Aadhi2',gender:'female',},{name:'Aadhi3',gender:'female',},
+{name:'Aadhi4',gender:'male',},{name:'Aadhi5',gender:'female',}];
+
+function isMale(hinduCard) {
+    return hinduCard.gender == 'male';
+};
+`,
+                hints: [
+                    "Функция должна возвращать True или False"
+                ],
+                test: {
+                    code: `let valid = true;
+                    const rectangle2 = {
+                        color: 'black',
+                        width:4,
+                        height: 3,
+                    }
+                    const rectangle3 = {
+                        color: 'red',
+                        width:8,
+                        height: 8,
+                    }
+
+                            `,
+                    answer: `
+                    const persons = [{name:'Aadhi1',gender:'male',},{name:'Aadhi2',gender:'female',},{name:'Aadhi3',gender:'female',},
+                    {name:'Aadhi4',gender:'male',},{name:'Aadhi5',gender:'female',}]
+                    
+                    function isMale(hinduCard) {
+                        return hinduCard.gender == 'male';
+                    }
+                   ;
+                     var newArr=persons.filter(isMale);
+
+`
+                }
+            },
+    ///////////////////////////////////////quest 3////////////////////////////////////////////////////////////
+    {
+        title: " map туториал",
+        text: ``,
+        regexps: [],
+        regexpsNone: [/(for)/g, /(while)/g, /(var)/g, /(let)/g],
+        code: `
+        const rectangles = [{
+            color: 'red',
+            width:4,
+            height:4,
+        },{
+            color: 'black',
+            width:3,
+            height:2,
+        },{
+            color: 'white',
+            width:6,
+            height:9,
+        },
+        {
+            color: 'black',
+            width:3,
+            height:3,
+        },{
+            color: 'green',
+            width:4,
+            height:7,
+        },
+        {
+            color: 'black',
+            width:3,
+            height:5,
+        },
+        {
+            color: 'black',
+            width:4,
+            height:2,
+        },];
+        
+        function perimeter(rectangle) {
+            return rectangle.width*2 + rectangle.height*2;
+        }
+`,
+        hints: [
+            "Функция должна возвращать True или False"
+        ],
+        test: {
+            code: `let valid = true;
+            const rectangle2 = {
+                color: 'black',
+                width:4,
+                height: 3,
+            }
+            const rectangle3 = {
+                color: 'red',
+                width:8,
+                height: 8,
+            }
+
+                    `,
+            answer: `
+            const rectangles = [{
+                color: 'red',
+                width:4,
+                height:4,
+            },{
+                color: 'black',
+                width:3,
+                height:2,
+            },{
+                color: 'white',
+                width:6,
+                height:9,
+            },
+            {
+                color: 'black',
+                width:3,
+                height:3,
+            },{
+                color: 'green',
+                width:4,
+                height:7,
+            },
+            {
+                color: 'black',
+                width:3,
+                height:5,
+            },
+            {
+                color: 'black',
+                width:4,
+                height:2,
+            },];
+            
+            function perimeter(rectangle) {
+                return rectangle.width*2 + rectangle.height*2;
+            }
+            var perimeters=rectangles.map(perimeter);
+`
+        }
+    }, 
+   ///////////////////////////////////////quest 4////////////////////////////////////////////////////////////    
+    {
+        title: " map сюжет",
+        text: ``,
+        regexps: [],
+        regexpsNone: [/(for)/g, /(while)/g, /(var)/g, /(let)/g],
+        code: `
+        const persons = [{gender: 'female',armor: false},{gender: 'male',armor: true},{gender: 'male',armor: false},
+{gender: 'male',armor: false},]
+
+function equipArmor(hinduCard) {
+    const newhinduCard = Object.assign({}, hinduCard);
+    newhinduCard.armor = true;
+    return newhinduCard;
+}
+`,
+        hints: [
+            "Функция должна возвращать True или False"
+        ],
+        test: {
+            code: `
+                    `,
+            answer: `
+            const persons = [{gender: 'female',armor: false},{gender: 'male',armor: true},{gender: 'male',armor: false},
+{gender: 'male',armor: false},]
+
+function equipArmor(hinduCard) {
+    const newhinduCard = Object.assign({}, hinduCard);
+    newhinduCard.armor = true;
+    return newhinduCard;
+}
+
+    
+let armoredHindu=persons.map(equipArmor)
+`
+        }
+    }, 
+ ///////////////////////////////////////quest 5////////////////////////////////////////////////////////////
+ {
+    title: " reduce туториал",
+    text: ``,
+    regexps: [],
+    regexpsNone: [/(for)/g, /(while)/g, /(var)/g, /(let)/g],
+    code: `
+    perimeters = [10,25,18,133,36,100];
+
+function maxPerimeter(max,current){
+    if(max < current) max = current;
+    return max;
+};
+
+`,
+    hints: [
+        "Функция должна возвращать True или False"
+    ],
+    test: {
+        code: `
+                `,
+        answer: `
+ const perimeters = [10,25,18,133,36,100]
+
+function maxPerimeter(max,current){
+    if(max < current) max = current;
+    return max;
+};
+const  max = perimeters.reduce(maxPerimeter,0);
+`
+    }
+}, 
+        ]  
+    },
+  
+///////////////////////////////////////глава5////////////////////////////////////////////////////////////
+///////////////////////////////////////глава5////////////////////////////////////////////////////////////
+///////////////////////////////////////глава5////////////////////////////////////////////////////////////
     {
         title: "Кайся глупец",
         quests:
