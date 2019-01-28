@@ -23,7 +23,9 @@
     var finalReport = {
         logs: [],
         totalSpecs: 0,
-        stats: {}
+        stats: {},
+        passed: [],
+        descriptions: []
     };
 
     var myReporter = (function () {
@@ -44,8 +46,11 @@
             //log(result.description);
         };
 
+        //!!!!!!!!!!!!!!!!!!!!!!!!!!!!
         reporter.specStarted = function (result) {
-            log(result.description);
+            finalReport.passed.push(result.passedExpectations.passed);
+            finalReport.descriptions.push(result.description);
+            //log(result);
         };
 
         reporter.specDone = function (result) {
@@ -58,15 +63,6 @@
                 //log(result.failedExpectations[i].stack);
             }
         };
-
-        // not useful:
-        //reporter.suiteDone = function (result) {
-        //  log('=> ' + result.status);
-        //  for(var i = 0; i < result.failedExpectations.length; i++) {
-        //    log('AfterAll ' + result.failedExpectations[i].message);
-        //    log(result.failedExpectations[i].stack);
-        //  }
-        //};
 
         reporter.jasmineDone = function () {
 
@@ -99,30 +95,8 @@
 
         // print JSON report
         //console.log(JSON.stringify(finalReport));
-        return finalReport.logs;
+        return finalReport;
     };
-
-
-    // Sample tests
-    /*describe('Dog', function() {
-        it('barks really loud', function() {
-            expect(1).toBe(1);
-        });
-
-        describe('when it has a bone', function() {
-            it('is happy', function() {
-                expect(true).toBe(true);
-            });
-        });
-
-        describe('when it eats chocolate', function() {
-            it('gets really sick', function() {
-                expect(true).toBe(true);
-            });
-        });
-    });*/
-
-
 
     //runSpecs();
 </script>
