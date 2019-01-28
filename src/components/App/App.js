@@ -8,8 +8,9 @@ import Leftpanel from '../Leftpanel/Leftpanel';
 import {quests} from '../../plot/quests';
 import Chatbot from '../ChatBot/Chatbot'; 
 import { formatWithOptions } from 'util';
-
-
+import ReactAudioPlayer from 'react-audio-player';
+import sound from '../../audio/sans.mp3'
+import sound2 from '../../audio/sans.ogg'
 class App extends Component {
     constructor() {
         super();
@@ -128,6 +129,14 @@ class App extends Component {
 
         return (
             <div className="main">
+                <div>
+                    <ReactAudioPlayer
+                        src={sound2}
+                        autoPlay
+                        loop
+                        controls
+                    />
+                </div>
                 <div className="leftpanel">
                     <Leftpanel notUpdateEditor={this.notUpdateEditor} updateLP={this.props.updateLP}
                                writeQuest={this.writeQuest}

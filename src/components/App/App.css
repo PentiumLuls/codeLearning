@@ -134,12 +134,14 @@ ul {
     width: 100%;
     height: 8vh;
 }
-.buttonchatopen{
-    z-index:100;
-    padding: 5px 10px;
+.chatbutton-wrapper {
     position: absolute;
     right: 5px;
     bottom: 5px;
+}
+.buttonchatopen{
+    z-index:100;
+    padding: 5px 10px;
     text-align: center;
 }
 .buttonchatclose{
@@ -169,7 +171,7 @@ ul {
 
 
 ul {padding: 0;}
-.questlist {cursor: pointer; background-color: white; color: black; text-align: center; padding: 20px; border-bottom: 2px dashed grey; width: 25vw; word-break: break-all; word-wrap: break-word; box-sizing: border-box;}
+.questlist {cursor: pointer; background-color: white; color: black; text-align: center; padding: 20px; border-bottom: 2px dashed grey; width: 25vw; word-wrap: break-word; box-sizing: border-box;}
 .questlist:hover {background-color: black; color: white;}
 .questlist:last-of-type {border: 0;}
 .hell-rules {
@@ -210,19 +212,14 @@ button {
     color: white;
     font-family: inherit;
     cursor: pointer;
+    position: relative;
+    text-transform: uppercase;
+}
+button:active {
+    animation-name: shake;
+    animation-duration: 0.1s;
 }
 .image-flex {width: 22vw;}
-@keyframes border-dance
-{
-    0%
-    {
-        background-position: left top, right top, right bottom, left bottom;
-    }
-    100%
-    {
-        background-position: right top, right bottom, left bottom, left top;
-    }
-}
 
 .el_rules {
     cursor: pointer;
@@ -242,3 +239,26 @@ button {
     border-bottom: none;
 }
 .questlist2 {color: #fff; padding: 10px 15px;}
+audio {position: absolute; visibility: hidden;}
+
+@keyframes border-dance
+{
+    0%
+    {
+        background-position: left top, right top, right bottom, left bottom;
+    }
+    100%
+    {
+        background-position: right top, right bottom, left bottom, left top;
+    }
+}
+@keyframes shake {
+    12.5%  {left: 0}
+    24%  {left: -8px}
+    36.5%  {left: 10px}
+    49% {left: -13px}
+    61.5% {left: 13px}
+    74% {left: -10px}
+    86.5% {left: 8px}
+    100% {left: 0}
+}

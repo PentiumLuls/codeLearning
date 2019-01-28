@@ -137,7 +137,7 @@ export default class Chatbot extends Component {
                 </div>
             );
         return (
-            <div>
+            <div className="chatbutton-wrapper">
                 <button className='buttonchatopen' onClick={this.showChat.bind(this)}>CHAT</button>
             </div>
         )

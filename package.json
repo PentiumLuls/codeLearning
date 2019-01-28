@@ -6,6 +6,7 @@
     "react": "^16.7.0",
     "react-ace": "^6.3.2",
     "react-ace-editor": "0.0.3",
+    "react-audio-player": "^0.11.0",
     "react-dom": "^16.7.0",
     "react-pure-modal": "^1.5.1",
     "react-scripts": "2.1.3"
