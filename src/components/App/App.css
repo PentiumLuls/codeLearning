@@ -132,6 +132,8 @@ ul {
 }
 .bot-bottom-panel {
     width: 100%;
+    padding: 2vh 3vw;
+    box-sizing: border-box;
     height: 8vh;
 }
 .chatbutton-wrapper {
@@ -154,6 +156,9 @@ ul {
     float: right;
     z-index: 100;
     background-color: red;
+}
+#clear-chat {
+    float: right;
 }
 .dialogbox{
     height: 48vh;
@@ -217,7 +222,7 @@ button {
 }
 button:active {
     animation-name: shake;
-    animation-duration: 0.05s;
+    animation-duration: 0.1s;
 }
 .image-flex {width: 22vw;}
 
@@ -254,11 +259,11 @@ audio {position: absolute; visibility: hidden;}
 }
 @keyframes shake {
     12.5%  {left: 0}
-    24%  {left: -8px}
-    36.5%  {left: 10px}
-    49% {left: -13px}
-    61.5% {left: 13px}
-    74% {left: -10px}
-    86.5% {left: 8px}
+    24%  {left: -16px}
+    36.5%  {left: 20px}
+    49% {left: -26px}
+    61.5% {left: 26px}
+    74% {left: -20px}
+    86.5% {left: 16px}
     100% {left: 0}
 }

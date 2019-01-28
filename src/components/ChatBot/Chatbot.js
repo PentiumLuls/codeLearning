@@ -132,7 +132,7 @@ export default class Chatbot extends Component {
             { /*<button className='chatbutton' onClick={this.getDialogs.bind(this)}>nextDialog</button>*/}
                 <div className="bot-bottom-panel">
                     <button className='chatbutton' onClick={this.getHints.bind(this)}>GET HINT</button>
-                    <button className='chatbutton'onClick={this.clearChat.bind(this)}>CLEAR CHAT</button>
+                    <button className='chatbutton' id="clear-chat" onClick={this.clearChat.bind(this)}>CLEAR CHAT</button>
                 </div>
                 </div>
             );
