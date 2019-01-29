@@ -1,0 +1,28 @@
+{
+    title: "QUEST TITLE",
+        text: `LEFT PANEL TEXT`,
+    regexps: [],
+    regexpsNone: [/(for)/g, /(while)/g, /(var)/g, /(let)/g],
+    code: `CODE IN EDITOR`,
+    hints: [
+    "HINT 1"
+],
+    test: {
+    code: `TEST CODE
+
+            describe("QUEST NUMBER", function() {
+
+   it("should return 1",function() {
+      expect(1).toEqual(1);
+   });
+   //MORE CASES?
+});
+      const report = runSpecs();
+      report.forEach(part => terminal.log(part))
+      console.log(report.length);
+      if (report.length === 0) { true } else false;`,
+
+
+        answer: `RIGHT CODE`
+}
+}
