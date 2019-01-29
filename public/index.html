@@ -11,19 +11,7 @@
 <div id="app"></div>
 
 <script>
-
-    // Custom Reporter
-    // c.f. http://jasmine.github.io/2.2/custom_reporter.html
-    //
-    // This is a basic Jasmine setup for running test output in a browser console,
-    // hopefully to be used with Nashorn
-
-
-    // Append test details to this JSON output object
     var finalReport = {
-        logs: [],
-        totalSpecs: 0,
-        stats: {},
         passed: [],
         descriptions: []
     };
@@ -31,48 +19,12 @@
     const myReporter = (function () {
         var reporter = {};
 
-        var log = function (str) {
-            //console.log(str);
-            finalReport.logs.push(str + "\n");
-        };
-
-        reporter.jasmineStarted = function (suiteInfo) {
-            finalReport.totalSpecs = suiteInfo.totalSpecsDefined;
-        };
-
-        reporter.suiteStarted = function (result) {
-            //TEST NAME
-            //result.fullName (same as description)
-            //log(result.description);
-        };
-
         reporter.specStarted = function (result) {
-            //console.log("TEST");
             finalReport.descriptions.push(result.description);
         };
 
         reporter.specDone = function (result) {
-            //console.log(result);
-            finalReport.stats[result.status] = finalReport.stats[result.status] || 0;
-            finalReport.stats[result.status] += 1;
-
-            log('=> ' + result.status);
             finalReport.passed.push(result.status !== 'failed');
-            for (var i = 0; i < result.failedExpectations.length; i++) {
-                log('Failure: ' + result.failedExpectations[i].message);
-                //log(result.failedExpectations[i].stack);
-            }
-        };
-
-        reporter.jasmineDone = function () {
-
-            var finalOutput = finalReport.totalSpecs + ' examples';
-
-            Object.keys(finalReport.stats).forEach(function (specStatus) {
-                finalOutput += ', ' + finalReport.stats[specStatus] + ' ' + specStatus;
-            });
-
-            //log(finalOutput);
         };
 
         return reporter;
@@ -105,18 +57,9 @@
 
         //RESETTING REPORT
         finalReport = {
-            logs: [],
-            totalSpecs: 0,
-            stats: {},
             passed: [],
             descriptions: []
         };
-
-
-        //jasmine.getEnv().stop();
-
-        //jasmine.getEnv().clearReporters();
-        //jasmine.getEnv().addReporter(myReporter);
 
         jasmineInterface = null;
         jasmine = null;
@@ -126,11 +69,6 @@
         extend(this, jasmineInterface);
         return result;
     };
-
-    //runSpecs();
-
-
-
 </script>
 
 </body>
