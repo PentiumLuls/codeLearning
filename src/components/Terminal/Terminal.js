@@ -163,9 +163,9 @@ class Terminal extends Component {
                             className="debug">NEXT LEVEL</button>
                             : null
                     }
-                    <button className="button-open-terminal">^</button>
+                    <button className="button-open-terminal" onClick={this.props.openTerminal}>*</button>
                 </div>
-                <ul className="terminal-text">
+                <ul className={this.props.terminalOpen ? "terminal-text open-terminal-text" : "terminal-text"}  >
                     {
                         this.state.content
                     }
