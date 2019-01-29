@@ -51,7 +51,15 @@ class CodeEditor extends Component {
                 fontSize='20px'
                 width='100%'
                 value={this.state.code}
+                enableBasicAutocompletion={true}
+                enableLiveAutocompletion={true}
                 style={{position: 'relative'}}
+                commands={[{   // commands is array of key bindings.
+                    name: 'runCode', //name for the key binding.
+                    bindKey: {win: 'Ctrl-shift-z', mac: 'Command-shift-z'}, //key combination used for the command.
+                    exec: () => { console.log('key-binding used')}  //function to execute when keys are pressed.
+                  }]}
+
                 ref={instance => {
                     this.ace = instance;
                 }} // Let's put things into scope
