@@ -16,8 +16,8 @@ const newArr=rectangles.filter(isBlack);
 
 
 ////// quest 2///////  
-const persons = [{name:'Aadhi1',gender:'male',},{name:'Aadhi2',gender:'female',},{name:'Aadhi3',gender:'female',},
-{name:'Aadhi4',gender:'male',},{name:'Aadhi5',gender:'female',}]
+const persons = [{name:'Aadhi',gender:'male',},{name:'Anvi',gender:'female',},{name:'Kashvi',gender:'female',},
+{name:'Shaan',gender:'male',},{name:'Mahika',gender:'female',}]
                     
 function isMale(hinduCard) {
         return hinduCard.gender == 'male';
@@ -85,7 +85,7 @@ const total = numbers.reduce(sum, 0);
 
 /// reduce counter ['name1', 'name2', 'name2', 'name4'] => {'name1': 1, 'name2': 2, 'name4': 1}
 ////// quest 7 сюжет reduce /////// 
-const  names = ['Ратан','Садхир', 'Камал', 'Садхир','Камал','Садхир','Садхир'] 
+const  names = ['Anbu','Chetan', 'Farid', 'Chetan','Farid','Chetan','Chetan'] 
 function counter(namesAmount,name) {
 if(!(name in namesAmount)){
     namesAmount[name]= 1;
@@ -103,10 +103,12 @@ const namesAmount = names.reduce(counter,{})
 
 ////// quest 8 сюжет reduce /////// 
 
-const persons = [{
-    weapons:['sword','stick']},{
-        weapons:['sword','sword'],{}}
-]
+
+const persons = [{sticks:1},{sticks:3},{sticks:0},{sticks:1},{sticks:3},{sticks:2},{sticks:1},{sticks:0}]
+function counter(sticksAmount,b){
+    return sticksAmount += b.sticks;
+}
+ const result = persons.reduce(counter,0)
 // ?reduce with map
 // persons
 //   .map(getName)
