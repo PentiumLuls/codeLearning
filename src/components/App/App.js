@@ -55,7 +55,7 @@ class App extends Component {
         return (
             <div className="main">
                 <div>
-                    <audio controls autoPlay>
+                    <audio controls autoPlay loop>
                         <source src={sound2} type="audio/ogg"/>
                             <source src={sound} type="audio/mpeg"/>
                             Your browser does not support the audio element.
