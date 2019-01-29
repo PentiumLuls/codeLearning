@@ -18,7 +18,7 @@ class Terminal extends Component {
         ///////////////////////////////
         const self = this;
         window.terminal = {};
-        window.terminal.log = (...args) => {self.log(JSON.stringify(args), "logger")};
+        window.terminal.log = (...args) => {const result = (args.map(arg => {return JSON.stringify(arg)})); self.log(result.join(","), "logger")};
         window.unlockQuest = this.unlockQuest;
         ///////////////////////////////
     }
@@ -30,6 +30,7 @@ class Terminal extends Component {
     }
 
     run = () => {
+
         try {
             const vm = require('vm');
             const codeToEvaluate = localStorage.getItem("code") + "\n" + this.props.testCode["code"]
@@ -47,6 +48,7 @@ class Terminal extends Component {
                     })
                     this.props.writeCode(false);
                     this.props.passQuest();
+
 
                 } else {
                     let information = '';
@@ -137,6 +139,7 @@ class Terminal extends Component {
         this.props.writeCode(true);
         this.props.resetCode();
         this.props.changeShowPopup(true);
+        this.clearTerminal();
     }
 
 
@@ -160,14 +163,19 @@ class Terminal extends Component {
                             className="debug">NEXT LEVEL</button>
                             : null
                     }
+                    <button className="button-open-terminal" onClick={this.props.openTerminal}>*</button>
                 </div>
-                <ul className="terminal-text">
+                <ul className={this.props.terminalOpen ? "terminal-text open-terminal-text" : "terminal-text"}  >
                     {
                         this.state.content
                     }
                 </ul>
             </div>
         );
+    }
+
+    componentDidMount() {
+        this.props.exportRun(this.run)
     }
 }
 

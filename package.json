@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "jasmine": "2.4.1",
     "react": "^16.7.0",
     "react-ace": "^6.3.2",
     "react-ace-editor": "0.0.3",

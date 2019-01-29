@@ -17,7 +17,9 @@ class App extends Component {
 
         this.state = {
             isEdit: false,
-            answer: false
+            answer: false,
+            run: undefined,
+            terminalOpen: false
         };
     }
 
@@ -32,8 +34,21 @@ class App extends Component {
         this.props.changeShowPopup(false);
     }
 
-    render() {
+    exportRun = (func) => {
+        this.setState({
+            run: func
+        })
+    }
 
+    openTerminal = () => {
+        console.log("click")
+        this.setState({
+            terminalOpen: !this.state.terminalOpen
+        })
+    }
+
+    render() {
+        console.log("rerender app")
         this.passStages = this.props.passStages;
         this.passQuests = this.props.passQuests;
         this.currentStage = this.props.currentStage;
@@ -54,8 +69,9 @@ class App extends Component {
 
         return (
             <div className="main">
+                
                 <div>
-                    <audio controls autoPlay>
+                    <audio controls autoPlay loop>
                         <source src={sound2} type="audio/ogg"/>
                             <source src={sound} type="audio/mpeg"/>
                             Your browser does not support the audio element.
@@ -69,8 +85,9 @@ class App extends Component {
                 (!this.state.isEdit)
                 ?
                 <div>
-                <div className="editor">
+                <div className={this.state.terminalOpen ? 'editor open-editor' : 'editor'}>
                     <Codeditor
+                        run={this.state.run}
                         textAnswer={quests[this.currentStage].quests[this.currentQuest].test.answer}
                         text={this.code}
                         answer={this.state.answer}
@@ -78,19 +95,19 @@ class App extends Component {
                         resets={this.props.resets}
                         />
                 </div>
-                <div className="terminal">
+                <div className={this.state.terminalOpen ? 'terminal open-terminal' : 'terminal'}>
                     <Terminal
-                        updateLeftPanel={this.updateLeftPanel}
+                        terminalOpen={this.state.terminalOpen}
+                        exportRun={this.exportRun}
                         className="terminal"
                         testCode={quests[this.currentStage].quests[this.currentQuest].test}
                         regexps={quests[this.currentStage].quests[this.currentQuest].regexps}
                         regexpsNone={quests[this.currentStage].quests[this.currentQuest].regexpsNone}
-                        showTutorial={this.showTutorial}
-                        nextLevel={this.writeQuest}
+                        openTerminal={this.openTerminal}
                         />
                 </div>
                 </div>
-                : <HellRules/>
+                : <HellRules passStages={this.passStages} passQuests={this.passQuests}/>
             }
                 <div>
                     {
@@ -104,6 +121,7 @@ class App extends Component {
                         <Popup stage={this.currentStage} quest={indexOfElement} togglePopup={this.togglePopup}/>
                         : null
                 }
+                
             </div>
         )
 
@@ -112,7 +130,6 @@ class App extends Component {
 
 
 const mapStateToProps = store => {
-    console.log(store);
     return {
         passStages: store.passStages,
         passQuests: store.passQuests,

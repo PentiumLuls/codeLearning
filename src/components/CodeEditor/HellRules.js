@@ -6,44 +6,74 @@ class HellRules extends Component {
     constructor() {
         super();
         this.state = {
-            showTutorial: false,
+            step: 0,
             indexOfStage: 0,
             indexOfTutorial: 0
         };
     }
-    openTutorial = (indexOfStage, indexOfTutorial)=> {
+    nextStep = (indexOfStage, indexOfTutorial) => {
         this.setState({
-            showTutorial: !this.state.showTutorial,
+            step: this.state.step + 1,
             indexOfStage: indexOfStage,
             indexOfTutorial: indexOfTutorial 
         })
     }
 
+    back = () => {
+        this.setState({
+            step: this.state.step - 1
+        })
+    }
+
     render() {
         return (
-            
-            this.state.showTutorial
-            ? <Zurnal closeTutorial={this.openTutorial} indexOfStage={this.state.indexOfStage} indexOfTutorial={this.state.indexOfTutorial}/>
-            : 
-            <div className="hell-rules">
-            <div className="rules-wrapper ">
-                {notes.map((stage, indexOfStage) => {
-                    return stage.map((el, indexOfTutorial) => {
-                        return (
-                        <div key={indexOfTutorial} onClick={this.openTutorial.bind(this, indexOfStage, indexOfTutorial)}
-                            className="el_rules">
-                            <h3>{el.title}</h3>
-                            {el.text.map((el2, index) => {
-                                return <p key={index}>{el2.title}</p>
+            <div>
+
+                {this.state.step === 2
+                ? 
+                <Zurnal
+                    back={this.back}
+                    indexOfStage={this.state.indexOfStage} 
+                    indexOfTutorial={this.state.indexOfTutorial}/>
+                : 
+                <div className="hell-rules">
+                    {this.state.step !== 0 
+                    ? <button onClick={this.back}>НАЗАД</button>
+                    : null}
+                    <div className="rules-wrapper ">
+                        {this.state.step === 1 
+                        ? notes.map((stage, indexOfStage) => {
+                            if (indexOfStage <= this.props.passStages){
+                                return stage.map((el, indexOfTutorial) => {
+                                    if (JSON.parse(localStorage.whiteList)[indexOfStage][indexOfTutorial] === null){
+                                    return (
+                                    <div key={indexOfTutorial} onClick={this.nextStep.bind(this, indexOfStage, indexOfTutorial)}
+                                        className="el_rules">
+                                        <h3>{el.title}</h3>
+                                        {el.text.map((el2, index) => {
+                                            return <p key={index}>{el2.title}</p>
+                                        })}
+                                    </div>
+                                    )}
                             })}
-                        </div>
-                        )
-                    })
-                })}
-            </div>
-            </div>
-            
-        );
+                        })
+                        : notes.map((stage, indexOfStage) => {
+                            if (indexOfStage <= this.props.passStages)
+                                return (
+                                    <div key={indexOfStage} onClick={this.nextStep.bind(this, indexOfStage, null)}
+                                        className="el_rules">
+                                        <h3>{`Глава ${indexOfStage + 1}`}</h3>
+                                        {stage.map((el2, index) => {
+                                            if (JSON.parse(localStorage.whiteList)[indexOfStage][index] === null) {
+                                            return <p key={index}>{el2.title}</p>}
+                                        })}
+                                    </div>
+                                    )
+                            })}
+                    </div>
+                </div>
+                
+            }</div>);
     }
 }
 export default HellRules;
