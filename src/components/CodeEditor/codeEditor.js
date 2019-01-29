@@ -1,14 +1,28 @@
-import ReactAce from 'react-ace-editor';
+import ReactAce from 'react-ace';
 import React, {Component} from 'react';
+import brace from 'brace'
+
+import 'brace/mode/javascript';
+import 'brace/theme/terminal';
 
 class CodeEditor extends Component {
     constructor() {
         super();
         this.forUpdate = false;
+        this.state = {
+            code: localStorage.code || ''
+        }
     }
 
     onChange(newValue, e) {
         localStorage["code"] = newValue;
+    }
+
+    aceWriteCode = (text) => {
+        //this.ace.editor.setValue(text || "")
+        this.setState({
+            code: text
+        })
     }
 
 
@@ -17,12 +31,10 @@ class CodeEditor extends Component {
         if (nextProps.writeCode) {
             if (this.forUpdate == false) {
                 if (this.props.answer){
-                    const editor = this.ace.editor;
-                    editor.setValue(nextProps.textAnswer);
+                    this.aceWriteCode(nextProps.textAnswer);
                     this.forUpdate = false
                 } else {
-                    const editor = this.ace.editor;
-                    editor.setValue(nextProps.text);
+                    this.aceWriteCode(nextProps.text);
                     this.forUpdate = false
                 }
             }
@@ -35,18 +47,16 @@ class CodeEditor extends Component {
                 mode="javascript"
                 theme="terminal"
                 onChange={this.onChange}
-                style={{height: '100%', fontSize: '20px', position: 'relative'}}
+                height='100%'
+                fontSize='20px'
+                width='100%'
+                value={this.state.code}
+                style={{position: 'relative'}}
                 ref={instance => {
                     this.ace = instance;
                 }} // Let's put things into scope
             />
         );
-    }
-
-    componentDidMount() {
-        const editor = this.ace.editor
-        editor.setValue(localStorage.code || "")
-        
     }
 }
 

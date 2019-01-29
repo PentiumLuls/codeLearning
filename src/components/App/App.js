@@ -101,6 +101,7 @@ class App extends Component {
                         <Popup stage={this.currentStage} quest={indexOfElement} togglePopup={this.togglePopup}/>
                         : null
                 }
+                
             </div>
         )
 
