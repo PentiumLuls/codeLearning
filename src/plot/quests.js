@@ -43,11 +43,7 @@ function isSquare(rectangle) {
                         color: 'red',
                         width:8,
                         height: 8,
-                    }
-                    
-                             if(isSquare(rectangle3) !== true){valid = false};
-                            valid === true
-                            
+                    }       
                             describe("quest1", function() { 
    
    it("should return true when the rectangle color is black",function() { 
@@ -64,8 +60,9 @@ function isSquare(rectangle) {
    });
 
 });
-                            
-                            terminal.log(runSpecs());`,
+      const report = runSpecs();
+      report.forEach(part => terminal.log(part))
+      if (report.length === 0) { true } else false;`,
                     answer: `//Напиши функции isBlack и isSquare, которые принимают прямоугольник
 //И возвращают соответствующие данные.
 //P.S. Все цвета будут написаны в lowercase.
