@@ -55,7 +55,7 @@ function equipArmor(hinduCard) {
     };
 }
 
-
+``
 const armoredHindu=persons.map(equipArmor)
 
 
