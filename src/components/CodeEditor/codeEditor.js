@@ -27,7 +27,6 @@ class CodeEditor extends Component {
 
 
     componentWillReceiveProps(nextProps) {
-        console.log("I AM EDITOR", nextProps.writeCode)
         if (nextProps.writeCode) {
             if (this.forUpdate == false) {
                 if (this.props.answer){
@@ -39,6 +38,13 @@ class CodeEditor extends Component {
                 }
             }
         }
+    }
+
+    shouldComponentUpdate(nextProps) {
+        if (nextProps.writeCode) {
+            return true
+        }
+        return false
     }
 
     render() {
@@ -57,7 +63,7 @@ class CodeEditor extends Component {
                 commands={[{   // commands is array of key bindings.
                     name: 'runCode', //name for the key binding.
                     bindKey: {win: 'Ctrl-shift-z', mac: 'Command-shift-z'}, //key combination used for the command.
-                    exec: () => { console.log('key-binding used')}  //function to execute when keys are pressed.
+                    exec: () => { this.props.run() }  //function to execute when keys are pressed.
                   }]}
 
                 ref={instance => {

@@ -49,6 +49,7 @@ class Terminal extends Component {
                     this.props.writeCode(false);
                     this.props.passQuest();
 
+
                 } else {
                     let information = '';
                     if (regexp.useIt.length !== 0) {
@@ -162,6 +163,7 @@ class Terminal extends Component {
                             className="debug">NEXT LEVEL</button>
                             : null
                     }
+                    <button className="button-open-terminal">^</button>
                 </div>
                 <ul className="terminal-text">
                     {
@@ -170,6 +172,10 @@ class Terminal extends Component {
                 </ul>
             </div>
         );
+    }
+
+    componentDidMount() {
+        this.props.exportRun(this.run)
     }
 }
 
