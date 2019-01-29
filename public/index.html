@@ -96,7 +96,6 @@
 
         //PARSING FINAL REPORT
         let result = "\n";
-        console.log(finalReport.passed)
         for (let i = 0; i < finalReport.passed.length; i++) {
             if (finalReport.passed[i] === false) {
                 result += finalReport.descriptions[i] + "\n";
