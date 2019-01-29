@@ -212,7 +212,7 @@ function perimeter(rectangle) {
                 regexpsNone: [/(for)/g, /(while)/g, /(var)/g, /(let)/g],
                 code: `//Напиши функцию equipArmor, которая принимает карточку индуса
 //И возвращает новую, со свойством "armor: true" 
-//Если у индуса уже есть броня, просто возврати этого индуса
+//Если у индуса уже есть броня, возрощает новую карточку ничего не меняя
 
 const person = {
     gender: 'female',
@@ -223,8 +223,8 @@ function equipArmor(hinduCard) {
     
 }`,
                 hints: [
-                    "Функция должна возвращать новую карточку индуса",
-                    "Используй assign с пустым объектом в первом параметре"
+                    "Функция всегда должна возвращать новую карточку индуса",
+                    "Используй assign с пустым объектом в первом параметре для клонирования обекта"
                 ],
                 test: {
                     code: `let valid = true;
@@ -256,7 +256,7 @@ function equipArmor(hinduCard) {
 
                     answer: `//Напиши функцию equipArmor, которая принимает карточку индуса
 //И возвращает новую, со свойством "armor: true" 
-//Если у индуса уже есть броня, просто возврати этого индуса
+//Если у индуса уже есть броня, возрощает новую карточку ничего не меняя
 
 const person = {
     gender: 'female',
@@ -264,7 +264,7 @@ const person = {
 };
 
 function equipArmor(hinduCard) {
-    if (hinduCard.armor === true) return hinduCard;
+    if (hinduCard.armor === true) return {hinduCard};
     const newHinduCard = Object.assign({}, hinduCard);
     newHinduCard.armor = true;
     return newHinduCard;
@@ -278,7 +278,7 @@ function equipArmor(hinduCard) {
                 regexps: [],
                 regexpsNone: [/(for)/g, /(while)/g, /(var)/g, /(let)/g],
                 code: `//Напиши функцию equipStick, которая возвращает карточку индуса с палкой.
-//И если у индуса уже есть палка, то возвращает эту же карточку.
+//И если у индуса уже есть палка, то возвращает новую карточку, но без дополнительной палки.
 //Только не забывай про чистоту твоей функции.
 //И учти, что у индуса может уже быть несколько оружий разных типов.
 
@@ -292,7 +292,8 @@ function equipStick(hinduCard) {
     
 }`,
                 hints: [
-                    "Используй indexOf, чтобы проверить наличие палки у индуса"
+                    "Используй indexOf, чтобы проверить наличие палки у индуса",
+                    "Используй spread оператор (...) для создания новой карточки индуса"
                 ],
                 test: {
                     code: `let valid = true;
@@ -322,7 +323,7 @@ function equipStick(hinduCard) {
       if (report.length === 0) { true } else false;`,
 
                     answer: `//Напиши функцию equipStick, которая возвращает карточку индуса с палкой.
-//И если у индуса уже есть палка, то возвращает этого индуса.
+//И если у индуса уже есть палка, то возвращает новую карточку, но без дополнительной палки.
 //Только не забывай про чистоту твоей функции.
 //И учти, что у индуса может уже быть несколько оружий разных типов.
 
@@ -338,7 +339,7 @@ function equipStick(hinduCard) {
         newHinduCard.weapons.push('stick');
         return newHinduCard;
     }
-    return hinduCard;
+    return {...hinduCard};
 }`
                 }
             },
@@ -391,11 +392,9 @@ function add(a, b) {
                 regexpsNone: [/(for)/g, /(while)/g, /(var)/g, /(let)/g],
                 code: `//Напиши функцию createGang,которая возвращает отряд такого типа: 
 //{members: [hindu1.name, hindu2.name], armors: [true, true],
-//weapons: {sticks: 2, swords: 1}}.
-//P.S. Функция должна возвращать исходную карточку отряда,
-//если рекрута нет оружия.
-//ОЧЕНЬ ВАЖНО!!! Порядок создания свойств объекта должен быть такой,
-//как в примере выше.
+//weapons: ['stick', 'sword']}.
+//P.S. Функция должна возвращать такую же карточку отряда как входящая,
+//если у рекрута нет оружия.
 
 const person = {
     name: 'Aadhi',
@@ -408,7 +407,8 @@ function joinGang(gangCard, hinduCard) {
     
 } `,
                 hints: [
-                    "Функция должна возвращать новый отряд индусов"
+                    "Функция всегда должна возвращать новый отряд индусов",
+                    "Используй spread оператор (...) для создания нового отряда"
                 ],
                 test: {
                     code: `const person1 = {
@@ -447,10 +447,8 @@ const gang1 = {
                     answer: `//Напиши функцию createGang,которая возвращает отряд такого типа: 
 //{members: [hindu1.name, hindu2.name], armors: [true, true],
 //weapons: ['stick', 'sword']}.
-//P.S. Функция должна возвращать исходную карточку отряда,
-//если рекрута нет оружия.
-//ОЧЕНЬ ВАЖНО!!! Порядок создания свойств объекта должен быть такой,
-//как в примере выше.
+//P.S. Функция должна возвращать такую же карточку отряда как входящая,
+//если у рекрута нет оружия.
 
 const person = {
     name: 'Aadhi',
@@ -459,20 +457,6 @@ const person = {
     weapons: ['sword', 'stick']
 };
 
-//БРЕЕЕЕЕЕД
-function joinGang(gangCard, hinduCard) {
-    if (hinduCard.weapons.length === 0) return gangCard;
-    const newGangCard = Object.assign({}, gangCard);
-    newGangCard.members.push(hinduCard.name);
-    newGangCard.membersAmount += 1;
-    newGangCard.armors.push(hinduCard.armor);
-    if (hinduCard.weapons.indexOf('sword') != -1)
-        newGangCard.weapons.swords += 1;
-    if (hinduCard.weapons.indexOf('stick') != -1)
-        newGangCard.weapons.sticks += 1;
-    return newGangCard;
-
-    //вот так нужно!!! я немного изменил задание
     return hinduCard.weapons.lenght === 0 ? {...gangCard} 
             : {...gangCard
             ,members: [...gangCard.members, hinduCard.name]
