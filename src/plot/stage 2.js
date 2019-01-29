@@ -80,38 +80,25 @@ function sum(a, b) {
 
 const total = numbers.reduce(sum, 0);
 
-/// reduce text (join?)
+
 
 
 /// reduce counter ['name1', 'name2', 'name2', 'name4'] => {'name1': 1, 'name2': 2, 'name4': 1}
 ////// quest 7 сюжет reduce /////// 
 const  names = ['Anbu','Chetan', 'Farid', 'Chetan','Farid','Chetan','Chetan'] 
-function counter(namesAmount,name) {
-if(!(name in namesAmount)){
-    namesAmount[name]= 1;
+function counter(names,name) {
+
+    if(! (name in names) ){
+        names[name]= 1;
       }
 
-else{
-    namesAmount[name] += 1;
-    }
-  return namesAmount; 
+    else{
+        names[name] += 1;
+      }
+    return namesAmount; 
 }
 
-const namesAmount = names.reduce(counter,{})
+const result = names.reduce(counter,{})
 
-
-
-////// quest 8 сюжет reduce /////// 
-
-
-const persons = [{sticks:1},{sticks:3},{sticks:0},{sticks:1},{sticks:3},{sticks:2},{sticks:1},{sticks:0}]
-function counter(sticksAmount,b){
-    return sticksAmount += b.sticks;
-}
- const result = persons.reduce(counter,0)
-// ?reduce with map
-// persons
-//   .map(getName)
-//   .reduce(counter)
 
 

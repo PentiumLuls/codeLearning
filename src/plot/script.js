@@ -1,20 +1,30 @@
-const rectangles = [{color: 'red',width:4,height:4,},
-{color: 'black',width:2, height:2,},{color: 'white',width:6,height:9,},
-{color: 'black',width:3,height:3,},{color: 'black',width:4,height:4, },
-{color: 'black',width:5,height:5,},{color: 'white',width:4,height:2,},{color: 'red',width:5,height:5,}];
+const demons = [{name: 'Charun',army:'A',health:400,weapon:'sword',attack:40}
+ ,{name: 'Asag',army:'A',health:420,weapon:'spear',attack:20}
+ ,{name: 'Bakasura',army:'B',health:400,weapon:'sword',attack:45}
+ ,{name: 'Corson',army:'A',health:350,weapon:'sword',attack:60}
+ ,{name: 'Anzu',army:'B',health:400,weapon:'spear',attack:30}]
 
-function isBlack(rectangle) {
-    return rectangle.color == 'black';
-    };
+function IsArmyA(demon){
+    return demon.army == 'A'
+}
 
-function perimeter(rectangle) {
-        return rectangle.width*2 + rectangle.height*2;
-    }  
-function max(a, b) {
-        return a < b ? b : a;
-    } 
 
-const maxNumber = rectangles.filter(isBlack).map(perimeter).reduce(max, 0);      
-   
+function  calcCombatRaiting(demon){
+    return  demon.health * 1.2 + demon.attack * 1.5
+    
+}
 
-console.log(maxNumber)
+function raitingMore510(raiting){
+
+    return 510 < raiting;
+}
+
+function sum(a,b){
+    return a + b ;
+}
+
+ const result = demons.filter(IsArmyA)
+                      .map(calcCombatRaiting)
+                      .filter(raitingMore510)
+                      .reduce(sum,0)
+console.log(result);
