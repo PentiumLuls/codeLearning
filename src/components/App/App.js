@@ -9,8 +9,8 @@ import {quests} from '../../plot/quests';
 import Chatbot from '../ChatBot/Chatbot'; 
 import { connect } from 'react-redux';
 import { changeShowPopup } from '../../store/actions/codeActions'
-
-
+import sound from '../../audio/sans.mp3'
+import sound2 from '../../audio/sans.ogg'
 class App extends Component {
     constructor(props) {
         super(props);
@@ -54,6 +54,13 @@ class App extends Component {
 
         return (
             <div className="main">
+                <div>
+                    <audio controls autoPlay>
+                        <source src={sound2} type="audio/ogg"/>
+                            <source src={sound} type="audio/mpeg"/>
+                            Your browser does not support the audio element.
+                    </audio>
+                </div>
                 <div className="leftpanel">
                     <Leftpanel  func={this.changeButtonState}
                                 func2={this.changeButtonState2}/>
