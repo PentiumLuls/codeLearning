@@ -369,10 +369,7 @@ const gang1 = {
 };
 
                        let valid = true;
-                    if (joinGang(gang1, person1) !== {members: ['indus1name', 'Aadhi1'],
-    membersAmount: 2,
-    armors: [true, true],
-    weapons: {sticks: 2, swords: 1}}) {valid = false};
+                    
                     
                     valid === true`,
                     answer: `//Напиши функцию createGang,которая возвращает отряд такого типа: 
