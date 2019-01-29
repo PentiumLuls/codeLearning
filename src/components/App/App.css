@@ -77,6 +77,8 @@ ul {
 .userbutton p {margin: auto; color: #fff; user-select: none;}
 .userbutton:active {background-color: #fff; border: 5px solid #000}
 .userbutton:active p {color: #000;}
+.userbutton.userbutton:hover p {-webkit-animation: squiggly-anim 0.2s linear infinite;
+    animation: squiggly-anim 0.2s linear infinite;}
 .avatar img:hover {-webkit-filter: contrast(10000%) grayscale(1);filter: contrast(10000%) grayscale(1);}
 .active {background-color: #fff; border: 5px solid #000;}
 .active p {color: #000;}
@@ -103,7 +105,7 @@ ul {
     text-align: center;
     margin: auto;
 }
-.listheader p {margin: auto; color: #fff}
+.listheader p {margin: auto; color: #fff; }
 .dashed {
     background:
             linear-gradient(90deg, red 50%, transparent 50%),
@@ -200,7 +202,7 @@ ul {padding: 0;}
 .cards-wrapper {display: grid; grid-template-columns: repeat(3, 1fr); column-gap: 1vw;}
 .cards-heading {text-align: center; color: green;}
 .card {cursor: pointer; background-color: black; box-sizing: border-box; border-bottom: 5px solid grey; text-align: center; text-transform: uppercase; height: 10vh; margin: auto; word-break: break-all;}
-.card p {margin: auto; color: #fff; user-select: none;}
+.card p {margin: auto; color: #fff; user-select: none; }
 
 .questlist.inactive {
     cursor:default;
@@ -270,4 +272,69 @@ audio {position: absolute; visibility: hidden;}
 
 .button-back {
     margin: 15px;
+}
+.test {
+    -webkit-animation: squiggly-anim 0.34s linear infinite;
+    animation: squiggly-anim 0.34s linear infinite;
+}
+.test {
+    display: inline-block;
+    vertical-align: middle;
+    width: 100%;
+    outline: none;
+    text-align: center;
+    line-height: 1;
+}
+.small {
+    font-size: 0.5em;
+}
+.smaller {
+    font-size: 0.4em;
+}
+p {
+    margin: 0;
+}
+@-webkit-keyframes squiggly-anim {
+    0% {
+        -webkit-filter: url("#squiggly-0");
+        filter: url("#squiggly-0");
+    }
+    25% {
+        -webkit-filter: url("#squiggly-1");
+        filter: url("#squiggly-1");
+    }
+    50% {
+        -webkit-filter: url("#squiggly-2");
+        filter: url("#squiggly-2");
+    }
+    75% {
+        -webkit-filter: url("#squiggly-3");
+        filter: url("#squiggly-3");
+    }
+    100% {
+        -webkit-filter: url("#squiggly-4");
+        filter: url("#squiggly-4");
+    }
+}
+@keyframes squiggly-anim {
+    0% {
+        -webkit-filter: url("#squiggly-0");
+        filter: url("#squiggly-0");
+    }
+    25% {
+        -webkit-filter: url("#squiggly-1");
+        filter: url("#squiggly-1");
+    }
+    50% {
+        -webkit-filter: url("#squiggly-2");
+        filter: url("#squiggly-2");
+    }
+    75% {
+        -webkit-filter: url("#squiggly-3");
+        filter: url("#squiggly-3");
+    }
+    100% {
+        -webkit-filter: url("#squiggly-4");
+        filter: url("#squiggly-4");
+    }
 }

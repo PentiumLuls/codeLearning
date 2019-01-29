@@ -18,7 +18,7 @@ if (!localStorage['whiteList']) {
     localStorage['whiteList'] = JSON.stringify([[0, 1, 2, 3, 4, 6], [0, 2]]);
 }
 if (!localStorage['code']) {
-    localStorage['code'] = '';
+    localStorage['code'] = quests[0].quests[0].text;
 }
 
 
