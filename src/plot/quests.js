@@ -62,7 +62,6 @@ function isSquare(rectangle) {
 });
       const report = runSpecs();
       report.forEach(part => terminal.log(part))
-      console.log(report.length);
       if (report.length === 0) { true } else false;`,
                     answer: `//Напиши функции isBlack и isSquare, которые принимают прямоугольник
 //И возвращают соответствующие данные.

@@ -28,19 +28,18 @@ class HellRules extends Component {
     render() {
         return (
             <div>
-                {
-                    this.state.step !== 0 
-                    ? <button className='button-back' onClick={this.back}>НАЗАД</button>
-                    : null
-                }
 
                 {this.state.step === 2
                 ? 
-                <Zurnal 
+                <Zurnal
+                    back={this.back}
                     indexOfStage={this.state.indexOfStage} 
                     indexOfTutorial={this.state.indexOfTutorial}/>
                 : 
                 <div className="hell-rules">
+                    {this.state.step !== 0 
+                    ? <button onClick={this.back}>НАЗАД</button>
+                    : null}
                     <div className="rules-wrapper ">
                         {this.state.step === 1 
                         ? notes.map((stage, indexOfStage) => {
@@ -63,7 +62,7 @@ class HellRules extends Component {
                                 return (
                                     <div key={indexOfStage} onClick={this.nextStep.bind(this, indexOfStage, null)}
                                         className="el_rules">
-                                        <h3>{`Глава ${indexOfStage}`}</h3>
+                                        <h3>{`Глава ${indexOfStage + 1}`}</h3>
                                         {stage.map((el2, index) => {
                                             if (JSON.parse(localStorage.whiteList)[indexOfStage][index] === null) {
                                             return <p key={index}>{el2.title}</p>}

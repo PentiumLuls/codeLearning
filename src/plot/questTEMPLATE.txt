@@ -19,7 +19,6 @@
 });
       const report = runSpecs();
       report.forEach(part => terminal.log(part))
-      console.log(report.length);
       if (report.length === 0) { true } else false;`,
 
 
