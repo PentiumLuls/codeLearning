@@ -28,11 +28,11 @@
         descriptions: []
     };
 
-    var myReporter = (function () {
+    const myReporter = (function () {
         var reporter = {};
 
         var log = function (str) {
-            console.log(str);
+            //console.log(str);
             finalReport.logs.push(str + "\n");
         };
 
@@ -47,6 +47,7 @@
         };
 
         reporter.specStarted = function (result) {
+            //console.log("TEST");
             finalReport.descriptions.push(result.description);
         };
 
@@ -57,7 +58,7 @@
 
             log('=> ' + result.status);
             finalReport.passed.push(result.status !== 'failed');
-            for(var i = 0; i < result.failedExpectations.length; i++) {
+            for (var i = 0; i < result.failedExpectations.length; i++) {
                 log('Failure: ' + result.failedExpectations[i].message);
                 //log(result.failedExpectations[i].stack);
             }
@@ -71,7 +72,7 @@
                 finalOutput += ', ' + finalReport.stats[specStatus] + ' ' + specStatus;
             });
 
-            log(finalOutput);
+            //log(finalOutput);
         };
 
         return reporter;
@@ -83,12 +84,13 @@
     }
 
     // Define Jasmine and attach globally
-    const jasmine = jasmineRequire.core(jasmineRequire);
+    var jasmine = jasmineRequire.core(jasmineRequire);
     jasmine.getEnv().addReporter(myReporter);
-    const jasmineInterface = jasmineRequire.interface(jasmine, jasmine.getEnv());
+    var jasmineInterface = jasmineRequire.interface(jasmine, jasmine.getEnv());
     extend(this, jasmineInterface);
 
     window.runSpecs = () => {
+
         // Runs the specs (must be called after specs are defined)
         jasmine.getEnv().execute();
 
@@ -96,6 +98,7 @@
         let result = [];
         for (let i = 0; i < finalReport.passed.length; i++) {
             if (finalReport.passed[i] === false) {
+                if (result.indexOf(finalReport.descriptions[i]) === -1)
                 result.push(finalReport.descriptions[i]);
             }
         }
@@ -109,6 +112,18 @@
             descriptions: []
         };
 
+
+        //jasmine.getEnv().stop();
+
+        //jasmine.getEnv().clearReporters();
+        //jasmine.getEnv().addReporter(myReporter);
+
+        jasmineInterface = null;
+        jasmine = null;
+        jasmine = jasmineRequire.core(jasmineRequire);
+        jasmine.getEnv().addReporter(myReporter);
+        jasmineInterface = jasmineRequire.interface(jasmine, jasmine.getEnv());
+        extend(this, jasmineInterface);
         return result;
     };
 
