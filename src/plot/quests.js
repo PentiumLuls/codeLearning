@@ -113,9 +113,18 @@ function isMale(hinduCard) {
                         gender: 'male'
                     }
                     
-                    if(isMale(hindu1) !== false){valid = false};
-                    if(isMale(hindu2) !== true){valid = false};
-                    valid === true`,
+                    describe("quest2", function() { 
+   
+   it("should return true when this indus is a male",function() { 
+      expect(isMale(hindu2)).toEqual(true); 
+   }); 
+   it("should return false when this indus is not a male",function() { 
+      expect(isMale(hindu1)).toEqual(false); 
+   }); 
+});
+      const report = runSpecs();
+      report.forEach(part => terminal.log(part))
+      if (report.length === 0) { true } else false;`,
                     answer: `//Напиши функцию isMale, которая принимает карточку индуса
 //И возвращает его пригодность к войне.
 //P.S. Индус считается пригодным, если он мужчина.
@@ -168,7 +177,18 @@ function perimeter(rectangle) {
                     }
                              if(perimeter(rectangle2) !== 16){valid = false};
                             
-                            valid === true`,
+                            describe("quest3", function() { 
+   
+   it("should return perimeter of the rectangle",function() { 
+      expect(perimeter(rectangle2)).toEqual(16); 
+   }); 
+   it("should return perimeter of the rectangle",function() { 
+      expect(perimeter(rectangle3)).toEqual(60); 
+   }); 
+});
+      const report = runSpecs();
+      report.forEach(part => terminal.log(part))
+      if (report.length === 0) { true } else false;`,
                     answer: `//Напиши функцию perimeter, которая принимает прямоугольник
 //и возвращает результат проверки.
 
@@ -220,12 +240,20 @@ function equipArmor(hinduCard) {
                         gender: 'male', armor: true
                     };
                     
-                    if(equipArmor(hindu1)['armor'] !== true){valid = false};
-                    if(hindu1['armor'] !== false){valid = false};
-                    if(equipArmor(hindu2)['armor'] !== true){valid = false};
-                    if(hindu2['armor'] !== false){valid = false};
-                    if(equipArmor(hindu3) != hindu3) valid = false;
-                    valid === true`,
+                    describe("quest4", function() { 
+   
+   it("should return new card of indus with 'weapon' = true",function() { 
+      expect(equipArmor(hindu1)).toEqual({gender: 'female',armor: true}); 
+   }); 
+   it("please, don't change the state of hinduCard",function() { 
+      expect(hindu1['armor']).toEqual(false); 
+   }); 
+
+});
+      const report = runSpecs();
+      report.forEach(part => terminal.log(part))
+      if (report.length === 0) { true } else false;`,
+
                     answer: `//Напиши функцию equipArmor, которая принимает карточку индуса
 //И возвращает новую, со свойством "armor: true" 
 //Если у индуса уже есть броня, просто возврати этого индуса
@@ -277,10 +305,22 @@ function equipStick(hinduCard) {
                         weapons: ['stick, sword']
                     }
                     
-                    if(equipStick(hindu1)['weapons'][0] !== 'stick'){valid = false};
-                    if(equipStick(hindu2)['weapons'].length !== 2){valid = false};
-                    if(equipStick(hindu2) != hindu2){valid = false};
-                    valid === true`,
+                    describe("quest5", function() { 
+   
+   it("should add 'stick' to weapons of new indus card",function() { 
+      expect(equipStick(hindu1)['weapons'][0]).toEqual('stick'); 
+   });
+   it("should not add 'stick' if it is already exist in weapons",function() { 
+      expect(equipStick(hindu2)['weapons'].length).toEqual(2); 
+   });
+   it("should return the same card if 'stick' is already exist in weapons",function() { 
+      expect(equipStick(hindu2)).toEqual(hindu2); 
+   });
+});
+      const report = runSpecs();
+      report.forEach(part => terminal.log(part))
+      if (report.length === 0) { true } else false;`,
+
                     answer: `//Напиши функцию equipStick, которая возвращает карточку индуса с палкой.
 //И если у индуса уже есть палка, то возвращает этого индуса.
 //Только не забывай про чистоту твоей функции.
@@ -320,9 +360,19 @@ function add(a, b) {
                     "Функция должна возвращать одно число"
                 ],
                 test: {
-                    code: `let valid = true;
-                             if(add(23, 76) !== 99){valid = false};
-                            valid === true`,
+                    code: `describe("quest 6", function() {
+
+   it("should return the sum of two numbers",function() {
+      expect(add(1,7)).toEqual(8);
+   });
+   it("should return the sum of two numbers",function() {
+      expect(add(50,51)).toEqual(101);
+   });
+   
+});
+ const report = runSpecs();
+      report.forEach(part => terminal.log(part))
+      if (report.length === 0) { true } else false;`,
                     answer: `//Напиши функцию add, которая возвращает суму двух чисел.
 
 const a = 5;
@@ -381,10 +431,20 @@ const gang1 = {
     weapons: {sticks: 1, swords: 0}
 };
 
-                       let valid = true;
-                    
-                    
-                    valid === true`,
+                       describe("quest 7", function() {
+
+   it("should return gangCard without new member if he hasn't has any weapon",function() {
+      expect(joinGang(gang1, person2)).toEqual({members: ['indus1name'],membersAmount: 1,armors: [true],weapons: {sticks: 1, swords: 0}});
+   });
+   it("should return new gangCard with new member",function() {
+      expect(joinGang(gang1, person1)).toEqual({members: ['indus1name', 'Aadhi1'],membersAmount: 2,armors: [true, true],weapons: {sticks: 2, swords: 1}});
+   });
+   
+});
+ const report = runSpecs();
+      report.forEach(part => terminal.log(part))
+      if (report.length === 0) { true } else false;`,
+
                     answer: `//Напиши функцию createGang,которая возвращает отряд такого типа: 
 //{members: [hindu1.name, hindu2.name], armors: [true, true],
 //weapons: {sticks: 2, swords: 1}}.
