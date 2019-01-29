@@ -446,7 +446,7 @@ const gang1 = {
 
                     answer: `//Напиши функцию createGang,которая возвращает отряд такого типа: 
 //{members: [hindu1.name, hindu2.name], armors: [true, true],
-//weapons: {sticks: 2, swords: 1}}.
+//weapons: ['stick', 'sword']}.
 //P.S. Функция должна возвращать исходную карточку отряда,
 //если рекрута нет оружия.
 //ОЧЕНЬ ВАЖНО!!! Порядок создания свойств объекта должен быть такой,
@@ -459,7 +459,7 @@ const person = {
     weapons: ['sword', 'stick']
 };
 
-
+//БРЕЕЕЕЕЕД
 function joinGang(gangCard, hinduCard) {
     if (hinduCard.weapons.length === 0) return gangCard;
     const newGangCard = Object.assign({}, gangCard);
@@ -471,6 +471,13 @@ function joinGang(gangCard, hinduCard) {
     if (hinduCard.weapons.indexOf('stick') != -1)
         newGangCard.weapons.sticks += 1;
     return newGangCard;
+
+    //вот так нужно!!! я немного изменил задание
+    return hinduCard.weapons.lenght === 0 ? {...gangCard} 
+            : {...gangCard
+            ,members: [...gangCard.members, hinduCard.name]
+            ,armors: [...gangCard.armors, hinduCard.armor]
+            ,weapons: [...weapons, ...hinduCard.weapons]}
 }`
                 }
             }

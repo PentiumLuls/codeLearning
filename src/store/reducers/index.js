@@ -1,5 +1,5 @@
-import { SELECT_QUEST, SELECT_STAGE, PASS_QUEST, NEXT_LEVEL, NEXT_STEP, PREV_STEP } from '../actions/questActions'
-import { RESET_CODE, WRITE_CODE, CHANGE_SHOW_POPUP } from '../actions/codeActions'
+import { SELECT_QUEST, SELECT_STAGE, PASS_QUEST, NEXT_LEVEL, NEXT_STEP, PREV_STEP} from '../actions/questActions'
+import { RESET_CODE, WRITE_CODE, CHANGE_SHOW_POPUP, CLEAR_TERMINAL } from '../actions/codeActions'
 import {quests} from '../../plot/quests';
 
 if (!localStorage['passStages']) {
@@ -31,7 +31,8 @@ export const initialState = {
     step: 2,
     writeCode: false,
     resets: 0,
-    showPopup: true
+    showPopup: true,
+    clear: null
 }
 
 
@@ -84,6 +85,9 @@ export function rootReducer(state = initialState, action) {
 
         case CHANGE_SHOW_POPUP:
             return {...state, showPopup: action.payload}
+
+        case CLEAR_TERMINAL:
+            return {...state, clear: action.payload}
 
         default:
             return state

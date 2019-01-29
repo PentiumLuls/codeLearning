@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import {quests} from '../../plot/quests'
 import { connect } from 'react-redux';
 import { nextLevel, passQuest } from '../../store/actions/questActions'
-import { resetCode, writeCode, changeShowPopup } from '../../store/actions/codeActions'
+import { resetCode, writeCode, changeShowPopup, clearTerminal } from '../../store/actions/codeActions'
 
 class Terminal extends Component {
     constructor() {
@@ -175,6 +175,7 @@ class Terminal extends Component {
     }
 
     componentDidMount() {
+        this.props.clearTerminal(this.clearTerminal)
         this.props.exportRun(this.run)
     }
 }
@@ -194,7 +195,8 @@ const mapDispatchToProps = dispatch => {
         writeCode: (can) => dispatch(writeCode(can)),
         nextLevel: () => dispatch(nextLevel()),
         passQuest: () => dispatch(passQuest()),
-        changeShowPopup: (can) => dispatch(changeShowPopup(can))
+        changeShowPopup: (can) => dispatch(changeShowPopup(can)),
+        clearTerminal: (func) => dispatch(clearTerminal(func))
     }
 }
 

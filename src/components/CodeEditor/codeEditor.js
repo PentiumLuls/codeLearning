@@ -65,7 +65,11 @@ class CodeEditor extends Component {
                     bindKey: {win: 'Ctrl-shift-z', mac: 'Command-shift-z'}, //key combination used for the command.
                     exec: () => { this.props.run() }  //function to execute when keys are pressed.
                   }]}
+                setOptions={{
+                    autoScrollEditorIntoView: true,
+                    highlightActiveLine: false
 
+                }}
                 ref={instance => {
                     this.ace = instance;
                 }} // Let's put things into scope

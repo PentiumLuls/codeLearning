@@ -1,6 +1,7 @@
 export const RESET_CODE = 'RESET_CODE';
 export const WRITE_CODE = 'WRITE_CODE';
-export const CHANGE_SHOW_POPUP = 'CHANGE_SHOW_POPUP'
+export const CHANGE_SHOW_POPUP = 'CHANGE_SHOW_POPUP';
+export const CLEAR_TERMINAL = 'CLEAR_TERMINAL';
 
 export function resetCode() {
     return {
@@ -21,3 +22,11 @@ export function changeShowPopup(can) {
         payload: can
     }
 }
+
+export function clearTerminal(func) {
+    return {
+        type: CLEAR_TERMINAL,
+        payload: func
+    }
+}
+

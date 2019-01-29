@@ -18,6 +18,7 @@ const blackSquares = rectangles.filter(isBlack).filter(isSquare);
 
 
 ////// quest 2 ///////
+//weapons [] !!!!! 
 persons = [{name:'Farid',city:'Delhi',weapon:'sword',age:21},
 ,{name:'Anbu',city:'Delhi',weapon:'stick',age:18}
 ,{name:'Chetan',city:'Delhi',weapon:'sword',age:28}
@@ -120,7 +121,7 @@ const wife = persons.filter(isAnvi)
 
 
 ////// quest 6 ///////
-
+//weapons [] !!!!!
 const persons = [{name:'Farid',armor: true,weapon:'sword',age:21,}
 ,{name:'Chetan',armor: true,weapon:'sword',age:35,}
 ,{name:'Chetan',armor: false,weapon:'sword',age:50,}

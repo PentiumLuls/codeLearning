@@ -16,13 +16,14 @@ class Tasklist extends Component {
     }
 
     next = (index) => {
-
+        this.props.func2();
         if (this.step == 0) {
             this.props.writeCode(false);
             this.props.selectStage(index);
             this.props.nextStep();
 
         } else if (this.step == 1) {
+            this.props.clear();
             this.props.writeCode(true);
             this.props.selectQuest(index);
             this.props.nextStep();
@@ -90,7 +91,8 @@ const mapStateToProps = store => {
         passQuests: store.passQuests,
         currentStage: store.currentStage,
         currentQuest: store.currentQuest,
-        step: store.step
+        step: store.step,
+        clear: store.clear
     }
 }
 

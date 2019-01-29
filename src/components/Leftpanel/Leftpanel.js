@@ -46,7 +46,7 @@ class Leftpanel extends Component {
                     </defs>
                 </svg>
            <Header func={this.click} func2={this.click2}/>
-            <Tasklist notUpdateEditor={this.props.notUpdateEditor}
+            <Tasklist func2={this.click2} notUpdateEditor={this.props.notUpdateEditor}
                 writeQuest={this.writeQuest}/>
         </div>
       );
