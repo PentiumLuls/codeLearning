@@ -65,7 +65,7 @@ function isSquare(rectangle) {
 
 });
                             
-                            terminal.log(...runSpecs());`,
+                            terminal.log(runSpecs());`,
                     answer: `//Напиши функции isBlack и isSquare, которые принимают прямоугольник
 //И возвращают соответствующие данные.
 //P.S. Все цвета будут написаны в lowercase.

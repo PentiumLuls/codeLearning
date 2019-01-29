@@ -8,7 +8,7 @@
     <script src="/js/boot.js"></script>-->
 </head>
 <body>
-    <div id="app"></div>
+<div id="app"></div>
 
 <script>
 
@@ -48,7 +48,8 @@
 
         //!!!!!!!!!!!!!!!!!!!!!!!!!!!!
         reporter.specStarted = function (result) {
-            finalReport.passed.push(result.passedExpectations.passed);
+            console.log(result)
+            finalReport.passed.push(result.passedExpectations.passed || false);
             finalReport.descriptions.push(result.description);
             //log(result);
         };
@@ -93,9 +94,25 @@
         // Runs the specs (must be called after specs are defined)
         jasmine.getEnv().execute();
 
-        // print JSON report
-        //console.log(JSON.stringify(finalReport));
-        return finalReport;
+        //PARSING FINAL REPORT
+        let result = "\n";
+        console.log(finalReport.passed)
+        for (let i = 0; i < finalReport.passed.length; i++) {
+            if (finalReport.passed[i] === false) {
+                result += finalReport.descriptions[i] + "\n";
+            }
+        }
+
+        //RESETTING REPORT
+        finalReport = {
+            logs: [],
+            totalSpecs: 0,
+            stats: {},
+            passed: [],
+            descriptions: []
+        };
+
+        return result;
     };
 
     //runSpecs();
