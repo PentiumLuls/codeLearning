@@ -80,17 +80,14 @@ class App extends Component {
                 </div>
                 <div className="terminal">
                     <Terminal
-                        updateLeftPanel={this.updateLeftPanel}
                         className="terminal"
                         testCode={quests[this.currentStage].quests[this.currentQuest].test}
                         regexps={quests[this.currentStage].quests[this.currentQuest].regexps}
                         regexpsNone={quests[this.currentStage].quests[this.currentQuest].regexpsNone}
-                        showTutorial={this.showTutorial}
-                        nextLevel={this.writeQuest}
                         />
                 </div>
                 </div>
-                : <HellRules/>
+                : <HellRules passStages={this.passStages} passQuests={this.passQuests}/>
             }
                 <div>
                     {

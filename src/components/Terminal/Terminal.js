@@ -138,6 +138,7 @@ class Terminal extends Component {
         this.props.writeCode(true);
         this.props.resetCode();
         this.props.changeShowPopup(true);
+        this.clearTerminal();
     }
 
 
