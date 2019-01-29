@@ -269,4 +269,18 @@ audio {position: absolute; visibility: hidden;}
 }
 
 
+/*ДОРОБИТЬ*/
+.open-terminal {
+    height: 40vh;
+}
+
+.open-code-editor {
+    height: 60vh;
+}
+
+.button-open-terminal {
+    float: right;
+}
+
+
   

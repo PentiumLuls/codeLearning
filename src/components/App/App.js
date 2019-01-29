@@ -17,7 +17,8 @@ class App extends Component {
 
         this.state = {
             isEdit: false,
-            answer: false
+            answer: false,
+            run: undefined
         };
     }
 
@@ -32,8 +33,19 @@ class App extends Component {
         this.props.changeShowPopup(false);
     }
 
-    render() {
+    exportRun = (func) => {
+        this.setState({
+            run: func
+        })
+    }
 
+    openTerminal = () => {
+        this.setState({
+            
+        })
+    }
+
+    render() {
         this.passStages = this.props.passStages;
         this.passQuests = this.props.passQuests;
         this.currentStage = this.props.currentStage;
@@ -71,6 +83,7 @@ class App extends Component {
                 <div>
                 <div className="editor">
                     <Codeditor
+                        run={this.state.run}
                         textAnswer={quests[this.currentStage].quests[this.currentQuest].test.answer}
                         text={this.code}
                         answer={this.state.answer}
@@ -80,6 +93,7 @@ class App extends Component {
                 </div>
                 <div className="terminal">
                     <Terminal
+                        exportRun={this.exportRun}
                         className="terminal"
                         testCode={quests[this.currentStage].quests[this.currentQuest].test}
                         regexps={quests[this.currentStage].quests[this.currentQuest].regexps}
