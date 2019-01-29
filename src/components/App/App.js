@@ -8,7 +8,7 @@ import Leftpanel from '../Leftpanel/Leftpanel';
 import {quests} from '../../plot/quests';
 import Chatbot from '../ChatBot/Chatbot'; 
 import { connect } from 'react-redux';
-import { selectStage, selectQuest } from '../../store/actions/questActions'
+import { changeShowPopup } from '../../store/actions/codeActions'
 
 
 class App extends Component {
@@ -16,7 +16,6 @@ class App extends Component {
         super(props);
 
         this.state = {
-            showPopup: true, //SHOW POPUP ON START
             isEdit: false,
             answer: false
         };
@@ -29,18 +28,9 @@ class App extends Component {
         this.setState({isEdit: false});
     };
 
-    togglePopup() {
-        this.setState({
-            showPopup: !this.state.showPopup,
-        });
+    togglePopup = () => {
+        this.props.changeShowPopup(false);
     }
-
-    showTutorial = () => {
-        this.togglePopup();
-    };
-
-
-    
 
     render() {
 
@@ -50,14 +40,15 @@ class App extends Component {
         this.currentQuest = this.props.currentQuest;
         this.writeCode = this.props.writeCode;
         this.code = this.props.code;
+        this.showPopup = this.props.showPopup;
 
         //проверка есть ли пройденый квест в вайт листе, если есть показать попап и удалить
         const newList = JSON.parse(localStorage.whiteList);
-        const canIShowPopup = newList[this.passStages].indexOf(this.passQuests) !== -1;
-        let indexOfElement = newList[this.passStages].indexOf(this.passQuests);
-        if (canIShowPopup && this.state.showPopup) {
+        const canIShowPopup = newList[this.currentStage].indexOf(this.currentQuest) !== -1;
+        let indexOfElement = newList[this.currentStage].indexOf(this.currentQuest);
+        if (canIShowPopup && this.showPopup) {
             
-            delete newList[this.passStages][indexOfElement];
+            delete newList[this.currentStage][indexOfElement];
             localStorage.setItem('whiteList', JSON.stringify(newList))
         }
 
@@ -102,8 +93,8 @@ class App extends Component {
                 </div>
                 {//POPUP 
 
-                    this.state.showPopup && canIShowPopup?
-                        <Popup stage={this.currentStage} quest={indexOfElement} togglePopup={this.togglePopup.bind(this)}/>
+                    this.showPopup && canIShowPopup?
+                        <Popup stage={this.currentStage} quest={indexOfElement} togglePopup={this.togglePopup}/>
                         : null
                 }
             </div>
@@ -122,14 +113,14 @@ const mapStateToProps = store => {
         currentQuest: store.currentQuest,
         writeCode: store.writeCode,
         code: store.code,
-        resets: store.resets
+        resets: store.resets,
+        showPopup: store.showPopup
     }
 }
 
 const mapDispatchToProps = dispatch => {
     return {
-        selectStage,
-        selectQuest
+        changeShowPopup: (can) => dispatch(changeShowPopup(can))
     }
 }
 

@@ -19,11 +19,9 @@ export function selectStage(stage) {
     }
 }
 
-export function passQuest(stage, quest) {
+export function passQuest() {
     return {
-        type: PASS_QUEST,
-        payloadStage: stage,
-        payloadQuest: quest
+        type: PASS_QUEST
     }
 }
 
