@@ -35,10 +35,23 @@ export const dialogs = [
             [
                 //1 Dialogs
                 {
-                    name: "Unknown",
+                    name: "Karada",
                     text: [
-                        "Sample dialog",
-                        "Sample dialog",
+                        "--- KARADA HAS ENTERED THE CHAT ---",
+                        "Karada: Hey, mongrel!",
+                        "Karada: I've done some searching for your pathetic self.",
+                        "Karada: I can't believe you actually ASKED me to do something like this.",
+                        "Karada: You should learn your place, you know.",
+                        "Karada: Wait... What's that confused look on your face? ",
+                        "--- KABIR HAS ENTERED THE CHAT ---",
+                        "Kabir: О богиня объектно-ориентированого мира, безупречная и идеальная госпожа Карада!",
+                        "Kabir: Наш спаситель потерял воспоминания в горечи и скорби!",
+                        "--- KABIR HAS LEFT THE CHAT ---",
+                        "Karada: ...oh. That's unfortunate.",
+                        "Karada: Well not like that matters anyway. You still should be able to complete your quest.",
+                        "Karada: Don't worry, mongrel. Even though I need to teach you everything all over again, you still are of use to me!",
+                        "Karada: Now, let me introduce you to artifacts I've managed to acquire. Brace yourself!",
+                        "--- KARADA HAS LEFT THE CHAT ---"
                     ]
                 },
                 {

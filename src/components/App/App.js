@@ -7,35 +7,19 @@ import Popup from "../Popup/Popup";
 import Leftpanel from '../Leftpanel/Leftpanel';
 import {quests} from '../../plot/quests';
 import Chatbot from '../ChatBot/Chatbot'; 
-import { formatWithOptions } from 'util';
-
-
+import { connect } from 'react-redux';
+import { changeShowPopup } from '../../store/actions/codeActions'
+import sound from '../../audio/sans.mp3'
+import sound2 from '../../audio/sans.ogg'
 class App extends Component {
-    constructor() {
-        super();
-        localStorage.setItem('button_run', 0);
-        if (!localStorage['passStages']) {
-            localStorage['passStages'] = 0
-        }
-        if (!localStorage['passQuests']) {
-            localStorage['passQuests'] = 0
-        }
-        if (!localStorage['currentStage']) {
-            localStorage['currentStage'] = localStorage.passStages;
-        }
-        if (!localStorage['currentQuest']) {
-            localStorage['currentQuest'] = localStorage.passQuests;
-        }
-        if (!localStorage['whiteList']) {
-            localStorage['whiteList'] = JSON.stringify([[0, 1, 2, 3, 4, 6], [0, 2]]);
-        }
+    constructor(props) {
+        super(props);
+
         this.state = {
-            showPopup: true,//SHOW POPUP ON START
             isEdit: false,
-            stage: +localStorage.passStages,
-            quest: +localStorage.passQuests,
-            notUpdateEditor: 0,
-            answer: false
+            answer: false,
+            run: undefined,
+            terminalOpen: false
         };
     }
 
@@ -46,135 +30,98 @@ class App extends Component {
         this.setState({isEdit: false});
     };
 
-    togglePopup() {
-        this.setState({
-            showPopup: !this.state.showPopup,
-        });
+    togglePopup = () => {
+        this.props.changeShowPopup(false);
     }
 
-    writeQuest = (stageN, questN, popup=false, answer=false) => {
-
-        let newStage = this.state.stage;
-        let newQuest = this.state.quest;
-        
-
-        if (answer) {
-
-            this.setState({
-                answer: answer
-            }, () => console.log(answer))
-            
-            
-        } else {
-            newStage = stageN;
-            newQuest = questN;
-            this.setState({
-                stage: newStage,
-                quest: newQuest,
-                updateLP: false,
-                notUpdateEditor: 0,
-                answer: answer
-            })
-        }
-        localStorage.currentStage = stageN;
-        localStorage.currentQuest = questN;
-        
-        if(popup) {
-            this.updateLeftPanel();
-            this.showTutorial();
-        }
-    };
-
-    updateLeftPanel = (popup) => {
+    exportRun = (func) => {
         this.setState({
-            updateLP: !this.props.updateLP,
-            showPopup: popup
+            run: func
         })
-    };
-
-
-    notUpdateEditor = () => {
-        this.setState({
-            notUpdateEditor: 1
-        })
-    };
-
-    showTutorial = () => {
-        this.togglePopup();
-    };
-
-    renderCodeEditor = () => {
-        return (
-            <Codeditor
-                                notUpdateEditor={this.state.notUpdateEditor}
-                                textAnswer={quests[this.state.stage].quests[this.state.quest].test.answer}
-                                text={quests[this.state.stage].quests[this.state.quest].code}
-                                answer={this.state.answer}/>
-        )
     }
 
-    
+    openTerminal = () => {
+        console.log("click")
+        this.setState({
+            terminalOpen: !this.state.terminalOpen
+        })
+    }
 
     render() {
+        console.log("rerender app")
+        this.passStages = this.props.passStages;
+        this.passQuests = this.props.passQuests;
+        this.currentStage = this.props.currentStage;
+        this.currentQuest = this.props.currentQuest;
+        this.writeCode = this.props.writeCode;
+        this.code = this.props.code;
+        this.showPopup = this.props.showPopup;
+
         //проверка есть ли пройденый квест в вайт листе, если есть показать попап и удалить
         const newList = JSON.parse(localStorage.whiteList);
-        const canIShowPopup = newList[localStorage.passStages].indexOf(+localStorage.passQuests) !== -1;
-        let indexOfElement = newList[localStorage.passStages].indexOf(+localStorage.passQuests);
-        if (canIShowPopup && this.state.showPopup) {
+        const canIShowPopup = newList[this.currentStage].indexOf(this.currentQuest) !== -1;
+        let indexOfElement = newList[this.currentStage].indexOf(this.currentQuest);
+        if (canIShowPopup && this.showPopup) {
             
-            delete newList[localStorage.passStages][indexOfElement];
+            delete newList[this.currentStage][indexOfElement];
             localStorage.setItem('whiteList', JSON.stringify(newList))
         }
 
         return (
             <div className="main">
+                
+                <div>
+                    <audio controls autoPlay loop>
+                        <source src={sound2} type="audio/ogg"/>
+                            <source src={sound} type="audio/mpeg"/>
+                            Your browser does not support the audio element.
+                    </audio>
+                </div>
                 <div className="leftpanel">
-                    <Leftpanel notUpdateEditor={this.notUpdateEditor} updateLP={this.props.updateLP}
-                               writeQuest={this.writeQuest}
-                               func={this.changeButtonState} func2={this.changeButtonState2}
-                               stage={this.state.stage}
-                               quest={this.state.quest} />
+                    <Leftpanel  func={this.changeButtonState}
+                                func2={this.changeButtonState2}/>
                 </div>
                 {
                 (!this.state.isEdit)
                 ?
                 <div>
-                <div className="editor">
-                    
-                         {this.renderCodeEditor()}
-                            
+                <div className={this.state.terminalOpen ? 'editor open-editor' : 'editor'}>
+                    <Codeditor
+                        run={this.state.run}
+                        textAnswer={quests[this.currentStage].quests[this.currentQuest].test.answer}
+                        text={this.code}
+                        answer={this.state.answer}
+                        writeCode={this.writeCode}
+                        resets={this.props.resets}
+                        />
                 </div>
-                <div className="terminal">
+                <div className={this.state.terminalOpen ? 'terminal open-terminal' : 'terminal'}>
                     <Terminal
-                        updateLeftPanel={this.updateLeftPanel}
+                        terminalOpen={this.state.terminalOpen}
+                        exportRun={this.exportRun}
                         className="terminal"
-                        stage={this.state.stage}
-                        quest={this.state.quest}
-                        testCode={quests[this.state.stage].quests[this.state.quest].test}
-                        regexps={quests[this.state.stage].quests[this.state.quest].regexps}
-                        regexpsNone={quests[this.state.stage].quests[this.state.quest].regexpsNone}
-                        showTutorial={this.showTutorial}
-                        nextLevel={this.writeQuest}
+                        testCode={quests[this.currentStage].quests[this.currentQuest].test}
+                        regexps={quests[this.currentStage].quests[this.currentQuest].regexps}
+                        regexpsNone={quests[this.currentStage].quests[this.currentQuest].regexpsNone}
+                        openTerminal={this.openTerminal}
                         />
                 </div>
                 </div>
-                : <HellRules/>
+                : <HellRules passStages={this.passStages} passQuests={this.passQuests}/>
             }
                 <div>
                     {
-                        (!this.state.isEdit) ? <Chatbot stage={this.state.stage}
-                        quest={this.state.quest}/> : null
+                        (!this.state.isEdit) ? <Chatbot stage={this.currentStage}
+                        quest={this.currentQuest}/> : null
                     }
                 </div>
+                {//POPUP 
 
-
-                {//POPUP
-
-                
-                    this.state.showPopup && canIShowPopup?
-                        <Popup stage={this.state.stage} quest={indexOfElement} togglePopup={this.togglePopup.bind(this)}/>
+                    this.showPopup && canIShowPopup?
+                        <Popup stage={this.currentStage} quest={indexOfElement} togglePopup={this.togglePopup}/>
                         : null
                 }
+                
             </div>
         )
 
@@ -182,4 +129,23 @@ class App extends Component {
 }
 
 
-export default App;
+const mapStateToProps = store => {
+    return {
+        passStages: store.passStages,
+        passQuests: store.passQuests,
+        currentStage: store.currentStage,
+        currentQuest: store.currentQuest,
+        writeCode: store.writeCode,
+        code: store.code,
+        resets: store.resets,
+        showPopup: store.showPopup
+    }
+}
+
+const mapDispatchToProps = dispatch => {
+    return {
+        changeShowPopup: (can) => dispatch(changeShowPopup(can))
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);

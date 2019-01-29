@@ -43,13 +43,26 @@ function isSquare(rectangle) {
                         color: 'red',
                         width:8,
                         height: 8,
-                    }
+                    }       
+                            describe("quest1", function() { 
+   
+   it("should return true when the rectangle color is black",function() { 
+      expect(isBlack(rectangle2)).toEqual(true); 
+   }); 
+   it("should return false when the rectangle is not square",function() { 
+      expect(isSquare(rectangle2)).toEqual(false); 
+   }); 
+   it("should return false when the rectangle color is not black",function() { 
+      expect(isBlack(rectangle3)).toEqual(false); 
+   }); 
+   it("should return true when the rectangle is square",function() { 
+      expect(isSquare(rectangle3)).toEqual(true); 
+   });
 
-                             if(isBlack(rectangle2) !== true){valid = false};
-                             if(isSquare(rectangle2) !== false){valid = false};
-                             if(isBlack(rectangle3) !== false){valid = false};
-                             if(isSquare(rectangle3) !== true){valid = false};
-                            valid === true`,
+});
+      const report = runSpecs();
+      report.forEach(part => terminal.log(part))
+      if (report.length === 0) { true } else false;`,
                     answer: `//Напиши функции isBlack и isSquare, которые принимают прямоугольник
 //И возвращают соответствующие данные.
 //P.S. Все цвета будут написаны в lowercase.
@@ -100,9 +113,18 @@ function isMale(hinduCard) {
                         gender: 'male'
                     }
                     
-                    if(isMale(hindu1) !== false){valid = false};
-                    if(isMale(hindu2) !== true){valid = false};
-                    valid === true`,
+                    describe("quest2", function() { 
+   
+   it("should return true when this indus is a male",function() { 
+      expect(isMale(hindu2)).toEqual(true); 
+   }); 
+   it("should return false when this indus is not a male",function() { 
+      expect(isMale(hindu1)).toEqual(false); 
+   }); 
+});
+      const report = runSpecs();
+      report.forEach(part => terminal.log(part))
+      if (report.length === 0) { true } else false;`,
                     answer: `//Напиши функцию isMale, которая принимает карточку индуса
 //И возвращает его пригодность к войне.
 //P.S. Индус считается пригодным, если он мужчина.
@@ -155,7 +177,18 @@ function perimeter(rectangle) {
                     }
                              if(perimeter(rectangle2) !== 16){valid = false};
                             
-                            valid === true`,
+                            describe("quest3", function() { 
+   
+   it("should return perimeter of the rectangle",function() { 
+      expect(perimeter(rectangle2)).toEqual(16); 
+   }); 
+   it("should return perimeter of the rectangle",function() { 
+      expect(perimeter(rectangle3)).toEqual(60); 
+   }); 
+});
+      const report = runSpecs();
+      report.forEach(part => terminal.log(part))
+      if (report.length === 0) { true } else false;`,
                     answer: `//Напиши функцию perimeter, которая принимает прямоугольник
 //и возвращает результат проверки.
 
@@ -207,12 +240,20 @@ function equipArmor(hinduCard) {
                         gender: 'male', armor: true
                     };
                     
-                    if(equipArmor(hindu1)['armor'] !== true){valid = false};
-                    if(hindu1['armor'] !== false){valid = false};
-                    if(equipArmor(hindu2)['armor'] !== true){valid = false};
-                    if(hindu2['armor'] !== false){valid = false};
-                    if(equipArmor(hindu3) != hindu3) valid = false;
-                    valid === true`,
+                    describe("quest4", function() { 
+   
+   it("should return new card of indus with 'weapon' = true",function() { 
+      expect(equipArmor(hindu1)).toEqual({gender: 'female',armor: true}); 
+   }); 
+   it("please, don't change the state of hinduCard",function() { 
+      expect(hindu1['armor']).toEqual(false); 
+   }); 
+
+});
+      const report = runSpecs();
+      report.forEach(part => terminal.log(part))
+      if (report.length === 0) { true } else false;`,
+
                     answer: `//Напиши функцию equipArmor, которая принимает карточку индуса
 //И возвращает новую, со свойством "armor: true" 
 //Если у индуса уже есть броня, просто возврати этого индуса
@@ -264,10 +305,22 @@ function equipStick(hinduCard) {
                         weapons: ['stick, sword']
                     }
                     
-                    if(equipStick(hindu1)['weapons'][0] !== 'stick'){valid = false};
-                    if(equipStick(hindu2)['weapons'].length !== 2){valid = false};
-                    if(equipStick(hindu2) != hindu2){valid = false};
-                    valid === true`,
+                    describe("quest5", function() { 
+   
+   it("should add 'stick' to weapons of new indus card",function() { 
+      expect(equipStick(hindu1)['weapons'][0]).toEqual('stick'); 
+   });
+   it("should not add 'stick' if it is already exist in weapons",function() { 
+      expect(equipStick(hindu2)['weapons'].length).toEqual(2); 
+   });
+   it("should return the same card if 'stick' is already exist in weapons",function() { 
+      expect(equipStick(hindu2)).toEqual(hindu2); 
+   });
+});
+      const report = runSpecs();
+      report.forEach(part => terminal.log(part))
+      if (report.length === 0) { true } else false;`,
+
                     answer: `//Напиши функцию equipStick, которая возвращает карточку индуса с палкой.
 //И если у индуса уже есть палка, то возвращает этого индуса.
 //Только не забывай про чистоту твоей функции.
@@ -307,9 +360,19 @@ function add(a, b) {
                     "Функция должна возвращать одно число"
                 ],
                 test: {
-                    code: `let valid = true;
-                             if(add(23, 76) !== 99){valid = false};
-                            valid === true`,
+                    code: `describe("quest 6", function() {
+
+   it("should return the sum of two numbers",function() {
+      expect(add(1,7)).toEqual(8);
+   });
+   it("should return the sum of two numbers",function() {
+      expect(add(50,51)).toEqual(101);
+   });
+   
+});
+ const report = runSpecs();
+      report.forEach(part => terminal.log(part))
+      if (report.length === 0) { true } else false;`,
                     answer: `//Напиши функцию add, которая возвращает суму двух чисел.
 
 const a = 5;
@@ -367,13 +430,20 @@ const gang1 = {
     weapons: {sticks: 1, swords: 0}
 };
 
-                       let valid = true;
-                    if (joinGang(gang1, person1) !== {members: ['indus1name', 'Aadhi1'],
-    membersAmount: 2,
-    armors: [true, true],
-    weapons: {sticks: 2, swords: 1}}) {valid = false};
-                    
-                    valid === true`,
+                       describe("quest 7", function() {
+
+   it("should return gangCard without new member if he hasn't has any weapon",function() {
+      expect(joinGang(gang1, person2)).toEqual({members: ['indus1name'],membersAmount: 1,armors: [true],weapons: {sticks: 1, swords: 0}});
+   });
+   it("should return new gangCard with new member",function() {
+      expect(joinGang(gang1, person1)).toEqual({members: ['indus1name', 'Aadhi1'],membersAmount: 2,armors: [true, true],weapons: {sticks: 2, swords: 1}});
+   });
+   
+});
+ const report = runSpecs();
+      report.forEach(part => terminal.log(part))
+      if (report.length === 0) { true } else false;`,
+
                     answer: `//Напиши функцию createGang,которая возвращает отряд такого типа: 
 //{members: [hindu1.name, hindu2.name], armors: [true, true],
 //weapons: {sticks: 2, swords: 1}}.
@@ -388,6 +458,7 @@ const person = {
     armor: true,
     weapons: ['sword', 'stick']
 };
+
 
 function joinGang(gangCard, hinduCard) {
     if (hinduCard.weapons.length === 0) return gangCard;
@@ -407,19 +478,349 @@ function joinGang(gangCard, hinduCard) {
     },
 ///////////////////////////////////////глава2////////////////////////////////////////////////////////////
 ///////////////////////////////////////глава2////////////////////////////////////////////////////////////
-///////////////////////////////////////глава2////////////////////////////////////////////////////////////
+///////////////////////////////////////глава2////////////////////////////////////////////////////////////    
+    {
+        title: "",
+        quests:[
+
+ ///////////////////////////////////////quest 1////////////////////////////////////////////////////////////           
+            {
+                title: "filter. Туториал 1",
+                text: ``,
+                regexps: [],
+                regexpsNone: [/(for)/g, /(while)/g, /(var)/g, /(let)/g],
+                code: `
+                const rectangles = [{
+                    color: 'red',
+                    width:4,
+                    height:4,
+                },{
+                    color: 'black',
+                    width:3,
+                    height:2,
+                },{
+                    color: 'white',
+                    width:6,
+                    height:9,
+                },
+                {
+                    color: 'black',
+                    width:3,
+                    height:3,
+                },{
+                    color: 'green',
+                    width:4,
+                    height:7,
+                },
+                {
+                    color: 'black',
+                    width:3,
+                    height:5,
+                },
+                {
+                    color: 'black',
+                    width:4,
+                    height:2,
+                },]
+                
+                function isBlack(rectangle) {
+                    return rectangle.color == 'black';
+                }
+`,
+                hints: [
+                    "Функция должна возвращать True или False"
+                ],
+                test: {
+                    code: `let valid = true;
+                    const rectangle2 = {
+                        color: 'black',
+                        width:4,
+                        height: 3,
+                    }
+                    const rectangle3 = {
+                        color: 'red',
+                        width:8,
+                        height: 8,
+                    }
+
+                            `,
+                    answer: `
+        const rectangles = [{
+                        color: 'red',
+                        width:4,
+                        height:4,
+                    },{
+                        color: 'black',
+                        width:3,
+                        height:2,
+                    },{
+                        color: 'white',
+                        width:6,
+                        height:9,
+                    },
+                    {
+                        color: 'black',
+                        width:3,
+                        height:3,
+                    },{
+                        color: 'green',
+                        width:4,
+                        height:7,
+                    },
+                    {
+                        color: 'black',
+                        width:3,
+                        height:5,
+                    },
+                    {
+                        color: 'black',
+                        width:4,
+                        height:2,
+                    },];
+                    
+                    function isBlack(rectangle) {
+                        return rectangle.color == 'black';
+                    };
+                    
+                    
+                     var newArr=rectangles.filter(isBlack).map(color);
+
+`
+                }
+            },
+ ///////////////////////////////////////quest 2////////////////////////////////////////////////////////////             
+            {
+                title: "filter сюжетное задание",
+                text: ``,
+                regexps: [],
+                regexpsNone: [/(for)/g, /(while)/g, /(var)/g, /(let)/g],
+                code: `
+                const persons = [{name:'Aadhi1',gender:'male',},{name:'Aadhi2',gender:'female',},{name:'Aadhi3',gender:'female',},
+{name:'Aadhi4',gender:'male',},{name:'Aadhi5',gender:'female',}];
+
+function isMale(hinduCard) {
+    return hinduCard.gender == 'male';
+};
+`,
+                hints: [
+                    "Функция должна возвращать True или False"
+                ],
+                test: {
+                    code: `let valid = true;
+                    const rectangle2 = {
+                        color: 'black',
+                        width:4,
+                        height: 3,
+                    }
+                    const rectangle3 = {
+                        color: 'red',
+                        width:8,
+                        height: 8,
+                    }
+
+                            `,
+                    answer: `
+                    const persons = [{name:'Aadhi1',gender:'male',},{name:'Aadhi2',gender:'female',},{name:'Aadhi3',gender:'female',},
+                    {name:'Aadhi4',gender:'male',},{name:'Aadhi5',gender:'female',}]
+                    
+                    function isMale(hinduCard) {
+                        return hinduCard.gender == 'male';
+                    }
+                   ;
+                     var newArr=persons.filter(isMale);
+
+`
+                }
+            },
+    ///////////////////////////////////////quest 3////////////////////////////////////////////////////////////
+    {
+        title: " map туториал",
+        text: ``,
+        regexps: [],
+        regexpsNone: [/(for)/g, /(while)/g, /(var)/g, /(let)/g],
+        code: `
+        const rectangles = [{
+            color: 'red',
+            width:4,
+            height:4,
+        },{
+            color: 'black',
+            width:3,
+            height:2,
+        },{
+            color: 'white',
+            width:6,
+            height:9,
+        },
+        {
+            color: 'black',
+            width:3,
+            height:3,
+        },{
+            color: 'green',
+            width:4,
+            height:7,
+        },
+        {
+            color: 'black',
+            width:3,
+            height:5,
+        },
+        {
+            color: 'black',
+            width:4,
+            height:2,
+        },];
+        
+        function perimeter(rectangle) {
+            return rectangle.width*2 + rectangle.height*2;
+        }
+`,
+        hints: [
+            "Функция должна возвращать True или False"
+        ],
+        test: {
+            code: `let valid = true;
+            const rectangle2 = {
+                color: 'black',
+                width:4,
+                height: 3,
+            }
+            const rectangle3 = {
+                color: 'red',
+                width:8,
+                height: 8,
+            }
+
+                    `,
+            answer: `
+            const rectangles = [{
+                color: 'red',
+                width:4,
+                height:4,
+            },{
+                color: 'black',
+                width:3,
+                height:2,
+            },{
+                color: 'white',
+                width:6,
+                height:9,
+            },
+            {
+                color: 'black',
+                width:3,
+                height:3,
+            },{
+                color: 'green',
+                width:4,
+                height:7,
+            },
+            {
+                color: 'black',
+                width:3,
+                height:5,
+            },
+            {
+                color: 'black',
+                width:4,
+                height:2,
+            },];
+            
+            function perimeter(rectangle) {
+                return rectangle.width*2 + rectangle.height*2;
+            }
+            var perimeters=rectangles.map(perimeter);
+`
+        }
+    }, 
+   ///////////////////////////////////////quest 4////////////////////////////////////////////////////////////    
+    {
+        title: " map сюжет",
+        text: ``,
+        regexps: [],
+        regexpsNone: [/(for)/g, /(while)/g, /(var)/g, /(let)/g],
+        code: `
+        const persons = [{gender: 'female',armor: false},{gender: 'male',armor: true},{gender: 'male',armor: false},
+{gender: 'male',armor: false},]
+
+function equipArmor(hinduCard) {
+    const newhinduCard = Object.assign({}, hinduCard);
+    newhinduCard.armor = true;
+    return newhinduCard;
+}
+`,
+        hints: [
+            "Функция должна возвращать True или False"
+        ],
+        test: {
+            code: `
+                    `,
+            answer: `
+            const persons = [{gender: 'female',armor: false},{gender: 'male',armor: true},{gender: 'male',armor: false},
+{gender: 'male',armor: false},]
+
+function equipArmor(hinduCard) {
+    const newhinduCard = Object.assign({}, hinduCard);
+    newhinduCard.armor = true;
+    return newhinduCard;
+}
+
+    
+let armoredHindu=persons.map(equipArmor)
+`
+        }
+    }, 
+ ///////////////////////////////////////quest 5////////////////////////////////////////////////////////////
+ {
+    title: " reduce туториал",
+    text: ``,
+    regexps: [],
+    regexpsNone: [/(for)/g, /(while)/g, /(var)/g, /(let)/g],
+    code: `
+    perimeters = [10,25,18,133,36,100];
+
+function maxPerimeter(max,current){
+    if(max < current) max = current;
+    return max;
+};
+
+`,
+    hints: [
+        "Функция должна возвращать True или False"
+    ],
+    test: {
+        code: `
+                `,
+        answer: `
+ const perimeters = [10,25,18,133,36,100]
+
+function maxPerimeter(max,current){
+    if(max < current) max = current;
+    return max;
+};
+const  max = perimeters.reduce(maxPerimeter,0);
+`
+    }
+}, 
+        ]  
+    },
+  
+///////////////////////////////////////глава5////////////////////////////////////////////////////////////
+///////////////////////////////////////глава5////////////////////////////////////////////////////////////
+///////////////////////////////////////глава5////////////////////////////////////////////////////////////
     {
         title: "Кайся глупец",
         quests:
-        [
-            {
-                title: "Корова-функционист",
-                text: `АД, 2019 год н.э., вечер. Вы оказались в месте, отдалённо напоминающий приватный дом в Соловках. Перед вашим взором предстали   разрушенное имущество, злая корова и грустный индус.
+            [
+                {
+                    title: "Корова-функционист",
+                    text: `АД, 2019 год н.э., вечер. Вы оказались в месте, отдалённо напоминающий приватный дом в Соловках. Перед вашим взором предстали   разрушенное имущество, злая корова и грустный индус.
 
                 Индус просит вас подоить корову. Корова категорически против объектно-ориентированной подойки. Вы решаете подоить её функциональным путём.`,
-                regexps: [/(return)/g, /(function)/g, /(cow)/g, /(milk)/g, /(milkACow)/g],
-                regexpsNone: [/(for)/g, /(while)/g, /(var)/g, /(map)/g, /(reduce)/g, /(filter)/g,  /(filter)/g,],
-                code: `//Здравствуй, брат! Клята корова хочет функциональную подойку, помоги братику индусу.
+                    regexps: [/(return)/g, /(function)/g, /(cow)/g, /(milk)/g, /(milkACow)/g],
+                    regexpsNone: [/(for)/g, /(while)/g, /(var)/g, /(map)/g, /(reduce)/g, /(filter)/g, /(filter)/g,],
+                    code: `//Здравствуй, брат! Клята корова хочет функциональную подойку, помоги братику индусу.
 //Напиши функцию milkACow, которая принимает корову и возвращает подоенную корову.
 
 var cow = {
@@ -431,31 +832,31 @@ function milkACow(cow) {
     return cow
 }
                        `,
-                hints: [
-                    "Функция не должна изменять внешние переменные",
-                    "Попробуй как-то скопировать объект коровы"
-                ],
-                test: {
-                    code: `let valid = true;
+                    hints: [
+                        "Функция не должна изменять внешние переменные",
+                        "Попробуй как-то скопировать объект коровы"
+                    ],
+                    test: {
+                        code: `let valid = true;
                              if(JSON.stringify(milkACow(cow)) !== JSON.stringify({milk: 0})){valid = false};
                              if(cow.milk !== 10){valid = false};
                              if(JSON.stringify(milkACow({milk: 33})) !== JSON.stringify({milk: 0})){valid = false};
                             valid === true`,
-                    answer: `
+                        answer: `
 function milkACow(cow) {
     let newcow = Object.assign({}, cow);
     newcow.milk = 0;
     return newcow;
 }
 `
-                }
-            },
-            {
-                title: "Множественная дойка",
-                text: `Вы довольны, корова подоена, но индус всё ещё грустный. Оказывается, одиночной функции подойки коровы ему недостаточно, так как тот желает поделиться молоком с другими индусами. К сожалению, корова  может выдержать только ограниченное количество подоёк. Тем не менее, индус настаивает на возможности множественной подойки.`,
-                regexps: [/(return)/g, /(function)/g, /(cow)/g, /(milk)/g, /(milkACow)/g],
-                regexpsNone: [/(for)/g, /(while)/g, /(var)/g, /(map)/g, /(reduce)/g, /(filter)/g,  /(filter)/g,],
-                code: `//Брат, да ты крутой, как ты вообще умудрился попасть в функциональный ад?
+                    }
+                },
+                {
+                    title: "Множественная дойка",
+                    text: `Вы довольны, корова подоена, но индус всё ещё грустный. Оказывается, одиночной функции подойки коровы ему недостаточно, так как тот желает поделиться молоком с другими индусами. К сожалению, корова  может выдержать только ограниченное количество подоёк. Тем не менее, индус настаивает на возможности множественной подойки.`,
+                    regexps: [/(return)/g, /(function)/g, /(cow)/g, /(milk)/g, /(milkACow)/g],
+                    regexpsNone: [/(for)/g, /(while)/g, /(var)/g, /(map)/g, /(reduce)/g, /(filter)/g, /(filter)/g,],
+                    code: `//Брат, да ты крутой, как ты вообще умудрился попасть в функциональный ад?
 //Мне пришло много заказов на молоко. Напиши шункцию milkACow, которая будет доить корову
 //на определенное количество молока и возвращать корову, когда у нее закончится молоко. Придерживайся  второй заповеди,
 //я её толком не знаю, но попробуй использовать высшую и первоклассную функции.
@@ -470,8 +871,8 @@ function milkACow(cow, mass) {
         return cow
     }
 }`,
-                test: {
-                    code: `let valid = true;
+                    test: {
+                        code: `let valid = true;
                             let cow2 = {milk: 10}
                                 let myCow = milkACow(cow2)
                                 if(JSON.stringify(myCow(4)) !== JSON.stringify(undefined)){valid = false};
@@ -479,7 +880,7 @@ function milkACow(cow, mass) {
                                 if(JSON.stringify(myCow(4)) !== JSON.stringify({milk: 0})){valid = false};
                                 if(cow2.milk !== 10){valid = false};
                             valid === true`,
-                    answer:`
+                        answer: `
 function milkACow(cow) {
     let newcow = Object.assign({}, cow);
     return function(int) {
@@ -490,14 +891,14 @@ function milkACow(cow) {
     newcow.milk -= int   
     }
 }`
-                }
-            },
-            {
-                title: "Адская экосистема",
-                text: `Корова восхищена вашими навыками функционального программирования, а индус и не думает вас отпускать. Оказывается, функции множественной подойки ему тоже недостаточно, ведь у всего индусского поселения закончились запасы сыра. Корова устало вздыхает. Вы молча задаётесь вопросом, откуда здесь вообще индус и корова, и почему она даёт красное молоко.`,
-                regexps: [/(return)/g, /(function)/g, /(cow)/g, /(milk)/g, /(milkACow)/g],
-                regexpsNone: [/(for)/g, /(while)/g, /(var)/g, /(map)/g, /(reduce)/g, /(filter)/g,  /(filter)/g,],
-                code: `//Мои братья индусы хотят сырууу. Помоги нам сделать сыр,
+                    }
+                },
+                {
+                    title: "Адская экосистема",
+                    text: `Корова восхищена вашими навыками функционального программирования, а индус и не думает вас отпускать. Оказывается, функции множественной подойки ему тоже недостаточно, ведь у всего индусского поселения закончились запасы сыра. Корова устало вздыхает. Вы молча задаётесь вопросом, откуда здесь вообще индус и корова, и почему она даёт красное молоко.`,
+                    regexps: [/(return)/g, /(function)/g, /(cow)/g, /(milk)/g, /(milkACow)/g],
+                    regexpsNone: [/(for)/g, /(while)/g, /(var)/g, /(map)/g, /(reduce)/g, /(filter)/g, /(filter)/g,],
+                    code: `//Мои братья индусы хотят сырууу. Помоги нам сделать сыр,
 //а я пойду його продавать на базар. Напиши шункцию milkACow которая принимает корову,
 //доит её по заказу клиентов и когда молоко закончиться верни масив сыров.
 //Попробуй здалать её такой же крутой как о прошлую .
@@ -517,8 +918,8 @@ function milkACow(cow, mass) {
     }
 }
 `,
-                test: {
-                    code: `let valid = true;
+                    test: {
+                        code: `let valid = true;
                     let cow2 = {milk: 10}
                         let myCow = milkACow(cow2)
                         if(JSON.stringify(myCow(4)) !== JSON.stringify(undefined)){valid = false};
@@ -526,7 +927,7 @@ function milkACow(cow, mass) {
                         if(JSON.stringify(myCow(4)) !== JSON.stringify([2, 2, 1])){valid = false};
                         if(cow2.milk !== 10){valid = false};
                     valid === true`,
-                    answer: `function milkACow(cow) {
+                        answer: `function milkACow(cow) {
                         let newcow = Object.assign({}, cow);
                         let cheeses = []
                         return function(int) {
@@ -540,14 +941,14 @@ function milkACow(cow, mass) {
                         }
                     }
                     `
-                }
-            },
-            {
-                title: "Звезда спасения индусов",
-                text: `Вы оказались в месте, где кроме индуса и коровы вас окружает ещё и изобилие молока и сыра. На сие чудо начинают сходиться другие индусы. У вашего индуса появляется идея начать продавать сыр местним торгашам, однако для этого его нужно сначала свесить. Множество индусских глаз теперь сфокусировано на вас.`,
-                regexps: [/(return)/g, /(function)/g, /(cow)/g, /(milk)/g, /(milkACow)/g],
-                regexpsNone: [/(for)/g, /(while)/g, /(var)/g, /(map)/g, /(reduce)/g, /(filter)/g,  /(filter)/g,],
-                code: `//Брат!! Мы успешны! ПОмоги мне продавать сыр оптом и я посвящу тебя в истинного индуса.
+                    }
+                },
+                {
+                    title: "Звезда спасения индусов",
+                    text: `Вы оказались в месте, где кроме индуса и коровы вас окружает ещё и изобилие молока и сыра. На сие чудо начинают сходиться другие индусы. У вашего индуса появляется идея начать продавать сыр местним торгашам, однако для этого его нужно сначала свесить. Множество индусских глаз теперь сфокусировано на вас.`,
+                    regexps: [/(return)/g, /(function)/g, /(cow)/g, /(milk)/g, /(milkACow)/g],
+                    regexpsNone: [/(for)/g, /(while)/g, /(var)/g, /(map)/g, /(reduce)/g, /(filter)/g, /(filter)/g,],
+                    code: `//Брат!! Мы успешны! ПОмоги мне продавать сыр оптом и я посвящу тебя в истинного индуса.
 //Напиши функцию milkACow которая принимает корову,
 //доит её по заказу клиентов и когда молоко закончиться верни массу всего сыра который получился.
 //Но брат, избалованая корова хочет что бы ти использовал стрелочные функции, я думаю это 4 заповедь.
@@ -566,12 +967,12 @@ function milkACow(cow, mass) {
     }
 }
                 `,
-                hints: [
-                    "hint sample",
-                    "hint sample2"
-                ],
-                test: {
-                    code: `let valid = true;
+                    hints: [
+                        "hint sample",
+                        "hint sample2"
+                    ],
+                    test: {
+                        code: `let valid = true;
                     let cow2 = {milk: 10}
                         let myCow = milkACow(cow2)
                         if(JSON.stringify(myCow(4)) !== JSON.stringify(undefined)){valid = false};
@@ -579,14 +980,14 @@ function milkACow(cow, mass) {
                         if(JSON.stringify(myCow(4)) !== JSON.stringify(5)){valid = false};
                         if(cow2.milk !== 10){valid = false};
                     valid === true`,
-                    answer: ``
-                }
-            },
-            {
-                title: "Легенда о великом ублажателе коров",
-                text: `Вы и ваш индусский друг смогли наладить производство сыра, после чего стали самыми успешными предприятелями в индусской деревне в Аду. Кажется, вами восхищается даже Мефистофель. На вырученные деньги вы решаете приобрести ещё несколько коров. Теперь вам каким-то образом нужно вести учёт полученного молока и сыра. Вся робота опять легла на вас. Корова понимающе вздыхает.`,
-                regexps: [/(return)/g, /(reduce)/g],
-                code: `//Брат!! Мы успешны! ПОмоги мне продавать сыр оптом и я посвящу тебя в истинного индуса.
+                        answer: ``
+                    }
+                },
+                {
+                    title: "Легенда о великом ублажателе коров",
+                    text: `Вы и ваш индусский друг смогли наладить производство сыра, после чего стали самыми успешными предприятелями в индусской деревне в Аду. Кажется, вами восхищается даже Мефистофель. На вырученные деньги вы решаете приобрести ещё несколько коров. Теперь вам каким-то образом нужно вести учёт полученного молока и сыра. Вся робота опять легла на вас. Корова понимающе вздыхает.`,
+                    regexps: [/(return)/g, /(reduce)/g],
+                    code: `//Брат!! Мы успешны! ПОмоги мне продавать сыр оптом и я посвящу тебя в истинного индуса.
 //Напиши функцию milkACow которая принимает корову,
 //доит её по заказу клиентов и когда молоко закончиться верни массу всего сыра который получился.
 //Но брат, избалованая корова хочет что бы ти использовал стрелочные функции, я думаю это 4 заповедь.
@@ -604,41 +1005,41 @@ function milkACow(cow, mass) {
         return cheeses
     }
 }`,
-                hints: [
-                    "hint sample",
-                    "hint sample2"
-                ],
-                test: {
-                    code: "sumRange(1, 10, 0)",
-                    answer: `function sumRange(start, end, acc) {
+                    hints: [
+                        "hint sample",
+                        "hint sample2"
+                    ],
+                    test: {
+                        code: "sumRange(1, 10, 0)",
+                        answer: `function sumRange(start, end, acc) {
                         if (start > end)
                             return acc;
                         return sumRange(start + 1, end, acc + start)
                     }`
-                }
-            },
-            {
-                title: "Начало легенды",
-                text: `Производство процветает, вырученные деньги вы решили вложить в развитие деревни, после чего она смогла гордо называться посёлком городского типа. Вас выбирают главой, однако у вашего индусского брата опять возникла проблема. Ему нужно посчитать общую массу сыра, который дают коровы, дающие больше чем 5 килограммов сыра. Вы в замешательстве, но ваш брат и не думает посвящать вас в детали. Вместо этого он даёт вам какие-то таинственные вещички, намекая, что используя их вы сможете решить эту задачу быстрее и эффективнее. Вы решаетесь использовать эти вещички.`,
-                regexps: [/(return)/g, /(reduce)/g],
-                code: "//Hello may frend, my boss please me to create functional summ thet will be calculate\n" +
-                    "//mass of stones. I must to get to number of integer and returne summ.\n" +
-                    "//boss say thet i must read first lav\n" +
-                    "let stonesMass = [1, 3, 5]\n" +
-                    "\n" +
-                    "function calculateSumm(stones) {\n" +
-                    "    //???\n" +
-                    "}",
-                hints: [
-                    "hint sample",
-                    "hint sample2"
-                ],
-                test: {
-                    code: "calculateSumm(stonesMass)",
-                    answer: "stonesMass.reduce((a,b) => {return a+b})"
-                }
-            },
-        ]
+                    }
+                },
+                {
+                    title: "Начало легенды",
+                    text: `Производство процветает, вырученные деньги вы решили вложить в развитие деревни, после чего она смогла гордо называться посёлком городского типа. Вас выбирают главой, однако у вашего индусского брата опять возникла проблема. Ему нужно посчитать общую массу сыра, который дают коровы, дающие больше чем 5 килограммов сыра. Вы в замешательстве, но ваш брат и не думает посвящать вас в детали. Вместо этого он даёт вам какие-то таинственные вещички, намекая, что используя их вы сможете решить эту задачу быстрее и эффективнее. Вы решаетесь использовать эти вещички.`,
+                    regexps: [/(return)/g, /(reduce)/g],
+                    code: "//Hello may frend, my boss please me to create functional summ thet will be calculate\n" +
+                        "//mass of stones. I must to get to number of integer and returne summ.\n" +
+                        "//boss say thet i must read first lav\n" +
+                        "let stonesMass = [1, 3, 5]\n" +
+                        "\n" +
+                        "function calculateSumm(stones) {\n" +
+                        "    //???\n" +
+                        "}",
+                    hints: [
+                        "hint sample",
+                        "hint sample2"
+                    ],
+                    test: {
+                        code: "calculateSumm(stonesMass)",
+                        answer: "stonesMass.reduce((a,b) => {return a+b})"
+                    }
+                },
+            ]
     }
 
 ]

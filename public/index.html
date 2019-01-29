@@ -2,11 +2,74 @@
 <html lang="en">
 <head>
     <title>BlEck</title>
-    <link rel="stylesheet" type="text/css" href="../src/reset.css">
-    <link rel="stylesheet" href="../node_modules/xterm/dist/xterm.css" />
-    <script src="../node_modules/xterm/dist/xterm.js"></script>
+
+    <script src="/js/jasmine.js"></script>
+    <!--<script src="/js/jasmine-html.js"></script>
+    <script src="/js/boot.js"></script>-->
 </head>
 <body>
+<div id="app"></div>
+
+<script>
+    var finalReport = {
+        passed: [],
+        descriptions: []
+    };
+
+    const myReporter = (function () {
+        var reporter = {};
+
+        reporter.specStarted = function (result) {
+            finalReport.descriptions.push(result.description);
+        };
+
+        reporter.specDone = function (result) {
+            finalReport.passed.push(result.status !== 'failed');
+        };
+
+        return reporter;
+    }());
+
+    function extend(destination, source) {
+        for (var property in source) destination[property] = source[property];
+        return destination;
+    }
+
+    // Define Jasmine and attach globally
+    var jasmine = jasmineRequire.core(jasmineRequire);
+    jasmine.getEnv().addReporter(myReporter);
+    var jasmineInterface = jasmineRequire.interface(jasmine, jasmine.getEnv());
+    extend(this, jasmineInterface);
+
+    window.runSpecs = () => {
+
+        // Runs the specs (must be called after specs are defined)
+        jasmine.getEnv().execute();
+
+        //PARSING FINAL REPORT
+        let result = [];
+        for (let i = 0; i < finalReport.passed.length; i++) {
+            if (finalReport.passed[i] === false) {
+                if (result.indexOf(finalReport.descriptions[i]) === -1)
+                result.push(finalReport.descriptions[i]);
+            }
+        }
+
+        //RESETTING REPORT
+        finalReport = {
+            passed: [],
+            descriptions: []
+        };
+
+        jasmineInterface = null;
+        jasmine = null;
+        jasmine = jasmineRequire.core(jasmineRequire);
+        jasmine.getEnv().addReporter(myReporter);
+        jasmineInterface = jasmineRequire.interface(jasmine, jasmine.getEnv());
+        extend(this, jasmineInterface);
+        return result;
+    };
+</script>
 
 </body>
 </html>

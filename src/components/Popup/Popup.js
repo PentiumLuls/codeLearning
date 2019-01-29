@@ -19,9 +19,9 @@ class Popup extends React.Component {
                 isOpen
                 ref="modal"
             >
-                {notes[this.props.stage][this.props.quest].text.map((el) => {
+                {notes[this.props.stage][this.props.quest].text.map((el, index) => {
                     return (
-                        <React.Fragment>
+                        <React.Fragment key={index}>
                              <h3>{el.title}</h3>
                              <p>{el.text}</p>
                         </React.Fragment>
