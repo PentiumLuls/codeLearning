@@ -2,7 +2,7 @@ import React, {Component} from 'react'
 import {quests} from '../../plot/quests'
 import { connect } from 'react-redux';
 import { selectStage, selectQuest, nextStep, prevStep } from '../../store/actions/questActions'
-import { resetCode, writeCode } from '../../store/actions/codeActions'
+import { resetCode, writeCode, changeShowPopup } from '../../store/actions/codeActions'
 
 
 class Tasklist extends Component {
@@ -27,6 +27,7 @@ class Tasklist extends Component {
             this.props.selectQuest(index);
             this.props.nextStep();
             this.props.resetCode();
+            this.props.changeShowPopup(true);
         }
     }
 
@@ -100,7 +101,8 @@ const mapDispatchToProps = dispatch => {
         nextStep: () => dispatch(nextStep()),
         prevStep: () => dispatch(prevStep()),
         resetCode: () => dispatch(resetCode()),
-        writeCode: (can) => dispatch(writeCode(can))
+        writeCode: (can) => dispatch(writeCode(can)),
+        changeShowPopup: (can) => dispatch(changeShowPopup(can))
     }
 }
 

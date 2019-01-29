@@ -267,3 +267,7 @@ audio {position: absolute; visibility: hidden;}
     86.5% {left: 16px}
     100% {left: 0}
 }
+
+.button-back {
+    margin: 15px;
+}
