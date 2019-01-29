@@ -18,7 +18,7 @@ class Terminal extends Component {
         ///////////////////////////////
         const self = this;
         window.terminal = {};
-        window.terminal.log = (...args) => {self.log(JSON.stringify(args), "logger")};
+        window.terminal.log = (...args) => {const result = (args.map(arg => {return JSON.stringify(arg)})); self.log(result.join(","), "logger")};
         window.unlockQuest = this.unlockQuest;
         ///////////////////////////////
     }
@@ -30,6 +30,7 @@ class Terminal extends Component {
     }
 
     run = () => {
+
         try {
             const vm = require('vm');
             const codeToEvaluate = localStorage.getItem("code") + "\n" + this.props.testCode["code"]

@@ -2,11 +2,104 @@
 <html lang="en">
 <head>
     <title>BlEck</title>
-    <link rel="stylesheet" type="text/css" href="../src/reset.css">
-    <link rel="stylesheet" href="../node_modules/xterm/dist/xterm.css" />
-    <script src="../node_modules/xterm/dist/xterm.js"></script>
+
+    <script src="/js/jasmine.js"></script>
+    <!--<script src="/js/jasmine-html.js"></script>
+    <script src="/js/boot.js"></script>-->
 </head>
 <body>
+    <div id="app"></div>
+
+<script>
+
+    // Custom Reporter
+    // c.f. http://jasmine.github.io/2.2/custom_reporter.html
+    //
+    // This is a basic Jasmine setup for running test output in a browser console,
+    // hopefully to be used with Nashorn
+
+
+    // Append test details to this JSON output object
+    var finalReport = {
+        logs: [],
+        totalSpecs: 0,
+        stats: {},
+        passed: [],
+        descriptions: []
+    };
+
+    var myReporter = (function () {
+        var reporter = {};
+
+        var log = function (str) {
+            console.log(str);
+            finalReport.logs.push(str + "\n");
+        };
+
+        reporter.jasmineStarted = function (suiteInfo) {
+            finalReport.totalSpecs = suiteInfo.totalSpecsDefined;
+        };
+
+        reporter.suiteStarted = function (result) {
+            //TEST NAME
+            //result.fullName (same as description)
+            //log(result.description);
+        };
+
+        //!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+        reporter.specStarted = function (result) {
+            finalReport.passed.push(result.passedExpectations.passed);
+            finalReport.descriptions.push(result.description);
+            //log(result);
+        };
+
+        reporter.specDone = function (result) {
+            finalReport.stats[result.status] = finalReport.stats[result.status] || 0;
+            finalReport.stats[result.status] += 1;
+
+            log('=> ' + result.status);
+            for(var i = 0; i < result.failedExpectations.length; i++) {
+                log('Failure: ' + result.failedExpectations[i].message);
+                //log(result.failedExpectations[i].stack);
+            }
+        };
+
+        reporter.jasmineDone = function () {
+
+            var finalOutput = finalReport.totalSpecs + ' examples';
+
+            Object.keys(finalReport.stats).forEach(function (specStatus) {
+                finalOutput += ', ' + finalReport.stats[specStatus] + ' ' + specStatus;
+            });
+
+            log(finalOutput);
+        };
+
+        return reporter;
+    }());
+
+    function extend(destination, source) {
+        for (var property in source) destination[property] = source[property];
+        return destination;
+    }
+
+    // Define Jasmine and attach globally
+    const jasmine = jasmineRequire.core(jasmineRequire);
+    jasmine.getEnv().addReporter(myReporter);
+    const jasmineInterface = jasmineRequire.interface(jasmine, jasmine.getEnv());
+    extend(this, jasmineInterface);
+
+    window.runSpecs = () => {
+        // Runs the specs (must be called after specs are defined)
+        jasmine.getEnv().execute();
+
+        // print JSON report
+        //console.log(JSON.stringify(finalReport));
+        return finalReport;
+    };
+
+    //runSpecs();
+</script>
 
 </body>
 </html>
