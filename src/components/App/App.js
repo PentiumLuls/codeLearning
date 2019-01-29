@@ -18,7 +18,8 @@ class App extends Component {
         this.state = {
             isEdit: false,
             answer: false,
-            run: undefined
+            run: undefined,
+            terminalOpen: false
         };
     }
 
@@ -40,12 +41,14 @@ class App extends Component {
     }
 
     openTerminal = () => {
+        console.log("click")
         this.setState({
-            
+            terminalOpen: !this.state.terminalOpen
         })
     }
 
     render() {
+        console.log("rerender app")
         this.passStages = this.props.passStages;
         this.passQuests = this.props.passQuests;
         this.currentStage = this.props.currentStage;
@@ -82,7 +85,7 @@ class App extends Component {
                 (!this.state.isEdit)
                 ?
                 <div>
-                <div className="editor">
+                <div className={this.state.terminalOpen ? 'editor open-editor' : 'editor'}>
                     <Codeditor
                         run={this.state.run}
                         textAnswer={quests[this.currentStage].quests[this.currentQuest].test.answer}
@@ -92,13 +95,15 @@ class App extends Component {
                         resets={this.props.resets}
                         />
                 </div>
-                <div className="terminal">
+                <div className={this.state.terminalOpen ? 'terminal open-terminal' : 'terminal'}>
                     <Terminal
+                        terminalOpen={this.state.terminalOpen}
                         exportRun={this.exportRun}
                         className="terminal"
                         testCode={quests[this.currentStage].quests[this.currentQuest].test}
                         regexps={quests[this.currentStage].quests[this.currentQuest].regexps}
                         regexpsNone={quests[this.currentStage].quests[this.currentQuest].regexpsNone}
+                        openTerminal={this.openTerminal}
                         />
                 </div>
                 </div>

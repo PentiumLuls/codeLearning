@@ -273,11 +273,15 @@ audio {position: absolute; visibility: hidden;}
 
 /*ДОРОБИТЬ*/
 .open-terminal {
-    height: 40vh;
+    height: 70vh;
 }
 
-.open-code-editor {
-    height: 60vh;
+.open-terminal-text {
+   height: 70vh;
+ }
+
+.open-editor {
+    height: 30vh;
 }
 
 .button-open-terminal {
