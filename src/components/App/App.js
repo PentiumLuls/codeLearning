@@ -109,7 +109,6 @@ class App extends Component {
 
 
 const mapStateToProps = store => {
-    console.log(store);
     return {
         passStages: store.passStages,
         passQuests: store.passQuests,
