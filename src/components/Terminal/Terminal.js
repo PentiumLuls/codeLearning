@@ -1,17 +1,19 @@
 import React, {Component} from 'react';
-import Button from './Button/Button';
 import {quests} from '../../plot/quests'
+import { connect } from 'react-redux';
+import { nextLevel, passQuest } from '../../store/actions/questActions'
+import { resetCode, writeCode, changeShowPopup } from '../../store/actions/codeActions'
 
 class Terminal extends Component {
     constructor() {
 
         super();
         this.state = {
-            /*replics: [],*/
             testCode: "testCode",
             regexps: "",
             regexpsNone: "",
-            content: ""
+            content: "",
+            showNextLevel: false
         };
         ///////////////////////////////
         const self = this;
@@ -20,21 +22,6 @@ class Terminal extends Component {
         window.unlockQuest = this.unlockQuest;
         ///////////////////////////////
     }
-
-
-    unlockQuest = () => {
-        if (this.props.stage >= localStorage.passStages) {
-            if (this.props.quest >= localStorage.passQuests) {
-                if (quests[localStorage.passStages].quests.length == +localStorage.passQuests + 1) {
-                    localStorage.passStages = +localStorage.passStages + 1;
-                    localStorage.passQuests = 0;
-                } else {
-                    localStorage.passQuests = +localStorage.passQuests + 1
-                }
-                this.props.updateLeftPanel(false);
-            }
-        }
-    };
 
     log(text, logger) {
         this.setState((state) => ({
@@ -56,7 +43,11 @@ class Terminal extends Component {
 
                 if (vm.runInThisContext(codeToEvaluate) === true && regexp.pass === true) {
                     this.log("Oh wow, you're not entirely hopeless after all. Good job.", '');
-                    this.unlockQuest();
+                    this.setState({
+                        showNextLevel: true
+                    })
+                    this.props.writeCode(false);
+                    this.props.passQuest();
 
                 } else {
                     let information = '';
@@ -131,31 +122,43 @@ class Terminal extends Component {
             testCode: nextValue.testCode,
             regexps: nextValue.regexps,
             regexpsNone: nextValue.regexpsNone,
-
         });
     }
 
-    resetCodeEditor = () => {
-        this.props.updateLeftPanel();
+    resetCode = () => {
+        this.props.writeCode(true)
+        this.props.resetCode()
+    }
+
+    clickNextLevel = () => {
+        this.props.nextLevel();
+        this.setState({
+            showNextLevel: false
+        })
+        this.props.writeCode(true);
+        this.props.resetCode();
+        this.props.changeShowPopup(true);
     }
 
 
-
     render() {
+        this.passStages = this.props.passStages;
+        this.passQuests = this.props.passQuests;
+        this.currentStage = this.props.currentStage;
+        this.currentQuest = this.props.currentQuest;
+
         return (
             <div className="terminalComponent">
                 <div className="button-line">
                     <button className="debug" onClick={this.run}>RUN CODE</button>
-                    <Button text="CLEAR TERMINAL" className="debug" func={this.clearTerminal}/>
-                    <button onClick={this.resetCodeEditor}>RESET</button>
+                    <button className="debug" onClick={this.clearTerminal}>CLEAR TERMINAL</button>
+                    <button onClick={this.resetCode}>RESET</button>
                     {/*<button onClick={this.props.nextLevel.bind(this, 0 , 0, false, true)}>SHOW ANSWER</button>*/}
                     {
-                        this.props.stage == +localStorage['passStages']
-                        && this.props.quest == +localStorage['passQuests'] - 1
-                        || this.props.stage == +localStorage['passStages'] - 1
+                        this.state.showNextLevel
                             ? <button onClick={
-                                this.props.nextLevel.bind(this, localStorage.passStages, localStorage.passQuests)
-                            } className="debug">NEXT LEVEL</button>
+                                this.clickNextLevel} 
+                            className="debug">NEXT LEVEL</button>
                             : null
                     }
                 </div>
@@ -169,4 +172,24 @@ class Terminal extends Component {
     }
 }
 
-export default Terminal;
+const mapStateToProps = store => {
+    return {
+        passStages: store.passStages,
+        passQuests: store.passQuests,
+        currentStage: store.currentStage,
+        currentQuest: store.currentQuest
+    }
+}
+
+const mapDispatchToProps = dispatch => {
+    return {
+        resetCode: () => dispatch(resetCode()),
+        writeCode: (can) => dispatch(writeCode(can)),
+        nextLevel: () => dispatch(nextLevel()),
+        passQuest: () => dispatch(passQuest()),
+        changeShowPopup: (can) => dispatch(changeShowPopup(can))
+    }
+}
+
+
+export default connect(mapStateToProps, mapDispatchToProps)(Terminal);

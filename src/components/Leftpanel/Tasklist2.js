@@ -1,96 +1,108 @@
 import React, {Component} from 'react'
 import {quests} from '../../plot/quests'
+import { connect } from 'react-redux';
+import { selectStage, selectQuest, nextStep, prevStep } from '../../store/actions/questActions'
+import { resetCode, writeCode } from '../../store/actions/codeActions'
 
-export default class Tasklist extends Component {
 
-    constructor(props) {
-        super(props);
-        this.state = {
-            step: 2,
-            stage: localStorage.passStages,
-            quest: localStorage.passQuests
-        }
-        
-    }
+class Tasklist extends Component {
 
     back = () => {
-        let newStep = this.state.step - 1;
-        this.setState({
-            step: newStep
-        })
-        if (this.state.step === 2) {
-            this.props.notUpdateEditor();
+        this.props.prevStep();
+        if (this.step == 1) {
+            this.props.writeCode(false);
+            this.props.selectQuest(0);
         }
     }
 
     next = (index) => {
 
-        if (this.state.step == 0) {
-            let newStep = this.state.step + 1;
-            let newStage = index;
+        if (this.step == 0) {
+            this.props.writeCode(false);
+            this.props.selectStage(index);
+            this.props.nextStep();
 
-            this.setState({
-                step: newStep,
-                stage: newStage
-            })
-        } else if (this.state.step == 1) {
-            this.props.writeQuest(this.state.stage, index)
-            let newStep = this.state.step + 1;
-            let newQuest = index;
-
-            this.setState({
-                step: newStep,
-                quest: newQuest
-            })
+        } else if (this.step == 1) {
+            this.props.writeCode(true);
+            this.props.selectQuest(index);
+            this.props.nextStep();
+            this.props.resetCode();
         }
     }
 
-
-
     generateList = () => {
-        if (this.state.step == 0) {
+        if (this.step == 0) {
             return (
                 quests.map((stage, index) => {
                     return (<li key={index} 
-                        onClick={index <= this.props.passStages ? this.next.bind(this, index) : null}
-                         className={index <= this.props.passStages ? "questlist" : "questlist inactive"}>{stage.title}</li>)
+                        onClick={index <= this.passStages ? this.next.bind(this, index) : null}
+                         className={index <= this.passStages ? "questlist" : "questlist inactive"}>{stage.title}</li>)
                 })
             )
-        } else if (this.state.step == 1) {
+        } else if (this.step == 1) {
             return (
-                quests[this.state.stage].quests.map((quest, index) => {
-                    return (<li key={index} onClick={ this.props.passStages > this.state.stage
+                quests[this.currentStage].quests.map((quest, index) => {
+                    return (<li key={index} onClick={ this.passStages > this.currentStage
                         ? this.next.bind(this, index) 
-                        : index <= this.props.passQuests 
+                        : index <= this.passQuests 
                             ?  this.next.bind(this, index) 
                             : null}
-                        className={index <= this.props.passQuests 
-                            || this.state.stage < localStorage.passStages
+                        className={index <= this.passQuests 
+                            || this.currentStage < this.passStages
                             ? "questlist" 
                             : "questlist inactive"}>{quest.title}</li>)
                 })
             )
-        }   else if (this.state.step == 2) {
+        }   else if (this.step == 2) {
             return (
                 
-                <li className="questlist2">{quests[this.props.stage].quests[this.props.quest].text}</li>
+                <li className="questlist2">{quests[this.currentStage].quests[this.currentQuest].text}</li>
             )
         }
     }
 
     render(){
+        this.passStages = this.props.passStages;
+        this.passQuests = this.props.passQuests;
+        this.currentStage = this.props.currentStage;
+        this.currentQuest = this.props.currentQuest;
+        this.step = this.props.step
         return (
             <ul>
-                {this.state.step != 0 
+                {this.step != 0 
                 ? <button onClick={this.back}>НАЗАД</button>
                 : null }
-                {this.state.step == 1 
-                    ? <div className="listheader dashed"><p>{quests[this.state.stage].title}</p></div>
-                    : this.state.step == 2 
-                        ? <div className="listheader dashed"><p>{quests[this.props.stage].quests[this.props.quest].title}</p></div>
+                {this.step == 1 
+                    ? <div className="listheader dashed"><p>{quests[this.currentStage].title}</p></div>
+                    : this.step == 2 
+                        ? <div className="listheader dashed"><p>{quests[this.currentStage].quests[this.currentQuest].title}</p></div>
                         : null}
                 {this.generateList()}
             </ul>
         )
     }
 }
+
+const mapStateToProps = store => {
+    return {
+        passStages: store.passStages,
+        passQuests: store.passQuests,
+        currentStage: store.currentStage,
+        currentQuest: store.currentQuest,
+        step: store.step
+    }
+}
+
+const mapDispatchToProps = dispatch => {
+    return {
+        selectStage: index => dispatch(selectStage(index)),
+        selectQuest: index => dispatch(selectQuest(index)),
+        nextStep: () => dispatch(nextStep()),
+        prevStep: () => dispatch(prevStep()),
+        resetCode: () => dispatch(resetCode()),
+        writeCode: (can) => dispatch(writeCode(can))
+    }
+}
+
+
+export default connect(mapStateToProps, mapDispatchToProps)(Tasklist);
