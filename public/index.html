@@ -46,19 +46,17 @@
             //log(result.description);
         };
 
-        //!!!!!!!!!!!!!!!!!!!!!!!!!!!!
         reporter.specStarted = function (result) {
-            console.log(result)
-            finalReport.passed.push(result.passedExpectations.passed || false);
             finalReport.descriptions.push(result.description);
-            //log(result);
         };
 
         reporter.specDone = function (result) {
+            //console.log(result);
             finalReport.stats[result.status] = finalReport.stats[result.status] || 0;
             finalReport.stats[result.status] += 1;
 
             log('=> ' + result.status);
+            finalReport.passed.push(result.status !== 'failed');
             for(var i = 0; i < result.failedExpectations.length; i++) {
                 log('Failure: ' + result.failedExpectations[i].message);
                 //log(result.failedExpectations[i].stack);
@@ -95,10 +93,10 @@
         jasmine.getEnv().execute();
 
         //PARSING FINAL REPORT
-        let result = "\n";
+        let result = [];
         for (let i = 0; i < finalReport.passed.length; i++) {
             if (finalReport.passed[i] === false) {
-                result += finalReport.descriptions[i] + "\n";
+                result.push(finalReport.descriptions[i]);
             }
         }
 
