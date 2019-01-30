@@ -483,6 +483,7 @@ const person = {
             }
         ]
     },
+
 ///////////////////////////////////////глава2////////////////////////////////////////////////////////////
 ///////////////////////////////////////глава2////////////////////////////////////////////////////////////
 ///////////////////////////////////////глава2////////////////////////////////////////////////////////////    
@@ -506,33 +507,46 @@ const rectangles = [{color: 'red',width:4,height:4,},
 {color: 'black',width:3,height:5,},{color: 'black',width:4,height:2,},];
                                     
 function isBlack(rectangle) {
-        
-}`,
-                hints: [
-                   'Напиши функцию isBlack , которая принимает прямоугольник',
+    return rectangle.color == 'black';
+}
 
+const blackRectangles = //YOUR CODE
+terminal.log(blackRectangles);`,
+                hints: [
                       'иcпользуй isBlack в  filter чтобы найти только черные прямоугольники',
                       'isBlack возвращает true или  false',
 
                 ],
                 test: {
                     code: `
-                            `,
-                    answer: `// создай массив только с черными прямоугольниками        
 
+                            describe("1", function() {
+
+   it("should return new array of black rectangles",function() {
+   
+      expect(blackRectangles).toEqual(rectangles.filter(isBlack));
+   });
+   
+});
+      const report = runSpecs();
+            for (var i = 0; i < report.passed.length; i++) {
+              reporterLog(report.descriptions[i], report.passed[i])
+            }
+            if (report.passed.indexOf(false) === -1) { true } else false;`,
+
+                    answer: `// создай массив только с черными прямоугольниками  
 
 const rectangles = [{color: 'red',width:4,height:4,},
 {color: 'black',width:3, height:2,},{color: 'white',width:6,height:9,},
 {color: 'black',width:3,height:3,},{color: 'green',width:4,height:7, },
 {color: 'black',width:3,height:5,},{color: 'black',width:4,height:2,},];
-                                        
+
 function isBlack(rectangle) {
     return rectangle.color == 'black';
-};
-                                                         
-const result=rectangles.filter(isBlack);
+}
 
-`
+const blackRectangles=rectangles.filter(isBlack);
+terminal.log(blackRectangles);`
                 }
             },
  ///////////////////////////////////////quest 2////////////////////////////////////////////////////////////             
@@ -544,7 +558,7 @@ const result=rectangles.filter(isBlack);
                    Remember how you sorted these people by their gender to send them to war with Mephisto? 
                    That was extremely sexist of you, but now you can sort all of them at once using filter.
                     Efficient, right?`,
-                regexps: [],
+                regexps: [/(filter)/g],
                 regexpsNone: [/(for)/g, /(while)/g, /(var)/g, /(let)/g],
                 code: `//создай новый массив только с индийцами мужского пола
 
@@ -553,13 +567,14 @@ const persons = [{name:'Aadhi',gender:'male',},{name:'Anvi',gender:'female',}
 ,{name:'Mahika',gender:'female',}];                    
 
 function isMale(hindu) {
-    
-}`,
-                hints: [
-                    'Напиши функцию isMale , которая принимает карточку индуса',
+    return hindu.gender === 'male';
+}
 
+const men = //YOUR CODE
+terminal.log(men);`,
+                hints: [
                       'иcпользуй isMale в  filter чтобы найти только мужчин',
-                      'isBlack возвращает true если индиец  мужчина в другом случае возвращает  false',
+                      'filter должен возвратить массив черных прямоугольников',
                 ],
                 test: {
                     code: `let valid = true;
@@ -579,13 +594,14 @@ function isMale(hindu) {
                     const persons = [{name:'Aadhi1',gender:'male',},{name:'Aadhi2',gender:'female',},{name:'Aadhi3',gender:'female',},
                     {name:'Aadhi4',gender:'male',},{name:'Aadhi5',gender:'female',}]
                     
-                    function isMale(hinduCard) {
-                        return hinduCard.gender == 'male';
+                    function isMale(hindu) {
+                        return hindu.gender == 'male';
                     }
                    ;
                      var result=persons.filter(isMale);
 
-`
+const men = persons.filter(isMale);
+terminal.log(men);`
                 }
             },
     ///////////////////////////////////////quest 3////////////////////////////////////////////////////////////
@@ -596,7 +612,7 @@ function isMale(hindu) {
         Now I’ll introduce you to the map function.As you can see, the array of rectangles is the same as before.
         You will need to write a function that returns the rectangle’s perimeter.
         Then use map with the said function to return the array of all of the rectangles’ perimeters. Good luck.`,
-        regexps: [],
+        regexps: [/(map)/g],
         regexpsNone: [/(for)/g, /(while)/g, /(var)/g, /(let)/g],
         code: `//создай массив периметров прямоугольников
 
@@ -606,38 +622,42 @@ const rectangles = [{color: 'red',width:4,height:4,},
 {color: 'black',width:3,height:5,},{color: 'black',width:4,height:2,},];
 
 function perimeter(rectangle) {
-    return rectangle.width*2 + rectangle.height*2;
-}`,
+    return rectangle.width * 2 + rectangle.height * 2;
+}
+
+const perimeters = //YOUR CODE
+terminal.log(perimeters);`,
         hints: [
-            ,
             'используй map для того чтобы применить  функцию perimeter для всех прямоугольников в массиве ',
-            ''
+            'map  должен возвратить массив периметров'
         ],
         test: {
-            code: `let valid = true;
-            const rectangle2 = {
-                color: 'black',
-                width:4,
-                height: 3,
-            }
-            const rectangle3 = {
-                color: 'red',
-                width:8,
-                height: 8,
-            }
+            code: `describe("3", function() {
 
-                    `,
+               it("should return array of rectangle perimeters",function() {
+                  expect(perimeters).toEqual(rectangles.map(perimeter));
+               });
+
+            });
+                  const report = runSpecs();
+                        for (var i = 0; i < report.passed.length; i++) {
+                          reporterLog(report.descriptions[i], report.passed[i])
+                        }
+                        if (report.passed.indexOf(false) === -1) { true } else false;`,
             answer:
-`const rectangles = [{color: 'red',width:4,height:4,},
+`//создай массив периметров прямоугольников
+
+const rectangles = [{color: 'red',width:4,height:4,},
 {color: 'black',width:3, height:2,},{color: 'white',width:6,height:9,},
 {color: 'black',width:3,height:3,},{color: 'green',width:4,height:7, },
 {color: 'black',width:3,height:5,},{color: 'black',width:4,height:2,},];
 
 function perimeter(rectangle) {
-    return rectangle.width*2 + rectangle.height*2;
+    return rectangle.width * 2 + rectangle.height * 2;
 }
 
-const perimeters = rectangles.map(perimeter);`
+const perimeters = rectangles.map(perimeter);
+terminal.log(perimeters);`
         }
     }, 
    ///////////////////////////////////////quest 4////////////////////////////////////////////////////////////    
@@ -649,17 +669,20 @@ const perimeters = rectangles.map(perimeter);`
          No pun intended, I am not the kind of person to make those and YOU should make SURE to remember that.`,
         regexps: [],
         regexpsNone: [/(for)/g, /(while)/g, /(var)/g, /(let)/g],
-        code: `//экипируй всех индусов в броню 
+        code: `//экипируй всех индусов в броню
 
-const persons = [{gender: 'female',armor: false},{gender: 'male',armor: true}
-,{gender: 'male',armor: false},{gender: 'male',armor: false},];   
+const persons = [{gender: 'male',armor: true},{gender: 'male',armor: false},
+    {gender: 'male',armor: false}];   
 
 function equipArmor(hindu) {
     return {
-            ...hindu,
-            armor: true
-           };
-}`,
+        ...hindu,
+        armor: true
+    };
+}
+
+const equipedHindus = //YOUR CODE
+terminal.log(equipedHindus);`,
         hints: [
           
             'используй map для того чтобы применить  функцию equipArmor для всех карточек индуса в массиве ',
@@ -668,18 +691,20 @@ function equipArmor(hindu) {
         test: {
             code: `
                     `,
-            answer: `
-const persons = [{gender: 'female',armor: false},{gender: 'male',armor: true},{gender: 'male',armor: false},
-{gender: 'male',armor: false},];
-            
+            answer: `//экипируй всех индусов в броню
+
+const persons = [{gender: 'male',armor: true},{gender: 'male',armor: false},
+    {gender: 'male',armor: false}];   
+
 function equipArmor(hindu) {
     return {
-            ...hindu,
-            armor: true
-           };
+        ...hindu,
+        armor: true
+    };
 }
-                        
-const result = persons.map(equipArmor)`
+
+const equipedHindus = persons.map(equipArmor);
+terminal.log(equipedHindus);`
         }
     }, 
  ///////////////////////////////////////quest 5////////////////////////////////////////////////////////////
@@ -690,7 +715,7 @@ const result = persons.map(equipArmor)`
      This shouldn’t be too hard for the lord and savior of Hindu people, right?`,
     regexps: [],
     regexpsNone: [/(for)/g, /(while)/g, /(var)/g, /(let)/g],
-    code: `/// найди максимальное число в масссиве
+    code: `/// найди максимальное число в массиве
 
 const numbers = [10,25,18,133,36,100]
 
@@ -715,9 +740,146 @@ const maxNumber = numbers.reduce(max);
 `
     }
 }, 
+ ///////////////////////////////////////quest 6////////////////////////////////////////////////////////////
+{
+    title: " reduce. Туториал 4",
+    text: `Honestly, I am quite tired of giving you quests, so use the same reduce function to 
+    calculate the sum of all of the numbers in the array. That should do the job.`,
+    regexps: [],
+    regexpsNone: [/(for)/g, /(while)/g, /(var)/g, /(let)/g],
+    code: `/// найди сумму чисел в массиве
+
+const numbers = [10,25,18,133,36,100];
+
+function sum(a, b) {
+          
+}`,
+    hints: [
+        "напиши функцию  для суммирования 2 чисел",
+        "используй reduce для нахождение суммы чисел",
+        "reduce должен возвратить одно число"
+    ],
+    test: {
+        code: `
+                `,
+        answer: `
+const numbers = [10,25,18,133,36,100];
+
+function sum(a, b) {
+    return a + b ;
+}
+        
+const total = numbers.reduce(sum, 0);`
+    }
+},
+ ///////////////////////////////////////quest 7////////////////////////////////////////////////////////////
+ {
+    title: "Твоё имя...",
+    text: ``,
+    regexps: [],
+    regexpsNone: [/(for)/g, /(while)/g, /(var)/g, /(let)/g],
+    code: `/// создай обьект полями которого будут уникальные имена в массиве names
+///а значениям полей будут соответствовать количеству повторений этого имени в массиве
+
+const  names = ['Anbu','Chetan', 'Farid', 'Chetan','Farid','Chetan','Chetan']; 
+
+function counter( names, name) {
+    
+}`,
+    hints: [
+        "напиши функцию  которая проверяет наличие в объекте поля которое соответствует передаваемому в функцию имени,если поле присутствует: увеличивает поле на 1 ,иначе создает новое поле со значением 1 ",
+        "используй reduce для  прохода по массиву"
+        ,"reduce должен возвратить объект"
+    ],
+    test: {
+        code: `
+                `,
+        answer: `
+const  names = ['Anbu','Chetan', 'Farid', 'Chetan','Farid','Chetan','Chetan'] ;
+
+function counter( names, name) {
+        
+   if(! (name in names) ){
+        names[name]= 1;
+    }
+        
+   else{
+        names[name] += 1;
+    }
+   return namesAmount; 
+}
+        
+const result = names.reduce(counter,{});`
+    }
+},  
         ]  
     },
-  
+
+///////////////////////////////////////глава3////////////////////////////////////////////////////////////
+///////////////////////////////////////глава3////////////////////////////////////////////////////////////
+///////////////////////////////////////глава3////////////////////////////////////////////////////////////     
+    {
+        title: "stage 3",
+        quests:[{
+            title: "level 1",
+            text: `LEFT PANEL TEXT`,
+        regexps: [],
+        regexpsNone: [/(for)/g, /(while)/g, /(var)/g, /(let)/g],
+        code: `const rectangles = [{color: 'red',width:4,height:4,},
+{color: 'black',width:2, height:2,},{color: 'white',width:6,height:9,},
+{color: 'black',width:3,height:3,},{color: 'black',width:4,height:4, },
+{color: 'black',width:5,height:5,},{color: 'white',width:4,height:2,},{color: 'red',width:5,height:5,}];
+        
+function isBlack(rectangle) {
+    return rectangle.color == 'black';
+}
+        
+function isSquare(rectangle) {
+    return rectangle.width == rectangle.height;
+}
+
+`,
+        hints: [
+        "HINT 1"
+    ],
+        test: {
+        code: `TEST CODE
+    
+                describe("", function() {
+    
+                   it("should ",function() {
+                      expect().toEqual();
+                   });
+    
+                });
+                      const report = runSpecs();
+                            for (var i = 0; i < report.passed.length; i++) {
+                              reporterLog(report.descriptions[i], report.passed[i])
+                            }
+                            if (report.passed.indexOf(false) === -1) { true } else false;`,
+    
+    
+            answer: `const rectangles = [{color: 'red',width:4,height:4,},
+{color: 'black',width:2, height:2,},{color: 'white',width:6,height:9,},
+{color: 'black',width:3,height:3,},{color: 'black',width:4,height:4, },
+{color: 'black',width:5,height:5,},{color: 'white',width:4,height:2,},{color: 'red',width:5,height:5,}];
+            
+function isBlack(rectangle) {
+    return rectangle.color == 'black';
+};
+            
+function isSquare(rectangle) {
+    return rectangle.width == rectangle.height;
+}
+
+const blackSquares = rectangles
+                        .filter(isBlack)
+                        .filter(isSquare);`
+    }
+    }
+         
+        ]
+    },  
 ///////////////////////////////////////глава5////////////////////////////////////////////////////////////
 ///////////////////////////////////////глава5////////////////////////////////////////////////////////////
 ///////////////////////////////////////глава5////////////////////////////////////////////////////////////
