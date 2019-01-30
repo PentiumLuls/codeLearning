@@ -12,7 +12,6 @@ class Chatbot extends Component {
         this.state = {
             visible: false,
             replics: [],
-            content: [],
             replicN:0,
             dialogN: 0,
             hintsN: 0,
@@ -41,6 +40,9 @@ class Chatbot extends Component {
         state.showCloud = false
         state.visible = !state.visible;
         this.setState({state})
+        if (this.props.currentQuest === 0) {
+            this.writeReplics(dialogs[this.props.currentStage][0])
+        }
     }
 
     getHints() {
@@ -77,20 +79,25 @@ class Chatbot extends Component {
     clearChat(){
         this.setState({
             replics: [],
-            content: [],
             replicN:0,
             dialogN: 0,
-            hintsN: 0
+            hintsN: 0,
+            showCloud: 3
         })
     }
 
     componentWillUpdate(nextProps) {
         if (this.props.currentQuest != nextProps.currentQuest) {
             this.setState({
+                replics: [],
                 hintsN: 0,
-                answer: false
+                disabled: false,
+                answer: false,
+                showCloud: 0
             })
+            
         }
+        
     }
 
     showAnswer = () => {
@@ -103,13 +110,10 @@ class Chatbot extends Component {
     }
 
     render() {
-        const passStages = this.props.passStages
-        const passQuests = this.props.passQuests
 
-        if (passQuests === 0 && !this.state.showCloud) {
-            this.setState({showCloud: true})
+        if (this.props.currentQuest === 0 && this.state.showCloud === 0) {
+            this.setState({showCloud: 1})
         }
-
 
         if (this.state.visible)
 
@@ -136,19 +140,21 @@ class Chatbot extends Component {
             );
         return (
             <div className="chatbutton-wrapper">
-                {this.state.showCloud ?<div className="bubble">
+                {this.state.showCloud === 1 ?<div className="bubble">
                         Новое сообщение!
                     </div> : null}
                 <button className='buttonchatopen' onClick={this.showChat.bind(this)}>CHAT</button>
             </div>
         )
-        
-
 }
 
 componentDidMount() {
-    console.log("write")
-    this.writeReplics(dialogs[this.props.passStages][0])
+    if (this.props.currentQuest === 0) {
+        this.setState({
+            showCloud: 1
+        })
+    }
+    
 }
 }
 

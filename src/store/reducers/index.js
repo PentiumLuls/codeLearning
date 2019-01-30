@@ -90,6 +90,7 @@ export function rootReducer(state = initialState, action) {
             return {...state, clear: action.payload}
 
         case SHOW_ANSWER:
+            localStorage.code = quests[state.currentStage].quests[state.currentQuest].test.answer;
             return {...state, code: quests[state.currentStage].quests[state.currentQuest].test.answer}
 
         default:
