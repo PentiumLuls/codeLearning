@@ -101,11 +101,11 @@ result = trees
 
 
 ////// quest 5 ///////
-const persons = [{name:'Anvi',music:'Indian',age:40}
+const persons = [{name:'Anvi',music:'Indian',age:56}
 ,{name:'Kiara',music:'Indian',age:40}
 ,{name:'Anvi',music:'Indian',age:34}
 ,{name:'Anvi',music:'Indian',age:21}
-,{name:'Anvi',music:'American',age:36}]
+,{name:'Anvi',music:'American',age:14}]
 
 function isAnvi(hindu){
    return  hindu.name == 'Anvi' ;
@@ -151,7 +151,7 @@ function getAge(hindu){
 function min(a, b) {
     return a < b ? a : b;
 } 
-const minAge = persons
+const hero = persons
         .filter(hasArmor)
         .filter(hasSword)
         .map(getAge)

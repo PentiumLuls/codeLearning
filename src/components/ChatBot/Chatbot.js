@@ -24,7 +24,7 @@ class Chatbot extends Component {
     writeReplics = (replics) => {
         let x = 0;
         let interval = setInterval(() => {
-            let replic = <li key={`replic${x}`} className='mefistoreplic'> {replics.text[x++]} </li> ;
+            let replic = <li key={`replic${x}`} className='mephistoreplic'> {replics.text[x++]} </li> ;
             console.log("dialog")
             this.setState({
                 replics: [...this.state.replics, replic],
@@ -32,7 +32,7 @@ class Chatbot extends Component {
             if (x >= replics.text.length) {
                 clearInterval(interval);
             }
-        }, 200);
+        }, 2000);
     };
 
     showChat() {
