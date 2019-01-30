@@ -553,8 +553,6 @@ function isBlack(rectangle) {
 const blackRectangles = //YOUR CODE
 terminal.log(blackRectangles);`,
                 hints: [
-                   'Напиши функцию isBlack , которая принимает прямоугольник',
-
                       'иcпользуй isBlack в  filter чтобы найти только черные прямоугольники',
                       'isBlack возвращает true или  false',
 
@@ -807,7 +805,79 @@ const maxNumber = numbers.reduce(max);
 terminal.log(maxNumber);`
     }
 }, 
-        ]  
+ ///////////////////////////////////////quest 6////////////////////////////////////////////////////////////
+{
+    title: " reduce. Туториал 4",
+    text: `Honestly, I am quite tired of giving you quests, so use the same reduce function to 
+    calculate the sum of all of the numbers in the array. That should do the job.`,
+    regexps: [],
+    regexpsNone: [/(for)/g, /(while)/g, /(var)/g, /(let)/g],
+    code: `/// найди сумму чисел в массиве
+
+const numbers = [10,25,18,133,36,100];
+
+function sum(a, b) {
+          
+}`,
+    hints: [
+        "напиши функцию  для суммирования 2 чисел",
+        "используй reduce для нахождение суммы чисел",
+        "reduce должен возвратить одно число"
+    ],
+    test: {
+        code: `
+                `,
+        answer: `
+const numbers = [10,25,18,133,36,100];
+
+function sum(a, b) {
+    return a + b ;
+}
+        
+const total = numbers.reduce(sum, 0);`
+    }
+},
+ ///////////////////////////////////////quest 7////////////////////////////////////////////////////////////
+ {
+    title: "Твоё имя...",
+    text: ``,
+    regexps: [],
+    regexpsNone: [/(for)/g, /(while)/g, /(var)/g, /(let)/g],
+    code: `/// создай обьект полями которого будут уникальные имена в массиве names
+///а значениям полей будут соответствовать количеству повторений этого имени в массиве
+
+const  names = ['Anbu','Chetan', 'Farid', 'Chetan','Farid','Chetan','Chetan']; 
+
+function counter( names, name) {
+    
+}`,
+    hints: [
+        "напиши функцию  которая проверяет наличие в объекте поля которое соответствует передаваемому в функцию имени,если поле присутствует: увеличивает поле на 1 ,иначе создает новое поле со значением 1 ",
+        "используй reduce для  прохода по массиву"
+        ,"reduce должен возвратить объект"
+    ],
+    test: {
+        code: `
+                `,
+        answer: `
+const  names = ['Anbu','Chetan', 'Farid', 'Chetan','Farid','Chetan','Chetan'] ;
+
+function counter( names, name) {
+        
+   if(! (name in names) ){
+        names[name]= 1;
+    }
+        
+   else{
+        names[name] += 1;
+    }
+   return namesAmount; 
+}
+        
+const result = names.reduce(counter,{});`
+    }
+},
+        ]
     },
   
 ///////////////////////////////////////глава5////////////////////////////////////////////////////////////
