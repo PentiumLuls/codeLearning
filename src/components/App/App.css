@@ -227,6 +227,7 @@ button[disabled] {
     border: 3px solid #e2e2e2;
     background-color: #9e9e9e;
     color: #e2e2e2;
+    cursor: not-allowed;
 }
 button:active {
     animation-name: shake;
