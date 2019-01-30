@@ -1,5 +1,5 @@
 import { SELECT_QUEST, SELECT_STAGE, PASS_QUEST, NEXT_LEVEL, NEXT_STEP, PREV_STEP} from '../actions/questActions'
-import { RESET_CODE, WRITE_CODE, CHANGE_SHOW_POPUP, CLEAR_TERMINAL, SHOW_ANSWER } from '../actions/codeActions'
+import { RESET_CODE, WRITE_CODE, CHANGE_SHOW_POPUP, CLEAR_TERMINAL, SHOW_ANSWER, EXPORT_RUN } from '../actions/codeActions'
 import {quests} from '../../plot/quests';
 
 if (!localStorage['passStages']) {
@@ -15,7 +15,7 @@ if (!localStorage['currentQuest']) {
     localStorage['currentQuest'] = localStorage.passQuests;
 }
 if (!localStorage['whiteList']) {
-    localStorage['whiteList'] = JSON.stringify([[0, 1, 2, 3, 6], [0]]);
+    localStorage['whiteList'] = JSON.stringify([[0, 1, 2, 3, 6], [0, 2, 4]]);
 }
 if (!localStorage['code']) {
     localStorage['code'] = quests[0].quests[0].code;
@@ -32,7 +32,8 @@ export const initialState = {
     writeCode: false,
     resets: 0,
     showPopup: true,
-    clear: null
+    clear: null,
+    run: null
 }
 
 
@@ -92,6 +93,9 @@ export function rootReducer(state = initialState, action) {
         case SHOW_ANSWER:
             localStorage.code = quests[state.currentStage].quests[state.currentQuest].test.answer;
             return {...state, code: quests[state.currentStage].quests[state.currentQuest].test.answer}
+
+        case EXPORT_RUN:
+            return {...state, run: action.payload}
 
         default:
             return state

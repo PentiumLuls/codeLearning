@@ -24,25 +24,25 @@ class Chatbot extends Component {
     writeReplics = (replics) => {
         let x = 0;
         let interval = setInterval(() => {
-            let replic = <li key={`replic${x}`} className='mefistoreplic'> {replics.text[x++]} </li> ;
-            console.log("dialog")
+            let replic = <li key={`replic${x}`} className='mephistoreplic'> {replics.text[x++]} </li> ;
             this.setState({
                 replics: [...this.state.replics, replic],
             });
             if (x >= replics.text.length) {
                 clearInterval(interval);
             }
-        }, 200);
+        }, 2000);
     };
 
     showChat() {
-        const state = this.state;
-        state.showCloud = false
-        state.visible = !state.visible;
-        this.setState({state})
-        if (this.props.currentQuest === 0) {
+        if (this.props.currentQuest === 0 && this.state.showCloud) {
             this.writeReplics(dialogs[this.props.currentStage][0])
         }
+        this.setState({
+            showCloud: false,
+            visible: !this.state.visible
+        })
+        
     }
 
     getHints() {

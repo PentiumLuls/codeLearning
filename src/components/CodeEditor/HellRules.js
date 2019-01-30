@@ -42,12 +42,11 @@ class HellRules extends Component {
                     : null}
                     <div className="rules-wrapper ">
                         {this.state.step === 1 
-                        ? notes.map((stage, indexOfStage) => {
-                            if (indexOfStage <= this.props.passStages){
-                                return stage.map((el, indexOfTutorial) => {
-                                    if (JSON.parse(localStorage.whiteList)[indexOfStage][indexOfTutorial] === null){
+                        ? 
+                                notes[this.state.indexOfStage].map((el, indexOfTutorial) => {
+                                    if (JSON.parse(localStorage.whiteList)[this.state.indexOfStage][indexOfTutorial] === null){
                                     return (
-                                    <div key={indexOfTutorial} onClick={this.nextStep.bind(this, indexOfStage, indexOfTutorial)}
+                                    <div key={indexOfTutorial} onClick={this.nextStep.bind(this, this.state.indexOfStage, indexOfTutorial)}
                                         className="el_rules">
                                         <h3>{el.title}</h3>
                                         {el.text.map((el2, index) => {
@@ -55,8 +54,8 @@ class HellRules extends Component {
                                         })}
                                     </div>
                                     )}
-                            })}
-                        })
+                            })
+                        
                         : notes.map((stage, indexOfStage) => {
                             if (indexOfStage <= this.props.passStages)
                                 return (

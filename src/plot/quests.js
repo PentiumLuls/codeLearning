@@ -470,13 +470,15 @@ const person = {
     armor: true,
     weapons: ['sword', 'stick']
 };
-
-    return hinduCard.weapons.lenght === 0 ? {...gangCard} 
+    function joinGang(gangCard, hinduCard,) {
+        return hinduCard.weapons.lenght === 0 ? {...gangCard} 
             : {...gangCard
             ,members: [...gangCard.members, hinduCard.name]
             ,armors: [...gangCard.armors, hinduCard.armor]
             ,weapons: [...weapons, ...hinduCard.weapons]}
-}`
+    }
+    
+`
                 }
             }
         ]
@@ -485,7 +487,7 @@ const person = {
 ///////////////////////////////////////глава2////////////////////////////////////////////////////////////
 ///////////////////////////////////////глава2////////////////////////////////////////////////////////////    
     {
-        title: "Stage 2",
+        title: "Этот глупый ООПешник не понимает мечту девочки обьекта",
         quests:[
 
  ///////////////////////////////////////quest 1////////////////////////////////////////////////////////////           
@@ -535,14 +537,13 @@ const result=rectangles.filter(isBlack);
             },
  ///////////////////////////////////////quest 2////////////////////////////////////////////////////////////             
             {
-                title: "filter сюжетное задание",
+                title: "Маштабная дискриминация",
                 text: `t’s relieving to see that you are actually able to code.
                  It seems to me that the reason you were sent here lies in the lack of proper education,
                   which is a totally fixable issue.Now you have the opportunity to optimize the code you wrote before.
                    Remember how you sorted these people by their gender to send them to war with Mephisto? 
                    That was extremely sexist of you, but now you can sort all of them at once using filter.
                     Efficient, right?`,
-
                 regexps: [],
                 regexpsNone: [/(for)/g, /(while)/g, /(var)/g, /(let)/g],
                 code: `//создай новый массив только с индийцами мужского пола
@@ -589,7 +590,7 @@ function isMale(hindu) {
             },
     ///////////////////////////////////////quest 3////////////////////////////////////////////////////////////
     {
-        title: " map туториал",
+        title: " map. Туториал 2",
         text: `Good, now the process of preparing the troops will go significantly faster.
          Also, let us hope that redoing  these quests will help you recover your memories faster.
         Now I’ll introduce you to the map function.As you can see, the array of rectangles is the same as before.
@@ -641,7 +642,7 @@ const perimeters = rectangles.map(perimeter);`
     }, 
    ///////////////////////////////////////quest 4////////////////////////////////////////////////////////////    
     {
-        title: " map сюжет",
+        title: "Гучи броню народу!",
         text: `You are still far from being a good fighter, but you are making progress, which is probably a good thing.
         Once again, write a function that equips an armor if the Hindu guy doesn’t have any yet and use map to make 
         all of the guys equip the said armor. This task will help you lay the ground of an actual functional army.
@@ -683,7 +684,7 @@ const result = persons.map(equipArmor)`
     }, 
  ///////////////////////////////////////quest 5////////////////////////////////////////////////////////////
  {
-    title: " reduce туториал",
+    title: " reduce. Туториал 3",
     text: `I hope your brain can still function, because we have one more artifact to cover.
     You are presented with the array of values. Find the maximum value using reduce.
      This shouldn’t be too hard for the lord and savior of Hindu people, right?`,

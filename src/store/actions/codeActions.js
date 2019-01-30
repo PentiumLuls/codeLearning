@@ -3,6 +3,7 @@ export const WRITE_CODE = 'WRITE_CODE';
 export const CHANGE_SHOW_POPUP = 'CHANGE_SHOW_POPUP';
 export const CLEAR_TERMINAL = 'CLEAR_TERMINAL';
 export const SHOW_ANSWER = 'SHOW_ANSWER';
+export const EXPORT_RUN = 'EXPORT_RUN';
 
 export function resetCode() {
     return {
@@ -34,6 +35,13 @@ export function clearTerminal(func) {
 export function showAnswer() {
     return {
         type: SHOW_ANSWER
+    }
+}
+
+export function exportRun(func) {
+    return {
+        type: EXPORT_RUN,
+        payload: func
     }
 }
 

@@ -17,7 +17,6 @@ class App extends Component {
 
         this.state = {
             isEdit: false,
-            run: undefined,
             terminalOpen: false
         };
     }
@@ -60,6 +59,7 @@ class App extends Component {
         const newList = JSON.parse(localStorage.whiteList);
         const canIShowPopup = newList[this.currentStage].indexOf(this.currentQuest) !== -1;
         let indexOfElement = newList[this.currentStage].indexOf(this.currentQuest);
+        console.log(this.showPopup, canIShowPopup)
         if (canIShowPopup && this.showPopup) {
             
             delete newList[this.currentStage][indexOfElement];
@@ -86,7 +86,6 @@ class App extends Component {
                 <div>
                 <div className={this.state.terminalOpen ? 'editor open-editor' : 'editor'}>
                     <Codeditor
-                        run={this.state.run}
                         text={this.code}
                         writeCode={this.writeCode}
                         resets={this.props.resets}
@@ -95,7 +94,6 @@ class App extends Component {
                 <div className={this.state.terminalOpen ? 'terminal open-terminal' : 'terminal'}>
                     <Terminal
                         terminalOpen={this.state.terminalOpen}
-                        exportRun={this.exportRun}
                         className="terminal"
                         testCode={quests[this.currentStage].quests[this.currentQuest].test}
                         regexps={quests[this.currentStage].quests[this.currentQuest].regexps}
@@ -111,8 +109,9 @@ class App extends Component {
                         (!this.state.isEdit) ? <Chatbot/> : null
                     }
                 </div>
+                {console.log(this.showPopup, canIShowPopup)}
                 {//POPUP 
-
+                    
                     this.showPopup && canIShowPopup?
                         <Popup stage={this.currentStage} quest={indexOfElement} togglePopup={this.togglePopup}/>
                         : null
@@ -134,7 +133,8 @@ const mapStateToProps = store => {
         writeCode: store.writeCode,
         code: store.code,
         resets: store.resets,
-        showPopup: store.showPopup
+        showPopup: store.showPopup,
+      
     }
 }
 
