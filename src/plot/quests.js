@@ -404,7 +404,7 @@ function add(a, b) {
                 regexpsNone: [/(for)/g, /(while)/g, /(var)/g, /(let)/g],
                 code: `//Напиши функцию createGang,которая возвращает отряд такого типа: 
 //{members: [hindu1.name, hindu2.name], armors: [true, true],
-//weapons: ['stick', 'sword']}.
+//weapons: ['stick', 'stick', 'sword']}.
 //P.S. Функция должна возвращать такую же карточку отряда как входящая,
 //если у рекрута нет оружия.
 
@@ -417,7 +417,7 @@ const person = {
 
 function joinGang(gangCard, hinduCard) {
     
-} `,
+}`,
                 hints: [
                     "Функция всегда должна возвращать новый отряд индусов",
                     "Используй spread оператор (...) для создания нового отряда"
@@ -437,18 +437,17 @@ const person2 = {
 };
 const gang1 = {
     members: ['indus1name'],
-    membersAmount: 1,
     armors: [true],
-    weapons: {sticks: 1, swords: 0}
+    weapons: ['stick']
 };
 
                        describe("quest 7", function() {
 
    it("should return gangCard without new member if he hasn't has any weapon",function() {
-      expect(joinGang(gang1, person2)).toEqual({members: ['indus1name'],membersAmount: 1,armors: [true],weapons: {sticks: 1, swords: 0}});
+      expect(joinGang(gang1, person2)).toEqual({members: ['indus1name'],armors: [true],weapons: ['stick']});
    });
    it("should return new gangCard with new member",function() {
-      expect(joinGang(gang1, person1)).toEqual({members: ['indus1name', 'Aadhi1'],membersAmount: 2,armors: [true, true],weapons: {sticks: 2, swords: 1}});
+      expect(joinGang(gang1, person1)).toEqual({members: ['indus1name', 'Aadhi1'],armors: [true, true],weapons: ['stick','sword','stick']});
    });
    
 });
@@ -460,7 +459,7 @@ const gang1 = {
 
                     answer: `//Напиши функцию createGang,которая возвращает отряд такого типа: 
 //{members: [hindu1.name, hindu2.name], armors: [true, true],
-//weapons: ['stick', 'sword']}.
+//weapons: ['stick', 'stick', 'sword']}.
 //P.S. Функция должна возвращать такую же карточку отряда как входящая,
 //если у рекрута нет оружия.
 
@@ -470,15 +469,15 @@ const person = {
     armor: true,
     weapons: ['sword', 'stick']
 };
-    function joinGang(gangCard, hinduCard,) {
-        return hinduCard.weapons.lenght === 0 ? {...gangCard} 
-            : {...gangCard
-            ,members: [...gangCard.members, hinduCard.name]
-            ,armors: [...gangCard.armors, hinduCard.armor]
-            ,weapons: [...weapons, ...hinduCard.weapons]}
-    }
-    
-`
+
+function joinGang(gangCard, hinduCard) {
+    if (hinduCard.weapons.length === 0) return gangCard;
+    const newGangCard = Object.assign({}, gangCard);
+    newGangCard.members.push(hinduCard.name);
+    newGangCard.armors.push(hinduCard.armor);
+    newGangCard.weapons.push(...hinduCard.weapons);
+    return newGangCard;
+}`
                 }
             }
         ]
@@ -496,7 +495,7 @@ const person = {
                 text: `Listen here, you brat. Now that you have access to filter, map and reduce functions, make sure to use them wisely. 
                 Here you have a collection of different colored rectangles. Return the array of black rectangles using the filter function. 
                 You can also reuse chunks of code from the first chapter if you want.`,
-                regexps: [],
+                regexps: [/(filter)/g],
                 regexpsNone: [/(for)/g, /(while)/g, /(var)/g, /(let)/g],
                 code: `// создай массив только с черными прямоугольниками  
 
@@ -504,19 +503,38 @@ const rectangles = [{color: 'red',width:4,height:4,},
 {color: 'black',width:3, height:2,},{color: 'white',width:6,height:9,},
 {color: 'black',width:3,height:3,},{color: 'green',width:4,height:7, },
 {color: 'black',width:3,height:5,},{color: 'black',width:4,height:2,},];
-                                    
+
 function isBlack(rectangle) {
-    return rectangle.color == 'black';   
-}`,
+    return rectangle.color == 'black';
+}
+
+const blackRectangles = //YOUR CODE
+`,
                 hints: [
+                   'Напиши функцию isBlack , которая принимает прямоугольник',
+
                       'иcпользуй isBlack в  filter чтобы найти только черные прямоугольники',
                       'isBlack возвращает true или  false',
 
                 ],
                 test: {
                     code: `
-                            `,
-                    answer: `       
+
+                            describe("1", function() {
+
+   it("should return new array of black rectangles",function() {
+   
+      expect(blackRectangles).toEqual(rectangles.filter(isBlack));
+   });
+   
+});
+      const report = runSpecs();
+            for (var i = 0; i < report.passed.length; i++) {
+              reporterLog(report.descriptions[i], report.passed[i])
+            }
+            if (report.passed.indexOf(false) === -1) { true } else false;`,
+
+                    answer: `
 const rectangles = [{color: 'red',width:4,height:4,},
 {color: 'black',width:3, height:2,},{color: 'white',width:6,height:9,},
 {color: 'black',width:3,height:3,},{color: 'green',width:4,height:7, },
@@ -532,7 +550,7 @@ const result=rectangles.filter(isBlack);`
  ///////////////////////////////////////quest 2////////////////////////////////////////////////////////////             
             {
                 title: "Маштабная дискриминация",
-                text: `t’s relieving to see that you are actually able to code.
+                text: `it’s relieving to see that you are actually able to code.
                  It seems to me that the reason you were sent here lies in the lack of proper education,
                   which is a totally fixable issue.Now you have the opportunity to optimize the code you wrote before.
                    Remember how you sorted these people by their gender to send them to war with Mephisto? 
@@ -547,37 +565,39 @@ const persons = [{name:'Aadhi',gender:'male',},{name:'Anvi',gender:'female',}
 ,{name:'Mahika',gender:'female',}];                    
 
 function isMale(hindu) {
-    return hindu.gender == 'male';
-}`,
+    return hindu.gender === 'male';
+}
+
+const men = //YOUR CODE`,
                 hints: [
                       'иcпользуй isMale в  filter чтобы найти только мужчин',
-                      'filter должен возвратить массив черных прямоугольников',
+                      'isBlack возвращает true если индиец  мужчина в другом случае возвращает  false',
                 ],
                 test: {
-                    code: `let valid = true;
-                    const rectangle2 = {
-                        color: 'black',
-                        width:4,
-                        height: 3,
-                    }
-                    const rectangle3 = {
-                        color: 'red',
-                        width:8,
-                        height: 8,
-                    }
+                    code: `describe("2", function() {
 
-                            `,
-                    answer: `
-                    const persons = [{name:'Aadhi1',gender:'male',},{name:'Aadhi2',gender:'female',},{name:'Aadhi3',gender:'female',},
-                    {name:'Aadhi4',gender:'male',},{name:'Aadhi5',gender:'female',}]
-                    
-                    function isMale(hindu) {
-                        return hindu.gender == 'male';
-                    }
-                   ;
-                     var result=persons.filter(isMale);
+               it("should return new array of men",function() {
+                  expect(men).toEqual(persons.filter(isMale));
+               });
 
-`
+            });
+                  const report = runSpecs();
+                        for (var i = 0; i < report.passed.length; i++) {
+                          reporterLog(report.descriptions[i], report.passed[i])
+                        }
+                        if (report.passed.indexOf(false) === -1) { true } else false;`,
+
+                    answer: `//создай новый массив только с индийцами мужского пола
+
+const persons = [{name:'Aadhi',gender:'male',},{name:'Anvi',gender:'female',}
+,{name:'Kashvi',gender:'female',},{name:'Shaan',gender:'male',}
+,{name:'Mahika',gender:'female',}];                    
+
+function isMale(hindu) {
+    return hindu.gender === 'male';
+}
+
+const men = persons.filter(isMale);`
                 }
             },
     ///////////////////////////////////////quest 3////////////////////////////////////////////////////////////

@@ -10,18 +10,18 @@
     test: {
     code: `TEST CODE
 
-            describe("QUEST NUMBER", function() {
+            describe("", function() {
 
-   it("should return 1",function() {
-      expect(1).toEqual(1);
-   });
-   //MORE CASES?
-});
-      const report = runSpecs();
-            for (var i = 0; i < report.passed.length; i++) {
-              reporterLog(report.descriptions[i], report.passed[i])
-            }
-            if (report.passed.indexOf(false) === -1) { true } else false;`,
+               it("should ",function() {
+                  expect().toEqual();
+               });
+
+            });
+                  const report = runSpecs();
+                        for (var i = 0; i < report.passed.length; i++) {
+                          reporterLog(report.descriptions[i], report.passed[i])
+                        }
+                        if (report.passed.indexOf(false) === -1) { true } else false;`,
 
 
         answer: `RIGHT CODE`
