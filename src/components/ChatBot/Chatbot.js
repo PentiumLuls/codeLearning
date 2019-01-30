@@ -35,13 +35,14 @@ class Chatbot extends Component {
     };
 
     showChat() {
-        const state = this.state;
-        state.showCloud = false
-        state.visible = !state.visible;
-        this.setState({state})
-        if (this.props.currentQuest === 0) {
+        if (this.props.currentQuest === 0 && this.state.showCloud) {
             this.writeReplics(dialogs[this.props.currentStage][0])
         }
+        this.setState({
+            showCloud: false,
+            visible: !this.state.visible
+        })
+        
     }
 
     getHints() {
