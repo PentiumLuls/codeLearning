@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux'
+
 
 class Header extends Component {
 
@@ -17,7 +19,7 @@ class Header extends Component {
             <header className="userinfo">
                         <div className="avatar-wrapper">
                             <div className="avatar"><img alt="avatar" src={require("../../img/placeholder.jpeg")}/></div>
-                            <div className="header-money"><p>1488</p></div>
+                            <div className="header-money"><p>{this.props.money}</p></div>
                         </div>
                         <div className="userbuttons">
                             <span className="userbutton" onClick={this.click}><p>Журнал</p></span>
@@ -27,5 +29,12 @@ class Header extends Component {
       );
     }
   }
-  export default Header;
+
+const mapStateToProps = store => {
+    return {
+        money: store.money
+    }
+}
+
+export default connect(mapStateToProps)(Header);
 

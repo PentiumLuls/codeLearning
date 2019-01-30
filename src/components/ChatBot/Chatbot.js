@@ -3,6 +3,7 @@ import {dialogs} from "../../plot/dialogs";
 import {quests} from "../../plot/quests";
 import { connect } from 'react-redux'
 import { writeCode, showAnswer } from '../../store/actions/codeActions'
+import { spendMoney } from '../../store/actions/moneyActions'
 
 class Chatbot extends Component {
 
@@ -46,34 +47,41 @@ class Chatbot extends Component {
     }
 
     getHints() {
-        const hints = quests[this.props.currentStage].quests[this.props.currentQuest].hints;
-        const replics = this.state.replics;
-        
-        if(this.state.hintsN < hints.length){
-            replics.push(<li key={`tip${this.state}`} className='hint'>{hints[this.state.hintsN]}</li>); 
-            if (this.state.hintsN + 1 >= hints.length) {
+        if (this.props.money - 3 >= 0) {
+            const hints = quests[this.props.currentStage].quests[this.props.currentQuest].hints;
+            const replics = this.state.replics;
+            
+            if(this.state.hintsN < hints.length){
+                replics.push(<li key={`tip${this.state}`} className='hint'>{hints[this.state.hintsN]}</li>); 
+                if (this.state.hintsN + 1 >= hints.length) {
+                    this.setState({
+                        replics,
+                        hintsN: this.state.hintsN + 1,
+                        disabled: true
+                    });
+                } else{
+                    this.setState({
+                        replics,
+                        hintsN: this.state.hintsN + 1,
+                    });
+                }
+                
+                
+            } else {     
                 this.setState({
                     replics,
-                    hintsN: this.state.hintsN + 1,
+                    hintsN:1,
                     disabled: true
-                });
-            } else{
-                this.setState({
-                    replics,
-                    hintsN: this.state.hintsN + 1,
-                });
-            }
-            
-            
-        } else {     
+                });  
+            };
+            this.props.spendMoney(3);
+        } else {
             this.setState({
-                replics,
-                hintsN:1,
-                disabled: true
-            });  
-        };
-            let element = document.getElementById('box')    ;
-            element.scrollTop=element.scrollHeight  ;        
+                replics: [...this.state.replics, <li key={`answer`} className='hint'>Недостаточно сыра!</li>],
+            })
+        }
+        let element = document.getElementById('box');
+        element.scrollTop=element.scrollHeight;        
     }
 
     clearChat(){
@@ -93,7 +101,8 @@ class Chatbot extends Component {
                 hintsN: 0,
                 disabled: false,
                 answer: false,
-                showCloud: 0
+                showCloud: 0,
+                visible: false
             })
             
         }
@@ -101,12 +110,20 @@ class Chatbot extends Component {
     }
 
     showAnswer = () => {
-        this.setState({
-            replics: [...this.state.replics, <li key={`answer`} className='hint'>Ответ записан в редактор</li>],
-            answer: true
-        })
-        this.props.writeCode(true);
-        this.props.showAnswer();
+        if (this.props.money - 10 >= 0) {
+            this.setState({
+                replics: [...this.state.replics, <li key={`answer`} className='hint'>Ответ записан в редактор</li>],
+                answer: true
+            })
+            this.props.writeCode(true);
+            this.props.showAnswer();
+            this.props.spendMoney(10);
+        } else {
+            this.setState({
+                replics: [...this.state.replics, <li key={`answer`} className='hint'>Недостаточно сыра!</li>],
+            })
+        }
+        
     }
 
     render() {
@@ -163,14 +180,16 @@ const mapStateToProps = store => {
         passStages: store.passStages,
         passQuests: store.passQuests,
         currentStage: store.currentStage,
-        currentQuest: store.currentQuest
+        currentQuest: store.currentQuest,
+        money: store.money
     }
 }
 
 const mapDispatchToProps = dispatch => {
     return {
         writeCode: (can) => dispatch(writeCode(can)),
-        showAnswer: () => dispatch(showAnswer())
+        showAnswer: () => dispatch(showAnswer()),
+        spendMoney: (amount) => dispatch(spendMoney(amount))
     }
 }
 
