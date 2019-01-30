@@ -470,13 +470,15 @@ const person = {
     armor: true,
     weapons: ['sword', 'stick']
 };
-
-    return hinduCard.weapons.lenght === 0 ? {...gangCard} 
+    function joinGang(gangCard, hinduCard,) {
+        return hinduCard.weapons.lenght === 0 ? {...gangCard} 
             : {...gangCard
             ,members: [...gangCard.members, hinduCard.name]
             ,armors: [...gangCard.armors, hinduCard.armor]
             ,weapons: [...weapons, ...hinduCard.weapons]}
-}`
+    }
+    
+`
                 }
             }
         ]
