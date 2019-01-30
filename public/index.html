@@ -10,6 +10,7 @@
 <body>
 <div id="app"></div>
 
+<!--JASMINE REPORTER-->
 <script>
     var finalReport = {
         passed: [],
@@ -47,12 +48,14 @@
         jasmine.getEnv().execute();
 
         //PARSING FINAL REPORT
-        let result = [];
+        let result = {
+            passed: [],
+            descriptions: []
+        };
         for (let i = 0; i < finalReport.passed.length; i++) {
-            if (finalReport.passed[i] === false) {
-                if (result.indexOf(finalReport.descriptions[i]) === -1)
-                result.push(finalReport.descriptions[i]);
-            }
+            if (result.descriptions.indexOf(finalReport.descriptions[i]) === -1)
+                result.descriptions.push(finalReport.descriptions[i]);
+            result.passed.push(finalReport.passed[i]);
         }
 
         //RESETTING REPORT

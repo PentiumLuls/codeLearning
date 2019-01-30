@@ -17,7 +17,8 @@ class Chatbot extends Component {
             dialogN: 0,
             hintsN: 0,
             showCloud: false,
-            answer: false
+            answer: false,
+            disabled: false
         }
     }
 
@@ -48,11 +49,19 @@ class Chatbot extends Component {
         
         if(this.state.hintsN < hints.length){
             replics.push(<li key={`tip${this.state}`} className='hint'>{hints[this.state.hintsN]}</li>); 
-                
-            this.setState({
-                replics,
-                hintsN: this.state.hintsN + 1,
-            });
+            if (this.state.hintsN + 1 >= hints.length) {
+                this.setState({
+                    replics,
+                    hintsN: this.state.hintsN + 1,
+                    disabled: true
+                });
+            } else{
+                this.setState({
+                    replics,
+                    hintsN: this.state.hintsN + 1,
+                });
+            }
+            
             
         } else {     
             this.setState({
@@ -118,14 +127,18 @@ class Chatbot extends Component {
                     {this.state.disabled 
                     ? <button disabled className='chatbutton' onClick={this.getHints.bind(this)}>HINT</button>
                     : <button  className='chatbutton' onClick={this.getHints.bind(this)}>HINT</button>}
-                    <button className='chatbutton' onClick={this.showAnswer}>ANSWER</button>
+                    {this.state.answer 
+                    ? <button disabled className='chatbutton' onClick={this.showAnswer}>ANSWER</button>
+                    : <button className='chatbutton' onClick={this.showAnswer}>ANSWER</button>}
                     <button className='chatbutton' id="clear-chat" onClick={this.clearChat.bind(this)}>CLEAR CHAT</button>
                 </div>
                 </div>
             );
         return (
             <div className="chatbutton-wrapper">
-                {this.state.showCloud ? <button></button> : null}
+                {this.state.showCloud ?<div className="bubble">
+                        Новое сообщение!
+                    </div> : null}
                 <button className='buttonchatopen' onClick={this.showChat.bind(this)}>CHAT</button>
             </div>
         )
@@ -143,6 +156,7 @@ const mapStateToProps = store => {
     return {
         passStages: store.passStages,
         passQuests: store.passQuests,
+        currentStage: store.currentStage,
         currentQuest: store.currentQuest
     }
 }
