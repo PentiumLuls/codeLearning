@@ -811,71 +811,99 @@ terminal.log(maxNumber);`
     title: " reduce. Туториал 4",
     text: `Honestly, I am quite tired of giving you quests, so use the same reduce function to 
     calculate the sum of all of the numbers in the array. That should do the job.`,
-    regexps: [],
+    regexps: [/(reduce)/g],
     regexpsNone: [/(for)/g, /(while)/g, /(var)/g, /(let)/g],
-    code: `/// найди сумму чисел в массиве
+    code: `// найди сумму чисел в массиве
 
 const numbers = [10,25,18,133,36,100];
 
 function sum(a, b) {
-          
-}`,
+    //YOUR CODE
+}
+
+const total = //YOUR CODE
+terminal.log(total);`,
     hints: [
-        "напиши функцию  для суммирования 2 чисел",
+        "напиши функцию для суммирования 2 чисел",
         "используй reduce для нахождение суммы чисел",
         "reduce должен возвратить одно число"
     ],
     test: {
-        code: `
-                `,
-        answer: `
+        code: `describe("6", function() {
+
+               it("should return total sum of numbers",function() {
+                  expect(total).toEqual(numbers.reduce(sum, 0));
+               });
+
+            });
+                  const report = runSpecs();
+                        for (var i = 0; i < report.passed.length; i++) {
+                          reporterLog(report.descriptions[i], report.passed[i])
+                        }
+                        if (report.passed.indexOf(false) === -1) { true } else false;`,
+        answer: `// найди сумму чисел в массиве
+
 const numbers = [10,25,18,133,36,100];
 
 function sum(a, b) {
-    return a + b ;
+    return a + b;
 }
-        
-const total = numbers.reduce(sum, 0);`
+
+const total = numbers.reduce(sum, 0);
+terminal.log(total);`
     }
 },
  ///////////////////////////////////////quest 7////////////////////////////////////////////////////////////
  {
     title: "Твоё имя...",
     text: ``,
-    regexps: [],
+    regexps: [/(reduce)/g],
     regexpsNone: [/(for)/g, /(while)/g, /(var)/g, /(let)/g],
-    code: `/// создай обьект полями которого будут уникальные имена в массиве names
-///а значениям полей будут соответствовать количеству повторений этого имени в массиве
+    code: `// Создай обьект, полями которого будут уникальные имена в массиве names
+// А значения полей будут соответствовать количеству повторений этого имени в массиве
 
-const  names = ['Anbu','Chetan', 'Farid', 'Chetan','Farid','Chetan','Chetan']; 
+const names = ['Anbu','Chetan', 'Farid', 'Chetan','Farid','Chetan','Chetan']; 
 
 function counter( names, name) {
-    
-}`,
+    //YOUR CODE
+}
+
+const result = //YOUR CODE
+terminal.log(result);`,
     hints: [
         "напиши функцию  которая проверяет наличие в объекте поля которое соответствует передаваемому в функцию имени,если поле присутствует: увеличивает поле на 1 ,иначе создает новое поле со значением 1 ",
         "используй reduce для  прохода по массиву"
         ,"reduce должен возвратить объект"
     ],
     test: {
-        code: `
-                `,
-        answer: `
-const  names = ['Anbu','Chetan', 'Farid', 'Chetan','Farid','Chetan','Chetan'] ;
+        code: `describe("7", function() {
+        
+               it("should return new array with amounts of unique names",function() {
+                  expect(result).toEqual({"ANBU":1,"CHETAN":4,"FARID":2});
+               });
+
+            });
+                  const report = runSpecs();
+                        for (var i = 0; i < report.passed.length; i++) {
+                          reporterLog(report.descriptions[i], report.passed[i])
+                        }
+                        if (report.passed.indexOf(false) === -1) { true } else false;`,
+        answer: `// Создай обьект, полями которого будут уникальные имена в массиве names
+// А значения полей будут соответствовать количеству повторений этого имени в массиве
+
+const names = ['Anbu','Chetan', 'Farid', 'Chetan','Farid','Chetan','Chetan']; 
 
 function counter( names, name) {
-        
-   if(! (name in names) ){
-        names[name]= 1;
-    }
-        
-   else{
+   if(!(name in names)){
+        names[name] = 1;
+    } else {
         names[name] += 1;
     }
-   return namesAmount; 
+   return names; 
 }
-        
-const result = names.reduce(counter,{});`
+
+const result = names.reduce(counter,{});
+terminal.log(result);`
     }
 },
         ]
