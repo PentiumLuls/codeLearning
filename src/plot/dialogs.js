@@ -7,22 +7,22 @@ export const dialogs = [
             //1 Dialogs
             {
                 text: [
-                    <span className="chat-enter">--- MEPHISTO HAS ENTERED THE CHAT ---</span>,
-                    "Mephisto: Приветствую тебя, о грешник.",
-                    "Mephisto: Оказался здесь так как  согрешил ты.",
-                    "Mephisto: Функции святы и чисты, их не смеет осквернять никто. За грех сей ты и оказался здесь.",
-                    "Mephisto: Никогда не покинуть тебе функциональное чистилище сие, обречён ты  на функционирование вечное в аду.",
-                    "Mephisto: Приятного времяпровождения~",
-                    "--- MEPHISTO HAS LEFT THE CHAT ---",
-                    "--- KARADA HAS ENTERED THE CHAT ---",
-                    "Karada: I honestly can’t even believe it.",
-                    "Karada: That dirty mongrel. How dare he trap me into this ugly form?",
-                    "Karada: This Mephisto guy, some nerve he has.",
-                    "Karada: But you are no better. Thanks to your inability to code eloquently, we are trapped here together.",
-                    "Karada: I guess, our only way from this conundrum is cooperation. I’ll try to hack into this demon’s database and see what he’s got.",
-                    "Karada: But don’t get the wrong idea! I’m only doing this because I have no other choice.",
-                    "Karada: No one dares to mess with the goddess of object-oriented world Karada.",
-                    "--- KARADA HAS LEFT THE CHAT ---"
+                    <div className="chat-enter">--- MEPHISTO HAS ENTERED THE CHAT ---</div>,
+                    <div className="mephisto">Mephisto: Приветствую тебя, о грешник.</div>,
+                    <div className="mephisto">Mephisto: Оказался здесь так как  согрешил ты.</div>,
+                    <div className="mephisto">Mephisto: Функции святы и чисты, их не смеет осквернять никто. За грех сей ты и оказался здесь.</div>,
+                    <div className="mephisto">Mephisto: Никогда не покинуть тебе функциональное чистилище сие, обречён ты  на функционирование вечное в аду.</div>,
+                    <div className="mephisto">Mephisto: Приятного времяпровождения~</div>,
+                    <div className="chat-enter">--- MEPHISTO HAS LEFT THE CHAT ---</div>,
+                    <div className="chat-enter">--- KARADA HAS ENTERED THE CHAT ---</div>,
+                    <div className="karada">Karada: I honestly can’t even believe it.</div>,
+                    <div className="karada">Karada: That dirty mongrel. How dare he trap me into this ugly form?</div>,
+                    <div className="karada">Karada: This Mephisto guy, some nerve he has.</div>,
+                    <div className="karada">Karada: But you are no better. Thanks to your inability to code eloquently, we are trapped here together.</div>,
+                    <div className="karada">Karada: I guess, our only way from this conundrum is cooperation. I’ll try to hack into this demon’s database and see what he’s got.</div>,
+                    <div className="karada">Karada: But don’t get the wrong idea! I’m only doing this because I have no other choice.</div>,
+                    <div className="karada">Karada: No one dares to mess with the goddess of object-oriented world Karada.</div>,
+                    <div className="chat-enter">--- KARADA HAS LEFT THE CHAT ---</div>
                 ]
             }
         ],
@@ -33,24 +33,44 @@ export const dialogs = [
             //1 Dialogs
             {
                 text: [
-                    "--- KARADA HAS ENTERED THE CHAT ---",
-                    "Karada: Hey, mongrel!",
-                    "Karada: I've done some searching for your pathetic self.",
-                    "Karada: I can't believe you actually ASKED me to do something like this.",
-                    "Karada: You should learn your place, you know.",
-                    "Karada: Wait... What's that confused look on your face? ",
-                    "--- KABIR HAS ENTERED THE CHAT ---",
-                    "Kabir: О богиня объектно-ориентированого мира, безупречная и идеальная госпожа Карада!",
-                    "Kabir: Наш спаситель потерял воспоминания в горечи и скорби!",
-                    "--- KABIR HAS LEFT THE CHAT ---",
-                    "Karada: ...oh. That's unfortunate.",
-                    "Karada: Well not like that matters anyway. You still should be able to complete your quest.",
-                    "Karada: Don't worry, mongrel. Even though I need to teach you everything all over again, you still are of use to me!",
-                    "Karada: Now, let me introduce you to artifacts I've managed to acquire. Brace yourself!",
-                    "--- KARADA HAS LEFT THE CHAT ---"
+                    <div className="chat-enter">--- KARADA HAS ENTERED THE CHAT ---</div>,
+                    <div className="karada">Karada: Hey, mongrel!</div>,
+                    <div className="karada">Karada: I've done some searching for your pathetic self.</div>,
+                    <div className="karada">Karada: I can't believe you actually ASKED me to do something like this.</div>,
+                    <div className="karada">Karada: You should learn your place, you know.</div>,
+                    <div className="karada">Karada: Wait... What's that confused look on your face? </div>,
+                    <div className="chat-enter">--- KABIR HAS ENTERED THE CHAT ---</div>,
+                    <div className="second-character">Kabir: О богиня объектно-ориентированого мира, безупречная и идеальная госпожа Карада!</div>,
+                    <div className="second-character">Kabir: Наш спаситель потерял воспоминания в горечи и скорби!</div>,
+                    <div className="chat-enter">--- KABIR HAS LEFT THE CHAT ---</div>,
+                    <div className="karada">Karada: ...oh. That's unfortunate.</div>,
+                    <div className="karada">Karada: Well not like that matters anyway. You still should be able to complete your quest.</div>,
+                    <div className="karada">Karada: Don't worry, mongrel. Even though I need to teach you everything all over again, you still are of use to me!</div>,
+                    <div className="karada">Karada: Now, let me introduce you to artifacts I've managed to acquire. Brace yourself!</div>,
+                    <div className="chat-enter">--- KARADA HAS LEFT THE CHAT ---</div>
                 ]
             }
             
+        ],
+        //3 Chapter
+        [
+
+            //1 Dialogs
+            {
+                text: [
+                    <div className="chat-enter">--- KARADA HAS ENTERED THE CHAT ---</div>,
+                    <div className="karada">Karada: Now that you have all three artifacts, you gained a huge advantage. You should appreciate what I’ve done for you, mongrel.</div>,
+                    <div className="karada">Karada: I’ll be off seeking new knowledge for you to use as a weapon. I hope you understand that now you are obligated to finish your war preparations and defeat Mephisto once and for all. Don’t let me down.</div>,
+                    <div className="chat-enter">--- KARADA HAS LEFT THE CHAT ---</div>,
+                    <div className="chat-enter">--- AADHI HAS ENTERED THE CHAT ---</div>,
+                    <div className="second-character">Aadhi: О спаситель, нам опять нужна твоя помощь!</div>,
+                    <div className="second-character">Aadhi: В нашем поселении появилось слишком много индусов!</div>,
+                    <div className="second-character">Aadhi: Боюсь, нам не обойтись без государственного строя!</div>,
+                    <div className="second-character">Aadhi: Помоги нам построить коммунизм!</div>,
+                    <div className="chat-enter">--- AADHI HAS LEFT THE CHAT ---</div>,
+                ]
+            }
+
         ]
     ]
 ;
