@@ -682,7 +682,7 @@ const result = persons.map(equipArmor)`
      This shouldn’t be too hard for the lord and savior of Hindu people, right?`,
     regexps: [],
     regexpsNone: [/(for)/g, /(while)/g, /(var)/g, /(let)/g],
-    code: `/// найди максимальное число в масссиве
+    code: `/// найди максимальное число в массиве
 
 const numbers = [10,25,18,133,36,100]
 
@@ -705,6 +705,38 @@ function max(a, b) {
 }     
 const maxNumber = numbers.reduce(max);
 `
+    }
+}, 
+ ///////////////////////////////////////quest 6////////////////////////////////////////////////////////////
+{
+    title: " reduce. Туториал 4",
+    text: `Honestly, I am quite tired of giving you quests, so use the same reduce function to 
+    calculate the sum of all of the numbers in the array. That should do the job.`,
+    regexps: [],
+    regexpsNone: [/(for)/g, /(while)/g, /(var)/g, /(let)/g],
+    code: `/// найди сумму чисел в массиве
+
+const numbers = [10,25,18,133,36,100];
+
+function sum(a, b) {
+          
+}`,
+    hints: [
+        "напиши функцию  для суммирования 2 чисел",
+        "используй reduce для нахождение суммы чисел"
+        ,"reduce должен возвратить одно число"
+    ],
+    test: {
+        code: `
+                `,
+        answer: `
+const numbers = [10,25,18,133,36,100];
+
+function sum(a, b) {
+    return a + b ;
+}
+        
+const total = numbers.reduce(sum, 0);`
     }
 }, 
         ]  
