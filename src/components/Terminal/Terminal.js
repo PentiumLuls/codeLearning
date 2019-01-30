@@ -29,6 +29,15 @@ class Terminal extends Component {
         }));
     }
 
+    unlockQuest = () => {
+        this.log("Oh wow, you're not entirely hopeless after all. Good job.", '');
+        this.setState({
+            showNextLevel: true
+        });
+        this.props.writeCode(false);
+        this.props.passQuest();
+    };
+
     run = () => {
 
         try {
@@ -42,13 +51,7 @@ class Terminal extends Component {
             } else {
 
                 if (vm.runInThisContext(codeToEvaluate) === true && regexp.pass === true) {
-                    this.log("Oh wow, you're not entirely hopeless after all. Good job.", '');
-                    this.setState({
-                        showNextLevel: true
-                    })
-                    this.props.writeCode(false);
-                    this.props.passQuest();
-
+                    this.unlockQuest();
 
                 } else {
                     let information = '';
