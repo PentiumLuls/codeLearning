@@ -11,7 +11,9 @@ function isBlack(rectangle) {
 function isSquare(rectangle) {
         return rectangle.width == rectangle.height;
     }
-const blackSquares = rectangles.filter(isBlack).filter(isSquare);
+const blackSquares = rectangles
+                .filter(isBlack)
+                .filter(isSquare);
 
 
 
@@ -38,9 +40,10 @@ function isYoung(hindu){
     return hindu.age < 30;
 }
 
-const result = persons.filter(isFromDelhi)
-                      .filter(hasSword)
-                      .filter(isYoung)
+const result = persons
+            .filter(isFromDelhi)
+            .filter(hasSword)
+            .filter(isYoung)
 
 
 
@@ -65,9 +68,10 @@ function max(a, b) {
         return a < b ? b : a;
     } 
 
-const maxNumber = rectangles.filter(isBlack)
-                            .map(perimeter)
-                            .reduce(max, 0);      
+const maxNumber = rectangles
+                .filter(isBlack)
+                .map(perimeter)
+                .reduce(max, 0);      
 
 
 
@@ -89,9 +93,10 @@ function makeBoards(tree){
 function  sum(a, b) {
     return a + b ;
 }
-result = trees.filter(isOak)
-              .map(makeBoards)
-              .reduce(sum,0)
+result = trees
+            .filter(isOak)
+            .map(makeBoards)
+            .reduce(sum,0)
 
 
 
@@ -114,9 +119,10 @@ function likesIndianMusic(hindu){
 function minAge(hinduA, hinduB) {
     return hinduA.age < hinduB.age ? hinduA : hinduB;
 }
-const wife = persons.filter(isAnvi)
-                    .filter(likesIndianMusic)
-                    .reduce( minAge)
+const wife = persons
+               .filter(isAnvi)
+               .filter(likesIndianMusic)
+               .reduce( minAge)
 
 
 
@@ -145,10 +151,11 @@ function getAge(hindu){
 function min(a, b) {
     return a < b ? a : b;
 } 
-const minAge = persons.filter(hasArmor)
-                      .filter(hasSword)
-                      .map(getAge)
-                      .reduce(min);
+const minAge = persons
+        .filter(hasArmor)
+        .filter(hasSword)
+        .map(getAge)
+        .reduce(min);
 
                 
 
@@ -158,36 +165,43 @@ const minAge = persons.filter(hasArmor)
 
 
 const demons = [{name: 'Charun',army:'A',health:400,weapon:'sword',attack:40}
-,{name: 'Asag',army:'A',health:420,weapon:'spear',attack:20}
-,{name: 'Bakasura',army:'B',health:400,weapon:'sword',attack:45}
-,{name: 'Corson',army:'A',health:350,weapon:'sword',attack:60}
-,{name: 'Anzu',army:'B',health:400,weapon:'spear',attack:30}]
+ ,{name: 'Asag',army:'A',health:420,weapon:'spear',attack:20}
+ ,{name: 'Bakasura',army:'B',health:400,weapon:'sword',attack:45}
+ ,{name: 'Corson',army:'A',health:350,weapon:'sword',attack:60}
+ ,{name: 'Anzu',army:'B',health:400,weapon:'spear',attack:30}]
 
 function IsArmyA(demon){
-   return demon.army == 'A'
+    return demon.army == 'A'
 }
 
 
-function  calcCombatRaiting(demon){
-   return  demon.health * 1.2 + demon.attack * 1.5
-   
+function  combatRaiting(demon){
+    return  demon.health * 1.2 + demon.attack * 1.5
+    
 }
 
 function raitingMore510(raiting){
 
-   return 510 < raiting;
+    return 510 < raiting;
 }
 
-function sum(a,b){
-   return a + b ;
+function calcTotal(objA,b){
+    return {
+        ...objA,
+        sum: objA.sum + b,
+        size: objA.size + 1,
+    } ;
 }
+//function mean(obj){
+// return obj.sum / obj.size
+//}
 
-const result = demons.filter(IsArmyA)
-                     .map(calcCombatRaiting)
-                     .filter(raitingMore510)
-                     .reduce(sum,0)
-console.log(result);
-
+const total = demons
+    .filter(IsArmyA)
+    .map(combatRaiting)
+    .filter(raitingMore510)
+    .reduce(sum, {sum: 0, size: 0});
+const result = total.sum / total.size;
 
 
 
