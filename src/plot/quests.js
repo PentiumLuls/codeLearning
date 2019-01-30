@@ -574,7 +574,7 @@ const men = //YOUR CODE
 terminal.log(men);`,
                 hints: [
                       'иcпользуй isMale в  filter чтобы найти только мужчин',
-                      'filter должен возвратить массив черных прямоугольников',
+                      
                 ],
                 test: {
                     code: `let valid = true;
@@ -825,7 +825,9 @@ const result = names.reduce(counter,{});`
             text: `LEFT PANEL TEXT`,
         regexps: [],
         regexpsNone: [/(for)/g, /(while)/g, /(var)/g, /(let)/g],
-        code: `const rectangles = [{color: 'red',width:4,height:4,},
+        code: `//создай массив черных квадратов
+
+const rectangles = [{color: 'red',width:4,height:4,},
 {color: 'black',width:2, height:2,},{color: 'white',width:6,height:9,},
 {color: 'black',width:3,height:3,},{color: 'black',width:4,height:4, },
 {color: 'black',width:5,height:5,},{color: 'white',width:4,height:2,},{color: 'red',width:5,height:5,}];
@@ -840,7 +842,9 @@ function isSquare(rectangle) {
 
 `,
         hints: [
-        "HINT 1"
+        
+        "нужно применить два filter",
+        "примени их последовательно"
     ],
         test: {
         code: `TEST CODE
@@ -866,7 +870,7 @@ function isSquare(rectangle) {
             
 function isBlack(rectangle) {
     return rectangle.color == 'black';
-};
+}
             
 function isSquare(rectangle) {
     return rectangle.width == rectangle.height;
