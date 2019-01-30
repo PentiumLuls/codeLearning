@@ -11,7 +11,7 @@ class Tasklist extends Component {
         this.props.prevStep();
         if (this.step == 1) {
             this.props.writeCode(false);
-            this.props.selectQuest(0);
+            this.props.selectQuest(1);
         }
     }
 
