@@ -48,14 +48,14 @@ const perimeters=rectangles.map(perimeter);
 const persons = [{gender: 'female',armor: false},{gender: 'male',armor: true},{gender: 'male',armor: false},
 {gender: 'male',armor: false},]
 
-function equipArmor(hinduCard) {
+function equipArmor(hindu) {
     return {
-        ...hinduCard,
+        ...hindu,
         armor: true
     };
 }
 
-``
+
 const armoredHindu=persons.map(equipArmor)
 
 
