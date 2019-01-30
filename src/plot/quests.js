@@ -506,11 +506,9 @@ const rectangles = [{color: 'red',width:4,height:4,},
 {color: 'black',width:3,height:5,},{color: 'black',width:4,height:2,},];
                                     
 function isBlack(rectangle) {
-        
+    return rectangle.color == 'black';   
 }`,
                 hints: [
-                   'Напиши функцию isBlack , которая принимает прямоугольник',
-
                       'иcпользуй isBlack в  filter чтобы найти только черные прямоугольники',
                       'isBlack возвращает true или  false',
 
@@ -518,9 +516,7 @@ function isBlack(rectangle) {
                 test: {
                     code: `
                             `,
-                    answer: `// создай массив только с черными прямоугольниками        
-
-
+                    answer: `       
 const rectangles = [{color: 'red',width:4,height:4,},
 {color: 'black',width:3, height:2,},{color: 'white',width:6,height:9,},
 {color: 'black',width:3,height:3,},{color: 'green',width:4,height:7, },
@@ -530,9 +526,7 @@ function isBlack(rectangle) {
     return rectangle.color == 'black';
 };
                                                          
-const result=rectangles.filter(isBlack);
-
-`
+const result=rectangles.filter(isBlack);`
                 }
             },
  ///////////////////////////////////////quest 2////////////////////////////////////////////////////////////             
@@ -553,13 +547,11 @@ const persons = [{name:'Aadhi',gender:'male',},{name:'Anvi',gender:'female',}
 ,{name:'Mahika',gender:'female',}];                    
 
 function isMale(hindu) {
-    
+    return hindu.gender == 'male';
 }`,
                 hints: [
-                    'Напиши функцию isMale , которая принимает карточку индуса',
-
                       'иcпользуй isMale в  filter чтобы найти только мужчин',
-                      'isBlack возвращает true если индиец  мужчина в другом случае возвращает  false',
+                      'filter должен возвратить массив черных прямоугольников',
                 ],
                 test: {
                     code: `let valid = true;
@@ -579,8 +571,8 @@ function isMale(hindu) {
                     const persons = [{name:'Aadhi1',gender:'male',},{name:'Aadhi2',gender:'female',},{name:'Aadhi3',gender:'female',},
                     {name:'Aadhi4',gender:'male',},{name:'Aadhi5',gender:'female',}]
                     
-                    function isMale(hinduCard) {
-                        return hinduCard.gender == 'male';
+                    function isMale(hindu) {
+                        return hindu.gender == 'male';
                     }
                    ;
                      var result=persons.filter(isMale);
@@ -606,12 +598,12 @@ const rectangles = [{color: 'red',width:4,height:4,},
 {color: 'black',width:3,height:5,},{color: 'black',width:4,height:2,},];
 
 function perimeter(rectangle) {
-    return rectangle.width*2 + rectangle.height*2;
+    return rectangle.width * 2 + rectangle.height * 2;
 }`,
         hints: [
             ,
             'используй map для того чтобы применить  функцию perimeter для всех прямоугольников в массиве ',
-            ''
+            'map  должен возвратить массив периметров'
         ],
         test: {
             code: `let valid = true;
