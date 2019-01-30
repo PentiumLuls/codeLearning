@@ -491,39 +491,34 @@ const person = {
  ///////////////////////////////////////quest 1////////////////////////////////////////////////////////////           
             {
                 title: "filter. Туториал 1",
-                text: ``,
+                text: `Listen here, you brat. Now that you have access to filter, map and reduce functions, make sure to use them wisely. 
+                Here you have a collection of different colored rectangles. Return the array of black rectangles using the filter function. 
+                You can also reuse chunks of code from the first chapter if you want.`,
                 regexps: [],
                 regexpsNone: [/(for)/g, /(while)/g, /(var)/g, /(let)/g],
-                code: `
+                code: `// создай массив только с черными прямоугольниками  
+
 const rectangles = [{color: 'red',width:4,height:4,},
 {color: 'black',width:3, height:2,},{color: 'white',width:6,height:9,},
 {color: 'black',width:3,height:3,},{color: 'green',width:4,height:7, },
 {color: 'black',width:3,height:5,},{color: 'black',width:4,height:2,},];
                                     
 function isBlack(rectangle) {
-                    
-}
-                                                     
-              
-`,
+        
+}`,
                 hints: [
-                    "Функция должна возвращать True или False"
+                   'Напиши функцию isBlack , которая принимает прямоугольник',
+
+                      'иcпользуй isBlack в  filter чтобы найти только черные прямоугольники',
+                      'isBlack возвращает true или  false',
+
                 ],
                 test: {
-                    code: `let valid = true;
-                    const rectangle2 = {
-                        color: 'black',
-                        width:4,
-                        height: 3,
-                    }
-                    const rectangle3 = {
-                        color: 'red',
-                        width:8,
-                        height: 8,
-                    }
-
+                    code: `
                             `,
-                    answer: `
+                    answer: `// создай массив только с черными прямоугольниками        
+
+
 const rectangles = [{color: 'red',width:4,height:4,},
 {color: 'black',width:3, height:2,},{color: 'white',width:6,height:9,},
 {color: 'black',width:3,height:3,},{color: 'green',width:4,height:7, },
@@ -541,19 +536,29 @@ const result=rectangles.filter(isBlack);
  ///////////////////////////////////////quest 2////////////////////////////////////////////////////////////             
             {
                 title: "filter сюжетное задание",
-                text: ``,
+                text: `t’s relieving to see that you are actually able to code.
+                 It seems to me that the reason you were sent here lies in the lack of proper education,
+                  which is a totally fixable issue.Now you have the opportunity to optimize the code you wrote before.
+                   Remember how you sorted these people by their gender to send them to war with Mephisto? 
+                   That was extremely sexist of you, but now you can sort all of them at once using filter.
+                    Efficient, right?`,
+
                 regexps: [],
                 regexpsNone: [/(for)/g, /(while)/g, /(var)/g, /(let)/g],
-                code: `
-                const persons = [{name:'Aadhi1',gender:'male',},{name:'Aadhi2',gender:'female',},{name:'Aadhi3',gender:'female',},
-{name:'Aadhi4',gender:'male',},{name:'Aadhi5',gender:'female',}];
+                code: `//создай новый массив только с индийцами мужского пола
 
-function isMale(hinduCard) {
-    return hinduCard.gender == 'male';
-};
-`,
+const persons = [{name:'Aadhi',gender:'male',},{name:'Anvi',gender:'female',}
+,{name:'Kashvi',gender:'female',},{name:'Shaan',gender:'male',}
+,{name:'Mahika',gender:'female',}];                    
+
+function isMale(hindu) {
+    
+}`,
                 hints: [
-                    "Функция должна возвращать True или False"
+                    'Напиши функцию isMale , которая принимает карточку индуса',
+
+                      'иcпользуй isMale в  filter чтобы найти только мужчин',
+                      'isBlack возвращает true если индиец  мужчина в другом случае возвращает  false',
                 ],
                 test: {
                     code: `let valid = true;
@@ -577,7 +582,7 @@ function isMale(hinduCard) {
                         return hinduCard.gender == 'male';
                     }
                    ;
-                     var newArr=persons.filter(isMale);
+                     var result=persons.filter(isMale);
 
 `
                 }
@@ -585,49 +590,27 @@ function isMale(hinduCard) {
     ///////////////////////////////////////quest 3////////////////////////////////////////////////////////////
     {
         title: " map туториал",
-        text: ``,
+        text: `Good, now the process of preparing the troops will go significantly faster.
+         Also, let us hope that redoing  these quests will help you recover your memories faster.
+        Now I’ll introduce you to the map function.As you can see, the array of rectangles is the same as before.
+        You will need to write a function that returns the rectangle’s perimeter.
+        Then use map with the said function to return the array of all of the rectangles’ perimeters. Good luck.`,
         regexps: [],
         regexpsNone: [/(for)/g, /(while)/g, /(var)/g, /(let)/g],
-        code: `
-        const rectangles = [{
-            color: 'red',
-            width:4,
-            height:4,
-        },{
-            color: 'black',
-            width:3,
-            height:2,
-        },{
-            color: 'white',
-            width:6,
-            height:9,
-        },
-        {
-            color: 'black',
-            width:3,
-            height:3,
-        },{
-            color: 'green',
-            width:4,
-            height:7,
-        },
-        {
-            color: 'black',
-            width:3,
-            height:5,
-        },
-        {
-            color: 'black',
-            width:4,
-            height:2,
-        },];
-        
-        function perimeter(rectangle) {
-            return rectangle.width*2 + rectangle.height*2;
-        }
-`,
+        code: `//создай массив периметров прямоугольников
+
+const rectangles = [{color: 'red',width:4,height:4,},
+{color: 'black',width:3, height:2,},{color: 'white',width:6,height:9,},
+{color: 'black',width:3,height:3,},{color: 'green',width:4,height:7, },
+{color: 'black',width:3,height:5,},{color: 'black',width:4,height:2,},];
+
+function perimeter(rectangle) {
+    return rectangle.width*2 + rectangle.height*2;
+}`,
         hints: [
-            "Функция должна возвращать True или False"
+            ,
+            'используй map для того чтобы применить  функцию perimeter для всех прямоугольников в массиве ',
+            ''
         ],
         test: {
             code: `let valid = true;
@@ -643,113 +626,91 @@ function isMale(hinduCard) {
             }
 
                     `,
-            answer: `
-            const rectangles = [{
-                color: 'red',
-                width:4,
-                height:4,
-            },{
-                color: 'black',
-                width:3,
-                height:2,
-            },{
-                color: 'white',
-                width:6,
-                height:9,
-            },
-            {
-                color: 'black',
-                width:3,
-                height:3,
-            },{
-                color: 'green',
-                width:4,
-                height:7,
-            },
-            {
-                color: 'black',
-                width:3,
-                height:5,
-            },
-            {
-                color: 'black',
-                width:4,
-                height:2,
-            },];
-            
-            function perimeter(rectangle) {
-                return rectangle.width*2 + rectangle.height*2;
-            }
-            var perimeters=rectangles.map(perimeter);
-`
+            answer:
+`const rectangles = [{color: 'red',width:4,height:4,},
+{color: 'black',width:3, height:2,},{color: 'white',width:6,height:9,},
+{color: 'black',width:3,height:3,},{color: 'green',width:4,height:7, },
+{color: 'black',width:3,height:5,},{color: 'black',width:4,height:2,},];
+
+function perimeter(rectangle) {
+    return rectangle.width*2 + rectangle.height*2;
+}
+
+const perimeters = rectangles.map(perimeter);`
         }
     }, 
    ///////////////////////////////////////quest 4////////////////////////////////////////////////////////////    
     {
         title: " map сюжет",
-        text: ``,
+        text: `You are still far from being a good fighter, but you are making progress, which is probably a good thing.
+        Once again, write a function that equips an armor if the Hindu guy doesn’t have any yet and use map to make 
+        all of the guys equip the said armor. This task will help you lay the ground of an actual functional army.
+         No pun intended, I am not the kind of person to make those and YOU should make SURE to remember that.`,
         regexps: [],
         regexpsNone: [/(for)/g, /(while)/g, /(var)/g, /(let)/g],
-        code: `
-        const persons = [{gender: 'female',armor: false},{gender: 'male',armor: true},{gender: 'male',armor: false},
-{gender: 'male',armor: false},]
+        code: `//экипируй всех индусов в броню 
 
-function equipArmor(hinduCard) {
-    const newhinduCard = Object.assign({}, hinduCard);
-    newhinduCard.armor = true;
-    return newhinduCard;
-}
-`,
+const persons = [{gender: 'female',armor: false},{gender: 'male',armor: true}
+,{gender: 'male',armor: false},{gender: 'male',armor: false},];   
+
+function equipArmor(hindu) {
+    return {
+            ...hindu,
+            armor: true
+           };
+}`,
         hints: [
-            "Функция должна возвращать True или False"
+          
+            'используй map для того чтобы применить  функцию equipArmor для всех карточек индуса в массиве ',
+            'map  должен возвратить массив индусов в броне'
         ],
         test: {
             code: `
                     `,
             answer: `
-            const persons = [{gender: 'female',armor: false},{gender: 'male',armor: true},{gender: 'male',armor: false},
-{gender: 'male',armor: false},]
-
-function equipArmor(hinduCard) {
-    const newhinduCard = Object.assign({}, hinduCard);
-    newhinduCard.armor = true;
-    return newhinduCard;
+const persons = [{gender: 'female',armor: false},{gender: 'male',armor: true},{gender: 'male',armor: false},
+{gender: 'male',armor: false},];
+            
+function equipArmor(hindu) {
+    return {
+            ...hindu,
+            armor: true
+           };
 }
-
-    
-let armoredHindu=persons.map(equipArmor)
-`
+                        
+const result = persons.map(equipArmor)`
         }
     }, 
  ///////////////////////////////////////quest 5////////////////////////////////////////////////////////////
  {
     title: " reduce туториал",
-    text: ``,
+    text: `I hope your brain can still function, because we have one more artifact to cover.
+    You are presented with the array of values. Find the maximum value using reduce.
+     This shouldn’t be too hard for the lord and savior of Hindu people, right?`,
     regexps: [],
     regexpsNone: [/(for)/g, /(while)/g, /(var)/g, /(let)/g],
-    code: `
-    perimeters = [10,25,18,133,36,100];
+    code: `/// найди максимальное число в масссиве
 
-function maxPerimeter(max,current){
-    if(max < current) max = current;
-    return max;
-};
+const numbers = [10,25,18,133,36,100]
 
-`,
+function max(a, b) {
+    
+}`,
     hints: [
-        "Функция должна возвращать True или False"
+        "напиши функцию max для сравнения 2 чисел",
+        "используй reduce для нахождение максимального числа"
+        ,"reduce должен возвратить одно число"
     ],
     test: {
         code: `
                 `,
         answer: `
- const perimeters = [10,25,18,133,36,100]
+const numbers = [10,25,18,133,36,100]
 
-function maxPerimeter(max,current){
-    if(max < current) max = current;
-    return max;
-};
-const  max = perimeters.reduce(maxPerimeter,0);
+function max(a, b) {
+    return a < b ? b : a;
+}     
+const maxNumber = numbers.reduce(max);
 `
     }
 }, 
