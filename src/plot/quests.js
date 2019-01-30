@@ -470,13 +470,15 @@ const person = {
     armor: true,
     weapons: ['sword', 'stick']
 };
-
-    return hinduCard.weapons.lenght === 0 ? {...gangCard} 
+    function joinGang(gangCard, hinduCard,) {
+        return hinduCard.weapons.lenght === 0 ? {...gangCard} 
             : {...gangCard
             ,members: [...gangCard.members, hinduCard.name]
             ,armors: [...gangCard.armors, hinduCard.armor]
             ,weapons: [...weapons, ...hinduCard.weapons]}
-}`
+    }
+    
+`
                 }
             }
         ]
@@ -485,7 +487,7 @@ const person = {
 ///////////////////////////////////////глава2////////////////////////////////////////////////////////////
 ///////////////////////////////////////глава2////////////////////////////////////////////////////////////    
     {
-        title: "Stage 2",
+        title: "Этот глупый ООПешник не понимает мечту девочки обекта",
         quests:[
 
  ///////////////////////////////////////quest 1////////////////////////////////////////////////////////////           
@@ -540,7 +542,7 @@ const result=rectangles.filter(isBlack);
             },
  ///////////////////////////////////////quest 2////////////////////////////////////////////////////////////             
             {
-                title: "filter сюжетное задание",
+                title: "Маштабная дискриминация",
                 text: ``,
                 regexps: [],
                 regexpsNone: [/(for)/g, /(while)/g, /(var)/g, /(let)/g],
@@ -584,7 +586,7 @@ function isMale(hinduCard) {
             },
     ///////////////////////////////////////quest 3////////////////////////////////////////////////////////////
     {
-        title: " map туториал",
+        title: " map. Туториал 2",
         text: ``,
         regexps: [],
         regexpsNone: [/(for)/g, /(while)/g, /(var)/g, /(let)/g],
@@ -597,30 +599,7 @@ function isMale(hinduCard) {
             color: 'black',
             width:3,
             height:2,
-        },{
-            color: 'white',
-            width:6,
-            height:9,
-        },
-        {
-            color: 'black',
-            width:3,
-            height:3,
-        },{
-            color: 'green',
-            width:4,
-            height:7,
-        },
-        {
-            color: 'black',
-            width:3,
-            height:5,
-        },
-        {
-            color: 'black',
-            width:4,
-            height:2,
-        },];
+        }];
         
         function perimeter(rectangle) {
             return rectangle.width*2 + rectangle.height*2;
@@ -652,30 +631,7 @@ function isMale(hinduCard) {
                 color: 'black',
                 width:3,
                 height:2,
-            },{
-                color: 'white',
-                width:6,
-                height:9,
-            },
-            {
-                color: 'black',
-                width:3,
-                height:3,
-            },{
-                color: 'green',
-                width:4,
-                height:7,
-            },
-            {
-                color: 'black',
-                width:3,
-                height:5,
-            },
-            {
-                color: 'black',
-                width:4,
-                height:2,
-            },];
+            }];
             
             function perimeter(rectangle) {
                 return rectangle.width*2 + rectangle.height*2;
@@ -686,7 +642,7 @@ function isMale(hinduCard) {
     }, 
    ///////////////////////////////////////quest 4////////////////////////////////////////////////////////////    
     {
-        title: " map сюжет",
+        title: "Гучи броню народу!",
         text: ``,
         regexps: [],
         regexpsNone: [/(for)/g, /(while)/g, /(var)/g, /(let)/g],
@@ -723,7 +679,7 @@ let armoredHindu=persons.map(equipArmor)
     }, 
  ///////////////////////////////////////quest 5////////////////////////////////////////////////////////////
  {
-    title: " reduce туториал",
+    title: " reduce. Туториал 3",
     text: ``,
     regexps: [],
     regexpsNone: [/(for)/g, /(while)/g, /(var)/g, /(let)/g],

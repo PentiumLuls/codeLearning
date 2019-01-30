@@ -1,6 +1,8 @@
 import ReactAce from 'react-ace';
 import React, {Component} from 'react';
 import brace from 'brace'
+import { connect } from 'react-redux';
+import { changeShowPopup } from '../../store/actions/codeActions'
 
 import 'brace/mode/javascript';
 import 'brace/theme/terminal';
@@ -79,4 +81,11 @@ class CodeEditor extends Component {
 }
 
 
-export default CodeEditor;
+const mapStateToProps = store => {
+    return {
+         run: store.run
+    }
+}
+
+
+export default connect(mapStateToProps)(CodeEditor);

@@ -25,7 +25,6 @@ class Chatbot extends Component {
         let x = 0;
         let interval = setInterval(() => {
             let replic = <li key={`replic${x}`} className='mephistoreplic'> {replics.text[x++]} </li> ;
-            console.log("dialog")
             this.setState({
                 replics: [...this.state.replics, replic],
             });
