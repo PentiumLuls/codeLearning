@@ -9,7 +9,7 @@ function IsArmyA(demon){
 }
 
 
-function  calcCombatRaiting(demon){
+function  combatRaiting(demon){
     return  demon.health * 1.2 + demon.attack * 1.5
     
 }
@@ -19,12 +19,21 @@ function raitingMore510(raiting){
     return 510 < raiting;
 }
 
-function sum(a,b){
-    return a + b ;
+function sum(objA,b){
+    return {
+        ...objA,
+        sum: objA.sum + b,
+        size: objA.size + 1,
+    } ;
 }
+//function mean(obj){
+// return obj.sum / obj.size
+//}
 
- const result = demons.filter(IsArmyA)
-                      .map(calcCombatRaiting)
-                      .filter(raitingMore510)
-                      .reduce(sum,0)
+const total = demons
+    .filter(IsArmyA)
+    .map(combatRaiting)
+    .filter(raitingMore510)
+    .reduce(sum, {sum: 0, size: 0});
+const result = total.sum / total.size;
 console.log(result);
