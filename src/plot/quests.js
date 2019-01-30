@@ -483,6 +483,7 @@ const person = {
             }
         ]
     },
+
 ///////////////////////////////////////глава2////////////////////////////////////////////////////////////
 ///////////////////////////////////////глава2////////////////////////////////////////////////////////////
 ///////////////////////////////////////глава2////////////////////////////////////////////////////////////    
@@ -813,7 +814,72 @@ const result = names.reduce(counter,{});`
 },  
         ]  
     },
-  
+
+///////////////////////////////////////глава3////////////////////////////////////////////////////////////
+///////////////////////////////////////глава3////////////////////////////////////////////////////////////
+///////////////////////////////////////глава3////////////////////////////////////////////////////////////     
+    {
+        title: "stage 3",
+        quests:[{
+            title: "level 1",
+            text: `LEFT PANEL TEXT`,
+        regexps: [],
+        regexpsNone: [/(for)/g, /(while)/g, /(var)/g, /(let)/g],
+        code: `const rectangles = [{color: 'red',width:4,height:4,},
+{color: 'black',width:2, height:2,},{color: 'white',width:6,height:9,},
+{color: 'black',width:3,height:3,},{color: 'black',width:4,height:4, },
+{color: 'black',width:5,height:5,},{color: 'white',width:4,height:2,},{color: 'red',width:5,height:5,}];
+        
+function isBlack(rectangle) {
+    return rectangle.color == 'black';
+}
+        
+function isSquare(rectangle) {
+    return rectangle.width == rectangle.height;
+}
+
+`,
+        hints: [
+        "HINT 1"
+    ],
+        test: {
+        code: `TEST CODE
+    
+                describe("", function() {
+    
+                   it("should ",function() {
+                      expect().toEqual();
+                   });
+    
+                });
+                      const report = runSpecs();
+                            for (var i = 0; i < report.passed.length; i++) {
+                              reporterLog(report.descriptions[i], report.passed[i])
+                            }
+                            if (report.passed.indexOf(false) === -1) { true } else false;`,
+    
+    
+            answer: `const rectangles = [{color: 'red',width:4,height:4,},
+{color: 'black',width:2, height:2,},{color: 'white',width:6,height:9,},
+{color: 'black',width:3,height:3,},{color: 'black',width:4,height:4, },
+{color: 'black',width:5,height:5,},{color: 'white',width:4,height:2,},{color: 'red',width:5,height:5,}];
+            
+function isBlack(rectangle) {
+    return rectangle.color == 'black';
+};
+            
+function isSquare(rectangle) {
+    return rectangle.width == rectangle.height;
+}
+
+const blackSquares = rectangles
+                        .filter(isBlack)
+                        .filter(isSquare);`
+    }
+    }
+         
+        ]
+    },  
 ///////////////////////////////////////глава5////////////////////////////////////////////////////////////
 ///////////////////////////////////////глава5////////////////////////////////////////////////////////////
 ///////////////////////////////////////глава5////////////////////////////////////////////////////////////
