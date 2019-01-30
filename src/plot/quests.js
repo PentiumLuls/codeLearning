@@ -485,7 +485,7 @@ const person = {
 ///////////////////////////////////////глава2////////////////////////////////////////////////////////////
 ///////////////////////////////////////глава2////////////////////////////////////////////////////////////    
     {
-        title: "",
+        title: "Stage 2",
         quests:[
 
  ///////////////////////////////////////quest 1////////////////////////////////////////////////////////////           
@@ -495,42 +495,16 @@ const person = {
                 regexps: [],
                 regexpsNone: [/(for)/g, /(while)/g, /(var)/g, /(let)/g],
                 code: `
-                const rectangles = [{
-                    color: 'red',
-                    width:4,
-                    height:4,
-                },{
-                    color: 'black',
-                    width:3,
-                    height:2,
-                },{
-                    color: 'white',
-                    width:6,
-                    height:9,
-                },
-                {
-                    color: 'black',
-                    width:3,
-                    height:3,
-                },{
-                    color: 'green',
-                    width:4,
-                    height:7,
-                },
-                {
-                    color: 'black',
-                    width:3,
-                    height:5,
-                },
-                {
-                    color: 'black',
-                    width:4,
-                    height:2,
-                },]
-                
-                function isBlack(rectangle) {
-                    return rectangle.color == 'black';
-                }
+const rectangles = [{color: 'red',width:4,height:4,},
+{color: 'black',width:3, height:2,},{color: 'white',width:6,height:9,},
+{color: 'black',width:3,height:3,},{color: 'green',width:4,height:7, },
+{color: 'black',width:3,height:5,},{color: 'black',width:4,height:2,},];
+                                    
+function isBlack(rectangle) {
+                    
+}
+                                                     
+              
 `,
                 hints: [
                     "Функция должна возвращать True или False"
@@ -550,45 +524,16 @@ const person = {
 
                             `,
                     answer: `
-        const rectangles = [{
-                        color: 'red',
-                        width:4,
-                        height:4,
-                    },{
-                        color: 'black',
-                        width:3,
-                        height:2,
-                    },{
-                        color: 'white',
-                        width:6,
-                        height:9,
-                    },
-                    {
-                        color: 'black',
-                        width:3,
-                        height:3,
-                    },{
-                        color: 'green',
-                        width:4,
-                        height:7,
-                    },
-                    {
-                        color: 'black',
-                        width:3,
-                        height:5,
-                    },
-                    {
-                        color: 'black',
-                        width:4,
-                        height:2,
-                    },];
-                    
-                    function isBlack(rectangle) {
-                        return rectangle.color == 'black';
-                    };
-                    
-                    
-                     var newArr=rectangles.filter(isBlack).map(color);
+const rectangles = [{color: 'red',width:4,height:4,},
+{color: 'black',width:3, height:2,},{color: 'white',width:6,height:9,},
+{color: 'black',width:3,height:3,},{color: 'green',width:4,height:7, },
+{color: 'black',width:3,height:5,},{color: 'black',width:4,height:2,},];
+                                        
+function isBlack(rectangle) {
+    return rectangle.color == 'black';
+};
+                                                         
+const result=rectangles.filter(isBlack);
 
 `
                 }
