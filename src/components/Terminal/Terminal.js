@@ -20,6 +20,7 @@ class Terminal extends Component {
         window.terminal = {};
         window.terminal.log = (...args) => {const result = (args.map(arg => {return JSON.stringify(arg)})); self.log(result.join(","), "logger")};
         window.unlockQuest = this.unlockQuest;
+        window.reporterLog = (text, status) => {self.reporterLog(text, status)};
         ///////////////////////////////
     }
 
@@ -28,6 +29,13 @@ class Terminal extends Component {
             content: state.content + "\n" + logger + "> " + text + "\n"
         }));
     }
+
+    reporterLog = (text, status) => {
+        let stat = status === true ? 'PASS' : 'FAIL';
+        this.setState((state) => ({
+            content: state.content + "\n[" + stat + "] " + text + "\n"
+        }));
+    };
 
     unlockQuest = () => {
         this.log("Oh wow, you're not entirely hopeless after all. Good job.", '');
@@ -42,7 +50,7 @@ class Terminal extends Component {
 
         try {
             const vm = require('vm');
-            const codeToEvaluate = localStorage.getItem("code") + "\n" + this.props.testCode["code"]
+            const codeToEvaluate = localStorage.getItem("code") + "\n" + this.props.testCode["code"];
             const regexp = this.checkForRegexp();
 
             //IF LEVEL IS NOT CHOSEN
@@ -130,20 +138,20 @@ class Terminal extends Component {
     }
 
     resetCode = () => {
-        this.props.writeCode(true)
+        this.props.writeCode(true);
         this.props.resetCode()
-    }
+    };
 
     clickNextLevel = () => {
         this.props.nextLevel();
         this.setState({
             showNextLevel: false
-        })
+        });
         this.props.writeCode(true);
         this.props.resetCode();
         this.props.changeShowPopup(true);
         this.clearTerminal();
-    }
+    };
 
 
     render() {
@@ -178,7 +186,7 @@ class Terminal extends Component {
     }
 
     componentDidMount() {
-        this.props.clearTerminal(this.clearTerminal)
+        this.props.clearTerminal(this.clearTerminal);
         this.props.exportRun(this.run)
     }
 }
@@ -190,7 +198,7 @@ const mapStateToProps = store => {
         currentStage: store.currentStage,
         currentQuest: store.currentQuest
     }
-}
+};
 
 const mapDispatchToProps = dispatch => {
     return {
@@ -201,7 +209,7 @@ const mapDispatchToProps = dispatch => {
         changeShowPopup: (can) => dispatch(changeShowPopup(can)),
         clearTerminal: (func) => dispatch(clearTerminal(func))
     }
-}
+};
 
 
 export default connect(mapStateToProps, mapDispatchToProps)(Terminal);

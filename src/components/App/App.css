@@ -134,7 +134,7 @@ ul {
 }
 .bot-bottom-panel {
     width: 100%;
-    padding: 2vh 3vw;
+    padding: 2vh 1vw;
     box-sizing: border-box;
     height: 8vh;
 }
@@ -223,6 +223,11 @@ button {
     position: relative;
     text-transform: uppercase;
 }
+button[disabled] {
+    border: 3px solid #e2e2e2;
+    background-color: #9e9e9e;
+    color: #e2e2e2;
+}
 button:active {
     animation-name: shake;
     animation-duration: 0.1s;
@@ -288,12 +293,41 @@ audio {position: absolute; visibility: hidden;}
 .button-open-terminal {
     float: right;
 }
-
-
   
 .button-back {
     margin: 15px;
 }
+
+.bubble {
+    position: absolute;
+    bottom: 40px;
+    right: 30px;
+    animation: scale 0.2s linear;
+    display: inline-block;
+    margin: 10px 9px 29px 6px;
+    text-align: center;
+    font-weight: 700;
+    background-color: #000;
+    color: #fff;
+    padding: 5px;
+    box-shadow: 0 -3px #000, 0 -6px #fff, 3px 0 #000, 3px -3px #fff, 6px 0 #fff, 0 3px #000, 0 6px #fff, -3px 0 #000, -3px 3px #fff, -6px 0 #fff, -3px -3px #fff, 3px 3px #fff;
+    transition: all 0.3s ease;
+    box-sizing: border-box;
+}
+.bubble::after {
+    content: '';
+    display: block;
+    position: absolute;
+    box-sizing: border-box;
+    right: 30%;
+    background: #000;
+    bottom: -2px;
+    z-index: 100;
+    box-shadow: 12px 4px 0 0 #000, 16px 4px 0 0 #000, 20px 4px 0 0 #000, 24px 4px 0 0 #000, 28px 4px 0 0 #000, 12px 8px 0 0 #fff, 16px 8px 0 0 #000, 20px 8px 0 0 #000, 24px 8px 0 0 #000, 28px 8px 0 0 #fff, 16px 12px 0 0 #fff, 20px 12px 0 0 #000, 24px 12px 0 0 #000, 28px 12px 0 0 #fff, 20px 16px 0 0 #fff, 24px 16px 0 0 #000, 28px 16px 0 0 #fff, 24px 20px 0 0 #fff, 28px 20px 0 0 #fff;
+    height: 4px;
+    width: 4px;
+}
+
 @-webkit-keyframes squiggly-anim {
     0% {
         -webkit-filter: url("#squiggly-0");

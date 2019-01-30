@@ -17,7 +17,6 @@ class App extends Component {
 
         this.state = {
             isEdit: false,
-            answer: false,
             run: undefined,
             terminalOpen: false
         };
@@ -88,9 +87,7 @@ class App extends Component {
                 <div className={this.state.terminalOpen ? 'editor open-editor' : 'editor'}>
                     <Codeditor
                         run={this.state.run}
-                        textAnswer={quests[this.currentStage].quests[this.currentQuest].test.answer}
                         text={this.code}
-                        answer={this.state.answer}
                         writeCode={this.writeCode}
                         resets={this.props.resets}
                         />
@@ -111,8 +108,7 @@ class App extends Component {
             }
                 <div>
                     {
-                        (!this.state.isEdit) ? <Chatbot stage={this.currentStage}
-                        quest={this.currentQuest}/> : null
+                        (!this.state.isEdit) ? <Chatbot/> : null
                     }
                 </div>
                 {//POPUP 

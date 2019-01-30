@@ -61,8 +61,10 @@ function isSquare(rectangle) {
 
 });
       const report = runSpecs();
-      report.forEach(part => terminal.log(part))
-      if (report.length === 0) { true } else false;`,
+      for (var i = 0; i < report.passed.length; i++) {
+        reporterLog(report.descriptions[i], report.passed[i])
+      }
+      if (report.passed.indexOf(false) === -1) { true } else false;`,
                     answer: `//Напиши функции isBlack и isSquare, которые принимают прямоугольник
 //И возвращают соответствующие данные.
 //P.S. Все цвета будут написаны в lowercase.
@@ -123,8 +125,10 @@ function isMale(hinduCard) {
    }); 
 });
       const report = runSpecs();
-      report.forEach(part => terminal.log(part))
-      if (report.length === 0) { true } else false;`,
+      for (var i = 0; i < report.passed.length; i++) {
+        reporterLog(report.descriptions[i], report.passed[i])
+      }
+      if (report.passed.indexOf(false) === -1) { true } else false;`,
                     answer: `//Напиши функцию isMale, которая принимает карточку индуса
 //И возвращает его пригодность к войне.
 //P.S. Индус считается пригодным, если он мужчина.
@@ -187,8 +191,10 @@ function perimeter(rectangle) {
    }); 
 });
       const report = runSpecs();
-      report.forEach(part => terminal.log(part))
-      if (report.length === 0) { true } else false;`,
+      for (var i = 0; i < report.passed.length; i++) {
+        reporterLog(report.descriptions[i], report.passed[i])
+      }
+      if (report.passed.indexOf(false) === -1) { true } else false;`,
                     answer: `//Напиши функцию perimeter, которая принимает прямоугольник
 //и возвращает результат проверки.
 
@@ -251,8 +257,10 @@ function equipArmor(hinduCard) {
 
 });
       const report = runSpecs();
-      report.forEach(part => terminal.log(part))
-      if (report.length === 0) { true } else false;`,
+      for (var i = 0; i < report.passed.length; i++) {
+        reporterLog(report.descriptions[i], report.passed[i])
+      }
+      if (report.passed.indexOf(false) === -1) { true } else false;`,
 
                     answer: `//Напиши функцию equipArmor, которая принимает карточку индуса
 //И возвращает новую, со свойством "armor: true" 
@@ -319,8 +327,10 @@ function equipStick(hinduCard) {
    });
 });
       const report = runSpecs();
-      report.forEach(part => terminal.log(part))
-      if (report.length === 0) { true } else false;`,
+      for (var i = 0; i < report.passed.length; i++) {
+        reporterLog(report.descriptions[i], report.passed[i])
+      }
+      if (report.passed.indexOf(false) === -1) { true } else false;`,
 
                     answer: `//Напиши функцию equipStick, которая возвращает карточку индуса с палкой.
 //И если у индуса уже есть палка, то возвращает новую карточку, но без дополнительной палки.
@@ -372,8 +382,10 @@ function add(a, b) {
    
 });
  const report = runSpecs();
-      report.forEach(part => terminal.log(part))
-      if (report.length === 0) { true } else false;`,
+      for (var i = 0; i < report.passed.length; i++) {
+        reporterLog(report.descriptions[i], report.passed[i])
+      }
+      if (report.passed.indexOf(false) === -1) { true } else false;`,
                     answer: `//Напиши функцию add, которая возвращает суму двух чисел.
 
 const a = 5;
@@ -441,8 +453,10 @@ const gang1 = {
    
 });
  const report = runSpecs();
-      report.forEach(part => terminal.log(part))
-      if (report.length === 0) { true } else false;`,
+      for (var i = 0; i < report.passed.length; i++) {
+        reporterLog(report.descriptions[i], report.passed[i])
+      }
+      if (report.passed.indexOf(false) === -1) { true } else false;`,
 
                     answer: `//Напиши функцию createGang,которая возвращает отряд такого типа: 
 //{members: [hindu1.name, hindu2.name], armors: [true, true],
