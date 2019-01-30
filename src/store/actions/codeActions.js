@@ -2,6 +2,7 @@ export const RESET_CODE = 'RESET_CODE';
 export const WRITE_CODE = 'WRITE_CODE';
 export const CHANGE_SHOW_POPUP = 'CHANGE_SHOW_POPUP';
 export const CLEAR_TERMINAL = 'CLEAR_TERMINAL';
+export const SHOW_ANSWER = 'SHOW_ANSWER';
 
 export function resetCode() {
     return {
@@ -27,6 +28,12 @@ export function clearTerminal(func) {
     return {
         type: CLEAR_TERMINAL,
         payload: func
+    }
+}
+
+export function showAnswer() {
+    return {
+        type: SHOW_ANSWER
     }
 }
 
