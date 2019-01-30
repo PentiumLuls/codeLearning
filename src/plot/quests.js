@@ -509,7 +509,7 @@ function isBlack(rectangle) {
 }
 
 const blackRectangles = //YOUR CODE
-`,
+terminal.log(blackRectangles);`,
                 hints: [
                    'Напиши функцию isBlack , которая принимает прямоугольник',
 
@@ -534,17 +534,19 @@ const blackRectangles = //YOUR CODE
             }
             if (report.passed.indexOf(false) === -1) { true } else false;`,
 
-                    answer: `
+                    answer: `// создай массив только с черными прямоугольниками  
+
 const rectangles = [{color: 'red',width:4,height:4,},
 {color: 'black',width:3, height:2,},{color: 'white',width:6,height:9,},
 {color: 'black',width:3,height:3,},{color: 'green',width:4,height:7, },
 {color: 'black',width:3,height:5,},{color: 'black',width:4,height:2,},];
-                                        
+
 function isBlack(rectangle) {
     return rectangle.color == 'black';
-};
-                                                         
-const result=rectangles.filter(isBlack);`
+}
+
+const blackRectangles=rectangles.filter(isBlack);
+terminal.log(blackRectangles);`
                 }
             },
  ///////////////////////////////////////quest 2////////////////////////////////////////////////////////////             
@@ -556,7 +558,7 @@ const result=rectangles.filter(isBlack);`
                    Remember how you sorted these people by their gender to send them to war with Mephisto? 
                    That was extremely sexist of you, but now you can sort all of them at once using filter.
                     Efficient, right?`,
-                regexps: [],
+                regexps: [/(filter)/g],
                 regexpsNone: [/(for)/g, /(while)/g, /(var)/g, /(let)/g],
                 code: `//создай новый массив только с индийцами мужского пола
 
@@ -568,7 +570,8 @@ function isMale(hindu) {
     return hindu.gender === 'male';
 }
 
-const men = //YOUR CODE`,
+const men = //YOUR CODE
+terminal.log(men);`,
                 hints: [
                       'иcпользуй isMale в  filter чтобы найти только мужчин',
                       'isBlack возвращает true если индиец  мужчина в другом случае возвращает  false',
@@ -597,7 +600,8 @@ function isMale(hindu) {
     return hindu.gender === 'male';
 }
 
-const men = persons.filter(isMale);`
+const men = persons.filter(isMale);
+terminal.log(men);`
                 }
             },
     ///////////////////////////////////////quest 3////////////////////////////////////////////////////////////
@@ -608,7 +612,7 @@ const men = persons.filter(isMale);`
         Now I’ll introduce you to the map function.As you can see, the array of rectangles is the same as before.
         You will need to write a function that returns the rectangle’s perimeter.
         Then use map with the said function to return the array of all of the rectangles’ perimeters. Good luck.`,
-        regexps: [],
+        regexps: [/(map)/g],
         regexpsNone: [/(for)/g, /(while)/g, /(var)/g, /(let)/g],
         code: `//создай массив периметров прямоугольников
 
@@ -619,37 +623,41 @@ const rectangles = [{color: 'red',width:4,height:4,},
 
 function perimeter(rectangle) {
     return rectangle.width * 2 + rectangle.height * 2;
-}`,
+}
+
+const perimeters = //YOUR CODE
+terminal.log(perimeters);`,
         hints: [
-            ,
             'используй map для того чтобы применить  функцию perimeter для всех прямоугольников в массиве ',
             'map  должен возвратить массив периметров'
         ],
         test: {
-            code: `let valid = true;
-            const rectangle2 = {
-                color: 'black',
-                width:4,
-                height: 3,
-            }
-            const rectangle3 = {
-                color: 'red',
-                width:8,
-                height: 8,
-            }
+            code: `describe("3", function() {
 
-                    `,
+               it("should return array of rectangle perimeters",function() {
+                  expect(perimeters).toEqual(rectangles.map(perimeter));
+               });
+
+            });
+                  const report = runSpecs();
+                        for (var i = 0; i < report.passed.length; i++) {
+                          reporterLog(report.descriptions[i], report.passed[i])
+                        }
+                        if (report.passed.indexOf(false) === -1) { true } else false;`,
             answer:
-`const rectangles = [{color: 'red',width:4,height:4,},
+`//создай массив периметров прямоугольников
+
+const rectangles = [{color: 'red',width:4,height:4,},
 {color: 'black',width:3, height:2,},{color: 'white',width:6,height:9,},
 {color: 'black',width:3,height:3,},{color: 'green',width:4,height:7, },
 {color: 'black',width:3,height:5,},{color: 'black',width:4,height:2,},];
 
 function perimeter(rectangle) {
-    return rectangle.width*2 + rectangle.height*2;
+    return rectangle.width * 2 + rectangle.height * 2;
 }
 
-const perimeters = rectangles.map(perimeter);`
+const perimeters = rectangles.map(perimeter);
+terminal.log(perimeters);`
         }
     }, 
    ///////////////////////////////////////quest 4////////////////////////////////////////////////////////////    
@@ -661,17 +669,20 @@ const perimeters = rectangles.map(perimeter);`
          No pun intended, I am not the kind of person to make those and YOU should make SURE to remember that.`,
         regexps: [],
         regexpsNone: [/(for)/g, /(while)/g, /(var)/g, /(let)/g],
-        code: `//экипируй всех индусов в броню 
+        code: `//экипируй всех индусов в броню
 
-const persons = [{gender: 'female',armor: false},{gender: 'male',armor: true}
-,{gender: 'male',armor: false},{gender: 'male',armor: false},];   
+const persons = [{gender: 'male',armor: true},{gender: 'male',armor: false},
+    {gender: 'male',armor: false}];   
 
 function equipArmor(hindu) {
     return {
-            ...hindu,
-            armor: true
-           };
-}`,
+        ...hindu,
+        armor: true
+    };
+}
+
+const equipedHindus = //YOUR CODE
+terminal.log(equipedHindus);`,
         hints: [
           
             'используй map для того чтобы применить  функцию equipArmor для всех карточек индуса в массиве ',
@@ -680,18 +691,20 @@ function equipArmor(hindu) {
         test: {
             code: `
                     `,
-            answer: `
-const persons = [{gender: 'female',armor: false},{gender: 'male',armor: true},{gender: 'male',armor: false},
-{gender: 'male',armor: false},];
-            
+            answer: `//экипируй всех индусов в броню
+
+const persons = [{gender: 'male',armor: true},{gender: 'male',armor: false},
+    {gender: 'male',armor: false}];   
+
 function equipArmor(hindu) {
     return {
-            ...hindu,
-            armor: true
-           };
+        ...hindu,
+        armor: true
+    };
 }
-                        
-const result = persons.map(equipArmor)`
+
+const equipedHindus = persons.map(equipArmor);
+terminal.log(equipedHindus);`
         }
     }, 
  ///////////////////////////////////////quest 5////////////////////////////////////////////////////////////
