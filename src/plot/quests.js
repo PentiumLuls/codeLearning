@@ -23,12 +23,15 @@ const rectangle = {
 terminal.log("Hello world");
 
 function isBlack(rectangle) {
-    
+    //YOUR CODE
 }
 
 function isSquare(rectangle) {
-    
-}`,
+    //YOUR CODE
+}
+
+terminal.log(isBlack(rectangle));
+terminal.log(isSquare(rectangle));`,
                 hints: [
                     "Функция должна возвращать True или False"
                 ],
@@ -75,7 +78,7 @@ const rectangle = {
     height:4,
 };
 
-terminal.log("You can log by me your info");
+terminal.log("Hello world");
 
 function isBlack(rectangle) {
     return rectangle.color == 'black';
@@ -83,7 +86,10 @@ function isBlack(rectangle) {
 
 function isSquare(rectangle) {
     return rectangle.width == rectangle.height;
-}`
+}
+
+terminal.log(isBlack(rectangle));
+terminal.log(isSquare(rectangle));`
                 }
             },
 ///////////////////////////////////////quest 2////////////////////////////////////////////////////////////
@@ -101,8 +107,10 @@ const person = {
 };
 
 function isMale(hinduCard) {
-    
-} `,
+    //YOUR CODE
+}
+
+terminal.log(isMale(person));`,
                 hints: [
                     "Функция должна возвращать True или False"
                 ],
@@ -139,7 +147,9 @@ const person = {
 
 function isMale(hinduCard) {
     return hinduCard.gender == 'male';
-}`
+}
+
+terminal.log(isMale(person));`
                 }
             },
 ///////////////////////////////////////quest 3////////////////////////////////////////////////////////////
@@ -160,8 +170,10 @@ const rectangle = {
 };
 
 function perimeter(rectangle) {
-    
-}`,
+    //YOUR CODE
+}
+
+terminal.log(perimeter(rectangle));`,
                 hints: [
                     "Функция должна возвращать 1 число"
                 ],
@@ -207,7 +219,9 @@ const rectangle = {
 
 function perimeter(rectangle) {
     return rectangle.width*2 + rectangle.height*2;
-}`
+}
+
+terminal.log(perimeter(rectangle));`
                 }
             },
 ///////////////////////////////////////quest 4////////////////////////////////////////////////////////////
@@ -226,8 +240,10 @@ const person = {
 };
 
 function equipArmor(hinduCard) {
-    
-}`,
+    //YOUR CODE
+}
+
+terminal.log(equipArmor(person));`,
                 hints: [
                     "Функция всегда должна возвращать новую карточку индуса",
                     "Используй assign с пустым объектом в первом параметре для клонирования обекта"
@@ -276,7 +292,9 @@ function equipArmor(hinduCard) {
     const newHinduCard = Object.assign({}, hinduCard);
     newHinduCard.armor = true;
     return newHinduCard;
-}`
+}
+
+terminal.log(equipArmor(person));`
                 }
             },
 ///////////////////////////////////////quest 5////////////////////////////////////////////////////////////
@@ -297,8 +315,10 @@ const person = {
 };
 
 function equipStick(hinduCard) {
-    
-}`,
+    //YOUR CODE
+}
+
+terminal.log(equipStick(person));`,
                 hints: [
                     "Используй indexOf, чтобы проверить наличие палки у индуса",
                     "Используй spread оператор (...) для создания новой карточки индуса"
@@ -350,7 +370,9 @@ function equipStick(hinduCard) {
         return newHinduCard;
     }
     return {...hinduCard};
-}`
+}
+
+terminal.log(equipStick(person));`
                 }
             },
 ///////////////////////////////////////quest 6////////////////////////////////////////////////////////////
@@ -365,8 +387,10 @@ const a = 5;
 const b = 10;
 
 function add(a, b) {
-    
-}`,
+    //YOUR CODE
+}
+
+terminal.log(add(a,b));`,
                 hints: [
                     "Функция должна возвращать одно число"
                 ],
@@ -393,7 +417,9 @@ const b = 10;
 
 function add(a, b) {
     return a + b;
-}`
+}
+
+terminal.log(add(a,b));`
                 }
             },
 ///////////////////////////////////////quest 7////////////////////////////////////////////////////////////
@@ -415,9 +441,17 @@ const person = {
     weapons: ['sword', 'stick']
 };
 
+const gang = {
+    members: ['Dgasyd'],
+    armors: [true],
+    weapons: ['stick']
+};
+
 function joinGang(gangCard, hinduCard) {
-    
-}`,
+    //YOUR CODE
+}
+
+terminal.log(joinGang(gang, person));`,
                 hints: [
                     "Функция всегда должна возвращать новый отряд индусов",
                     "Используй spread оператор (...) для создания нового отряда"
@@ -470,6 +504,12 @@ const person = {
     weapons: ['sword', 'stick']
 };
 
+const gang = {
+    members: ['Dgasyd'],
+    armors: [true],
+    weapons: ['stick']
+};
+
 function joinGang(gangCard, hinduCard) {
     if (hinduCard.weapons.length === 0) return gangCard;
     const newGangCard = Object.assign({}, gangCard);
@@ -477,7 +517,9 @@ function joinGang(gangCard, hinduCard) {
     newGangCard.armors.push(hinduCard.armor);
     newGangCard.weapons.push(...hinduCard.weapons);
     return newGangCard;
-}`
+}
+
+terminal.log(joinGang(gang, person));`
                 }
             }
         ]
@@ -667,7 +709,7 @@ terminal.log(perimeters);`
         Once again, write a function that equips an armor if the Hindu guy doesn’t have any yet and use map to make 
         all of the guys equip the said armor. This task will help you lay the ground of an actual functional army.
          No pun intended, I am not the kind of person to make those and YOU should make SURE to remember that.`,
-        regexps: [],
+        regexps: [/(map)/g],
         regexpsNone: [/(for)/g, /(while)/g, /(var)/g, /(let)/g],
         code: `//экипируй всех индусов в броню
 
@@ -689,8 +731,18 @@ terminal.log(equipedHindus);`,
             'map  должен возвратить массив индусов в броне'
         ],
         test: {
-            code: `
-                    `,
+            code: `describe("4", function() {
+
+               it("should return new array of equipped in armor hindus",function() {
+                  expect(equipedHindus).toEqual(persons.map(equipArmor));
+               });
+
+            });
+                  const report = runSpecs();
+                        for (var i = 0; i < report.passed.length; i++) {
+                          reporterLog(report.descriptions[i], report.passed[i])
+                        }
+                        if (report.passed.indexOf(false) === -1) { true } else false;`,
             answer: `//экипируй всех индусов в броню
 
 const persons = [{gender: 'male',armor: true},{gender: 'male',armor: false},
@@ -713,31 +765,46 @@ terminal.log(equipedHindus);`
     text: `I hope your brain can still function, because we have one more artifact to cover.
     You are presented with the array of values. Find the maximum value using reduce.
      This shouldn’t be too hard for the lord and savior of Hindu people, right?`,
-    regexps: [],
+    regexps: [/(reduce)/g],
     regexpsNone: [/(for)/g, /(while)/g, /(var)/g, /(let)/g],
-    code: `/// найди максимальное число в масссиве
+    code: `// найди максимальное число в масссиве
 
-const numbers = [10,25,18,133,36,100]
+const numbers = [10,25,18,133,36,100];
 
 function max(a, b) {
-    
-}`,
+    //YOUR CODE
+}     
+
+const maxNumber = //YOUR CODE
+terminal.log(maxNumber);`,
     hints: [
         "напиши функцию max для сравнения 2 чисел",
         "используй reduce для нахождение максимального числа"
         ,"reduce должен возвратить одно число"
     ],
     test: {
-        code: `
-                `,
-        answer: `
-const numbers = [10,25,18,133,36,100]
+        code: `describe("5", function() {
+
+               it("should return max number from numbers array",function() {
+                  expect(maxNumber).toEqual(numbers.reduce(max));
+               });
+
+            });
+                  const report = runSpecs();
+                        for (var i = 0; i < report.passed.length; i++) {
+                          reporterLog(report.descriptions[i], report.passed[i])
+                        }
+                        if (report.passed.indexOf(false) === -1) { true } else false;`,
+        answer: `// найди максимальное число в масссиве
+
+const numbers = [10,25,18,133,36,100];
 
 function max(a, b) {
     return a < b ? b : a;
 }     
+
 const maxNumber = numbers.reduce(max);
-`
+terminal.log(maxNumber);`
     }
 }, 
         ]  
