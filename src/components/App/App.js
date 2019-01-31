@@ -46,7 +46,6 @@ class App extends Component {
     }
 
     render() {
-        console.log("rerender app")
         this.passStages = this.props.passStages;
         this.passQuests = this.props.passQuests;
         this.currentStage = this.props.currentStage;
@@ -59,7 +58,6 @@ class App extends Component {
         const newList = JSON.parse(localStorage.whiteList);
         const canIShowPopup = newList[this.currentStage].indexOf(this.currentQuest) !== -1;
         let indexOfElement = newList[this.currentStage].indexOf(this.currentQuest);
-        console.log(this.showPopup, canIShowPopup)
         if (canIShowPopup && this.showPopup) {
             
             delete newList[this.currentStage][indexOfElement];
@@ -109,7 +107,6 @@ class App extends Component {
                         (!this.state.isEdit) ? <Chatbot/> : null
                     }
                 </div>
-                {console.log(this.showPopup, canIShowPopup)}
                 {//POPUP 
                     
                     this.showPopup && canIShowPopup?

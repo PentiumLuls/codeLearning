@@ -23,12 +23,15 @@ const rectangle = {
 terminal.log("Hello world");
 
 function isBlack(rectangle) {
-    
+    //YOUR CODE
 }
 
 function isSquare(rectangle) {
-    
-}`,
+    //YOUR CODE
+}
+
+terminal.log(isBlack(rectangle));
+terminal.log(isSquare(rectangle));`,
                 hints: [
                     "Функция должна возвращать True или False"
                 ],
@@ -75,7 +78,7 @@ const rectangle = {
     height:4,
 };
 
-terminal.log("You can log by me your info");
+terminal.log("Hello world");
 
 function isBlack(rectangle) {
     return rectangle.color == 'black';
@@ -83,7 +86,10 @@ function isBlack(rectangle) {
 
 function isSquare(rectangle) {
     return rectangle.width == rectangle.height;
-}`
+}
+
+terminal.log(isBlack(rectangle));
+terminal.log(isSquare(rectangle));`
                 }
             },
 ///////////////////////////////////////quest 2////////////////////////////////////////////////////////////
@@ -101,8 +107,10 @@ const person = {
 };
 
 function isMale(hinduCard) {
-    
-} `,
+    //YOUR CODE
+}
+
+terminal.log(isMale(person));`,
                 hints: [
                     "Функция должна возвращать True или False"
                 ],
@@ -139,7 +147,9 @@ const person = {
 
 function isMale(hinduCard) {
     return hinduCard.gender == 'male';
-}`
+}
+
+terminal.log(isMale(person));`
                 }
             },
 ///////////////////////////////////////quest 3////////////////////////////////////////////////////////////
@@ -160,8 +170,10 @@ const rectangle = {
 };
 
 function perimeter(rectangle) {
-    
-}`,
+    //YOUR CODE
+}
+
+terminal.log(perimeter(rectangle));`,
                 hints: [
                     "Функция должна возвращать 1 число"
                 ],
@@ -207,7 +219,9 @@ const rectangle = {
 
 function perimeter(rectangle) {
     return rectangle.width*2 + rectangle.height*2;
-}`
+}
+
+terminal.log(perimeter(rectangle));`
                 }
             },
 ///////////////////////////////////////quest 4////////////////////////////////////////////////////////////
@@ -226,8 +240,10 @@ const person = {
 };
 
 function equipArmor(hinduCard) {
-    
-}`,
+    //YOUR CODE
+}
+
+terminal.log(equipArmor(person));`,
                 hints: [
                     "Функция всегда должна возвращать новую карточку индуса",
                     "Используй assign с пустым объектом в первом параметре для клонирования обекта"
@@ -276,7 +292,9 @@ function equipArmor(hinduCard) {
     const newHinduCard = Object.assign({}, hinduCard);
     newHinduCard.armor = true;
     return newHinduCard;
-}`
+}
+
+terminal.log(equipArmor(person));`
                 }
             },
 ///////////////////////////////////////quest 5////////////////////////////////////////////////////////////
@@ -297,8 +315,10 @@ const person = {
 };
 
 function equipStick(hinduCard) {
-    
-}`,
+    //YOUR CODE
+}
+
+terminal.log(equipStick(person));`,
                 hints: [
                     "Используй indexOf, чтобы проверить наличие палки у индуса",
                     "Используй spread оператор (...) для создания новой карточки индуса"
@@ -350,7 +370,9 @@ function equipStick(hinduCard) {
         return newHinduCard;
     }
     return {...hinduCard};
-}`
+}
+
+terminal.log(equipStick(person));`
                 }
             },
 ///////////////////////////////////////quest 6////////////////////////////////////////////////////////////
@@ -365,8 +387,10 @@ const a = 5;
 const b = 10;
 
 function add(a, b) {
-    
-}`,
+    //YOUR CODE
+}
+
+terminal.log(add(a,b));`,
                 hints: [
                     "Функция должна возвращать одно число"
                 ],
@@ -393,7 +417,9 @@ const b = 10;
 
 function add(a, b) {
     return a + b;
-}`
+}
+
+terminal.log(add(a,b));`
                 }
             },
 ///////////////////////////////////////quest 7////////////////////////////////////////////////////////////
@@ -404,7 +430,7 @@ function add(a, b) {
                 regexpsNone: [/(for)/g, /(while)/g, /(var)/g, /(let)/g],
                 code: `//Напиши функцию createGang,которая возвращает отряд такого типа: 
 //{members: [hindu1.name, hindu2.name], armors: [true, true],
-//weapons: ['stick', 'sword']}.
+//weapons: ['stick', 'stick', 'sword']}.
 //P.S. Функция должна возвращать такую же карточку отряда как входящая,
 //если у рекрута нет оружия.
 
@@ -415,9 +441,17 @@ const person = {
     weapons: ['sword', 'stick']
 };
 
+const gang = {
+    members: ['Dgasyd'],
+    armors: [true],
+    weapons: ['stick']
+};
+
 function joinGang(gangCard, hinduCard) {
-    
-} `,
+    //YOUR CODE
+}
+
+terminal.log(joinGang(gang, person));`,
                 hints: [
                     "Функция всегда должна возвращать новый отряд индусов",
                     "Используй spread оператор (...) для создания нового отряда"
@@ -437,18 +471,17 @@ const person2 = {
 };
 const gang1 = {
     members: ['indus1name'],
-    membersAmount: 1,
     armors: [true],
-    weapons: {sticks: 1, swords: 0}
+    weapons: ['stick']
 };
 
                        describe("quest 7", function() {
 
    it("should return gangCard without new member if he hasn't has any weapon",function() {
-      expect(joinGang(gang1, person2)).toEqual({members: ['indus1name'],membersAmount: 1,armors: [true],weapons: {sticks: 1, swords: 0}});
+      expect(joinGang(gang1, person2)).toEqual({members: ['indus1name'],armors: [true],weapons: ['stick']});
    });
    it("should return new gangCard with new member",function() {
-      expect(joinGang(gang1, person1)).toEqual({members: ['indus1name', 'Aadhi1'],membersAmount: 2,armors: [true, true],weapons: {sticks: 2, swords: 1}});
+      expect(joinGang(gang1, person1)).toEqual({members: ['indus1name', 'Aadhi1'],armors: [true, true],weapons: ['stick','sword','stick']});
    });
    
 });
@@ -460,7 +493,7 @@ const gang1 = {
 
                     answer: `//Напиши функцию createGang,которая возвращает отряд такого типа: 
 //{members: [hindu1.name, hindu2.name], armors: [true, true],
-//weapons: ['stick', 'sword']}.
+//weapons: ['stick', 'stick', 'sword']}.
 //P.S. Функция должна возвращать такую же карточку отряда как входящая,
 //если у рекрута нет оружия.
 
@@ -470,19 +503,28 @@ const person = {
     armor: true,
     weapons: ['sword', 'stick']
 };
-    function joinGang(gangCard, hinduCard,) {
-        return hinduCard.weapons.lenght === 0 ? {...gangCard} 
-            : {...gangCard
-            ,members: [...gangCard.members, hinduCard.name]
-            ,armors: [...gangCard.armors, hinduCard.armor]
-            ,weapons: [...weapons, ...hinduCard.weapons]}
-    }
-    
-`
+
+const gang = {
+    members: ['Dgasyd'],
+    armors: [true],
+    weapons: ['stick']
+};
+
+function joinGang(gangCard, hinduCard) {
+    if (hinduCard.weapons.length === 0) return gangCard;
+    const newGangCard = Object.assign({}, gangCard);
+    newGangCard.members.push(hinduCard.name);
+    newGangCard.armors.push(hinduCard.armor);
+    newGangCard.weapons.push(...hinduCard.weapons);
+    return newGangCard;
+}
+
+terminal.log(joinGang(gang, person));`
                 }
             }
         ]
     },
+
 ///////////////////////////////////////глава2////////////////////////////////////////////////////////////
 ///////////////////////////////////////глава2////////////////////////////////////////////////////////////
 ///////////////////////////////////////глава2////////////////////////////////////////////////////////////    
@@ -496,7 +538,7 @@ const person = {
                 text: `Listen here, you brat. Now that you have access to filter, map and reduce functions, make sure to use them wisely. 
                 Here you have a collection of different colored rectangles. Return the array of black rectangles using the filter function. 
                 You can also reuse chunks of code from the first chapter if you want.`,
-                regexps: [],
+                regexps: [/(filter)/g],
                 regexpsNone: [/(for)/g, /(while)/g, /(var)/g, /(let)/g],
                 code: `// создай массив только с черными прямоугольниками  
 
@@ -504,7 +546,7 @@ const rectangles = [{color: 'red',width:4,height:4,},
 {color: 'black',width:3, height:2,},{color: 'white',width:6,height:9,},
 {color: 'black',width:3,height:3,},{color: 'green',width:4,height:7, },
 {color: 'black',width:3,height:5,},{color: 'black',width:4,height:2,},];
-                                    
+
 function isBlack(rectangle) {
     return rectangle.color == 'black';
 }
@@ -551,7 +593,7 @@ terminal.log(blackRectangles);`
  ///////////////////////////////////////quest 2////////////////////////////////////////////////////////////             
             {
                 title: "Маштабная дискриминация",
-                text: `t’s relieving to see that you are actually able to code.
+                text: `it’s relieving to see that you are actually able to code.
                  It seems to me that the reason you were sent here lies in the lack of proper education,
                   which is a totally fixable issue.Now you have the opportunity to optimize the code you wrote before.
                    Remember how you sorted these people by their gender to send them to war with Mephisto? 
@@ -573,31 +615,31 @@ const men = //YOUR CODE
 terminal.log(men);`,
                 hints: [
                       'иcпользуй isMale в  filter чтобы найти только мужчин',
-                      'filter должен возвратить массив черных прямоугольников',
+                      'isBlack возвращает true если индиец  мужчина в другом случае возвращает  false',
                 ],
                 test: {
-                    code: `let valid = true;
-                    const rectangle2 = {
-                        color: 'black',
-                        width:4,
-                        height: 3,
-                    }
-                    const rectangle3 = {
-                        color: 'red',
-                        width:8,
-                        height: 8,
-                    }
+                    code: `describe("2", function() {
 
-                            `,
-                    answer: `
-                    const persons = [{name:'Aadhi1',gender:'male',},{name:'Aadhi2',gender:'female',},{name:'Aadhi3',gender:'female',},
-                    {name:'Aadhi4',gender:'male',},{name:'Aadhi5',gender:'female',}]
-                    
-                    function isMale(hindu) {
-                        return hindu.gender == 'male';
-                    }
-                   ;
-                     var result=persons.filter(isMale);
+               it("should return new array of men",function() {
+                  expect(men).toEqual(persons.filter(isMale));
+               });
+
+            });
+                  const report = runSpecs();
+                        for (var i = 0; i < report.passed.length; i++) {
+                          reporterLog(report.descriptions[i], report.passed[i])
+                        }
+                        if (report.passed.indexOf(false) === -1) { true } else false;`,
+
+                    answer: `//создай новый массив только с индийцами мужского пола
+
+const persons = [{name:'Aadhi',gender:'male',},{name:'Anvi',gender:'female',}
+,{name:'Kashvi',gender:'female',},{name:'Shaan',gender:'male',}
+,{name:'Mahika',gender:'female',}];                    
+
+function isMale(hindu) {
+    return hindu.gender === 'male';
+}
 
 const men = persons.filter(isMale);
 terminal.log(men);`
@@ -666,7 +708,7 @@ terminal.log(perimeters);`
         Once again, write a function that equips an armor if the Hindu guy doesn’t have any yet and use map to make 
         all of the guys equip the said armor. This task will help you lay the ground of an actual functional army.
          No pun intended, I am not the kind of person to make those and YOU should make SURE to remember that.`,
-        regexps: [],
+        regexps: [/(map)/g],
         regexpsNone: [/(for)/g, /(while)/g, /(var)/g, /(let)/g],
         code: `//экипируй всех индусов в броню
 
@@ -688,8 +730,18 @@ terminal.log(equipedHindus);`,
             'map  должен возвратить массив индусов в броне'
         ],
         test: {
-            code: `
-                    `,
+            code: `describe("4", function() {
+
+               it("should return new array of equipped in armor hindus",function() {
+                  expect(equipedHindus).toEqual(persons.map(equipArmor));
+               });
+
+            });
+                  const report = runSpecs();
+                        for (var i = 0; i < report.passed.length; i++) {
+                          reporterLog(report.descriptions[i], report.passed[i])
+                        }
+                        if (report.passed.indexOf(false) === -1) { true } else false;`,
             answer: `//экипируй всех индусов в броню
 
 const persons = [{gender: 'male',armor: true},{gender: 'male',armor: false},
@@ -712,31 +764,46 @@ terminal.log(equipedHindus);`
     text: `I hope your brain can still function, because we have one more artifact to cover.
     You are presented with the array of values. Find the maximum value using reduce.
      This shouldn’t be too hard for the lord and savior of Hindu people, right?`,
-    regexps: [],
+    regexps: [/(reduce)/g],
     regexpsNone: [/(for)/g, /(while)/g, /(var)/g, /(let)/g],
-    code: `/// найди максимальное число в массиве
+    code: `// найди максимальное число в масссиве
 
-const numbers = [10,25,18,133,36,100]
+const numbers = [10,25,18,133,36,100];
 
 function max(a, b) {
-    
-}`,
+    //YOUR CODE
+}     
+
+const maxNumber = //YOUR CODE
+terminal.log(maxNumber);`,
     hints: [
         "напиши функцию max для сравнения 2 чисел",
         "используй reduce для нахождение максимального числа"
         ,"reduce должен возвратить одно число"
     ],
     test: {
-        code: `
-                `,
-        answer: `
-const numbers = [10,25,18,133,36,100]
+        code: `describe("5", function() {
+
+               it("should return max number from numbers array",function() {
+                  expect(maxNumber).toEqual(numbers.reduce(max));
+               });
+
+            });
+                  const report = runSpecs();
+                        for (var i = 0; i < report.passed.length; i++) {
+                          reporterLog(report.descriptions[i], report.passed[i])
+                        }
+                        if (report.passed.indexOf(false) === -1) { true } else false;`,
+        answer: `// найди максимальное число в масссиве
+
+const numbers = [10,25,18,133,36,100];
 
 function max(a, b) {
     return a < b ? b : a;
 }     
+
 const maxNumber = numbers.reduce(max);
-`
+terminal.log(maxNumber);`
     }
 }, 
  ///////////////////////////////////////quest 6////////////////////////////////////////////////////////////
@@ -744,75 +811,169 @@ const maxNumber = numbers.reduce(max);
     title: " reduce. Туториал 4",
     text: `Honestly, I am quite tired of giving you quests, so use the same reduce function to 
     calculate the sum of all of the numbers in the array. That should do the job.`,
-    regexps: [],
+    regexps: [/(reduce)/g],
     regexpsNone: [/(for)/g, /(while)/g, /(var)/g, /(let)/g],
-    code: `/// найди сумму чисел в массиве
+    code: `// найди сумму чисел в массиве
 
 const numbers = [10,25,18,133,36,100];
 
 function sum(a, b) {
-          
-}`,
+    //YOUR CODE
+}
+
+const total = //YOUR CODE
+terminal.log(total);`,
     hints: [
-        "напиши функцию  для суммирования 2 чисел",
+        "напиши функцию для суммирования 2 чисел",
         "используй reduce для нахождение суммы чисел",
         "reduce должен возвратить одно число"
     ],
     test: {
-        code: ``,
-        answer: `
+        code: `describe("6", function() {
+
+               it("should return total sum of numbers",function() {
+                  expect(total).toEqual(numbers.reduce(sum, 0));
+               });
+
+            });
+                  const report = runSpecs();
+                        for (var i = 0; i < report.passed.length; i++) {
+                          reporterLog(report.descriptions[i], report.passed[i])
+                        }
+                        if (report.passed.indexOf(false) === -1) { true } else false;`,
+        answer: `// найди сумму чисел в массиве
+
 const numbers = [10,25,18,133,36,100];
 
 function sum(a, b) {
-    return a + b ;
+    return a + b;
 }
-        
-const total = numbers.reduce(sum, 0);`
+
+const total = numbers.reduce(sum, 0);
+terminal.log(total);`
     }
 },
  ///////////////////////////////////////quest 7////////////////////////////////////////////////////////////
  {
     title: "Твоё имя...",
     text: ``,
-    regexps: [],
+    regexps: [/(reduce)/g],
     regexpsNone: [/(for)/g, /(while)/g, /(var)/g, /(let)/g],
-    code: `/// создай обьект полями которого будут уникальные имена в массиве names
-///а значениям полей будут соответствовать количеству повторений этого имени в массиве
+    code: `// Создай обьект, полями которого будут уникальные имена в массиве names
+// А значения полей будут соответствовать количеству повторений этого имени в массиве
 
-const  names = ['Anbu','Chetan', 'Farid', 'Chetan','Farid','Chetan','Chetan']; 
+const names = ['Anbu','Chetan', 'Farid', 'Chetan','Farid','Chetan','Chetan']; 
 
 function counter( names, name) {
-    
-}`,
+    //YOUR CODE
+}
+
+const result = //YOUR CODE
+terminal.log(result);`,
     hints: [
         "напиши функцию  которая проверяет наличие в объекте поля которое соответствует передаваемому в функцию имени,если поле присутствует: увеличивает поле на 1 ,иначе создает новое поле со значением 1 ",
         "используй reduce для  прохода по массиву"
         ,"reduce должен возвратить объект"
     ],
     test: {
-        code: `
-                `,
-        answer: `
-const  names = ['Anbu','Chetan', 'Farid', 'Chetan','Farid','Chetan','Chetan'] ;
+        code: `describe("7", function() {
+        
+               it("should return new array with amounts of unique names",function() {
+                  expect(result).toEqual({"ANBU":1,"CHETAN":4,"FARID":2});
+               });
+
+            });
+                  const report = runSpecs();
+                        for (var i = 0; i < report.passed.length; i++) {
+                          reporterLog(report.descriptions[i], report.passed[i])
+                        }
+                        if (report.passed.indexOf(false) === -1) { true } else false;`,
+        answer: `// Создай обьект, полями которого будут уникальные имена в массиве names
+// А значения полей будут соответствовать количеству повторений этого имени в массиве
+
+const names = ['Anbu','Chetan', 'Farid', 'Chetan','Farid','Chetan','Chetan']; 
 
 function counter( names, name) {
-        
-   if(! (name in names) ){
-        names[name]= 1;
-    }
-        
-   else{
+   if(!(name in names)){
+        names[name] = 1;
+    } else {
         names[name] += 1;
     }
-   return namesAmount; 
+   return names; 
+}
+
+const result = names.reduce(counter,{});
+terminal.log(result);`
+    }
+},
+        ]
+    },
+
+///////////////////////////////////////глава3////////////////////////////////////////////////////////////
+///////////////////////////////////////глава3////////////////////////////////////////////////////////////
+///////////////////////////////////////глава3////////////////////////////////////////////////////////////     
+    {
+        title: "stage 3",
+        quests:[{
+            title: "level 1",
+            text: `LEFT PANEL TEXT`,
+        regexps: [],
+        regexpsNone: [/(for)/g, /(while)/g, /(var)/g, /(let)/g],
+        code: `const rectangles = [{color: 'red',width:4,height:4,},
+{color: 'black',width:2, height:2,},{color: 'white',width:6,height:9,},
+{color: 'black',width:3,height:3,},{color: 'black',width:4,height:4, },
+{color: 'black',width:5,height:5,},{color: 'white',width:4,height:2,},{color: 'red',width:5,height:5,}];
+        
+function isBlack(rectangle) {
+    return rectangle.color == 'black';
 }
         
-const result = names.reduce(counter,{});`
+function isSquare(rectangle) {
+    return rectangle.width == rectangle.height;
+}
+
+`,
+        hints: [
+        "HINT 1"
+    ],
+        test: {
+        code: `TEST CODE
+    
+                describe("", function() {
+    
+                   it("should ",function() {
+                      expect().toEqual();
+                   });
+    
+                });
+                      const report = runSpecs();
+                            for (var i = 0; i < report.passed.length; i++) {
+                              reporterLog(report.descriptions[i], report.passed[i])
+                            }
+                            if (report.passed.indexOf(false) === -1) { true } else false;`,
+    
+    
+            answer: `const rectangles = [{color: 'red',width:4,height:4,},
+{color: 'black',width:2, height:2,},{color: 'white',width:6,height:9,},
+{color: 'black',width:3,height:3,},{color: 'black',width:4,height:4, },
+{color: 'black',width:5,height:5,},{color: 'white',width:4,height:2,},{color: 'red',width:5,height:5,}];
+            
+function isBlack(rectangle) {
+    return rectangle.color == 'black';
+};
+            
+function isSquare(rectangle) {
+    return rectangle.width == rectangle.height;
+}
+
+const blackSquares = rectangles
+                        .filter(isBlack)
+                        .filter(isSquare);`
     }
-},  
-        ]  
-    },
-  
+    }
+         
+        ]
+    },  
 ///////////////////////////////////////глава5////////////////////////////////////////////////////////////
 ///////////////////////////////////////глава5////////////////////////////////////////////////////////////
 ///////////////////////////////////////глава5////////////////////////////////////////////////////////////
