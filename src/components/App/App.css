@@ -70,7 +70,7 @@ ul {
   padding: 5px; 
   border-bottom: 5px solid red;}
 .userinfo {display: flex; position: relative; flex-flow: row; width: 25vw; height: 10vw; animation: appear 0.6s ease-out;}
-.avatar{width: 8vw; height: 8vw; overflow: hidden; margin: 0;}
+.avatar{width: 8vw; height: 8vw; overflow: hidden; margin: 0; cursor: pointer;}
 .avatar img {width: 8vw; height: 8vw;}
 .usebuttons {display: flex; flex-flow: column; }
 .userbutton {cursor: pointer; display: flex; background-color: red; width: 17vw; box-sizing: border-box; border: 5px solid white; text-align: center; text-transform: uppercase; height: 50%; margin: auto;}

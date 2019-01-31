@@ -18,14 +18,14 @@ class Header extends Component {
       return (
             <header className="userinfo">
                         <div className="avatar-wrapper">
-                            <div className="avatar"><img alt="avatar" src={require("../../img/placeholder.jpeg")}/></div>
+                            <div onClick={this.props.func3} className="avatar"><img alt="avatar" src={require("../../img/placeholder.jpeg")}/></div>
                             <div className="header-money"><p>{this.props.money}</p></div>
                         </div>
                         <div className="userbuttons">
                             <span className="userbutton" onClick={this.click}><p>Журнал</p></span>
                             <span className="userbutton" onClick={this.click2}><p>Редактор кода</p></span>
                         </div>
-                    </header>
+            </header>
       );
     }
   }
