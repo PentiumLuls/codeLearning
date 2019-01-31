@@ -13,6 +13,9 @@ class Leftpanel extends Component {
         this.click2 = () => {
             this.props.func2();
         }
+        this.click3 = () => {
+            this.props.func3();
+        }
     }
 
     render() {
@@ -45,7 +48,7 @@ class Leftpanel extends Component {
                         </filter>
                     </defs>
                 </svg>
-           <Header func={this.click} func2={this.click2}/>
+           <Header func={this.click} func2={this.click2} func3={this.click3}/>
             <Tasklist func2={this.click2} notUpdateEditor={this.props.notUpdateEditor}
                 writeQuest={this.writeQuest}/>
         </div>

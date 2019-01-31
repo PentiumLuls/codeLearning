@@ -879,7 +879,7 @@ terminal.log(result);`,
         code: `describe("7", function() {
         
                it("should return new array with amounts of unique names",function() {
-                  expect(result).toEqual({"ANBU":1,"CHETAN":4,"FARID":2});
+                  expect(result).toEqual({"Anbu":1,"Chetan":4,"Farid":2});
                });
 
             });
@@ -894,12 +894,9 @@ terminal.log(result);`,
 const names = ['Anbu','Chetan', 'Farid', 'Chetan','Farid','Chetan','Chetan']; 
 
 function counter( names, name) {
-   if(!(name in names)){
-        names[name] = 1;
-    } else {
-        names[name] += 1;
-    }
-   return names; 
+    const newNames = {...names}
+    newNames[name] = names[name] ? names[name] + 1 : 1
+   return newNames
 }
 
 const result = names.reduce(counter,{});
