@@ -534,13 +534,13 @@ terminal.log(joinGang(gang, person));`
 
  ///////////////////////////////////////quest 1////////////////////////////////////////////////////////////           
             {
-                title: "filter. Туториал 1",
+                title: "Filter. Туториал 1",
                 text: `Listen here, you brat. Now that you have access to filter, map and reduce functions, make sure to use them wisely. 
                 Here you have a collection of different colored rectangles. Return the array of black rectangles using the filter function. 
                 You can also reuse chunks of code from the first chapter if you want.`,
                 regexps: [/(filter)/g],
                 regexpsNone: [/(for)/g, /(while)/g, /(var)/g, /(let)/g],
-                code: `// создай массив только с черными прямоугольниками  
+                code: `// Return an array with black rectangles
 
 const rectangles = [{color: 'red',width:4,height:4,},
 {color: 'black',width:3, height:2,},{color: 'white',width:6,height:9,},
@@ -554,8 +554,8 @@ function isBlack(rectangle) {
 const blackRectangles = //YOUR CODE
 terminal.log(blackRectangles);`,
                 hints: [
-                      'иcпользуй isBlack в  filter чтобы найти только черные прямоугольники',
-                      'isBlack возвращает true или  false',
+                      'Иcпользуй isBlack в filter, чтобы найти только черные прямоугольники',
+                      'isBlack возвращает true или false',
 
                 ],
                 test: {
@@ -575,7 +575,7 @@ terminal.log(blackRectangles);`,
             }
             if (report.passed.indexOf(false) === -1) { true } else false;`,
 
-                    answer: `// создай массив только с черными прямоугольниками  
+                    answer: `// Return an array with black rectangles
 
 const rectangles = [{color: 'red',width:4,height:4,},
 {color: 'black',width:3, height:2,},{color: 'white',width:6,height:9,},
@@ -592,7 +592,7 @@ terminal.log(blackRectangles);`
             },
  ///////////////////////////////////////quest 2////////////////////////////////////////////////////////////             
             {
-                title: "Маштабная дискриминация",
+                title: "Масштабная дискриминация",
                 text: `it’s relieving to see that you are actually able to code.
                  It seems to me that the reason you were sent here lies in the lack of proper education,
                   which is a totally fixable issue.Now you have the opportunity to optimize the code you wrote before.
@@ -601,7 +601,7 @@ terminal.log(blackRectangles);`
                     Efficient, right?`,
                 regexps: [/(filter)/g],
                 regexpsNone: [/(for)/g, /(while)/g, /(var)/g, /(let)/g],
-                code: `//создай новый массив только с индийцами мужского пола
+                code: `//Return the array with only males.
 
 const persons = [{name:'Aadhi',gender:'male',},{name:'Anvi',gender:'female',}
 ,{name:'Kashvi',gender:'female',},{name:'Shaan',gender:'male',}
@@ -614,8 +614,8 @@ function isMale(hindu) {
 const men = //YOUR CODE
 terminal.log(men);`,
                 hints: [
-                      'иcпользуй isMale в  filter чтобы найти только мужчин',
-                      'isBlack возвращает true если индиец  мужчина в другом случае возвращает  false',
+                      'Иcпользуй isMale в filter, чтобы найти только мужчин.',
+                      'isBlack возвращает true, если индиец мужчина, в другом случае возвращает false.',
                 ],
                 test: {
                     code: `describe("2", function() {
@@ -631,7 +631,7 @@ terminal.log(men);`,
                         }
                         if (report.passed.indexOf(false) === -1) { true } else false;`,
 
-                    answer: `//создай новый массив только с индийцами мужского пола
+                    answer: `//Return the array with only males.
 
 const persons = [{name:'Aadhi',gender:'male',},{name:'Anvi',gender:'female',}
 ,{name:'Kashvi',gender:'female',},{name:'Shaan',gender:'male',}
@@ -647,7 +647,7 @@ terminal.log(men);`
             },
     ///////////////////////////////////////quest 3////////////////////////////////////////////////////////////
     {
-        title: " map. Туториал 2",
+        title: "Map. Туториал 2",
         text: `Good, now the process of preparing the troops will go significantly faster.
          Also, let us hope that redoing  these quests will help you recover your memories faster.
         Now I’ll introduce you to the map function.As you can see, the array of rectangles is the same as before.
@@ -655,7 +655,7 @@ terminal.log(men);`
         Then use map with the said function to return the array of all of the rectangles’ perimeters. Good luck.`,
         regexps: [/(map)/g],
         regexpsNone: [/(for)/g, /(while)/g, /(var)/g, /(let)/g],
-        code: `//создай массив периметров прямоугольников
+        code: `//Return the array with rectangles' perimeters.
 
 const rectangles = [{color: 'red',width:4,height:4,},
 {color: 'black',width:3, height:2,},{color: 'white',width:6,height:9,},
@@ -669,8 +669,8 @@ function perimeter(rectangle) {
 const perimeters = //YOUR CODE
 terminal.log(perimeters);`,
         hints: [
-            'используй map для того чтобы применить  функцию perimeter для всех прямоугольников в массиве ',
-            'map  должен возвратить массив периметров'
+            'Используй map для того, чтобы применить функцию perimeter для всех прямоугольников в массиве.',
+            'map должен возвратить массив периметров.'
         ],
         test: {
             code: `describe("3", function() {
@@ -686,7 +686,7 @@ terminal.log(perimeters);`,
                         }
                         if (report.passed.indexOf(false) === -1) { true } else false;`,
             answer:
-`//создай массив периметров прямоугольников
+`//Return the array with rectangles' perimeters.
 
 const rectangles = [{color: 'red',width:4,height:4,},
 {color: 'black',width:3, height:2,},{color: 'white',width:6,height:9,},
@@ -703,14 +703,14 @@ terminal.log(perimeters);`
     }, 
    ///////////////////////////////////////quest 4////////////////////////////////////////////////////////////    
     {
-        title: "Гучи броню народу!",
+        title: "Броню народу!",
         text: `You are still far from being a good fighter, but you are making progress, which is probably a good thing.
         Once again, write a function that equips an armor if the Hindu guy doesn’t have any yet and use map to make 
         all of the guys equip the said armor. This task will help you lay the ground of an actual functional army.
          No pun intended, I am not the kind of person to make those and YOU should make SURE to remember that.`,
         regexps: [/(map)/g],
         regexpsNone: [/(for)/g, /(while)/g, /(var)/g, /(let)/g],
-        code: `//экипируй всех индусов в броню
+        code: `//Equip all of the Hindu with an armor.
 
 const persons = [{gender: 'male',armor: true},{gender: 'male',armor: false},
     {gender: 'male',armor: false}];   
@@ -726,8 +726,8 @@ const equipedHindus = //YOUR CODE
 terminal.log(equipedHindus);`,
         hints: [
           
-            'используй map для того чтобы применить  функцию equipArmor для всех карточек индуса в массиве ',
-            'map  должен возвратить массив индусов в броне'
+            'Используй map для того, чтобы применить функцию equipArmor для всех карточек индуса в массиве.',
+            'map должен возвратить массив индусов в броне.'
         ],
         test: {
             code: `describe("4", function() {
@@ -742,7 +742,7 @@ terminal.log(equipedHindus);`,
                           reporterLog(report.descriptions[i], report.passed[i])
                         }
                         if (report.passed.indexOf(false) === -1) { true } else false;`,
-            answer: `//экипируй всех индусов в броню
+            answer: `//Equip all of the Hindu with an armor.
 
 const persons = [{gender: 'male',armor: true},{gender: 'male',armor: false},
     {gender: 'male',armor: false}];   
@@ -760,13 +760,13 @@ terminal.log(equipedHindus);`
     }, 
  ///////////////////////////////////////quest 5////////////////////////////////////////////////////////////
  {
-    title: " reduce. Туториал 3",
+    title: "Reduce. Туториал 3",
     text: `I hope your brain can still function, because we have one more artifact to cover.
     You are presented with the array of values. Find the maximum value using reduce.
      This shouldn’t be too hard for the lord and savior of Hindu people, right?`,
     regexps: [/(reduce)/g],
     regexpsNone: [/(for)/g, /(while)/g, /(var)/g, /(let)/g],
-    code: `// найди максимальное число в масссиве
+    code: `//Find the maximum number in the array.
 
 const numbers = [10,25,18,133,36,100];
 
@@ -777,8 +777,8 @@ function max(a, b) {
 const maxNumber = //YOUR CODE
 terminal.log(maxNumber);`,
     hints: [
-        "напиши функцию max для сравнения 2 чисел",
-        "используй reduce для нахождение максимального числа"
+        "Напиши функцию max для сравнения 2 чисел",
+        "Используй reduce для нахождение максимального числа"
         ,"reduce должен возвратить одно число"
     ],
     test: {
@@ -794,7 +794,7 @@ terminal.log(maxNumber);`,
                           reporterLog(report.descriptions[i], report.passed[i])
                         }
                         if (report.passed.indexOf(false) === -1) { true } else false;`,
-        answer: `// найди максимальное число в масссиве
+        answer: `//Find the maximum number in the array.
 
 const numbers = [10,25,18,133,36,100];
 
@@ -808,12 +808,12 @@ terminal.log(maxNumber);`
 }, 
  ///////////////////////////////////////quest 6////////////////////////////////////////////////////////////
 {
-    title: " reduce. Туториал 4",
+    title: "Reduce. Туториал 4",
     text: `Honestly, I am quite tired of giving you quests, so use the same reduce function to 
     calculate the sum of all of the numbers in the array. That should do the job.`,
     regexps: [/(reduce)/g],
     regexpsNone: [/(for)/g, /(while)/g, /(var)/g, /(let)/g],
-    code: `// найди сумму чисел в массиве
+    code: `//Find the sum of number in the array.
 
 const numbers = [10,25,18,133,36,100];
 
@@ -824,9 +824,9 @@ function sum(a, b) {
 const total = //YOUR CODE
 terminal.log(total);`,
     hints: [
-        "напиши функцию для суммирования 2 чисел",
-        "используй reduce для нахождение суммы чисел",
-        "reduce должен возвратить одно число"
+        "Напиши функцию для суммирования двух чисел.",
+        "Используй reduce для нахождение суммы чисел.",
+        "reduce должен возвратить одно число."
     ],
     test: {
         code: `describe("6", function() {
@@ -841,7 +841,7 @@ terminal.log(total);`,
                           reporterLog(report.descriptions[i], report.passed[i])
                         }
                         if (report.passed.indexOf(false) === -1) { true } else false;`,
-        answer: `// найди сумму чисел в массиве
+        answer: `//Find the sum of number in the array.
 
 const numbers = [10,25,18,133,36,100];
 

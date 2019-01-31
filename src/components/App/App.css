@@ -69,7 +69,7 @@ ul {
 .button-line {
   padding: 5px; 
   border-bottom: 5px solid red;}
-.userinfo {display: flex; position: relative; flex-flow: row; width: 25vw; height: 10vw; animation: appear 0.6s ease-out;}
+.userinfo {display: flex; position: relative; flex-flow: row; width: 25vw; height: 10vw; animation: appear 0.6s ease-out; background: #212121;}
 .avatar{width: 8vw; height: 8vw; overflow: hidden; margin: 0;}
 .avatar img {width: 8vw; height: 8vw;}
 .usebuttons {display: flex; flex-flow: column; }
@@ -214,11 +214,15 @@ ul {padding: 0;  -webkit-animation: scale 0.2s linear; animation: scale 0.2s lin
 }
 button {
     background-color: red;
-    border: 3px solid white;
-    margin: 2px;
-    padding: 5px 10px;
+    border: 0.2vw solid white;
+    margin: 0.1vw;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    padding: .5vw 1vw;
     color: white;
     font-family: inherit;
+    font-size: .8vw;
     cursor: pointer;
     position: relative;
     text-transform: uppercase;
@@ -430,22 +434,59 @@ audio {position: absolute; visibility: hidden;}
 
 .header-money {position: relative; height: 2vw; text-align: center; display: flex; margin: auto;
 }
-.header-money p {margin: auto; color: #fff; user-select: none;}
+.header-money p {margin: auto; color: #DEDEDE; user-select: none;}
 .header-money::before {
-    box-shadow: 10px 8px 0 0 #471f1f, 11px 8px 0 0 #471f1f, 8px 9px 0 0 #471f1f, 9px 9px 0 0 #471f1f, 10px 9px 0 0 #cd4317, 11px 9px 0 0 #cd4317, 12px 9px 0 0 #471f1f, 7px 10px 0 0 #471f1f, 8px 10px 0 0 #471f1f, 9px 10px 0 0 #cd4317, 10px 10px 0 0 #cd4317, 11px 10px 0 0 #cd4317, 12px 10px 0 0 #cd4317, 13px 10px 0 0 #471f1f, 14px 10px 0 0 #471f1f, 5px 11px 0 0 #471f1f, 6px 11px 0 0 #471f1f, 7px 11px 0 0 #471f1f, 8px 11px 0 0 #471f1f, 9px 11px 0 0 #cd4317, 10px 11px 0 0 #cd4317, 11px 11px 0 0 #cd4317, 12px 11px 0 0 #cd4317, 13px 11px 0 0 #471f1f, 14px 11px 0 0 #471f1f, 15px 11px 0 0 #471f1f, 16px 11px 0 0 #471f1f, 4px 12px 0 0 #471f1f, 5px 12px 0 0 #cd4317, 6px 12px 0 0 #cd4317, 7px 12px 0 0 #471f1f, 8px 12px 0 0 #471f1f, 9px 12px 0 0 #cd4317, 10px 12px 0 0 #cd4317, 11px 12px 0 0 #cd4317, 12px 12px 0 0 #cd4317, 13px 12px 0 0 #471f1f, 14px 12px 0 0 #471f1f, 15px 12px 0 0 #cd4317, 16px 12px 0 0 #cd4317, 17px 12px 0 0 #471f1f, 3px 13px 0 0 #471f1f, 4px 13px 0 0 #cd4317, 5px 13px 0 0 #cd4317, 6px 13px 0 0 #cd4317, 7px 13px 0 0 #cd4317, 8px 13px 0 0 #cd4317, 9px 13px 0 0 #cd4317, 10px 13px 0 0 #cd4317, 11px 13px 0 0 #cd4317, 12px 13px 0 0 #cd4317, 13px 13px 0 0 #cd4317, 14px 13px 0 0 #cd4317, 15px 13px 0 0 #cd4317, 16px 13px 0 0 #cd4317, 17px 13px 0 0 #cd4317, 18px 13px 0 0 #471f1f, 3px 14px 0 0 #471f1f, 4px 14px 0 0 #471f1f, 5px 14px 0 0 #471f1f, 6px 14px 0 0 #471f1f, 7px 14px 0 0 #471f1f, 8px 14px 0 0 #471f1f, 9px 14px 0 0 #471f1f, 10px 14px 0 0 #471f1f, 11px 14px 0 0 #471f1f, 12px 14px 0 0 #471f1f, 13px 14px 0 0 #471f1f, 14px 14px 0 0 #471f1f, 15px 14px 0 0 #471f1f, 16px 14px 0 0 #471f1f, 17px 14px 0 0 #471f1f, 18px 14px 0 0 #471f1f, 19px 14px 0 0 #471f1f, 3px 15px 0 0 #471f1f, 4px 15px 0 0 #cd4317, 5px 15px 0 0 #cd4317, 6px 15px 0 0 #cd4317, 7px 15px 0 0 #cd4317, 8px 15px 0 0 #cd4317, 9px 15px 0 0 #cd4317, 10px 15px 0 0 #cd4317, 11px 15px 0 0 #471f1f, 12px 15px 0 0 #471f1f, 13px 15px 0 0 #cd4317, 14px 15px 0 0 #cd4317, 15px 15px 0 0 #cd4317, 16px 15px 0 0 #cd4317, 17px 15px 0 0 #cd4317, 18px 15px 0 0 #cd4317, 19px 15px 0 0 #471f1f, 3px 16px 0 0 #471f1f, 4px 16px 0 0 #cd4317, 5px 16px 0 0 #cd4317, 6px 16px 0 0 #cd4317, 7px 16px 0 0 #cd4317, 8px 16px 0 0 #cd4317, 9px 16px 0 0 #cd4317, 10px 16px 0 0 #cd4317, 11px 16px 0 0 #471f1f, 12px 16px 0 0 #471f1f, 13px 16px 0 0 #cd4317, 14px 16px 0 0 #cd4317, 15px 16px 0 0 #cd4317, 16px 16px 0 0 #471f1f, 17px 16px 0 0 #471f1f, 18px 16px 0 0 #cd4317, 19px 16px 0 0 #471f1f, 3px 17px 0 0 #471f1f, 4px 17px 0 0 #cd4317, 5px 17px 0 0 #cd4317, 6px 17px 0 0 #471f1f, 7px 17px 0 0 #471f1f, 8px 17px 0 0 #cd4317, 9px 17px 0 0 #cd4317, 10px 17px 0 0 #cd4317, 11px 17px 0 0 #cd4317, 12px 17px 0 0 #cd4317, 13px 17px 0 0 #cd4317, 14px 17px 0 0 #cd4317, 15px 17px 0 0 #cd4317, 16px 17px 0 0 #471f1f, 17px 17px 0 0 #471f1f, 18px 17px 0 0 #cd4317, 19px 17px 0 0 #471f1f, 3px 18px 0 0 #471f1f, 4px 18px 0 0 #cd4317, 5px 18px 0 0 #cd4317, 6px 18px 0 0 #471f1f, 7px 18px 0 0 #471f1f, 8px 18px 0 0 #cd4317, 9px 18px 0 0 #cd4317, 10px 18px 0 0 #cd4317, 11px 18px 0 0 #cd4317, 12px 18px 0 0 #cd4317, 13px 18px 0 0 #cd4317, 14px 18px 0 0 #cd4317, 15px 18px 0 0 #cd4317, 16px 18px 0 0 #cd4317, 17px 18px 0 0 #cd4317, 18px 18px 0 0 #cd4317, 19px 18px 0 0 #471f1f, 3px 19px 0 0 #471f1f, 4px 19px 0 0 #471f1f, 5px 19px 0 0 #471f1f, 6px 19px 0 0 #471f1f, 7px 19px 0 0 #471f1f, 8px 19px 0 0 #471f1f, 9px 19px 0 0 #471f1f, 10px 19px 0 0 #471f1f, 11px 19px 0 0 #471f1f, 12px 19px 0 0 #471f1f, 13px 19px 0 0 #471f1f, 14px 19px 0 0 #471f1f, 15px 19px 0 0 #471f1f, 16px 19px 0 0 #471f1f, 17px 19px 0 0 #471f1f, 18px 19px 0 0 #471f1f, 19px 19px 0 0 #471f1f;
-    height: 1px;
-    width: 1px;
     display: block;
-    position: absolute;
+    position: relative;
+    width: 1.562vw;
+    height: 1vw;
     box-sizing: border-box;
-    left: -23px;
-    top: 3px;
+    background-image: url("../../img/money.png");
     z-index: 100;
     content: "";
+    margin: 0.4vw 0.2vw auto auto;
+    background-size: contain;
 
 }
 .avatar-wrapper {
     display: flex;
     flex-flow: column;
     height: 10vw;
+}
+
+#hint, #answer {
+    height: 2.1vw;
+    transition: all 1s;
+}
+#hint {
+    width: 6vw;
+}
+#answer {
+    width: 7vw;
+}
+#hint:before, #answer:before{
+    height: 2.1vw;
+    background-color: rgba(0, 0, 0, 0.9);
+    color: white;
+    display: block;
+    position: absolute;
+    top: -.2vw;
+    left: -.2vw;
+    margin: auto;
+    box-sizing: border-box;
+    padding-top: .5vw;
+    visibility: hidden;
+}
+
+#hint:before {
+    content: url("../../img/money.png")' 5';
+    width: 6vw;
+}
+ #answer:before {
+     content: url("../../img/money.png")' 20';
+     width: 7vw;
+ }
+
+ #hint:hover:before, #answer:hover:before {
+    visibility: visible;
 }
