@@ -1,5 +1,5 @@
 import { SELECT_QUEST, SELECT_STAGE, PASS_QUEST, NEXT_LEVEL, NEXT_STEP, PREV_STEP } from '../actions/questActions'
-import { RESET_CODE, WRITE_CODE, CHANGE_SHOW_POPUP, CLEAR_TERMINAL, SHOW_ANSWER, EXPORT_RUN } from '../actions/codeActions'
+import { RESET_CODE, WRITE_CODE, CHANGE_SHOW_POPUP, CLEAR_TERMINAL, SHOW_ANSWER, EXPORT_RUN, EXPORT_HIDE_NEXT_CODE } from '../actions/codeActions'
 import { SPEND_MONEY, ADD_MONEY } from '../actions/moneyActions'
 import {quests} from '../../plot/quests';
 import CryptoJS from 'crypto-js'
@@ -44,13 +44,15 @@ export const initialState = {
     showPopup: true,
     clear: null,
     run: null,
-    money: +CryptoJS.AES.decrypt(localStorage['LH;;tabs'].toString(), 'Kt0 et0 ch1tayet t0t l0h').toString(CryptoJS.enc.Utf8)
+    money: +CryptoJS.AES.decrypt(localStorage['LH;;tabs'].toString(), 'Kt0 et0 ch1tayet t0t l0h').toString(CryptoJS.enc.Utf8),
+    hideNextLevel: null
 }
 
 
 export function rootReducer(state = initialState, action) {
     switch (action.type) {
         case SELECT_QUEST:
+            state.hideNextLevel();
             localStorage.currentQuest = action.payload;
             return {...state, currentQuest: action.payload}
         
@@ -126,6 +128,9 @@ export function rootReducer(state = initialState, action) {
 
         case EXPORT_RUN:
             return {...state, run: action.payload}
+
+        case EXPORT_HIDE_NEXT_CODE:
+            return {...state, hideNextLevel: action.payload}
 
         case ADD_MONEY:
             localStorage['LH;;tabs'] = CryptoJS.AES.encrypt(`${state.money + action.payload}`, 'Kt0 et0 ch1tayet t0t l0h');
