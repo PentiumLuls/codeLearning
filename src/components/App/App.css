@@ -183,14 +183,14 @@ ul {padding: 0;  -webkit-animation: scale 0.2s linear; animation: scale 0.2s lin
 .questlist:last-of-type {border: 0;}
 .hell-rules {
     width: 75vw;
-    height: 100vh; 
+    height: 100vh;
     overflow-y:scroll;
     box-sizing:border-box;
     padding: 1vw;
 }
 .rules-wrapper {
-    display: grid; 
-    grid-template-columns: 
+    display: grid;
+    grid-template-columns:
     repeat(3, 1fr);
     width: 73vw;
     column-gap: 1vw;
@@ -298,7 +298,7 @@ audio {position: absolute; visibility: hidden;}
 .button-open-terminal {
     float: right;
 }
-  
+
 .button-back {
     margin: 15px;
 }
@@ -457,6 +457,7 @@ audio {position: absolute; visibility: hidden;}
 #hint, #answer {
     height: 2.1vw;
     transition: all 1s;
+    border: .2vw solid white;
 }
 #hint {
     width: 6vw;
