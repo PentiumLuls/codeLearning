@@ -64,7 +64,7 @@ class CodeEditor extends Component {
                 style={{position: 'relative'}}
                 commands={[{   // commands is array of key bindings.
                     name: 'runCode', //name for the key binding.
-                    bindKey: {win: 'Ctrl-shift-z', mac: 'Command-shift-z'}, //key combination used for the command.
+                    bindKey: {win: 'Ctrl-shift-x', mac: 'Command-shift-x'}, //key combination used for the command.
                     exec: () => { this.props.run() }  //function to execute when keys are pressed.
                   }]}
                 setOptions={{

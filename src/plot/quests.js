@@ -759,8 +759,7 @@ function sum(a, b) {
         "reduce должен возвратить одно число"
     ],
     test: {
-        code: `
-                `,
+        code: ``,
         answer: `
 const numbers = [10,25,18,133,36,100];
 
