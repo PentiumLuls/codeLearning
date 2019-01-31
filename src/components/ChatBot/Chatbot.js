@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import {dialogs} from "../../plot/dialogs";
 import {quests} from "../../plot/quests";
 import { connect } from 'react-redux'
-import { writeCode, showAnswer } from '../../store/actions/codeActions'
+import { writeCode, showAnswer, exportHideChat } from '../../store/actions/codeActions'
 import { spendMoney, addMoney } from '../../store/actions/moneyActions'
 
 class Chatbot extends Component {
@@ -128,6 +128,12 @@ class Chatbot extends Component {
         
     }
 
+    hideChat = () => {
+        this.setState({
+            visible: false
+        })
+    }
+
     render() {
 
         if (this.props.currentQuest === 0 && this.state.showCloud === 0) {
@@ -173,7 +179,7 @@ componentDidMount() {
             showCloud: 1
         })
     }
-    
+    this.props.exportHideChat(this.hideChat)
 }
 }
 
@@ -192,7 +198,8 @@ const mapDispatchToProps = dispatch => {
         writeCode: (can) => dispatch(writeCode(can)),
         showAnswer: () => dispatch(showAnswer()),
         spendMoney: (amount) => dispatch(spendMoney(amount)),
-        addMoney: (amount) => dispatch(addMoney(amount))
+        addMoney: (amount) => dispatch(addMoney(amount)),
+        exportHideChat: (func) => dispatch(exportHideChat(func))
     }
 }
 

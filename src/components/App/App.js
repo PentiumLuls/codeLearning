@@ -11,21 +11,25 @@ import { connect } from 'react-redux';
 import { changeShowPopup } from '../../store/actions/codeActions'
 import sound from '../../audio/sans.mp3'
 import sound2 from '../../audio/sans.ogg'
+import Profile from '../Profile/Profile'
 class App extends Component {
     constructor(props) {
         super(props);
 
         this.state = {
-            isEdit: false,
+            isEdit: 0,
             terminalOpen: false
         };
     }
 
     changeButtonState = () => {
-        this.setState({isEdit: true});
+        this.setState({isEdit: 1});
     };
     changeButtonState2 = () => {
-        this.setState({isEdit: false});
+        this.setState({isEdit: 0});
+    };
+    changeButtonState3 = () => {
+        this.setState({isEdit: 2});
     };
 
     togglePopup = () => {
@@ -76,10 +80,11 @@ class App extends Component {
                 </div>
                 <div className="leftpanel">
                     <Leftpanel  func={this.changeButtonState}
-                                func2={this.changeButtonState2}/>
+                                func2={this.changeButtonState2}
+                                func3={this.changeButtonState3}/>
                 </div>
                 {
-                (!this.state.isEdit)
+                (this.state.isEdit === 0)
                 ?
                 <div>
                 <div className={this.state.terminalOpen ? 'editor open-editor' : 'editor'}>
@@ -100,11 +105,13 @@ class App extends Component {
                         />
                 </div>
                 </div>
-                : <HellRules passStages={this.passStages} passQuests={this.passQuests}/>
+                : (this.state.isEdit === 1) 
+                ? <HellRules passStages={this.passStages} passQuests={this.passQuests}/>
+                : <Profile></Profile>
             }
                 <div>
                     {
-                        (!this.state.isEdit) ? <Chatbot/> : null
+                        (this.state.isEdit === 0) ? <Chatbot/> : null
                     }
                 </div>
                 {//POPUP 

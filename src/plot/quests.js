@@ -554,8 +554,8 @@ function isBlack(rectangle) {
 const blackRectangles = //YOUR CODE
 terminal.log(blackRectangles);`,
                 hints: [
-                      'Иcпользуй isBlack в filter, чтобы найти только черные прямоугольники',
-                      'isBlack возвращает true или false',
+                    'Иcпользуй isBlack в filter чтобы найти только черные прямоугольники',
+                    'isBlack возвращает true или false',
 
                 ],
                 test: {
@@ -590,7 +590,7 @@ const blackRectangles=rectangles.filter(isBlack);
 terminal.log(blackRectangles);`
                 }
             },
- ///////////////////////////////////////quest 2////////////////////////////////////////////////////////////             
+            ///////////////////////////////////////quest 2////////////////////////////////////////////////////////////
             {
                 title: "Масштабная дискриминация",
                 text: `it’s relieving to see that you are actually able to code.
@@ -614,8 +614,7 @@ function isMale(hindu) {
 const men = //YOUR CODE
 terminal.log(men);`,
                 hints: [
-                      'Иcпользуй isMale в filter, чтобы найти только мужчин.',
-                      'isBlack возвращает true, если индиец мужчина, в другом случае возвращает false.',
+                    'Иcпользуй isMale в filter чтобы найти только мужчин'
                 ],
                 test: {
                     code: `describe("2", function() {
@@ -668,12 +667,11 @@ function perimeter(rectangle) {
 
 const perimeters = //YOUR CODE
 terminal.log(perimeters);`,
-        hints: [
-            'Используй map для того, чтобы применить функцию perimeter для всех прямоугольников в массиве.',
-            'map должен возвратить массив периметров.'
-        ],
-        test: {
-            code: `describe("3", function() {
+                hints: [
+                    'Используй map для того чтобы применить функцию perimeter для всех прямоугольников в массиве'
+                ],
+                test: {
+                    code: `describe("3", function() {
 
                it("should return array of rectangle perimeters",function() {
                   expect(perimeters).toEqual(rectangles.map(perimeter));
@@ -851,15 +849,15 @@ function sum(a, b) {
 
 const total = numbers.reduce(sum, 0);
 terminal.log(total);`
-    }
-},
- ///////////////////////////////////////quest 7////////////////////////////////////////////////////////////
- {
-    title: "Твоё имя...",
-    text: ``,
-    regexps: [/(reduce)/g],
-    regexpsNone: [/(for)/g, /(while)/g, /(var)/g, /(let)/g],
-    code: `// Создай обьект, полями которого будут уникальные имена в массиве names
+                }
+            },
+            ///////////////////////////////////////quest 7////////////////////////////////////////////////////////////
+            {
+                title: "Твоё имя...",
+                text: ``,
+                regexps: [/(reduce)/g],
+                regexpsNone: [/(for)/g, /(while)/g, /(var)/g, /(let)/g],
+                code: `// Создай обьект, полями которого будут уникальные имена в массиве names
 // А значения полей будут соответствовать количеству повторений этого имени в массиве
 
 const names = ['Anbu','Chetan', 'Farid', 'Chetan','Farid','Chetan','Chetan']; 
@@ -870,16 +868,25 @@ function counter( names, name) {
 
 const result = //YOUR CODE
 terminal.log(result);`,
-    hints: [
-        "напиши функцию  которая проверяет наличие в объекте поля которое соответствует передаваемому в функцию имени,если поле присутствует: увеличивает поле на 1 ,иначе создает новое поле со значением 1 ",
-        "используй reduce для  прохода по массиву"
-        ,"reduce должен возвратить объект"
-    ],
-    test: {
-        code: `describe("7", function() {
+                hints: [
+                    "напиши функцию  которая проверяет наличие в объекте поля которое соответствует передаваемому в функцию имени,если поле присутствует: увеличивает поле на 1 ,иначе создает новое поле со значением 1 ",
+                    "используй reduce для  прохода по массиву"
+                    , "reduce должен возвратить объект"
+                ],
+                test: {
+                    code: `function counterTEST( names, name) {
+   if(!(name in names)){
+        names[name] = 1;
+    } else {
+        names[name] += 1;
+    }
+   return names; 
+}
+        
+        describe("7", function() {
         
                it("should return new array with amounts of unique names",function() {
-                  expect(result).toEqual({"ANBU":1,"CHETAN":4,"FARID":2});
+                  expect(result).toEqual({"Anbu":1,"Chetan":4,"Farid":2});
                });
 
             });
@@ -888,24 +895,21 @@ terminal.log(result);`,
                           reporterLog(report.descriptions[i], report.passed[i])
                         }
                         if (report.passed.indexOf(false) === -1) { true } else false;`,
-        answer: `// Создай обьект, полями которого будут уникальные имена в массиве names
+                    answer: `// Создай обьект, полями которого будут уникальные имена в массиве names
 // А значения полей будут соответствовать количеству повторений этого имени в массиве
 
 const names = ['Anbu','Chetan', 'Farid', 'Chetan','Farid','Chetan','Chetan']; 
 
 function counter( names, name) {
-   if(!(name in names)){
-        names[name] = 1;
-    } else {
-        names[name] += 1;
-    }
-   return names; 
+    const newNames = {...names}
+    newNames[name] = names[name] ? names[name] + 1 : 1
+   return newNames
 }
 
 const result = names.reduce(counter,{});
 terminal.log(result);`
-    }
-},
+                }
+            },
         ]
     },
 
@@ -914,35 +918,38 @@ terminal.log(result);`
 ///////////////////////////////////////глава3////////////////////////////////////////////////////////////     
     {
         title: "stage 3",
-        quests:[{
-            title: "level 1",
-            text: `LEFT PANEL TEXT`,
-        regexps: [],
-        regexpsNone: [/(for)/g, /(while)/g, /(var)/g, /(let)/g],
-        code: `const rectangles = [{color: 'red',width:4,height:4,},
+        quests: [
+            {
+                title: "level 1",
+                text: `Раньше ты научился пользоваться функциями filter, map и reduce. Сейчас же попробуй множественное их использование.
+Перед собой ты видишь набор прямоугольников с разными параметрами. Твоя задача – вернуть только чёрные квадраты. Удачи.`,
+                regexps: [/(filter)/g],
+                regexpsNone: [/(for)/g, /(while)/g, /(var)/g, /(let)/g],
+                code: `// Отфильтрируй-ка мне черные квадраты
+
+const rectangles = [
 {color: 'black',width:2, height:2,},{color: 'white',width:6,height:9,},
-{color: 'black',width:3,height:3,},{color: 'black',width:4,height:4, },
-{color: 'black',width:5,height:5,},{color: 'white',width:4,height:2,},{color: 'red',width:5,height:5,}];
-        
+{color: 'black',width:5,height:3,},{color: 'red',width:4,height:4,}
+];
+
 function isBlack(rectangle) {
     return rectangle.color == 'black';
 }
-        
+
 function isSquare(rectangle) {
     return rectangle.width == rectangle.height;
 }
 
-`,
-        hints: [
-        "HINT 1"
-    ],
-        test: {
-        code: `TEST CODE
+const blackSquares = //YOUR CODE
+terminal.log(blackSquares);`,
+                hints: [
+                    "Try to filter rectangles using method chaining - operator '.'"
+                ],
+                test: {
+                    code: `describe("1", function() {
     
-                describe("", function() {
-    
-                   it("should ",function() {
-                      expect().toEqual();
+                   it("should return new array of black squares",function() {
+                      expect(blackSquares).toEqual(rectangles.filter(isBlack).filter(isSquare));
                    });
     
                 });
@@ -951,29 +958,555 @@ function isSquare(rectangle) {
                               reporterLog(report.descriptions[i], report.passed[i])
                             }
                             if (report.passed.indexOf(false) === -1) { true } else false;`,
-    
-    
-            answer: `const rectangles = [{color: 'red',width:4,height:4,},
+
+
+                    answer: `// Отфильтрируй-ка мне черные квадраты
+
+const rectangles = [
 {color: 'black',width:2, height:2,},{color: 'white',width:6,height:9,},
-{color: 'black',width:3,height:3,},{color: 'black',width:4,height:4, },
-{color: 'black',width:5,height:5,},{color: 'white',width:4,height:2,},{color: 'red',width:5,height:5,}];
-            
+{color: 'black',width:5,height:3,},{color: 'red',width:4,height:4,}
+];
+
 function isBlack(rectangle) {
     return rectangle.color == 'black';
-};
-            
+}
+
 function isSquare(rectangle) {
     return rectangle.width == rectangle.height;
 }
 
-const blackSquares = rectangles
-                        .filter(isBlack)
-                        .filter(isSquare);`
-    }
-    }
-         
+const blackSquares = rectangles.filter(isBlack).filter(isSquare);
+terminal.log(blackSquares);`
+                }
+            },
+            {
+                title: "QUEST TITLE 2",
+                text: `В поселение индусов хлынул очень разный народ. Хоть мы и против наличия классовой системы, но как-то просеять население мы всё же должны. 
+Для разминки попробуй вернуть только молодых (до 30 лет) вооружённых (с мечём) индусов с Дели. `,
+                regexps: [/(filter)/g],
+                regexpsNone: [/(for)/g, /(while)/g, /(var)/g, /(let)/g],
+                code: `//Отфильтруй индусов за местом жительства, наличием меча и возрастом
+
+persons = [
+    {name:'Farid',city:'Delhi',weapon:'sword',age:21},
+    {name:'Anbu',city:'Delhi',weapon:'stick',age:18},
+    {name:'Chetan',city:'Delhi',weapon:'sword',age:46},
+    {name:'Rachit',city:'Mumbai',weapon:'sword',age:20},
+    {name:'Chetan',city:'Mumbai',weapon:'sword',age:35}
+];
+   
+function isFromDelhi(hindu){
+    //YOUR CODE
+}
+
+function hasSword(hindu){
+    return hindu.weapon == 'sword';
+}
+
+function isYoung(hindu){
+    //Индус считается молодым, если ему меньше 30 лет
+}
+
+const result = //YOUR CODE
+terminal.log(result);`,
+                hints: [
+                    "Try to filter rectangles using method chaining - operator '.'"
+                ],
+                test: {
+                    code: `describe("2", function() {
+
+               it("should return new array of persons with said descriptions",function() {
+                  expect(result).toEqual(persons
+            .filter(isFromDelhi)
+            .filter(hasSword)
+            .filter(isYoung));
+               });
+
+            });
+                  const report = runSpecs();
+                        for (var i = 0; i < report.passed.length; i++) {
+                          reporterLog(report.descriptions[i], report.passed[i])
+                        }
+                        if (report.passed.indexOf(false) === -1) { true } else false;`,
+
+
+                    answer: `//Отфильтруй индусов за местом жительства, наличием меча и возрастом
+
+persons = [
+    {name:'Farid',city:'Delhi',weapon:'sword',age:21},
+    {name:'Anbu',city:'Delhi',weapon:'stick',age:18},
+    {name:'Chetan',city:'Delhi',weapon:'sword',age:46},
+    {name:'Rachit',city:'Mumbai',weapon:'sword',age:20},
+    {name:'Chetan',city:'Mumbai',weapon:'sword',age:35}
+];
+   
+function isFromDelhi(hindu){
+    return hindu.city == 'Delhi';
+}
+
+function hasSword(hindu){
+    return hindu.weapon == 'sword';
+}
+
+function isYoung(hindu){
+    return hindu.age < 30;
+}
+
+const result = persons
+            .filter(isFromDelhi)
+            .filter(hasSword)
+            .filter(isYoung);
+terminal.log(result);`
+                }
+            },
+            {
+                title: "QUEST TITLE 3",
+                text: `Давай рассмотрим задачку чуть посложнее.
+Перед собой ты видишь уже знакомый набор прямоугольников. Верни только один чёрный прямоугольник с максимальным периметром.`,
+                regexps: [/(map)/g, /(filter)/g, /(reduce)/g],
+                regexpsNone: [/(for)/g, /(while)/g, /(var)/g, /(let)/g],
+                code: `//Найди максимальный периметр среди черных прямоугольников
+
+const rectangles = [
+{color: 'black',width:2, height:2,},{color: 'white',width:6,height:9,},
+{color: 'black',width:3,height:7,},{color: 'black',width:2,height:4, },
+];
+
+function isBlack(rectangle) {
+    return rectangle.color == 'black';
+}
+
+function perimeter(rectangle) {
+    return rectangle.width*2 + rectangle.height*2;
+}
+
+function max(a, b) {
+    return a < b ? b : a;
+}
+
+const maxPerimeterOfBlackRects = //YOUR CODE
+terminal.log(maxPerimeterOfBlackRects);`,
+                hints: [
+                    "First, you should filter black rectangles",
+                    "Calculate perimeter using map",
+                    "Then find max perimeter",
+                    "Use reduce to find max perimeter"
+                ],
+                test: {
+                    code: `describe("3", function() {
+
+               it("should return max perimeter of black rectangles",function() {
+                  expect(maxPerimeterOfBlackRects).toEqual(rectangles.filter(isBlack).map(perimeter).reduce(max, 0));
+               });
+
+            });
+                  const report = runSpecs();
+                        for (var i = 0; i < report.passed.length; i++) {
+                          reporterLog(report.descriptions[i], report.passed[i])
+                        }
+                        if (report.passed.indexOf(false) === -1) { true } else false;`,
+
+
+                    answer: `//Найди максимальный периметр среди черных прямоугольников
+
+const rectangles = [
+{color: 'black',width:2, height:2,},{color: 'white',width:6,height:9,},
+{color: 'black',width:3,height:7,},{color: 'black',width:2,height:4, },
+];
+
+function isBlack(rectangle) {
+    return rectangle.color == 'black';
+}
+
+function perimeter(rectangle) {
+    return rectangle.width*2 + rectangle.height*2;
+}
+
+function max(a, b) {
+    return a < b ? b : a;
+}
+
+const maxPerimeterOfBlackRects = rectangles
+                .filter(isBlack)
+                .map(perimeter)
+                .reduce(max, 0);
+terminal.log(maxPerimeterOfBlackRects);`
+                }
+            },
+            {
+                title: "QUEST TITLE 4",
+                text: `Всем индусам нужно где-то жить, но каким-то образом они ещё не смогли построить ни одного дома,
+                 а всё потому что они никак не могут нарезать доски.
+                Как известно каждому жителю функционального ада, лучшие доски получаются из демонического дуба. Сделай из брёвен
+                дуба доски и посчитай их количество. Из одного бревна получается 4 доски.`,
+                regexps: [/(filter)/g, /(map)/g, /(reduce)/g],
+                regexpsNone: [/(for)/g, /(while)/g, /(var)/g, /(let)/g],
+                code: `//Сделай доски из дуба и посчитай их сумму
+
+logs = [
+    {type:'Oak',amount:13},
+    {type:'Oak',amount:6},
+    {type:'Pine',amount:6},
+    {type:'Oak',amount:23},
+    {type:'Pine',amount:19}
+];
+
+function makeBoards(tree) {
+    return tree.amount * 4;
+}
+
+function  sum(a, b) {
+    return a + b;
+}
+
+function isOak(tree){
+    //YOUR CODE
+}
+
+const oakBoards = //YOUR CODE
+terminal.log(oakBoards);`,
+                hints: [
+                    "You should filter oak logs",
+                    "Then try to make boards from logs",
+                    "Finally, calculate the sum of oak boards"
+                ],
+                test: {
+                    code: `describe("4", function() {
+
+               it("should return sum of oak boards",function() {
+                  expect(oakBoards).toEqual(logs.filter(isOak).map(makeBoards).reduce(sum,0));
+               });
+
+            });
+                  const report = runSpecs();
+                        for (var i = 0; i < report.passed.length; i++) {
+                          reporterLog(report.descriptions[i], report.passed[i])
+                        }
+                        if (report.passed.indexOf(false) === -1) { true } else false;`,
+
+
+                    answer: `//Сделай доски из дуба и посчитай их сумму
+
+logs = [
+    {type:'Oak',amount:13},
+    {type:'Oak',amount:6},
+    {type:'Pine',amount:6},
+    {type:'Oak',amount:23},
+    {type:'Pine',amount:19}
+];
+
+function makeBoards(tree) {
+    return tree.amount * 4;
+}
+
+function  sum(a, b) {
+    return a + b;
+}
+
+function isOak(tree){
+    return tree.type == 'Oak';
+}
+
+const oakBoards = logs
+            .filter(isOak)
+            .map(makeBoards)
+            .reduce(sum,0);
+terminal.log(oakBoards);`
+                }
+            },
+            {
+                title: "QUEST TITLE 5",
+                text: `Нет ничего важнее для функционирующей общины чем институт семьи. 
+                Но твои воины-индусы достойны только лучшего.
+                Всем известно, что лучших индусских девушек зовут Анви и ни одна порядочная девушка не будет слушать буржуйскую музыку.
+                Отбери девушек по этим параметрам, а потом верни самую молодую из них.`,
+                regexps: [/(filter)/g, /(reduce)/g],
+                regexpsNone: [/(for)/g, /(while)/g, /(var)/g, /(let)/g],
+                code: `//Найди девушку с подходящими параметрами: Имя - Anvi,
+//Любимая музыка - indian, с минимальным возрастом
+
+const persons = [
+    {name:'Anvi', music:'Indian', age:56},
+    {name:'Kiara',music:'Indian', age:40},
+    {name:'Anvi', music:'American', age:14},
+    {name:'Anvi', music:'Indian', age:21},
+    {name:'Ghuihad', music:'Indian', age:8},
+    {name:'Anvi', music:'American',age:29}
+];
+
+function isAnvi(hindu) {
+   return  hindu.name == 'Anvi';
+}
+
+function isLikesIndianMusic(hindu) {
+    //YOUR CODE
+}
+
+function minAge(hinduA, hinduB) {
+    //Должен возвратить индуску с меньшим возрастом
+}
+const recommendedWife = //YOUR CODE
+terminal.log(recommendedWife);`,
+                hints: [
+                    "Try using reduce to find person with min age"
+                ],
+                test: {
+                    code: `function isAnviTEST(hindu) {
+   return  hindu.name == 'Anvi';
+}
+
+function isLikesIndianMusicTEST(hindu) {
+    return hindu.music == 'Indian';
+}
+
+function minAgeTEST(hinduA, hinduB) {
+    return hinduA.age < hinduB.age ? hinduA : hinduB;
+}
+                    describe("5", function() {
+
+               it("should return person with said parameters",function() {
+                  expect(recommendedWife).toEqual(persons.filter(isAnviTEST).filter(isLikesIndianMusicTEST).reduce(minAgeTEST));
+               });
+
+            });
+                  const report = runSpecs();
+                        for (var i = 0; i < report.passed.length; i++) {
+                          reporterLog(report.descriptions[i], report.passed[i])
+                        }
+                        if (report.passed.indexOf(false) === -1) { true } else false;`,
+
+
+                    answer: `//Найди девушку с подходящими параметрами: Имя - Anvi,
+//Любимая музыка - indian, с минимальным возрастом
+
+const persons = [
+    {name:'Anvi', music:'Indian', age:56},
+    {name:'Kiara',music:'Indian', age:40},
+    {name:'Anvi', music:'American', age:14},
+    {name:'Anvi', music:'Indian', age:21},
+    {name:'Ghuihad', music:'Indian', age:8},
+    {name:'Anvi', music:'American',age:29}
+];
+
+function isAnvi(hindu) {
+   return  hindu.name == 'Anvi';
+}
+
+function isLikesIndianMusic(hindu) {
+    return hindu.music == 'Indian';
+}
+
+function minAge(hinduA, hinduB) {
+    return hinduA.age < hinduB.age ? hinduA : hinduB;
+}
+const recommendedWife = persons
+               .filter(isAnvi)
+               .filter(isLikesIndianMusic)
+               .reduce(minAge);
+terminal.log(recommendedWife);`
+                }
+            },
+            {
+                title: "QUEST TITLE 6",
+                text: `Тебе нужно как-то поднять боевой дух индусов. Для этого ты решаешь представить им в пример героя всего индусского племени.
+                        Естественно, герой должен быть пригодным к войне, то есть иметь в наличии нормальное оружие и броню. 
+                        Найди самого молодого пригодного солдата и верни его как героя.`,
+                regexps: [/(filter)/g, /(map)/g, /(reduce)/g],
+                regexpsNone: [/(for)/g, /(while)/g, /(var)/g, /(let)/g],
+                code: `//Найди возраст настоящего героя! Он отличается такими качествами, как:
+//Наличие брони и меча, и молодой возраст
+
+const persons = [
+    {name:'Farid', armor: true, weapon:'stick', age:21,},
+    {name:'Chetan',armor: false, weapon:'sword', age:35,},
+    {name:'Chetan',armor: false,weapon:'sword', age:50,},
+    {name:'Anbu',  armor: false,weapon:'stick', age:20,},
+    {name:'Aadhi', armor: true, weapon:'sword', age:46,}
+];
+
+function hasArmor(hindu) {
+    return hindu.armor === true;
+}
+
+function hasSword(hindu) {
+    return hindu.weapon == 'sword';
+}
+
+function getAge(hindu) {
+    return hindu.age;
+}
+
+function min(a, b) {
+    //YOUR CODE
+}
+
+const heroMinAge = //YOUR CODE
+terminal.log(heroMinAge);`,
+                hints: [
+                    "First of all, you should filter persons with sword and armor equipped",
+                    "To find the person with min age, you need to map persons to their age",
+                    "Use reduce to find person with min age"
+                ],
+                test: {
+                    code: `describe("6", function() {
+
+               it("should return min age of fully equipped persons",function() {
+                  expect(heroMinAge).toEqual(persons.filter(hasArmor).filter(hasSword).map(getAge).reduce(min));
+               });
+
+            });
+                  const report = runSpecs();
+                        for (var i = 0; i < report.passed.length; i++) {
+                          reporterLog(report.descriptions[i], report.passed[i])
+                        }
+                        if (report.passed.indexOf(false) === -1) { true } else false;`,
+
+
+                    answer: `//Найди возраст настоящего героя! Он отличается такими качествами, как:
+//Наличие брони и меча, и молодой возраст
+
+const persons = [
+    {name:'Farid', armor: true, weapon:'stick', age:21,},
+    {name:'Chetan',armor: false, weapon:'sword', age:35,},
+    {name:'Chetan',armor: false,weapon:'sword', age:50,},
+    {name:'Anbu',  armor: false,weapon:'stick', age:20,},
+    {name:'Aadhi', armor: true, weapon:'sword', age:46,}
+];
+
+function hasArmor(hindu) {
+    return hindu.armor === true;
+}
+
+function hasSword(hindu) {
+    return hindu.weapon == 'sword';
+}
+
+function getAge(hindu) {
+    return hindu.age;
+}
+
+function min(a, b) {
+    return a < b ? a : b;
+}
+
+const heroMinAge = persons
+        .filter(hasArmor)
+        .filter(hasSword)
+        .map(getAge)
+        .reduce(min);
+terminal.log(heroMinAge);`
+                }
+            },
+            {
+                title: "QUEST TITLE 7",
+                text: `У твоего героя и лучшей девушки поселения свадьба! Все индусы гуляют, а ты не можешь не нарадоваться тому,
+                        что в Аду создана первая семья.
+                        Но гад Мефистофель не разделяет вашей радости. Он послал на ваше поселение отряд элитных демонов. 
+                        К счастью, раньше Карада достала кое-какие  отчёты о составе армии Мефистофеля.
+                        Теперь тебе нужно быстро найти информацию о членах элитного отряда А, после чего посчитать их средние боевые навыки. 
+                        Только это поможет тебе и индусам победить чертов!`,
+                regexps: [],
+                regexpsNone: [/(for)/g, /(while)/g, /(var)/g, /(let)/g],
+                code: `//Посчитай сумму рейтинга и количество всех демонов в формате 
+//{sum:970, membersAmount:3}
+//Которые входят в легион А и с рейтингом больше 510
+
+const demons = [
+    {name: 'Charun',legion:'A',health:400,weapon:'sword',attack:40},
+    {name: 'Asag',legion:'A',health:420,weapon:'spear',attack:20},
+    {name: 'Bakasura',legion:'B',health:400,weapon:'sword',attack:45},
+    {name: 'Corson',legion:'A',health:350,weapon:'sword',attack:60},
+    {name: 'Anzu',legion:'B',health:400,weapon:'spear',attack:30}
+];
+
+function IsLegionA(demon) {
+    return demon.legion == 'A';
+}
+
+function  combatRaiting(demon) {
+    return  demon.health * 1.2 + demon.attack + 1.5;
+}
+
+function raitingMore510(raiting) {
+    return raiting > 510;
+}
+
+function calcTotal(a, b) {
+    //YOUR CODE
+}
+
+const total = //YOUR CODE
+const averageRaiting = total.sum / total.membersAmount;
+
+terminal.log(total);
+terminal.log(averageRaiting);`,
+                hints: [
+                    "HINT 1"
+                ],
+                test: {
+                    code: `describe("7", function() {
+
+               it("should return total raiting and amount of members that have raiting more than 510 and belongs to legion A",function() {
+                  expect(total).toEqual(demons
+    .filter(IsLegionA)
+    .map(combatRaiting)
+    .filter(raitingMore510)
+    .reduce(calcTotal, {sum: 0, membersAmount: 0}));
+               });
+
+            });
+                  const report = runSpecs();
+                        for (var i = 0; i < report.passed.length; i++) {
+                          reporterLog(report.descriptions[i], report.passed[i])
+                        }
+                        if (report.passed.indexOf(false) === -1) { true } else false;`,
+
+
+                    answer: `//Посчитай сумму рейтинга и количество всех демонов в формате 
+//{sum:970, membersAmount:3}
+//Которые входят в легион А и с рейтингом больше 510
+
+const demons = [
+    {name: 'Charun',legion:'A',health:400,weapon:'sword',attack:40},
+    {name: 'Asag',legion:'A',health:420,weapon:'spear',attack:20},
+    {name: 'Bakasura',legion:'B',health:400,weapon:'sword',attack:45},
+    {name: 'Corson',legion:'A',health:350,weapon:'sword',attack:60},
+    {name: 'Anzu',legion:'B',health:400,weapon:'spear',attack:30}
+];
+
+function IsLegionA(demon) {
+    return demon.legion == 'A';
+}
+
+function  combatRaiting(demon) {
+    return  demon.health * 1.2 + demon.attack + 1.5;
+}
+
+function raitingMore510(raiting) {
+    return raiting > 510;
+}
+
+function calcTotal(a, b) {
+    return {
+        ...a,
+        sum: a.sum + b,
+        membersAmount: a.membersAmount + 1
+    };
+}
+
+const total = demons
+    .filter(IsLegionA)
+    .map(combatRaiting)
+    .filter(raitingMore510)
+    .reduce(calcTotal, {sum: 0, membersAmount: 0});
+const averageRaiting = total.sum / total.membersAmount;
+
+terminal.log(total);
+terminal.log(averageRaiting);`
+                }
+            },
         ]
-    },  
+    },
 ///////////////////////////////////////глава5////////////////////////////////////////////////////////////
 ///////////////////////////////////////глава5////////////////////////////////////////////////////////////
 ///////////////////////////////////////глава5////////////////////////////////////////////////////////////
