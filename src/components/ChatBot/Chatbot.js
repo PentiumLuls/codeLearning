@@ -154,11 +154,11 @@ class Chatbot extends Component {
             { /*<button className='chatbutton' onClick={this.getDialogs.bind(this)}>nextDialog</button>*/}
                 <div className="bot-bottom-panel">
                     {this.state.disabled 
-                    ? <button disabled className='chatbutton' onClick={this.getHints.bind(this)}>HINT</button>
-                    : <button  className='chatbutton' onClick={this.getHints.bind(this)}>HINT</button>}
+                    ? <button disabled className='chatbutton' id="hint" onClick={this.getHints.bind(this)}>HINT</button>
+                    : <button  className='chatbutton' id="hint" onClick={this.getHints.bind(this)}>HINT</button>}
                     {this.state.answer 
-                    ? <button disabled className='chatbutton' onClick={this.showAnswer}>ANSWER</button>
-                    : <button className='chatbutton' onClick={this.showAnswer}>ANSWER</button>}
+                    ? <button disabled className='chatbutton' id="answer" onClick={this.showAnswer}>ANSWER</button>
+                    : <button className='chatbutton' id="answer" onClick={this.showAnswer}>ANSWER</button>}
                     <button className='chatbutton' id="clear-chat" onClick={this.clearChat.bind(this)}>CLEAR CHAT</button>
                 </div>
                 </div>
