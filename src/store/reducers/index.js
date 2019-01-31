@@ -1,5 +1,5 @@
 import { SELECT_QUEST, SELECT_STAGE, PASS_QUEST, NEXT_LEVEL, NEXT_STEP, PREV_STEP } from '../actions/questActions'
-import { RESET_CODE, WRITE_CODE, CHANGE_SHOW_POPUP, CLEAR_TERMINAL, SHOW_ANSWER, EXPORT_RUN } from '../actions/codeActions'
+import { RESET_CODE, WRITE_CODE, CHANGE_SHOW_POPUP, CLEAR_TERMINAL, SHOW_ANSWER, EXPORT_RUN, EXPORT_HIDE_NEXT_CODE, EXPORT_HIDE_CHAT } from '../actions/codeActions'
 import { SPEND_MONEY, ADD_MONEY } from '../actions/moneyActions'
 import {quests} from '../../plot/quests';
 import CryptoJS from 'crypto-js'
@@ -26,7 +26,7 @@ if (!localStorage['LH;;tabs']) {
     localStorage['LH;;tabs'] = CryptoJS.AES.encrypt('100', 'Kt0 et0 ch1tayet t0t l0h');
 }
 if (!localStorage['passingLevels']) {
-    localStorage['passingLevels'] = JSON.stringify([[5, 5, 5, 5, 5, 5, 5], [5, 5, 5, 5, 5, 5, 5], [5, 5, 5, 5, 5, 5, 5]]);
+    localStorage['passingLevels'] = JSON.stringify([[0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0]]);
 }
 
 
@@ -44,13 +44,16 @@ export const initialState = {
     showPopup: true,
     clear: null,
     run: null,
-    money: +CryptoJS.AES.decrypt(localStorage['LH;;tabs'].toString(), 'Kt0 et0 ch1tayet t0t l0h').toString(CryptoJS.enc.Utf8)
+    money: +CryptoJS.AES.decrypt(localStorage['LH;;tabs'].toString(), 'Kt0 et0 ch1tayet t0t l0h').toString(CryptoJS.enc.Utf8),
+    hideNextLevel: null,
+    hideChat: null
 }
 
 
 export function rootReducer(state = initialState, action) {
     switch (action.type) {
         case SELECT_QUEST:
+            state.hideNextLevel();
             localStorage.currentQuest = action.payload;
             return {...state, currentQuest: action.payload}
         
@@ -59,8 +62,18 @@ export function rootReducer(state = initialState, action) {
             return {...state, currentStage: action.payload}
         
         case PASS_QUEST:
+            const passingLevels = JSON.parse(localStorage['passingLevels']);
+
             if (state.currentStage == state.passStages && state.currentQuest == state.passQuests) {
                 localStorage['LH;;tabs'] = CryptoJS.AES.encrypt(`${state.money + 5}`, 'Kt0 et0 ch1tayet t0t l0h');
+                if (state.currentQuest > 0) {
+                    passingLevels[state.currentStage][state.currentQuest - 1] = 1
+                    localStorage['passingLevels'] = JSON.stringify(passingLevels);
+                } else if (state.currentStage > 0) {
+                    passingLevels[state.currentStage - 1][quests[state.currentStage].quests.length - 1] = 1
+                    localStorage['passingLevels'] = JSON.stringify(passingLevels);
+                }
+
                 if (state.currentQuest == quests[state.currentStage].quests.length - 1) {
 
                     localStorage.passStages = state.currentStage + 1;
@@ -71,12 +84,12 @@ export function rootReducer(state = initialState, action) {
                     return {...state, passQuests: state.currentQuest + 1, money: state.money + 5}
                 }
             }
-            const passingLevels = JSON.parse(localStorage['passingLevels']);
+            
             if (passingLevels[state.currentStage][state.currentQuest] > 0) {
                 passingLevels[state.currentStage][state.currentQuest] -= 1
                 localStorage['passingLevels'] = JSON.stringify(passingLevels);
-                localStorage['LH;;tabs'] = CryptoJS.AES.encrypt(`${state.money + 1}`, 'Kt0 et0 ch1tayet t0t l0h');
-                return {...state, money: state.money + 1}
+                localStorage['LH;;tabs'] = CryptoJS.AES.encrypt(`${state.money + 3}`, 'Kt0 et0 ch1tayet t0t l0h');
+                return {...state, money: state.money + 3}
             } return {...state}
             
             
@@ -116,6 +129,12 @@ export function rootReducer(state = initialState, action) {
 
         case EXPORT_RUN:
             return {...state, run: action.payload}
+
+        case EXPORT_HIDE_NEXT_CODE:
+            return {...state, hideNextLevel: action.payload}
+
+        case EXPORT_HIDE_CHAT:
+            return {...state, hideChat: action.payload}
 
         case ADD_MONEY:
             localStorage['LH;;tabs'] = CryptoJS.AES.encrypt(`${state.money + action.payload}`, 'Kt0 et0 ch1tayet t0t l0h');

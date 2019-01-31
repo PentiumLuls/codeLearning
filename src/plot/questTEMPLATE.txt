@@ -8,9 +8,7 @@
     "HINT 1"
 ],
     test: {
-    code: `TEST CODE
-
-            describe("", function() {
+    code: `describe("", function() {
 
                it("should ",function() {
                   expect().toEqual();
@@ -26,4 +24,4 @@
 
         answer: `RIGHT CODE`
 }
-}
+},

@@ -2,8 +2,8 @@ import React, {Component} from 'react';
 import {dialogs} from "../../plot/dialogs";
 import {quests} from "../../plot/quests";
 import { connect } from 'react-redux'
-import { writeCode, showAnswer } from '../../store/actions/codeActions'
-import { spendMoney } from '../../store/actions/moneyActions'
+import { writeCode, showAnswer, exportHideChat } from '../../store/actions/codeActions'
+import { spendMoney, addMoney } from '../../store/actions/moneyActions'
 
 class Chatbot extends Component {
 
@@ -20,6 +20,8 @@ class Chatbot extends Component {
             answer: false,
             disabled: false
         }
+
+        window.cheatForMoney = (amount) => this.props.addMoney(amount)
     }
 
     writeReplics = (replics) => {
@@ -47,7 +49,7 @@ class Chatbot extends Component {
     }
 
     getHints() {
-        if (this.props.money - 3 >= 0) {
+        if (this.props.money - 5 >= 0) {
             const hints = quests[this.props.currentStage].quests[this.props.currentQuest].hints;
             const replics = this.state.replics;
             
@@ -74,7 +76,7 @@ class Chatbot extends Component {
                     disabled: true
                 });  
             };
-            this.props.spendMoney(3);
+            this.props.spendMoney(5);
         } else {
             this.setState({
                 replics: [...this.state.replics, <li key={`answer`} className='hint'>Недостаточно сыра!</li>],
@@ -110,20 +112,26 @@ class Chatbot extends Component {
     }
 
     showAnswer = () => {
-        if (this.props.money - 10 >= 0) {
+        if (this.props.money - 20 >= 0) {
             this.setState({
                 replics: [...this.state.replics, <li key={`answer`} className='hint'>Ответ записан в редактор</li>],
                 answer: true
             })
             this.props.writeCode(true);
             this.props.showAnswer();
-            this.props.spendMoney(10);
+            this.props.spendMoney(20);
         } else {
             this.setState({
                 replics: [...this.state.replics, <li key={`answer`} className='hint'>Недостаточно сыра!</li>],
             })
         }
         
+    }
+
+    hideChat = () => {
+        this.setState({
+            visible: false
+        })
     }
 
     render() {
@@ -171,7 +179,7 @@ componentDidMount() {
             showCloud: 1
         })
     }
-    
+    this.props.exportHideChat(this.hideChat)
 }
 }
 
@@ -189,7 +197,9 @@ const mapDispatchToProps = dispatch => {
     return {
         writeCode: (can) => dispatch(writeCode(can)),
         showAnswer: () => dispatch(showAnswer()),
-        spendMoney: (amount) => dispatch(spendMoney(amount))
+        spendMoney: (amount) => dispatch(spendMoney(amount)),
+        addMoney: (amount) => dispatch(addMoney(amount)),
+        exportHideChat: (func) => dispatch(exportHideChat(func))
     }
 }
 

@@ -2,7 +2,6 @@ import ReactAce from 'react-ace';
 import React, {Component} from 'react';
 import brace from 'brace'
 import { connect } from 'react-redux';
-import { changeShowPopup } from '../../store/actions/codeActions'
 
 import 'brace/mode/javascript';
 import 'brace/theme/terminal';
@@ -43,7 +42,7 @@ class CodeEditor extends Component {
     }
 
     shouldComponentUpdate(nextProps) {
-        if (nextProps.writeCode) {
+        if (nextProps.writeCode || this.props.hideChat === null) {
             return true
         }
         return false
@@ -55,6 +54,7 @@ class CodeEditor extends Component {
                 mode="javascript"
                 theme="terminal"
                 onChange={this.onChange}
+                onFocus={this.props.hideChat}
                 height='100%'
                 fontSize='20px'
                 width='100%'
@@ -64,7 +64,7 @@ class CodeEditor extends Component {
                 style={{position: 'relative'}}
                 commands={[{   // commands is array of key bindings.
                     name: 'runCode', //name for the key binding.
-                    bindKey: {win: 'Ctrl-shift-z', mac: 'Command-shift-z'}, //key combination used for the command.
+                    bindKey: {win: 'Ctrl-shift-x', mac: 'Command-shift-x'}, //key combination used for the command.
                     exec: () => { this.props.run() }  //function to execute when keys are pressed.
                   }]}
                 setOptions={{
@@ -83,7 +83,8 @@ class CodeEditor extends Component {
 
 const mapStateToProps = store => {
     return {
-         run: store.run
+         run: store.run,
+         hideChat: store.hideChat
     }
 }
 
