@@ -1509,7 +1509,7 @@ terminal.log(averageRaiting);`
         ]
     },
     {
-        title: "Обещаний индусленд",
+        title: "Обещанный индусленд",
         quests:
         [
             {
