@@ -12,8 +12,21 @@ function hasColor(c){
 }
 isBlack = hasColor('black')
 console.log(isBlack(rectangle))
-//////    //////
-//////   //////
+/////// quest 2  //////////
+const eatCost = 50;
+const hinduAmount = 100;
+const  mouthAmount = 3;
+
+function sumMoney( eatCost ){
+    return ( hinduAmount ) => {
+
+        return( mouthAmount ) => {
+
+             return eatCost * hinduAmount * mouthAmount;
+        }
+    }
+}
+const result = sumMoney( eatCost )( hinduAmount )( mouthAmount );
 ////// quest 3 /////
 const person = {weapons:['sword','stick'],};
 
@@ -29,7 +42,7 @@ function disEquipWeapon(weapon){
               }
              } 
 
-
+const result = disEquipWeapon('sword')(person)
 ////// quest 4 //////
 
 const persons =[{weapons:['sword']}, {weapons:['sword','stick']},{weapons:['stick']},{weapons:['sword']}];
@@ -121,5 +134,40 @@ function createHinduCard( weapon ){
 
 const createHinduCardTypeA = createHinduCard('sword')(true)('Mumbai');
 const createHinduCardTypeB  = createHinduCard('stick')(false);
+
 const result1 = createHinduCardTypeA('Rachit')(40);
 const result2 = createHinduCardTypeB ('Delhi')('Ojas')(27);
+
+
+
+
+
+/////  quest 7 ///////
+
+
+function partial(fn, ...args) {
+    return (..._arg) => {
+        return fn(...args, ..._arg);
+    }
+}
+
+function disEquipWeapon(weapon){
+    return (hindu)=>{
+     
+       const  newHindu = {...hindu}
+       const find = newHindu.weapons.indexOf(weapon)
+         if( find !== -1){
+            newHindu.weapons.splice(find,1);
+         }
+         return newHindu;
+      }
+     } 
+
+
+function equipWeapon(weapon){
+        return (hindu) =>{
+            newHindu = {...hindu}
+            newHindu.weapons.push(weapon)
+            return newHindu
+              }
+        }     

@@ -1,17 +1,17 @@
 import React, {Component} from 'react';
 import './App.css';
-import Codeditor from '../CodeEditor/codeEditor'
-import HellRules from '../CodeEditor/HellRules'
-import Terminal from '../Terminal/Terminal'
+import Codeditor from '../CodeEditor/codeEditor';
+import HellRules from '../CodeEditor/HellRules';
+import Terminal from '../Terminal/Terminal';
 import Popup from "../Popup/Popup";
 import Leftpanel from '../Leftpanel/Leftpanel';
 import {quests} from '../../plot/quests';
-import Chatbot from '../ChatBot/Chatbot'; 
+import Chatbot from '../ChatBot/Chatbot';
 import { connect } from 'react-redux';
-import { changeShowPopup } from '../../store/actions/codeActions'
-import sound from '../../audio/sans.mp3'
-import sound2 from '../../audio/sans.ogg'
-import Profile from '../Profile/Profile'
+import { changeShowPopup } from '../../store/actions/codeActions';
+import sound from '../../audio/sans.mp3';
+import sound2 from '../../audio/sans.ogg';
+import Profile from '../Profile/Profile';
 class App extends Component {
     constructor(props) {
         super(props);
@@ -149,3 +149,4 @@ const mapDispatchToProps = dispatch => {
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);
+
