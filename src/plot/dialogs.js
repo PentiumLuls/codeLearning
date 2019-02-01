@@ -71,6 +71,26 @@ export const dialogs = [
                 ]
             }
 
+        ],
+
+        [
+
+            //1 Dialogs
+            {
+                text: [
+                    <div className="chat-enter">--- KARADA HAS ENTERED THE CHAT ---</div>,
+                    <div className="karada">Karada: Now that you have all three artifacts, you gained a huge advantage. You should appreciate what I’ve done for you, mongrel.</div>,
+                    <div className="karada">Karada: I’ll be off seeking new knowledge for you to use as a weapon. I hope you understand that now you are obligated to finish your war preparations and defeat Mephisto once and for all. Don’t let me down.</div>,
+                    <div className="chat-enter">--- KARADA HAS LEFT THE CHAT ---</div>,
+                    <div className="chat-enter">--- AADHI HAS ENTERED THE CHAT ---</div>,
+                    <div className="second-character">Aadhi: О спаситель, нам опять нужна твоя помощь!</div>,
+                    <div className="second-character">Aadhi: В нашем поселении появилось слишком много индусов!</div>,
+                    <div className="second-character">Aadhi: Боюсь, нам не обойтись без государственного строя!</div>,
+                    <div className="second-character">Aadhi: Помоги нам построить коммунизм!</div>,
+                    <div className="chat-enter">--- AADHI HAS LEFT THE CHAT ---</div>,
+                ]
+            }
+
         ]
     ]
 ;
