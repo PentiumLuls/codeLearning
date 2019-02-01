@@ -529,7 +529,7 @@ terminal.log(joinGang(gang, person));`
 ///////////////////////////////////////глава2////////////////////////////////////////////////////////////
 ///////////////////////////////////////глава2////////////////////////////////////////////////////////////    
     {
-        title: "Этот глупый ООПешник не понимает мечту девочки обьекта",
+        title: "Богиня благословляет этот прекрасный ад",
         quests:[
 
  ///////////////////////////////////////quest 1////////////////////////////////////////////////////////////           
@@ -918,10 +918,10 @@ terminal.log(result);`
 ///////////////////////////////////////глава3////////////////////////////////////////////////////////////
 ///////////////////////////////////////глава3////////////////////////////////////////////////////////////     
     {
-        title: "stage 3",
+        title: "Функция жанра повседневность",
         quests: [
             {
-                title: "level 1",
+                title: "Чейнинг методов. Туториал 1",
                 text: `Раньше ты научился пользоваться функциями filter, map и reduce. Сейчас же попробуй множественное их использование.
 Перед собой ты видишь набор прямоугольников с разными параметрами. Твоя задача – вернуть только чёрные квадраты. Удачи.`,
                 regexps: [/(filter)/g],
@@ -981,7 +981,7 @@ terminal.log(blackSquares);`
                 }
             },
             {
-                title: "QUEST TITLE 2",
+                title: "Кляти туристы",
                 text: `В поселение индусов хлынул очень разный народ. Хоть мы и против наличия классовой системы, но как-то просеять население мы всё же должны. 
 Для разминки попробуй вернуть только молодых (до 30 лет) вооружённых (с мечём) индусов с Дели. `,
                 regexps: [/(filter)/g],
@@ -1061,7 +1061,7 @@ terminal.log(result);`
                 }
             },
             {
-                title: "QUEST TITLE 3",
+                title: "Чейнинг методов. Туториал 2",
                 text: `Давай рассмотрим задачку чуть посложнее.
 Перед собой ты видишь уже знакомый набор прямоугольников. Верни только один чёрный прямоугольник с максимальным периметром.`,
                 regexps: [/(map)/g, /(filter)/g, /(reduce)/g],
@@ -1135,7 +1135,7 @@ terminal.log(maxPerimeterOfBlackRects);`
                 }
             },
             {
-                title: "QUEST TITLE 4",
+                title: "Майнкрафт - это жызнь",
                 text: `Всем индусам нужно где-то жить, но каким-то образом они ещё не смогли построить ни одного дома,
                  а всё потому что они никак не могут нарезать доски.
                 Как известно каждому жителю функционального ада, лучшие доски получаются из демонического дуба. Сделай из брёвен
@@ -1216,7 +1216,7 @@ terminal.log(oakBoards);`
                 }
             },
             {
-                title: "QUEST TITLE 5",
+                title: "Девушка функционального поведения",
                 text: `Нет ничего важнее для функционирующей общины чем институт семьи. 
                 Но твои воины-индусы достойны только лучшего.
                 Всем известно, что лучших индусских девушек зовут Анви и ни одна порядочная девушка не будет слушать буржуйскую музыку.
@@ -1308,7 +1308,7 @@ terminal.log(recommendedWife);`
                 }
             },
             {
-                title: "QUEST TITLE 6",
+                title: "Герой из трущоб",
                 text: `Тебе нужно как-то поднять боевой дух индусов. Для этого ты решаешь представить им в пример героя всего индусского племени.
                         Естественно, герой должен быть пригодным к войне, то есть иметь в наличии нормальное оружие и броню. 
                         Найди самого молодого пригодного солдата и верни его как героя.`,
@@ -1399,7 +1399,7 @@ terminal.log(heroMinAge);`
                 }
             },
             {
-                title: "QUEST TITLE 7",
+                title: "Демоны функциональной школы",
                 text: `У твоего героя и лучшей девушки поселения свадьба! Все индусы гуляют, а ты не можешь не нарадоваться тому,
                         что в Аду создана первая семья.
                         Но гад Мефистофель не разделяет вашей радости. Он послал на ваше поселение отряд элитных демонов. 
@@ -1504,6 +1504,202 @@ const averageRaiting = total.sum / total.membersAmount;
 
 terminal.log(total);
 terminal.log(averageRaiting);`
+                }
+            },
+        ]
+    },
+    {
+        title: "STAGE 4",
+        quests:
+        [
+            {
+                title: "QUEST TITLE 1",
+                text: `LEFT PANEL TEXT 1`,
+                regexps: [],
+                regexpsNone: [/(for)/g, /(while)/g, /(var)/g, /(let)/g],
+                code: `//SOME TEXT
+
+const rectangle1 = {color:'red', width:4, height:4};
+const rectangle2 = {color:'black', width:2, height:3};
+
+function hasColor(color) {
+    return function(rect) {
+        //YOUR CODE
+    };
+}
+
+const isBlack = hasColor('black');
+terminal.log(isBlack(rectangle1));
+terminal.log(isBlack(rectangle2));`,
+                hints: [
+                    "isBlack - function, that should return equality of rect color to black color"
+                ],
+                test: {
+                    code: `function hasColorTEST(color) {
+    return function(rect) {
+        return rect.color == color;
+    };
+}
+const isBlackTEST = hasColor('black');
+                    
+                    describe("1", function() {
+
+               it("should return true if the rectangle color is black",function() {
+                  expect(isBlack(rectangle2)).toEqual(isBlackTEST(rectangle2));
+               });
+               it("should return false if the rectangle color is not black",function() {
+                  expect(isBlack(rectangle1)).toEqual(isBlackTEST(rectangle1));
+               });
+
+            });
+                  const report = runSpecs();
+                        for (var i = 0; i < report.passed.length; i++) {
+                          reporterLog(report.descriptions[i], report.passed[i])
+                        }
+                        if (report.passed.indexOf(false) === -1) { true } else false;`,
+
+
+                    answer: `//SOME TEXT
+
+const rectangle1 = {color:'red', width:4, height:4};
+const rectangle2 = {color:'black', width:2, height:3};
+
+function hasColor(color) {
+    return function(rect) {
+        return rect.color == color;
+    };
+}
+
+const isBlack = hasColor('black');
+terminal.log(isBlack(rectangle1));
+terminal.log(isBlack(rectangle2));`
+                }
+            },
+            {
+                title: "QUEST TITLE 2",
+                text: `LEFT PANEL TEXT 2`,
+                regexps: [],
+                regexpsNone: [/(for)/g, /(while)/g, /(var)/g, /(let)/g],
+                code: `//Посчитай сумму, нужную чтобы накормить 'hinduAmount' индусов в течении 
+//'monthAmount' месяцев, с учетом того, что для 1 индуса на 1 месяц 
+//это будет стоить 'eatCostPerMonth'.
+
+const eatCostPerMonth = 50;
+const hinduAmount = 100;
+const monthAmount = 3;
+
+function sumMoney( eatCostPerMonth ) {
+    //YOUR CODE
+}
+const result1 = sumMoney(eatCostPerMonth)(hinduAmount)(monthAmount);
+terminal.log(result1);
+
+const newBill = sumMoney(30)(200);
+const result2 = newBill(2);
+terminal.log(result2);`,
+                hints: [
+                    "HINT 1"
+                ],
+                test: {
+                    code: `describe("", function() {
+
+               it("should ",function() {
+                  expect().toEqual();
+               });
+
+            });
+                  const report = runSpecs();
+                        for (var i = 0; i < report.passed.length; i++) {
+                          reporterLog(report.descriptions[i], report.passed[i])
+                        }
+                        if (report.passed.indexOf(false) === -1) { true } else false;`,
+
+
+                    answer: `//Посчитай сумму, нужную чтобы накормить 'hinduAmount' индусов в течении 
+//'monthAmount' месяцев, с учетом того, что для 1 индуса на 1 месяц 
+//это будет стоить 'eatCostPerMonth'.
+
+const eatCostPerMonth = 50;
+const hinduAmount = 100;
+const monthAmount = 3;
+
+function sumMoney( eatCostPerMonth ) {
+    return ( hinduAmount ) => {
+        return( monthAmount ) => {
+             return eatCostPerMonth * hinduAmount * monthAmount;
+        };
+    };
+}
+const result1 = sumMoney(eatCostPerMonth)(hinduAmount)(monthAmount);
+terminal.log(result1);
+
+const newBill = sumMoney(30)(200);
+const result2 = newBill(2);
+terminal.log(result2);`
+                }
+            },
+            {
+                title: "QUEST TITLE 3",
+                text: `LEFT PANEL TEXT 3`,
+                regexps: [],
+                regexpsNone: [/(for)/g, /(while)/g, /(var)/g, /(let)/g],
+                code: `//Допиши функцию, которая возвращает нового индуса без указанного оружия,
+//Используя каррирование. Если у индуса есть 2 или более единицы
+//Указаного оружия, убирает только одно.
+
+const person = {weapons:['sword','stick'],};
+
+function disarmWeapon(weapon) {
+    return (hindu) => {
+        //YOUR CODE
+    }
+}
+
+disarmStick = disarmWeapon('stick');
+disarmSword = disarmWeapon('sword');
+terminal.log(person);
+terminal.log(disarmStick(person));
+terminal.log(disarmSword(person));`,
+                hints: [
+                    "HINT 1"
+                ],
+                test: {
+                    code: `describe("", function() {
+
+               it("should ",function() {
+                  expect().toEqual();
+               });
+
+            });
+                  const report = runSpecs();
+                        for (var i = 0; i < report.passed.length; i++) {
+                          reporterLog(report.descriptions[i], report.passed[i])
+                        }
+                        if (report.passed.indexOf(false) === -1) { true } else false;`,
+
+
+                    answer: `//Допиши функцию, которая возвращает нового индуса без указанного оружия,
+//Используя каррирование. Если у индуса есть 2 или более единицы
+//Указаного оружия, убирает только одно.
+
+const person = {weapons:['sword','stick'],};
+
+function disarmWeapon(weapon) {
+    return (hindu) => {
+        const newHindu = {...hindu};
+        const find = newHindu.weapons.indexOf(weapon);
+        if( find !== -1) {
+            newHindu.weapons.splice(find,1);
+        }
+        return newHindu;
+    }
+}
+
+disarmStick = disarmWeapon('stick');
+disarmSword = disarmWeapon('sword');
+terminal.log(person);
+terminal.log(disarmStick(person));
+terminal.log(disarmSword(person));`
                 }
             },
         ]
