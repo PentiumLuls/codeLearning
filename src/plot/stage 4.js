@@ -144,30 +144,67 @@ const result2 = createHinduCardTypeB ('Delhi')('Ojas')(27);
 
 /////  quest 7 ///////
 
+const persons1 = [{weapons:['sword','stick','bow']},{weapons:['sword','bow']}];
+const persons2 = [{weapons:['bow']},{weapons:['bow']}];
+const weapons1 =['sword','stick']
+const weapons2 =['sword','spear']
 
-function partial(fn, ...args) {
-    return (..._arg) => {
-        return fn(...args, ..._arg);
+function partial(fn) {
+
+    return (...args) =>{
+
+        return (..._arg) => {
+
+            return fn(...args)(..._arg);
+        }
     }
 }
 
-function disEquipWeapon(weapon){
-    return (hindu)=>{
+
      
-       const  newHindu = {...hindu}
-       const find = newHindu.weapons.indexOf(weapon)
-         if( find !== -1){
-            newHindu.weapons.splice(find,1);
-         }
-         return newHindu;
-      }
-     } 
+
+function disEquipWeapons(weapons){
+    return (hinduses)=>{
+
+       const  newHinduses = hinduses.concat().map((hindu)=>{
+                weapons.forEach((weapon)=>{
+
+                    const  find = hindu.weapons.indexOf(weapon)
+                    
+                    if( find !== -1){
+                        hindu.weapons.splice(find,1);
+                    }
+               
+                }
+              
+              )   
+              return hindu ;   
+            }
+        )
+        return newHinduses;
+    }
+
+}
+
+function equipWeapons(weapons){
+    return (hinduses)=>{
+
+        const  newHinduses = hinduses.concat().map((hindu)=>{
+            
+                hindu.weapons = hindu.weapons.concat(weapons);
+                return hindu;   
+                }
+            ) 
+         return newHinduses;
+    }
+}
 
 
-function equipWeapon(weapon){
-        return (hindu) =>{
-            newHindu = {...hindu}
-            newHindu.weapons.push(weapon)
-            return newHindu
-              }
-        }     
+
+partial(disEquipWeapons)(weapons1)(persons1)
+partial(equipWeapons)(weapons2)(persons2)
+
+
+
+    
+    
