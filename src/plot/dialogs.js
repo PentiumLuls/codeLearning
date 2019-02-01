@@ -71,6 +71,21 @@ export const dialogs = [
                 ]
             }
 
+        ],
+        //4 Chapter
+        [
+
+            //1 Dialogs
+            {
+                text: [
+                    <div className="chat-enter">--- ANVI HAS ENTERED THE CHAT ---</div>,
+                    <div className="second-character">ANVI: О спаситель, в деревне - кризис!</div>,
+                    <div className="second-character">ANVI: После нападения демонов наши поля и огороды были опустошены!</div>,
+                    <div className="second-character">ANVI: Процветает голод, мародёрство, грабёж. Кругом смерть!</div>,
+                    <div className="chat-enter">--- ANVI HAS LEFT THE CHAT ---</div>,
+                ]
+            }
+
         ]
     ]
 ;
