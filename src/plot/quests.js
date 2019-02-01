@@ -1507,6 +1507,202 @@ terminal.log(averageRaiting);`
             },
         ]
     },
+    {
+        title: "STAGE 4",
+        quests:
+        [
+            {
+                title: "QUEST TITLE 1",
+                text: `LEFT PANEL TEXT 1`,
+                regexps: [],
+                regexpsNone: [/(for)/g, /(while)/g, /(var)/g, /(let)/g],
+                code: `//SOME TEXT
+
+const rectangle1 = {color:'red', width:4, height:4};
+const rectangle2 = {color:'black', width:2, height:3};
+
+function hasColor(color) {
+    return function(rect) {
+        //YOUR CODE
+    };
+}
+
+const isBlack = hasColor('black');
+terminal.log(isBlack(rectangle1));
+terminal.log(isBlack(rectangle2));`,
+                hints: [
+                    "isBlack - function, that should return equality of rect color to black color"
+                ],
+                test: {
+                    code: `function hasColorTEST(color) {
+    return function(rect) {
+        return rect.color == color;
+    };
+}
+const isBlackTEST = hasColor('black');
+                    
+                    describe("1", function() {
+
+               it("should return true if the rectangle color is black",function() {
+                  expect(isBlack(rectangle2)).toEqual(isBlackTEST(rectangle2));
+               });
+               it("should return false if the rectangle color is not black",function() {
+                  expect(isBlack(rectangle1)).toEqual(isBlackTEST(rectangle1));
+               });
+
+            });
+                  const report = runSpecs();
+                        for (var i = 0; i < report.passed.length; i++) {
+                          reporterLog(report.descriptions[i], report.passed[i])
+                        }
+                        if (report.passed.indexOf(false) === -1) { true } else false;`,
+
+
+                    answer: `//SOME TEXT
+
+const rectangle1 = {color:'red', width:4, height:4};
+const rectangle2 = {color:'black', width:2, height:3};
+
+function hasColor(color) {
+    return function(rect) {
+        return rect.color == color;
+    };
+}
+
+const isBlack = hasColor('black');
+terminal.log(isBlack(rectangle1));
+terminal.log(isBlack(rectangle2));`
+                }
+            },
+            {
+                title: "QUEST TITLE 2",
+                text: `LEFT PANEL TEXT 2`,
+                regexps: [],
+                regexpsNone: [/(for)/g, /(while)/g, /(var)/g, /(let)/g],
+                code: `//Посчитай сумму, нужную чтобы накормить 'hinduAmount' индусов в течении 
+//'monthAmount' месяцев, с учетом того, что для 1 индуса на 1 месяц 
+//это будет стоить 'eatCostPerMonth'.
+
+const eatCostPerMonth = 50;
+const hinduAmount = 100;
+const monthAmount = 3;
+
+function sumMoney( eatCostPerMonth ) {
+    //YOUR CODE
+}
+const result1 = sumMoney(eatCostPerMonth)(hinduAmount)(monthAmount);
+terminal.log(result1);
+
+const newBill = sumMoney(30)(200);
+const result2 = newBill(2);
+terminal.log(result2);`,
+                hints: [
+                    "HINT 1"
+                ],
+                test: {
+                    code: `describe("", function() {
+
+               it("should ",function() {
+                  expect().toEqual();
+               });
+
+            });
+                  const report = runSpecs();
+                        for (var i = 0; i < report.passed.length; i++) {
+                          reporterLog(report.descriptions[i], report.passed[i])
+                        }
+                        if (report.passed.indexOf(false) === -1) { true } else false;`,
+
+
+                    answer: `//Посчитай сумму, нужную чтобы накормить 'hinduAmount' индусов в течении 
+//'monthAmount' месяцев, с учетом того, что для 1 индуса на 1 месяц 
+//это будет стоить 'eatCostPerMonth'.
+
+const eatCostPerMonth = 50;
+const hinduAmount = 100;
+const monthAmount = 3;
+
+function sumMoney( eatCostPerMonth ) {
+    return ( hinduAmount ) => {
+        return( monthAmount ) => {
+             return eatCostPerMonth * hinduAmount * monthAmount;
+        };
+    };
+}
+const result1 = sumMoney(eatCostPerMonth)(hinduAmount)(monthAmount);
+terminal.log(result1);
+
+const newBill = sumMoney(30)(200);
+const result2 = newBill(2);
+terminal.log(result2);`
+                }
+            },
+            {
+                title: "QUEST TITLE 3",
+                text: `LEFT PANEL TEXT 3`,
+                regexps: [],
+                regexpsNone: [/(for)/g, /(while)/g, /(var)/g, /(let)/g],
+                code: `//Допиши функцию, которая возвращает нового индуса без указанного оружия,
+//Используя каррирование. Если у индуса есть 2 или более единицы
+//Указаного оружия, убирает только одно.
+
+const person = {weapons:['sword','stick'],};
+
+function disarmWeapon(weapon) {
+    return (hindu) => {
+        //YOUR CODE
+    }
+}
+
+disarmStick = disarmWeapon('stick');
+disarmSword = disarmWeapon('sword');
+terminal.log(person);
+terminal.log(disarmStick(person));
+terminal.log(disarmSword(person));`,
+                hints: [
+                    "HINT 1"
+                ],
+                test: {
+                    code: `describe("", function() {
+
+               it("should ",function() {
+                  expect().toEqual();
+               });
+
+            });
+                  const report = runSpecs();
+                        for (var i = 0; i < report.passed.length; i++) {
+                          reporterLog(report.descriptions[i], report.passed[i])
+                        }
+                        if (report.passed.indexOf(false) === -1) { true } else false;`,
+
+
+                    answer: `//Допиши функцию, которая возвращает нового индуса без указанного оружия,
+//Используя каррирование. Если у индуса есть 2 или более единицы
+//Указаного оружия, убирает только одно.
+
+const person = {weapons:['sword','stick'],};
+
+function disarmWeapon(weapon) {
+    return (hindu) => {
+        const newHindu = {...hindu};
+        const find = newHindu.weapons.indexOf(weapon);
+        if( find !== -1) {
+            newHindu.weapons.splice(find,1);
+        }
+        return newHindu;
+    }
+}
+
+disarmStick = disarmWeapon('stick');
+disarmSword = disarmWeapon('sword');
+terminal.log(person);
+terminal.log(disarmStick(person));
+terminal.log(disarmSword(person));`
+                }
+            },
+        ]
+    },
 ///////////////////////////////////////глава5////////////////////////////////////////////////////////////
 ///////////////////////////////////////глава5////////////////////////////////////////////////////////////
 ///////////////////////////////////////глава5////////////////////////////////////////////////////////////
