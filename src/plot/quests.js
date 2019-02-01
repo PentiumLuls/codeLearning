@@ -1923,6 +1923,116 @@ terminal.log(legion1);
 terminal.log(legion13);`
                 }
             },
+            {
+                title: "QUEST TITLE 6",
+                text: `LEFT PANEL TEXT 6`,
+                regexps: [],
+                regexpsNone: [/(for)/g, /(while)/g, /(var)/g, /(let)/g],
+                code: `//Допиши функцию, которая создает новою карточку индуса с задаными параметрами
+
+function createHinduCard(city) {
+    //YOUR CODE
+}
+
+const createHinduCardTypeA = createHinduCard('Mumbai')(true)('sword');
+const createHinduCardTypeB = createHinduCard('Delhi')(false);
+
+const hindu1 = createHinduCardTypeA('Rachit')(40);
+const hindu2 = createHinduCardTypeB ('stick')('Ojas')(27);
+terminal.log(hindu1);
+terminal.log(hindu2);`,
+                hints: [
+                    "NOPE !"
+                ],
+                test: {
+                    code: `function createHinduCardTEST(city) {
+    return function(armor) {
+        return function(weapon) {
+            return function(name) {
+                return function(age) {
+                    return {
+                        city : city,
+                        armor : armor,
+                        weapon : weapon,
+                        name : name,
+                        age : age
+                    };
+                };
+            };
+        };
+    };
+}
+                describe("6", function() {
+
+               it("should return new hindu card with definite parameters",function() {
+                  expect(createHinduCard('Mumbai')(true)('sword')('Rachit')(40)).toEqual(createHinduCardTEST('Mumbai')(true)('sword')('Rachit')(40));
+                  expect(createHinduCard('Delhi')(false)('stick')('Ojas')(27)).toEqual(createHinduCardTEST('Delhi')(false)('stick')('Ojas')(27));
+               });
+
+            });
+                  const report = runSpecs();
+                        for (var i = 0; i < report.passed.length; i++) {
+                          reporterLog(report.descriptions[i], report.passed[i])
+                        }
+                        if (report.passed.indexOf(false) === -1) { true } else false;`,
+
+
+                    answer: `//Допиши функцию, которая создает новою карточку индуса с задаными параметрами
+
+function createHinduCard(city) {
+    return function(armor) {
+        return function(weapon) {
+            return function(name) {
+                return function(age) {
+                    return {
+                        city : city,
+                        armor : armor,
+                        weapon : weapon,
+                        name : name,
+                        age : age
+                    };
+                };
+            };
+        };
+    };
+}
+
+const createHinduCardTypeA = createHinduCard('Mumbai')(true)('sword');
+const createHinduCardTypeB = createHinduCard('Delhi')(false);
+
+const hindu1 = createHinduCardTypeA('Rachit')(40);
+const hindu2 = createHinduCardTypeB ('stick')('Ojas')(27);
+terminal.log(hindu1);
+terminal.log(hindu2);`
+                }
+            },
+            {
+                title: "QUEST TITLE 7",
+                text: `LEFT PANEL TEXT 7`,
+                regexps: [],
+                regexpsNone: [/(for)/g, /(while)/g, /(var)/g, /(let)/g],
+                code: `CODE IN EDITOR`,
+                hints: [
+                    "HINT 1"
+                ],
+                test: {
+                    code: `describe("", function() {
+
+               it("should ",function() {
+                  expect().toEqual();
+               });
+
+            });
+                  const report = runSpecs();
+                        for (var i = 0; i < report.passed.length; i++) {
+                          reporterLog(report.descriptions[i], report.passed[i])
+                        }
+                        if (report.passed.indexOf(false) === -1) { true } else false;`,
+
+
+                    answer: `RIGHT CODE`
+                }
+            },
         ]
     },
 ///////////////////////////////////////глава5////////////////////////////////////////////////////////////
