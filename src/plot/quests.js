@@ -1587,14 +1587,16 @@ terminal.log(isBlack(rectangle2));`
                 code: `//Посчитай сумму, нужную чтобы накормить 'hinduAmount' индусов в течении 
 //'monthAmount' месяцев, с учетом того, что для 1 индуса на 1 месяц 
 //это будет стоить 'eatCostPerMonth'.
+//Формула: eatCostPerMonth * hinduAmount * monthAmount
 
 const eatCostPerMonth = 50;
 const hinduAmount = 100;
 const monthAmount = 3;
 
-function sumMoney( eatCostPerMonth ) {
+function sumMoney(eatCostPerMonth) {
     //YOUR CODE
 }
+
 const result1 = sumMoney(eatCostPerMonth)(hinduAmount)(monthAmount);
 terminal.log(result1);
 
@@ -1602,15 +1604,24 @@ const newBill = sumMoney(30)(200);
 const result2 = newBill(2);
 terminal.log(result2);`,
                 hints: [
-                    "HINT 1"
+                    "Try using carrying to return total sum"
                 ],
                 test: {
-                    code: `describe("", function() {
-
-               it("should ",function() {
-                  expect().toEqual();
+                    code: `function sumMoneyTEST( eatCostPerMonth ) {
+    return ( hinduAmount ) => {
+        return( monthAmount ) => {
+             return eatCostPerMonth * hinduAmount * monthAmount;
+        };
+    };
+}
+                    
+                    describe("2", function() {
+               it("should return the cost of food for a specified number of hindu, taking into account the price",function() {
+                  expect(result1).toEqual(sumMoneyTEST(eatCostPerMonth)(hinduAmount)(monthAmount));
                });
-
+               it("should return the cost of food for a specified number of hindu, taking into account the price",function() {
+                  expect(sumMoney(30)(200)(2)).toEqual(12000);
+               });
             });
                   const report = runSpecs();
                         for (var i = 0; i < report.passed.length; i++) {
@@ -1622,18 +1633,20 @@ terminal.log(result2);`,
                     answer: `//Посчитай сумму, нужную чтобы накормить 'hinduAmount' индусов в течении 
 //'monthAmount' месяцев, с учетом того, что для 1 индуса на 1 месяц 
 //это будет стоить 'eatCostPerMonth'.
+//Формула: eatCostPerMonth * hinduAmount * monthAmount
 
 const eatCostPerMonth = 50;
 const hinduAmount = 100;
 const monthAmount = 3;
 
-function sumMoney( eatCostPerMonth ) {
+function sumMoney(eatCostPerMonth) {
     return ( hinduAmount ) => {
         return( monthAmount ) => {
              return eatCostPerMonth * hinduAmount * monthAmount;
         };
     };
 }
+
 const result1 = sumMoney(eatCostPerMonth)(hinduAmount)(monthAmount);
 terminal.log(result1);
 
@@ -1658,7 +1671,7 @@ const person = {weapons:['sword','stick'],};
 function disarmWeapon(weapon) {
     return (hindu) => {
         //YOUR CODE
-    }
+    };
 }
 
 disarmStick = disarmWeapon('stick');
@@ -1667,13 +1680,25 @@ terminal.log(person);
 terminal.log(disarmStick(person));
 terminal.log(disarmSword(person));`,
                 hints: [
-                    "HINT 1"
+                    "XDDDD"
                 ],
                 test: {
-                    code: `describe("", function() {
+                    code: `function disarmWeaponTEST(weapon) {
+    return (hindu) => {
+        const newHindu = {...hindu};
+        const find = newHindu.weapons.indexOf(weapon);
+        if( find !== -1) {
+            newHindu.weapons.splice(find,1);
+        }
+        return newHindu;
+    };
+}
+                    
+                    describe("3", function() {
 
-               it("should ",function() {
-                  expect().toEqual();
+               it("should return new indus with disarmed weapon",function() {
+                  expect(disarmStick(person)).toEqual(disarmWeaponTEST('stick')(person));
+                  expect(disarmSword(person)).toEqual(disarmWeaponTEST('sword')(person));
                });
 
             });
@@ -1698,7 +1723,7 @@ function disarmWeapon(weapon) {
             newHindu.weapons.splice(find,1);
         }
         return newHindu;
-    }
+    };
 }
 
 disarmStick = disarmWeapon('stick');
@@ -1706,6 +1731,202 @@ disarmSword = disarmWeapon('sword');
 terminal.log(person);
 terminal.log(disarmStick(person));
 terminal.log(disarmSword(person));`
+                }
+            },
+            {
+                title: "QUEST TITLE 4",
+                text: `LEFT PANEL TEXT 4`,
+                regexps: [/(map)/g, /(reduce)/g],
+                regexpsNone: [/(for)/g, /(while)/g, /(var)/g, /(let)/g],
+                code: `//Посчитай количество мечей и палок массива индусов
+//Функция hasWeapon() должна возвращать 1, если у индуса есть это оружие
+//И 0 в обратном случае
+
+const persons = [
+    {weapons:['sword']},
+    {weapons:['sword','stick']},
+    {weapons:['stick']},
+    {weapons:['sword']}
+];
+
+function sum(a, b) {
+   return a + b;
+}
+
+function hasWeapon(weapon) {
+    //YOUR CODE
+}
+
+const hasSword = hasWeapon('sword');
+const hasStick = hasWeapon('stick');
+const swordsAmount = //YOUR CODE
+const sticksAmount = //YOUR CODE
+terminal.log(swordsAmount, sticksAmount);`,
+                hints: [
+                    "XDDDDDDDD"
+                ],
+                test: {
+                    code: `function hasWeaponTEST(weapon) {
+      return (hindu) => {
+          return (hindu.weapons.indexOf(weapon) !== -1) ? 1 : 0;
+      };
+}
+                     
+                    describe("4", function() {
+
+               it("hasWeapon() should return '1' or '0' depend on exists of weapon",function() {
+                  expect(hasWeapon('sword')({weapons:['sword']})).toEqual(1);
+                  expect(hasWeapon('sword')({weapons:['stick']})).toEqual(0);
+                  expect(hasWeapon('stick')({weapons:['stick']})).toEqual(1);
+                  expect(hasWeapon('stick')({weapons:['sword', 'stick']})).toEqual(1);
+               });
+               it("swords and sticks amount should equal to sum of swords and sticks that have hindu",function() {
+                  expect(swordsAmount).toEqual(persons.map(hasSword).reduce(sum,0));
+                  expect(sticksAmount).toEqual(persons.map(hasStick).reduce(sum,0));
+               });
+            });
+                  const report = runSpecs();
+                        for (var i = 0; i < report.passed.length; i++) {
+                          reporterLog(report.descriptions[i], report.passed[i])
+                        }
+                        if (report.passed.indexOf(false) === -1) { true } else false;`,
+
+
+                    answer: `//Посчитай количество мечей и палок массива индусов
+//Функция hasWeapon() должна возвращать 1, если у индуса есть это оружие
+//И 0 в обратном случае
+
+const persons = [
+    {weapons:['sword']},
+    {weapons:['sword','stick']},
+    {weapons:['stick']},
+    {weapons:['sword']}
+];
+
+function sum(a, b) {
+   return a + b;
+}
+
+function hasWeapon(weapon) {
+    return (hindu) => {
+        return (hindu.weapons.indexOf(weapon) !== -1) ? 1 : 0;
+    };
+}
+
+const hasSword = hasWeapon('sword');
+const hasStick = hasWeapon('stick');
+const swordsAmount = persons.map(hasSword).reduce(sum,0);
+const sticksAmount = persons.map(hasStick).reduce(sum,0);
+terminal.log(swordsAmount, sticksAmount);`
+                }
+            },
+            {
+                title: "QUEST TITLE 5",
+                text: `LEFT PANEL TEXT 5`,
+                regexps: [],
+                regexpsNone: [/(for)/g, /(while)/g, /(var)/g, /(let)/g],
+                code: `//Собери легионы воинов. Принадлежность к легиону 
+//Указана в свойствах каждой персоны.
+//Екипируй 1 легион мечами, 13 легион - палками.
+
+const persons = [
+    {legion:1, weapons:[]},
+    {legion:13, weapons:['sword']},
+    {legion:1, weapons:[]}
+];
+
+function isLegionN(legionNum) {
+    //YOUR CODE
+}
+
+function equipWeapon(weapon) {
+    //YOUR CODE
+}
+
+const isLegion1 = isLegionN(1);
+const isLegion13 = isLegionN(13);
+
+const equipSword = equipWeapon('sword');
+const equipStick = equipWeapon('stick');
+
+const legion1 = //YOUR CODE
+const legion13 = //YOUR CODE
+
+terminal.log(legion1);
+terminal.log(legion13);`,
+                hints: [
+                    "XDDDDDDDDDDDDDDDDDDDDDDDDDD"
+                ],
+                test: {
+                    code: `function equipWeaponTEST(weapon) {
+    return (hindu) => {
+        newHindu = {...hindu}
+        newHindu.weapons.push(weapon);
+        return newHindu;
+    }
+}
+                    
+                    describe("5", function() {
+
+               it("function 'equipWeapon' should return new indus with armed weapon",function() {
+                  expect(equipWeapon('sword')({legion:1, weapons:[]})).toEqual(equipWeaponTEST('sword')({legion:1, weapons:[]}));
+                  expect(equipWeapon('sword')({legion:13, weapons:['sword']})).toEqual(equipWeaponTEST('sword')({legion:13, weapons:['sword']}));
+               });
+               it("function 'isLegionN' should return if person belongs to legion 'N'",function() {
+                  expect(isLegionN(1)({legion:1, weapons:[]})).toEqual(true);
+                  expect(isLegionN(1)({legion:13, weapons:[]})).toEqual(false);
+                  expect(isLegionN(13)({legion:13, weapons:[]})).toEqual(true);
+                  expect(isLegionN(13)({legion:1, weapons:[]})).toEqual(false);
+               });
+               it("legion 1 should consist of persons with sword and property 'legion' 1",function() {
+                  expect(legion1).toEqual(persons.filter(isLegion1).map(equipSword));
+               });
+               it("legion 13 should consist of persons with stick and property 'legion' 13",function() {
+                  expect(legion13).toEqual(persons.filter(isLegion13).map(equipStick));
+               });
+            });
+                  const report = runSpecs();
+                        for (var i = 0; i < report.passed.length; i++) {
+                          reporterLog(report.descriptions[i], report.passed[i])
+                        }
+                        if (report.passed.indexOf(false) === -1) { true } else false;`,
+
+
+                    answer: `//Собери легионы воинов. Принадлежность к легиону 
+//Указана в свойствах каждой персоны.
+//Екипируй 1 легион мечами, 13 легион - палками.
+
+const persons = [
+    {legion:1, weapons:[]},
+    {legion:13, weapons:['sword']},
+    {legion:1, weapons:[]}
+];
+
+function isLegionN(legionNum) {
+    return (hindu) => {
+      return hindu.legion == legionNum;
+    };
+}
+
+function equipWeapon(weapon) {
+    return (hindu) => {
+        newHindu = {...hindu}
+        newHindu.weapons.push(weapon);
+        return newHindu;
+    }
+}
+
+const isLegion1 = isLegionN(1);
+const isLegion13 = isLegionN(13);
+
+const equipSword = equipWeapon('sword');
+const equipStick = equipWeapon('stick');
+
+const legion1 = persons.filter(isLegion1).map(equipSword);
+const legion13 = persons.filter(isLegion13).map(equipStick);
+
+terminal.log(legion1);
+terminal.log(legion13);`
                 }
             },
         ]
