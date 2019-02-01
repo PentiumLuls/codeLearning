@@ -4,7 +4,7 @@ const rectangle = {
     width:4,
     height:4,
 };
-
+console.log(`Before: ${rectangle}`);
 function hasColor(c){
     return function(r){
         return r.color == c;

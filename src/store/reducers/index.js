@@ -17,7 +17,7 @@ if (!localStorage['currentQuest']) {
     localStorage['currentQuest'] = localStorage.passQuests;
 }
 if (!localStorage['whiteList']) {
-    localStorage['whiteList'] = JSON.stringify([[0, 1, 2, 3, 6], [0, 2, 4],[0],[]]);
+    localStorage['whiteList'] = JSON.stringify([[0, 1, 2, 3, 6], [0, 2, 4],[0],[0, 1], [], []]);
 }
 if (!localStorage['code']) {
     localStorage['code'] = quests[0].quests[0].code;
@@ -26,7 +26,7 @@ if (!localStorage['LH;;tabs']) {
     localStorage['LH;;tabs'] = CryptoJS.AES.encrypt('100', 'Kt0 et0 ch1tayet t0t l0h');
 }
 if (!localStorage['passingLevels']) {
-    localStorage['passingLevels'] = JSON.stringify([[0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0]]);
+    localStorage['passingLevels'] = JSON.stringify([[0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0]]);
 }
 
 
