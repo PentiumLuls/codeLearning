@@ -854,11 +854,12 @@ terminal.log(total);`
             ///////////////////////////////////////quest 7////////////////////////////////////////////////////////////
             {
                 title: "Твоё имя...",
-                text: ``,
+                text: `Now, there's no practical purpose in this particular exercise, but these skills might prove useful in the future.`,
                 regexps: [/(reduce)/g],
                 regexpsNone: [/(for)/g, /(while)/g, /(var)/g, /(let)/g],
-                code: `// Создай обьект, полями которого будут уникальные имена в массиве names
-// А значения полей будут соответствовать количеству повторений этого имени в массиве
+                code: `//You are presented with an array of names. Create an object with these names as fields.
+//Make their values represent the number of times the names are mentioned in the array.
+
 
 const names = ['Anbu','Chetan', 'Farid', 'Chetan','Farid','Chetan','Chetan']; 
 
@@ -895,8 +896,8 @@ terminal.log(result);`,
                           reporterLog(report.descriptions[i], report.passed[i])
                         }
                         if (report.passed.indexOf(false) === -1) { true } else false;`,
-                    answer: `// Создай обьект, полями которого будут уникальные имена в массиве names
-// А значения полей будут соответствовать количеству повторений этого имени в массиве
+                    answer: `//You are presented with an array of names. Create an object with these names as fields.
+//Make their values represent the number of times the names are mentioned in the array.
 
 const names = ['Anbu','Chetan', 'Farid', 'Chetan','Farid','Chetan','Chetan']; 
 
