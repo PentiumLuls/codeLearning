@@ -1540,7 +1540,7 @@ terminal.log(isBlack(rectangle2));`,
         return rect.color == color;
     };
 }
-const isBlackTEST = hasColor('black');
+const isBlackTEST = hasColorTEST('black');
                     
                     describe("1", function() {
 

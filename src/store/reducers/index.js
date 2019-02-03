@@ -30,7 +30,7 @@ if (!localStorage['passingLevels']) {
 }
 if (!localStorage['achievements']) {
     localStorage['achievements'] = JSON.stringify([{id: 0, status: 0}, {id: 1, status: 0}, {id: 2, status: 0},
-        {id: 3, status: 0}, {id: 4, status: 0}, {id: 5, status: 0}, {id: 6, status: 0}, {id: 7, status: 0}, {id: 8, status: 0}]);
+        {id: 3, status: 0}, {id: 4, status: 0, time: 0}, {id: 5, status: 0}, {id: 6, status: 0}, {id: 7, status: 0}, {id: 8, status: 0}]);
 }
 
 
@@ -142,6 +142,9 @@ export function rootReducer(state = initialState, action) {
             let achievements = JSON.parse(localStorage['achievements']);
             if (achievements[3].status === 0) {
                 achievements[3].status = 2;
+            }
+            if (achievements[5].status === 0) {
+                achievements[5].status = 2;
             }
             localStorage['achievements'] = JSON.stringify(achievements);
 

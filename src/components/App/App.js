@@ -128,7 +128,7 @@ class App extends Component {
 
     }
 
-    updateAchievements = () => {
+    updateAchievements = (id, value) => {
         let achievements = JSON.parse(localStorage['achievements']);
 
         ////LEVELS PASSING////
@@ -154,6 +154,22 @@ class App extends Component {
             achievements[3].status = 1;
             console.log("Achievement unlocked! You are f*cking cheater! (USED MONEY CHEAT)");
         }
+        //QUEST UNLOCK CHEAT
+        if (id === 4 && achievements[4].status === 0) {
+            achievements[4].time += 1;
+            if (achievements[4].time === 1) {
+                achievements[4].status = 1;
+                console.log("Achievement unlocked! Dude, it`s not right! (USED QUEST UNLOCK CHEAT 1st time)");
+            }
+            if (achievements[4].time === 10) {
+                console.log("Achievement unlocked! You`ve just ruined the game! (USED QUEST UNLOCK CHEAT 10 times)");
+            }
+        }
+        //MONEY CHEAT 1M money ADDED
+        /*if (achievements[5].status === 2 && //added 1000000 money?) {
+            achievements[5].status = 1;
+            console.log("Achievement unlocked! BBBILIONEER! You cheated 1000000 money");
+        }*/
 
         localStorage['achievements'] = JSON.stringify(achievements);
         console.log("ACHIEVEMENTS UPDATED!");

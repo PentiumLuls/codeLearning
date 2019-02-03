@@ -1,8 +1,15 @@
 import React, {Component} from 'react';
 import {quests} from '../../plot/quests'
-import { connect } from 'react-redux';
-import { nextLevel, passQuest } from '../../store/actions/questActions'
-import { resetCode, writeCode, changeShowPopup, clearTerminal, exportRun, exportHideNextCode } from '../../store/actions/codeActions'
+import {connect} from 'react-redux';
+import {nextLevel, passQuest} from '../../store/actions/questActions'
+import {
+    resetCode,
+    writeCode,
+    changeShowPopup,
+    clearTerminal,
+    exportRun,
+    exportHideNextCode
+} from '../../store/actions/codeActions'
 
 class Terminal extends Component {
     constructor() {
@@ -18,9 +25,16 @@ class Terminal extends Component {
         ///////////////////////////////
         const self = this;
         window.terminal = {};
-        window.terminal.log = (...args) => {const result = (args.map(arg => {return JSON.stringify(arg)})); self.log(result.join(","), "logger")};
-        window.unlockQuest = this.unlockQuest;
-        window.reporterLog = (text, status) => {self.reporterLog(text, status)};
+        window.terminal.log = (...args) => {
+            const result = (args.map(arg => {
+                return JSON.stringify(arg)
+            }));
+            self.log(result.join(","), "logger")
+        };
+        window.unlockQuest = this.unlockQuestCheat;
+        window.reporterLog = (text, status) => {
+            self.reporterLog(text, status)
+        };
         ///////////////////////////////
     }
 
@@ -39,6 +53,17 @@ class Terminal extends Component {
         }));
 
         this.props.updateAchievements();
+    };
+
+    unlockQuestCheat = () => {
+        this.log("~NEXT LEVEL CHEAT ACTIVATED/ F*CKING CHEATER!!!", '');
+        this.setState({
+            showNextLevel: true
+        });
+        this.props.writeCode(false);
+        this.props.passQuest();
+
+        this.props.updateAchievements(4);
     };
 
     unlockQuest = () => {
@@ -151,7 +176,7 @@ class Terminal extends Component {
 
     resetCode = () => {
         this.props.writeCode(true);
-        this.props.resetCode()
+        this.props.resetCode();
 
         this.props.updateAchievements();
     };
@@ -194,13 +219,13 @@ class Terminal extends Component {
                     {
                         this.state.showNextLevel
                             ? <button onClick={
-                                this.clickNextLevel} 
-                            className="debug">NEXT LEVEL</button>
+                                this.clickNextLevel}
+                                      className="debug">NEXT LEVEL</button>
                             : null
                     }
                     <button className="button-open-terminal" onClick={this.props.openTerminal}>*</button>
                 </div>
-                <ul className={this.props.terminalOpen ? "terminal-text open-terminal-text" : "terminal-text"}  >
+                <ul className={this.props.terminalOpen ? "terminal-text open-terminal-text" : "terminal-text"}>
                     {
                         this.state.content
                     }
