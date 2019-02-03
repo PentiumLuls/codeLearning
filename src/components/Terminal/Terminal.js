@@ -28,6 +28,8 @@ class Terminal extends Component {
         this.setState((state) => ({
             content: state.content + "\n" + logger + "> " + text + "\n"
         }));
+
+        this.props.updateAchievements();
     }
 
     reporterLog = (text, status) => {
@@ -35,6 +37,8 @@ class Terminal extends Component {
         this.setState((state) => ({
             content: state.content + "\n[" + stat + "] " + text + "\n"
         }));
+
+        this.props.updateAchievements();
     };
 
     unlockQuest = () => {
@@ -44,6 +48,8 @@ class Terminal extends Component {
         });
         this.props.writeCode(false);
         this.props.passQuest();
+
+        this.props.updateAchievements();
     };
 
     run = () => {
@@ -89,6 +95,8 @@ class Terminal extends Component {
                 content: this.state.content + "> " + err + "\n"
             });
         }
+
+        this.props.updateAchievements();
     };
 
     parseRegexp = (target) => {
@@ -126,7 +134,9 @@ class Terminal extends Component {
     clearTerminal = () => {
         this.setState({
             content: ""
-        })
+        });
+
+        this.props.updateAchievements();
     };
 
     componentWillReceiveProps(nextValue) {
@@ -135,11 +145,15 @@ class Terminal extends Component {
             regexps: nextValue.regexps,
             regexpsNone: nextValue.regexpsNone,
         });
+
+        this.props.updateAchievements();
     }
 
     resetCode = () => {
         this.props.writeCode(true);
         this.props.resetCode()
+
+        this.props.updateAchievements();
     };
 
     clickNextLevel = () => {
@@ -151,13 +165,15 @@ class Terminal extends Component {
         this.props.resetCode();
         this.props.changeShowPopup(true);
         this.clearTerminal();
+
+        this.props.updateAchievements();
     };
 
     hideNextLevel = () => {
         this.setState({
             showNextLevel: false
         })
-    }
+    };
 
 
     render() {

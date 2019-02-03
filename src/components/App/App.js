@@ -7,11 +7,12 @@ import Popup from "../Popup/Popup";
 import Leftpanel from '../Leftpanel/Leftpanel';
 import {quests} from '../../plot/quests';
 import Chatbot from '../ChatBot/Chatbot';
-import { connect } from 'react-redux';
-import { changeShowPopup } from '../../store/actions/codeActions';
+import {connect} from 'react-redux';
+import {changeShowPopup} from '../../store/actions/codeActions';
 import sound from '../../audio/sans.mp3';
 import sound2 from '../../audio/sans.ogg';
 import Profile from '../Profile/Profile';
+
 class App extends Component {
     constructor(props) {
         super(props);
@@ -34,20 +35,20 @@ class App extends Component {
 
     togglePopup = () => {
         this.props.changeShowPopup(false);
-    }
+    };
 
     exportRun = (func) => {
         this.setState({
             run: func
         })
-    }
+    };
 
     openTerminal = () => {
-        console.log("click")
+        console.log("Terminal mode x2 toggle");
         this.setState({
             terminalOpen: !this.state.terminalOpen
         })
-    }
+    };
 
     render() {
         this.passStages = this.props.passStages;
@@ -63,68 +64,100 @@ class App extends Component {
         const canIShowPopup = newList[this.currentStage].indexOf(this.currentQuest) !== -1;
         let indexOfElement = newList[this.currentStage].indexOf(this.currentQuest);
         if (canIShowPopup && this.showPopup) {
-            
+
             delete newList[this.currentStage][indexOfElement];
             localStorage.setItem('whiteList', JSON.stringify(newList))
         }
 
         return (
             <div className="main">
-                
+
                 <div>
                     <audio controls autoPlay loop>
                         <source src={sound2} type="audio/ogg"/>
-                            <source src={sound} type="audio/mpeg"/>
-                            Your browser does not support the audio element.
+                        <source src={sound} type="audio/mpeg"/>
+                        Your browser does not support the audio element.
                     </audio>
                 </div>
                 <div className="leftpanel">
-                    <Leftpanel  func={this.changeButtonState}
-                                func2={this.changeButtonState2}
-                                func3={this.changeButtonState3}/>
+                    <Leftpanel func={this.changeButtonState}
+                               func2={this.changeButtonState2}
+                               func3={this.changeButtonState3}/>
                 </div>
                 {
-                (this.state.isEdit === 0)
-                ?
-                <div>
-                <div className={this.state.terminalOpen ? 'editor open-editor' : 'editor'}>
-                    <Codeditor
-                        text={this.code}
-                        writeCode={this.writeCode}
-                        resets={this.props.resets}
-                        />
-                </div>
-                <div className={this.state.terminalOpen ? 'terminal open-terminal' : 'terminal'}>
-                    <Terminal
-                        terminalOpen={this.state.terminalOpen}
-                        className="terminal"
-                        testCode={quests[this.currentStage].quests[this.currentQuest].test}
-                        regexps={quests[this.currentStage].quests[this.currentQuest].regexps}
-                        regexpsNone={quests[this.currentStage].quests[this.currentQuest].regexpsNone}
-                        openTerminal={this.openTerminal}
-                        />
-                </div>
-                </div>
-                : (this.state.isEdit === 1) 
-                ? <HellRules passStages={this.passStages} passQuests={this.passQuests}/>
-                : <Profile></Profile>
-            }
+                    (this.state.isEdit === 0)
+                        ?
+                        <div>
+                            <div className={this.state.terminalOpen ? 'editor open-editor' : 'editor'}>
+                                <Codeditor
+                                    text={this.code}
+                                    writeCode={this.writeCode}
+                                    resets={this.props.resets}
+                                />
+                            </div>
+                            <div className={this.state.terminalOpen ? 'terminal open-terminal' : 'terminal'}>
+                                <Terminal
+                                    terminalOpen={this.state.terminalOpen}
+                                    className="terminal"
+                                    testCode={quests[this.currentStage].quests[this.currentQuest].test}
+                                    regexps={quests[this.currentStage].quests[this.currentQuest].regexps}
+                                    regexpsNone={quests[this.currentStage].quests[this.currentQuest].regexpsNone}
+                                    openTerminal={this.openTerminal}
+                                    updateAchievements={this.updateAchievements}
+                                />
+                            </div>
+                        </div>
+                        : (this.state.isEdit === 1)
+                        ? <HellRules passStages={this.passStages} passQuests={this.passQuests}/>
+                        : <Profile></Profile>
+                }
                 <div>
                     {
                         (this.state.isEdit === 0) ? <Chatbot/> : null
                     }
                 </div>
-                {//POPUP 
-                    
-                    this.showPopup && canIShowPopup?
+                {//POPUP
+
+                    this.showPopup && canIShowPopup ?
                         <Popup stage={this.currentStage} quest={indexOfElement} togglePopup={this.togglePopup}/>
                         : null
                 }
-                
+
             </div>
         )
 
     }
+
+    updateAchievements = () => {
+        let achievements = JSON.parse(localStorage['achievements']);
+
+        ////LEVELS PASSING////
+        //PASS 3 QUESTS ACHIEVEMENT
+        if (achievements[0].status === 0 && ((this.passStages === 0 && this.passQuests >= 3) || (this.passStages > 0))) {
+            achievements[0].status = 1;
+            console.log("Achievement unlocked! You have pass 3 quests");
+        }
+        //PASS 1st STAGE
+        if (achievements[1].status === 0 && this.passStages >= 1) {
+            achievements[1].status = 1;
+            console.log("Achievement unlocked! You have pass 1st stage");
+        }
+        //PASS 3 STAGES
+        if (achievements[2].status === 0 && this.passStages >= 3) {
+            achievements[2].status = 1;
+            console.log("Achievement unlocked! You have pass 3 stages");
+        }
+        
+        ////CHEAT ACHIEVEMENTS////
+        //MONEY CHEAT USING 1st TIME
+        if (achievements[3].status === 2) {
+            achievements[3].status = 1;
+            console.log("Achievement unlocked! You are f*cking cheater! (USED MONEY CHEAT)");
+        }
+
+        localStorage['achievements'] = JSON.stringify(achievements);
+        console.log("ACHIEVEMENTS UPDATED!");
+    };
 }
 
 
@@ -138,15 +171,15 @@ const mapStateToProps = store => {
         code: store.code,
         resets: store.resets,
         showPopup: store.showPopup,
-      
+
     }
-}
+};
 
 const mapDispatchToProps = dispatch => {
     return {
         changeShowPopup: (can) => dispatch(changeShowPopup(can))
     }
-}
+};
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);
 
