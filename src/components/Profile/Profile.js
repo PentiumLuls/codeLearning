@@ -29,12 +29,19 @@ class Profile extends Component {
     render() {
         return (
             <div>
-                {this.state.stats
-                ? <button onClick={this.openSettings}>openSettings</button>
-                : <button onClick={this.openStats}>openStats</button>}
-                {this.state.stats 
-                ? <Stats></Stats>
-                : <Settings></Settings>}
+                <div className="profile-top-wrapper">
+                    <div className="profile-top-image-wrapper">
+                        <div className="profile-top-image"><img alt="avatar" src={require("../../img/VanDarkholme.jpg")}/></div>
+                    </div>
+                    <div className="profile-top-switcher">
+                        {this.state.stats
+                        ? <div className="open-settings" onClick={this.openSettings}></div>
+                        : <div className="open-stats" onClick={this.openStats}></div>}
+                        {this.state.stats
+                        ? <Stats></Stats>
+                        : <Settings></Settings>}
+                    </div>
+                </div>
                 
                 <Achievements></Achievements>
             </div>
