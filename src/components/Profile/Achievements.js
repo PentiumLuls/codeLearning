@@ -1,9 +1,10 @@
 import React from 'react'
+import {getAchievementsList} from "./achievementsHandler";
 
 export default () => {
     return (
-        <div>
-            
+        <div className="profile-achievements">
+            {getAchievementsList()}
         </div>
     )
 }
