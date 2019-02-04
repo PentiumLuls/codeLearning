@@ -36,8 +36,9 @@ export function tickQuestTime() {
     }
 }
 
-export function initialInterval() {
+export function initialInterval(interval) {
     return {
-        type: INITIAL_INTERVAL
+        type: INITIAL_INTERVAL,
+        payload: interval
     }
 }
