@@ -139,29 +139,25 @@ export function rootReducer(state = initialState, action) {
             localStorage.currentQuest = action.payload;
             clearInterval(state.interval)
             
-            return {...state, currentQuest: action.payload, interval: setInterval(() => {
-                rootReducer({...state}, tickQuestTime)
-            }, 1000)};
+            return {...state, currentQuest: action.payload, questTime: {hours: 0, minutes: 0, seconds: 0}, interval: createInterval()};
         
         case SELECT_STAGE:
             localStorage.currentStage = action.payload;
             return {...state, currentStage: action.payload};
         
         case PASS_QUEST:
-            
             const passingLevels = JSON.parse(localStorage['passingLevels']);
 
             if (state.currentStage == state.passStages && state.currentQuest == state.passQuests) {
                 localStorage['LH;;tabs'] = CryptoJS.AES.encrypt(`${state.money + 5}`, 'Kt0 et0 ch1tayet t0t l0h');
 
-                clearInterval(state.interval);
-                const record = [...state.records]
+                
+                clearInterval(state.interval)
+                const record = state.records;
+                console.log(state.questTime)
+                record[state.currentStage][state.currentQuest] = {...state.questTime}
 
-                record[state.currentStage][state.currentQuest] = {hours: state.questTime.hours, minutes: state.questTime.minutes, seconds: state.questTime.seconds};
-                console.log(state.timeInGame)
-                console.log( {hours: state.questTime.hours, minutes: state.questTime.minutes, seconds: state.questTime.seconds});
-
-                localStorage['records'] = JSON.stringify(record);
+                localStorage['records'] = JSON.stringify(record)
                 localStorage['questTime'] = JSON.stringify({hours: 0, minutes: 0, seconds: 0})
 
 
@@ -177,22 +173,24 @@ export function rootReducer(state = initialState, action) {
 
                     localStorage.passStages = state.currentStage + 1;
                     localStorage.passQuests = 0;
-                    return {...state, questTime: {hours: 0, minutes: 0, seconds: 0}, passStages: state.currentStage + 1, passQuests: 0, money: state.money + 5, records:  [...record]}
+                    return {...state, passStages: state.currentStage + 1, passQuests: 0, money: state.money + 5, records: {...record}, questTime: {hours: 0, minutes: 0, seconds: 0}}
                 } else {
                     localStorage.passQuests = state.currentQuest + 1;
-                    return {...state, questTime: {hours: 0, minutes: 0, seconds: 0}, passQuests: state.currentQuest + 1, money: state.money + 5, records: [...record]}
+                    return {...state, passQuests: state.currentQuest + 1, money: state.money + 5, records: {...record}, questTime: {hours: 0, minutes: 0, seconds: 0}}
                 }
             }
 
             clearInterval(state.interval)
-            const record = JSON.parse(localStorage['records'])
+            const record = state.records;
 
-            if (state.questTime < state.record[state.currentStage][state.currentQuest]) {
+            if (state.questTime.hours * 360 + state.questTime.minutes * 60 + state.questTime.seconds 
+                < record[state.currentStage][state.currentQuest].hours * 360 + record[state.currentStage][state.currentQuest].minutes 
+                * 60 + record[state.currentStage][state.currentQuest].seconds) {
                 record[state.currentStage][state.currentQuest] = {...state.questTime}
-            } 
+            }
 
-            localStorage['records'] = JSON.stringify(record);
-            localStorage['questTime'] = JSON.stringify({hours: 0, minutes: 0, seconds: 0});
+            localStorage['records'] = JSON.stringify(record)
+            localStorage['questTime'] = JSON.stringify({hours: 0, minutes: 0, seconds: 0})
             
             if (passingLevels[state.currentStage][state.currentQuest] > 0) {
                 
@@ -212,14 +210,10 @@ export function rootReducer(state = initialState, action) {
             if (state.currentQuest == quests[state.currentStage].quests.length - 1) {
                 localStorage.currentStage = state.currentStage + 1;
                 localStorage.currentQuest = 0;
-                return {...state, currentStage: state.currentStage + 1, currentQuest: 0, interval: setInterval(() => {
-                    rootReducer({...state}, tickQuestTime)
-                }, 1000)}
+                return {...state, currentStage: state.currentStage + 1, currentQuest: 0, questTime: {hours: 0, minutes: 0, seconds: 0}, interval: createInterval()}
             } else {
                 localStorage.currentQuest = state.currentQuest + 1;
-                return {...state, currentQuest: state.currentQuest + 1, interval: setInterval(() => {
-                    rootReducer({...state}, tickQuestTime)
-                }, 1000)}
+                return {...state, currentQuest: state.currentQuest + 1, questTime: {hours: 0, minutes: 0, seconds: 0}, interval: createInterval()}
             }
 
         case RESET_CODE:
@@ -265,11 +259,10 @@ export function rootReducer(state = initialState, action) {
             return {...state, money: state.money + action.payload};
 
         case SPEND_MONEY:
-            localStorage['stats'] = JSON.stringify({...state.stats, spendMoneys: state.stats.spendMoneys + action.payload});
+            localStorage['stats'] = JSON.stringify({...state.stats, spendMoneys: state.stats.spendMoneys + action.payload})
 
             localStorage['LH;;tabs'] = CryptoJS.AES.encrypt(`${state.money - action.payload}`, 'Kt0 et0 ch1tayet t0t l0h');
             return {...state, money: state.money - action.payload, stats: {...state.stats, spendMoneys: state.stats.spendMoneys + action.payload}};
-
 
         case TICK_TIME_IN_GAME:
             const time = {...state.timeInGame}
@@ -290,8 +283,8 @@ export function rootReducer(state = initialState, action) {
             return {...state, timeInGame: time}
 
         case TICK_QUEST_TIME:
-            const timeOfQuest = {...state.questTime}
-            
+            const timeOfQuest = state.questTime
+            console.log(timeOfQuest)
             if(timeOfQuest.seconds === 59) {
                 if(timeOfQuest.minutes === 59){
                     timeOfQuest.hours += 1
@@ -306,17 +299,17 @@ export function rootReducer(state = initialState, action) {
             }
             
             localStorage['questTime'] = JSON.stringify(timeOfQuest);
-            return {...state, questTime: timeOfQuest}
+            return {...state, questTime: {...timeOfQuest}}
 
         case INITIAL_INTERVAL:
             return {...state, interval: createInterval()}
 
         default:
             return state
-
     }
 
     function createInterval() {
+
         return setInterval(() => {
             rootReducer({...state}, tickQuestTime())
         }, 1000)
