@@ -12,7 +12,7 @@ import {changeShowPopup} from '../../store/actions/codeActions';
 import sound from '../../audio/sans.mp3';
 import sound2 from '../../audio/sans.ogg';
 import Profile from '../Profile/Profile';
-import {updateAchievements} from "./achievements";
+import {updateAchievements} from "../Profile/achievementsHandler";
 
 class App extends Component {
     constructor(props) {
