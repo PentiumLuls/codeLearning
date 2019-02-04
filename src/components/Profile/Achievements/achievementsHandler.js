@@ -1,8 +1,5 @@
 import React from 'react';
 import {achievementsList} from "./achievementsList";
-import {addMoney, spendMoney} from "../../../store/actions/moneyActions";
-import {connect} from "react-redux";
-import CryptoJS from "crypto-js";
 
 export const updateAchievements = (id, value) => {
     let achievements = JSON.parse(localStorage['achievements']);
