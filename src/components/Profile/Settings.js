@@ -2,8 +2,8 @@ import React from 'react'
 
 export default () => {
     return (
-        <div>
-            
+        <div className="profile-top-settings">
+            Settings
         </div>
     )
 }
