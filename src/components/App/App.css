@@ -297,12 +297,14 @@ audio {
     transition: all 1s;
     background-color: white;
     color: black;
+    position: relative;
     text-align: center;
     padding: 20px;
     border-bottom: 2px dashed grey;
     width: 25vw;
     word-wrap: break-word;
     box-sizing: border-box;
+    z-index: 0;
 }
 
 .questlist:hover {
@@ -310,6 +312,13 @@ audio {
     color: white;
 }
 
+.questlist:hover .quest-timer {
+    visibility: visible
+}
+
+.questlist.inactive:hover .quest-timer {
+    visibility: hidden;
+}
 
 .questlist:last-of-type {
     border: 0;
@@ -330,6 +339,30 @@ audio {
     line-height: 1.5vw;
 }
 
+.quest-timer {
+    display: block;
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    visibility: hidden;
+    background-color: white;
+    color: black;
+    padding: 0.2vw 0.5vw;
+    z-index: 1;
+}
+
+.quest-timer::before {
+    content: '';
+    width: 2.5vw;
+    height: 2.5vw;
+    display: block;
+    position: absolute;
+    background-color: white;
+    left: -1.2vw;
+    top: 0.5vw;
+    transform: rotate(45deg);
+    z-index: -1;
+}
 /* Чат */
 .chatbot {
     position: absolute;
@@ -585,10 +618,10 @@ audio {
     height: 50vh;
     display: flex;
     box-sizing: border-box;
-    background-color: #b2b2b2;
     overflow-y: scroll;
 }
 
+/* Блок с картинкой */
 .profile-top-image-wrapper {
     width: 25vw;
     height: 50vh;
@@ -607,23 +640,15 @@ audio {
     height: 20vw;
 }
 
+/* Переключатель */
 .profile-top-switcher {
     width: 50vw;
     display: flex;
     position: relative;
 }
 
-.profile-top-stats, .profile-top-settings {
-    width: 40vw;
-    height: 50vh;
-    margin: auto;
-    background-color: #666666;
-    padding: 1vw 2vw;
-    box-sizing: border-box;
-}
-
 .open-settings, .open-stats {
-    border: solid black;
+    border: solid #2d2d2d;
     border-width: 0 0.5vw 0.5vw 0;
     display: inline-block;
     width: 2vw;
@@ -645,6 +670,26 @@ audio {
     right: 2.5vw;
 }
 
+/* Статистика и настройки */
+.profile-top-stats, .profile-top-settings {
+    width: 40vw;
+    height: 50vh;
+    margin: auto;
+    padding: 1vw 2vw;
+    box-sizing: border-box;
+}
+
+.profile-top-stats h3 {
+    text-align: center;
+    color: red;
+}
+
+.stats-body li span {
+    float: right;
+    color: red;
+}
+
+/* Нижний блок с ачивками */
 .profile-achievements {
     height: 50vh;
     width: 75vw;
