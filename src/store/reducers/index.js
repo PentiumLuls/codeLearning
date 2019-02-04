@@ -26,11 +26,14 @@ if (!localStorage['LH;;tabs']) {
     localStorage['LH;;tabs'] = CryptoJS.AES.encrypt('100', 'Kt0 et0 ch1tayet t0t l0h');
 }
 if (!localStorage['passingLevels']) {
-    localStorage['passingLevels'] = JSON.stringify([[0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0]]);
+    localStorage['passingLevels'] = JSON.stringify([[0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0]]);
 }
 if (!localStorage['achievements']) {
     localStorage['achievements'] = JSON.stringify([{id: 0, status: 0}, {id: 1, status: 0}, {id: 2, status: 0},
-        {id: 3, status: 0}, {id: 4, status: 0, time: 0}, {id: 5, status: 0}, {id: 6, status: 0}, {id: 7, status: 0}, {id: 8, status: 0}]);
+        {id: 3, status: 0}, {id: 4, status: 0}, {id: 5, status: 0, time: 0}, {id: 6, status: 0, time: 0, payload: 0},
+        {id: 7, status: 0, earned: 0}, {id: 8, status: 0, spend: 0}, {id: 9, status: 0}, {id: 10, status: 0}, {id: 11, status: 0},
+        {id: 12, status: 0}]);
 }
 
 if (!localStorage['stats']) {
@@ -68,6 +71,8 @@ export const initialState = {
 
 
 export function rootReducer(state = initialState, action) {
+    let achievements = JSON.parse(localStorage['achievements']);
+
     switch (action.type) {
         case SELECT_QUEST:
             state.hideNextLevel();
@@ -91,6 +96,11 @@ export function rootReducer(state = initialState, action) {
                     passingLevels[state.currentStage - 1][quests[state.currentStage].quests.length - 1] = 1;
                     localStorage['passingLevels'] = JSON.stringify(passingLevels);
                 }
+                //ACHIEVEMENTS - EARNED N MONEY
+                if (achievements[7].status === 0) {
+                    achievements[7].earned += 5;
+                }
+                localStorage['achievements'] = JSON.stringify(achievements);
 
                 if (state.currentQuest == quests[state.currentStage].quests.length - 1) {
 
@@ -107,9 +117,14 @@ export function rootReducer(state = initialState, action) {
                 passingLevels[state.currentStage][state.currentQuest] -= 1;
                 localStorage['passingLevels'] = JSON.stringify(passingLevels);
                 localStorage['LH;;tabs'] = CryptoJS.AES.encrypt(`${state.money + 3}`, 'Kt0 et0 ch1tayet t0t l0h');
+                //ACHIEVEMENTS - EARNED N MONEY
+                if (achievements[7].status === 0) {
+                    achievements[7].earned += 3;
+                }
+                localStorage['achievements'] = JSON.stringify(achievements);
+
                 return {...state, money: state.money + 3}
-            } return {...state}
-            
+            } return {...state};
             
 
         case NEXT_LEVEL:
@@ -155,9 +170,11 @@ export function rootReducer(state = initialState, action) {
             return {...state, hideChat: action.payload};
 
         case ADD_MONEY:
-            let achievements = JSON.parse(localStorage['achievements']);
             if (achievements[3].status === 0) {
                 achievements[3].status = 2;
+            }
+            if (achievements[6].status === 0) {
+                achievements[6].payload += action.payload;
             }
             localStorage['achievements'] = JSON.stringify(achievements);
 
@@ -166,8 +183,13 @@ export function rootReducer(state = initialState, action) {
 
         case SPEND_MONEY:
             localStorage['stats'] = JSON.stringify({...JSON.parse(localStorage['stats']), spendMoneys: JSON.parse(localStorage['stats']) + action.payload})
-
             localStorage['LH;;tabs'] = CryptoJS.AES.encrypt(`${state.money - action.payload}`, 'Kt0 et0 ch1tayet t0t l0h');
+
+            if (achievements[8].status === 0) {
+                achievements[8].spend += action.payload;
+            }
+            localStorage['achievements'] = JSON.stringify(achievements);
+
             return {...state, money: state.money - action.payload, spendMoneys: state.spendMoney + action.payload};
 
         default:
