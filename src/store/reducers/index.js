@@ -159,9 +159,6 @@ export function rootReducer(state = initialState, action) {
             if (achievements[3].status === 0) {
                 achievements[3].status = 2;
             }
-            if (achievements[5].status === 0) {
-                achievements[5].status = 2;
-            }
             localStorage['achievements'] = JSON.stringify(achievements);
 
             localStorage['LH;;tabs'] = CryptoJS.AES.encrypt(`${state.money + action.payload}`, 'Kt0 et0 ch1tayet t0t l0h');
