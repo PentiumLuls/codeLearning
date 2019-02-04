@@ -29,9 +29,7 @@ class App extends Component {
         }, 1000)
 
 
-        this.props.initialInterval(setInterval(() => {
-            this.props.tickQuestTime()
-        }, 1000))
+        this.props.initialInterval()
 
     }
 

@@ -305,24 +305,21 @@ export function rootReducer(state = initialState, action) {
                 timeOfQuest.seconds += 1
             }
             
-            console.log(state.questTime)
             localStorage['questTime'] = JSON.stringify(timeOfQuest);
             return {...state, questTime: timeOfQuest}
 
         case INITIAL_INTERVAL:
-            return {...state, interval: action.payload}
+            return {...state, interval: createInterval()}
 
         default:
             return state
+
     }
 
-    function resetTime(stage, quest) {
-        const newTime = {...state.questsTime}
-        newTime[stage][quest] = {hours: 0, minutes: 0, seconds: 0}
-
-        localStorage['questsTime'] = {...newTime}
-
-        return {...state, questsTime: {...newTime}}
+    function createInterval() {
+        return setInterval(() => {
+            rootReducer({...state}, tickQuestTime())
+        }, 1000)
     }
 }
 
