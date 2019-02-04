@@ -1,6 +1,6 @@
 import { SELECT_QUEST, SELECT_STAGE, PASS_QUEST, NEXT_LEVEL, NEXT_STEP, PREV_STEP } from '../actions/questActions'
 import { RESET_CODE, WRITE_CODE, CHANGE_SHOW_POPUP, CLEAR_TERMINAL, SHOW_ANSWER, EXPORT_RUN, EXPORT_HIDE_NEXT_CODE, EXPORT_HIDE_CHAT } from '../actions/codeActions'
-import { SPEND_MONEY, ADD_MONEY } from '../actions/moneyActions'
+import { SPEND_MONEY, ADD_MONEY, spendMoney } from '../actions/moneyActions'
 import {quests} from '../../plot/quests';
 import CryptoJS from 'crypto-js'
 
@@ -33,6 +33,15 @@ if (!localStorage['achievements']) {
         {id: 3, status: 0}, {id: 4, status: 0, time: 0}, {id: 5, status: 0}, {id: 6, status: 0}, {id: 7, status: 0}, {id: 8, status: 0}]);
 }
 
+if (!localStorage['stats']) {
+    localStorage['stats'] = JSON.stringify({
+        symbols: 0,
+        successfulRuns: 0,
+        unsuccessfulRuns: 0,
+        spendMoneys: 0
+    })
+}
+
 
 export const initialState = {
     passStages: +localStorage.passStages,
@@ -48,7 +57,13 @@ export const initialState = {
     run: null,
     money: +CryptoJS.AES.decrypt(localStorage['LH;;tabs'].toString(), 'Kt0 et0 ch1tayet t0t l0h').toString(CryptoJS.enc.Utf8),
     hideNextLevel: null,
-    hideChat: null
+    hideChat: null,
+    stats: {
+        symbols: JSON.parse(localStorage['stats']).symbols,
+        successfulRuns: JSON.parse(localStorage['stats']).successfulRuns,
+        unsuccessfulRuns: JSON.parse(localStorage['stats']).unsuccessfulRuns,
+        spendMoneys: JSON.parse(localStorage['stats']).spendMoneys
+    }
 };
 
 
@@ -57,6 +72,7 @@ export function rootReducer(state = initialState, action) {
         case SELECT_QUEST:
             state.hideNextLevel();
             localStorage.currentQuest = action.payload;
+            console.log(state.timeInGame)
             return {...state, currentQuest: action.payload};
         
         case SELECT_STAGE:
@@ -149,13 +165,13 @@ export function rootReducer(state = initialState, action) {
             localStorage['achievements'] = JSON.stringify(achievements);
 
             localStorage['LH;;tabs'] = CryptoJS.AES.encrypt(`${state.money + action.payload}`, 'Kt0 et0 ch1tayet t0t l0h');
-            console.log(CryptoJS.AES.decrypt(localStorage['LH;;tabs'].toString(), 'Kt0 et0 ch1tayet t0t l0h').toString(CryptoJS.enc.Utf8));
             return {...state, money: state.money + action.payload};
 
         case SPEND_MONEY:
+            localStorage['stats'] = JSON.stringify({...JSON.parse(localStorage['stats']), spendMoneys: JSON.parse(localStorage['stats']) + action.payload})
+
             localStorage['LH;;tabs'] = CryptoJS.AES.encrypt(`${state.money - action.payload}`, 'Kt0 et0 ch1tayet t0t l0h');
-            console.log(CryptoJS.AES.decrypt(localStorage['LH;;tabs'].toString(), 'Kt0 et0 ch1tayet t0t l0h').toString(CryptoJS.enc.Utf8));
-            return {...state, money: state.money - action.payload};
+            return {...state, money: state.money - action.payload, spendMoneys: state.spendMoney + action.payload};
 
         default:
             return state
