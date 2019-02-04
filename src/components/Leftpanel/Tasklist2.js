@@ -38,7 +38,7 @@ class Tasklist extends Component {
                 quests.map((stage, index) => {
                     return (<li key={index} 
                         onClick={index <= this.passStages ? this.next.bind(this, index) : null}
-                         className={index <= this.passStages ? "questlist" : "questlist inactive"}>{stage.title}</li>)
+                         className={index <= this.passStages ? "questlist" : "questlist inactive"}>{stage.title}<span className="quest-timer">000</span></li>)
                 })
             )
         } else if (this.step == 1) {
@@ -52,7 +52,7 @@ class Tasklist extends Component {
                         className={index <= this.passQuests 
                             || this.currentStage < this.passStages
                             ? "questlist" 
-                            : "questlist inactive"}>{quest.title}</li>)
+                            : "questlist inactive"}>{quest.title}<span className="quest-timer">000</span></li>)
                 })
             )
         }   else if (this.step == 2) {
