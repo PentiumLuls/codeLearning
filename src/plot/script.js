@@ -1,59 +1,20 @@
-const persons1 = [{weapons:['sword','stick','bow']},{weapons:['sword','bow']}];
-const persons2 = [{weapons:['bow']},{weapons:['bow']}];
-weapons1 =['sword','stick']
-weapons2 =['sword','spear']
+var cow = {
+    milk: 10
+}
 
-function partial(fn) {
-
-    return (...args) =>{
-
-        return (..._arg) => {
-
-            return fn(...args)(..._arg);
+function milkACow(cow) {
+    let newcow = Object.assign({}, cow);
+    let cheeses = []
+    return function(int) {
+        if (int >= newcow.milk) {
+            cheeses.push(newcow.milk / 2)
+            newcow.milk = 0
+            return cheeses;
         }
-    }
+    newcow.milk -= int
+    cheeses.push(int / 2)
+    return cheeses
+     }
 }
-
-
-     
-
-function disEquipWeapons(weapons){
-    return (hinduses)=>{
-
-       const  newHinduses = hinduses.concat().map((hindu)=>{
-                weapons.forEach((weapon)=>{
-
-                    const  find = hindu.weapons.indexOf(weapon)
-                    
-                    if( find !== -1){
-                        hindu.weapons.splice(find,1);
-                    }
-               
-                }
-              
-              )   
-              return hindu ;   
-            }
-        )
-        return newHinduses;
-    }
-
-}
-
-function equipWeapons(weapons){
-    return (hinduses)=>{
-
-        const  newHinduses = hinduses.concat().map((hindu)=>{
-            
-                hindu.weapons = hindu.weapons.concat(weapons);
-                return hindu;   
-                }
-            ) 
-         return newHinduses;
-    }
-}
-
-
-
-partial(disEquipWeapons)(weapons1)(persons1)
-partial(equipWeapons)(weapons2)(persons2)
+const ch = milkACow(cow)(3)
+console.log(ch)

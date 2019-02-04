@@ -4,14 +4,21 @@ const rectangle = {
     width:4,
     height:4,
 };
+
 console.log(`Before: ${rectangle}`);
+
 function hasColor(c){
     return function(r){
         return r.color == c;
     }
 }
+
 isBlack = hasColor('black')
+
 console.log(isBlack(rectangle))
+
+
+
 /////// quest 2  //////////
 const eatCost = 50;
 const hinduAmount = 100;
@@ -26,7 +33,11 @@ function sumMoney( eatCost ){
         }
     }
 }
+
 const result = sumMoney( eatCost )( hinduAmount )( mouthAmount );
+
+
+
 ////// quest 3 /////
 const person = {weapons:['sword','stick'],};
 
@@ -43,6 +54,9 @@ function disEquipWeapon(weapon){
              } 
 
 const result = disEquipWeapon('sword')(person)
+
+
+
 ////// quest 4 //////
 
 const persons =[{weapons:['sword']}, {weapons:['sword','stick']},{weapons:['stick']},{weapons:['sword']}];
@@ -53,13 +67,13 @@ function noWeapon(weapon){
       }
 }
 
+function sum(a,b){
+    return a + b;
+ }
+ 
 const noSword = noWeapon('sword');
 
 const noStick = noWeapon('stick');
-
-function sum(a,b){
-   return a + b;
-}
 
 const result1 = persons.map(noSword).reduce(sum,0);
 
@@ -160,9 +174,26 @@ function partial(fn) {
     }
 }
 
-
+function disEquipWeapon(weapon){
+    return (hindu)=>{
      
+       const  newHindu = {...hindu}
+       const find = newHindu.weapons.indexOf(weapon)
+         if( find !== -1){
+            newHindu.weapons.splice(find,1);
+         }
+         return newHindu;
+      }
+     } 
 
+function equipWeapon(weapon){
+    return (hindu) =>{
+        newHindu = {...hindu}
+        newHindu.weapons.push(weapon)
+        return newHindu
+          }
+    }     
+///// готовый вариант /////
 function disEquipWeapons(weapons){
     return (hinduses)=>{
 

@@ -1779,7 +1779,7 @@ terminal.log(swordsAmount, sticksAmount);`,
                   expect(hasWeapon('sword')({weapons:['sword']})).toEqual(1);
                   expect(hasWeapon('sword')({weapons:['stick']})).toEqual(0);
                   expect(hasWeapon('stick')({weapons:['stick']})).toEqual(1);
-                  expect(hasWeapon('stick')({weapons:['sword', 'stick']})).toEqual(1);
+                  expect(hasWeapon('stick')({weapons:['sword', 'stick']})).toEq0l(1);
                });
                it("swords and sticks amount should equal to sum of swords and sticks that have hindu",function() {
                   expect(swordsAmount).toEqual(persons.map(hasSword).reduce(sum,0));
