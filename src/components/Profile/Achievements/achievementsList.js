@@ -4,7 +4,8 @@ const goldMedal = require("../../../img/achievements/goldMedal_1.png");
 const ruby = require("../../../img/achievements/ruby_1.png");
 const manuscript1 = require("../../../img/achievements/manuscript_1.png");
 const crown = require("../../../img/achievements/crown_1.png");
-const moneyBag = require("../../../img/achievements/moneyBag_1.png");
+const moneyBag1 = require("../../../img/achievements/moneyBag_1.png");
+const moneyBag2 = require("../../../img/achievements/moneyBag_2.png");
 const manuscript2 = require("../../../img/achievements/manuscript_2.png");
 const apple = require("../../../img/achievements/apple_1.png");
 const energy = require("../../../img/achievements/energy_1.png");
@@ -12,6 +13,14 @@ const heart = require("../../../img/achievements/heart_1.png");
 const bluePotion = require("../../../img/achievements/bluePotion_1.png");
 const sword = require("../../../img/achievements/sword_1.png");
 const openedBook = require("../../../img/achievements/openedBook_1.png");
+const bootWithWings = require("../../../img/achievements/boot_1.png");
+const lamp = require("../../../img/achievements/lamp_1.png");
+const exclamation = require("../../../img/achievements/exclamation_1.png");
+const weddingCake = require("../../../img/achievements/weddingCake_1.png");
+const gameBreaker = require("../../../img/achievements/gameBreaker_1.png");
+const emptyWallet = require("../../../img/achievements/emptyWallet_1.png");
+const greatPoet = require("../../../img/achievements/greatPoet_1.png");
+const ricardoFlex = require("../../../img/achievements/ricardoFlex_1.png");
 
 export const achievementsList = [
     {
@@ -38,25 +47,25 @@ export const achievementsList = [
         descriptions: "Pass 3 chapters",
         rewardText: "reward",
         moneyReward: 30,
-        image: manuscript2,
+        image: weddingCake,
         status: -1
     },
     {
         id: 3,
-        name: "F*cking cheater",
-        descriptions: "Use money cheat 1 time",
+        name: "No investment",
+        descriptions: "Use money cheat",
         rewardText: "reward",
         moneyReward: -10,
-        image: moneyBag,
+        image: moneyBag1,
         status: -1
     },
     {
         id: 4,
         name: "Dude, it`s not right!",
-        descriptions: "Use quest unlock cheat 1st time",
+        descriptions: "Use quest unlock cheat",
         rewardText: "reward",
         moneyReward: 0,
-        image: trophyCup,
+        image: exclamation,
         status: -1
     },
     {
@@ -65,7 +74,7 @@ export const achievementsList = [
         descriptions: "Use quest unlock cheat 10 times",
         rewardText: "horse power",
         moneyReward: -999,
-        image: ruby,
+        image: gameBreaker,
         status: -1
     },
     {
@@ -74,16 +83,16 @@ export const achievementsList = [
         descriptions: "Cheat less then -1000 money",
         rewardText: "dimon",
         moneyReward: 1,
-        image: energy,
+        image: emptyWallet,
         status: -1
     },
     {
         id: 7,
-        name: "moneyBag",
+        name: "Bag full of money",
         descriptions: "Earn 100 money",
         rewardText: "-9999",
         moneyReward: 5,
-        image: bluePotion,
+        image: moneyBag2,
         status: -1
     },
     {
@@ -101,12 +110,12 @@ export const achievementsList = [
         descriptions: "Write 500 symbols",
         rewardText: "reward",
         moneyReward: 20,
-        image: openedBook,
+        image: greatPoet,
         status: -1
     },
     {
         id: 10,
-        name: "The great Unknown, self-proclaimed code-master",
+        name: "The great Unknown, self-proclaimed master",
         descriptions: "Write 10000 symbols",
         rewardText: "reward",
         moneyReward: 50,
@@ -119,7 +128,7 @@ export const achievementsList = [
         descriptions: "Пофлексить кнопкой '*' 10 раз",
         rewardText: "tupo flex",
         moneyReward: 0,
-        image: heart,
+        image: ricardoFlex,
         status: -1
     },
 
