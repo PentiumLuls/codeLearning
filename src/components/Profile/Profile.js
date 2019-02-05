@@ -82,10 +82,7 @@ class Profile extends Component {
                         : <Settings hotKey={this.props.hotKey} setHotKey={this.props.setHotKey}></Settings>}
                     </div>
                 </div>
-<<<<<<< HEAD
-=======
 
->>>>>>> 67f4b340f78701feb8c420ac88a7928bb9e699d3
                 <Achievements addMoney={this.props.addMoney}></Achievements>
                 {this.state.popup ? <Popup togglePopup={this.togglePopup}></Popup> : null}
             </div>
