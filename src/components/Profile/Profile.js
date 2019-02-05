@@ -71,7 +71,7 @@ class Profile extends Component {
             <div>
                 <div className="profile-top-wrapper">
                     <div className="profile-top-image-wrapper">
-                        <div onClick={this.openPopup} className="profile-top-image avatar"><img alt="avatar" src={require("../../img/VanDarkholme.jpg")}/></div>
+                        <div onClick={this.openPopup} className="profile-top-image avatar"><img alt="avatar" src={require("../../img/avatars/VanDarkholme.jpg")}/></div>
                     </div>
                     <div className="profile-top-switcher">
                         {this.state.stats
@@ -90,7 +90,6 @@ class Profile extends Component {
     }
 
 }
-
 
 const mapStateToProps = store => {
     return {
