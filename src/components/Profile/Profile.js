@@ -71,7 +71,7 @@ class Profile extends Component {
             <div>
                 <div className="profile-top-wrapper">
                     <div className="profile-top-image-wrapper">
-                        <div onClick={this.openPopup} className="profile-top-image avatar"><img alt="avatar" src={require("../../img/VanDarkholme.jpg")}/></div>
+                        <div onClick={this.openPopup} className="profile-top-image avatar"><img alt="avatar" src={require("../../img/avatars/VanDarkholme.jpg")}/></div>
                     </div>
                     <div className="profile-top-switcher">
                         {this.state.stats
@@ -82,10 +82,7 @@ class Profile extends Component {
                         : <Settings hotKey={this.props.hotKey} setHotKey={this.props.setHotKey}></Settings>}
                     </div>
                 </div>
-<<<<<<< HEAD
-=======
 
->>>>>>> 67f4b340f78701feb8c420ac88a7928bb9e699d3
                 <Achievements addMoney={this.props.addMoney}></Achievements>
                 {this.state.popup ? <Popup togglePopup={this.togglePopup}></Popup> : null}
             </div>
@@ -93,7 +90,6 @@ class Profile extends Component {
     }
 
 }
-
 
 const mapStateToProps = store => {
     return {

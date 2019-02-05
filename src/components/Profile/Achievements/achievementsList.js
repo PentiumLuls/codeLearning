@@ -1,4 +1,4 @@
-const VanDarkholme = require("../../../img/VanDarkholme.jpg");
+const VanDarkholme = require("../../../img/avatars/VanDarkholme.jpg");
 const trophyCup = require("../../../img/achievements/cupTrophy_1.png");
 const goldMedal = require("../../../img/achievements/goldMedal_1.png");
 const ruby = require("../../../img/achievements/ruby_1.png");

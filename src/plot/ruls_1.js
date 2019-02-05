@@ -18,13 +18,13 @@ export const notes = [[
                 text: <div><p>В начале некоторых уровней ты сможешь просмотреть полезную информацию по этому уровню:
                     например, туториал к нему. Желаешь посмотреть еще раз? Не беда! Всю эту информацию ты сможешь найти
                     в своём журнале</p>
-                    <img className="image-flex" src={require("../../src/img/popup.jpeg")}/></div>
+                    <img className="image-flex" src={require("../img/tutorialImg/popup.jpeg")}/></div>
             },
             {
                 title: "Левая панель",
                 text: <div><p>На левой панели находится список квестов и переключатели между журналом и редактором кода.
                     Ты можешь свободно переключаться между квестами, которые тебе доступны"</p>
-                    <img className="image-flex" src={require("../../src/img/leftpanel.jpeg")}/></div>
+                    <img className="image-flex" src={require("../img/tutorialImg/leftpanel.jpeg")}/></div>
             },
             {
                 title: "Квесты",
@@ -32,25 +32,25 @@ export const notes = [[
                     или комбинацию ctrl+shift+x. Если задание выполнено правильно, разблокируется следующий квест.
                     Запутался в коде? Нажми кнопку 'Reset'. После прохождения квеста появится кнопка NEXT LEVEL, как
                     думаешь, что она делает?</p>
-                    <img className="image-flex" src={require("../../src/img/codeditor.jpeg")}/></div>
+                    <img className="image-flex" src={require("../img/tutorialImg/codeditor.jpeg")}/></div>
             },
             {
                 title: "Терминал",
                 text: <div><p>Результат запуска твоего кода будет отображаться здесь. Также ты можешь очистить его с
                     помощью нажатия кнопки 'Clear terminal'</p>
-                    <img className="image-flex" src={require("../../src/img/terminal.jpeg")}/></div>
+                    <img className="image-flex" src={require("../img/tutorialImg/terminal.jpeg")}/></div>
             },
             {
                 title: "Чат",
                 text: <div><p>В чате к тебе будут обращаться сюжетные персонажи. Также ты можешь запросить здесь
                     подсказку. В режиме журнала чат недоступен.</p>
-                    <img className="image-flex" src={require("../../src/img/chatbox.jpeg")}/></div>
+                    <img className="image-flex" src={require("../img/tutorialImg/chatbox.jpeg")}/></div>
             },
             {
                 title: "Журнал",
                 text: <div><p>Если будет нужна помощь, заглядывай в журнал. Здесь ты сможешь найти различные руководства
                     и туториалы к уровням</p>
-                    <img className="image-flex" src={require("../../src/img/journal.jpeg")}/></div>
+                    <img className="image-flex" src={require("../img/tutorialImg/journal.jpeg")}/></div>
             },
         ]
     },
