@@ -1,6 +1,7 @@
 import { SELECT_QUEST, SELECT_STAGE, PASS_QUEST, NEXT_LEVEL, NEXT_STEP, PREV_STEP } from '../actions/questActions'
 import { RESET_CODE, WRITE_CODE, CHANGE_SHOW_POPUP, CLEAR_TERMINAL, SHOW_ANSWER, EXPORT_RUN, EXPORT_HIDE_NEXT_CODE, EXPORT_HIDE_CHAT } from '../actions/codeActions'
-import { SPEND_MONEY, ADD_MONEY, spendMoney } from '../actions/moneyActions'
+import { SPEND_MONEY, ADD_MONEY} from '../actions/moneyActions'
+import { TICK_TIME_IN_GAME, TICK_QUEST_TIME, INITIAL_INTERVAL, tickQuestTime } from '../actions/stats'
 import {quests} from '../../plot/quests';
 import CryptoJS from 'crypto-js'
 
@@ -35,7 +36,9 @@ if (!localStorage['achievements']) {
         {id: 7, status: 0, earned: 0}, {id: 8, status: 0, spend: 0}, {id: 9, status: 0}, {id: 10, status: 0}, {id: 11, status: 0},
         {id: 12, status: 0}]);
 }
-
+if (!localStorage['timeInGame']) {
+    localStorage['timeInGame'] = JSON.stringify({hours: 0, minutes: 0, seconds: 0})
+}
 if (!localStorage['stats']) {
     localStorage['stats'] = JSON.stringify({
         symbols: 0,
@@ -43,6 +46,32 @@ if (!localStorage['stats']) {
         unsuccessfulRuns: 0,
         spendMoneys: 0
     })
+}
+if (!localStorage['questTime']) {
+    localStorage['questTime'] = new Date();
+}
+if (!localStorage['records']) {
+    localStorage['records'] = JSON.stringify(
+    [
+        [
+            
+        ],
+        [
+            
+        ],
+        [
+            
+        ],
+        [
+            
+        ],
+        [
+            
+        ],
+        [
+            
+        ]
+    ])
 }
 
 
@@ -61,24 +90,25 @@ export const initialState = {
     money: +CryptoJS.AES.decrypt(localStorage['LH;;tabs'].toString(), 'Kt0 et0 ch1tayet t0t l0h').toString(CryptoJS.enc.Utf8),
     hideNextLevel: null,
     hideChat: null,
-    stats: {
-        symbols: JSON.parse(localStorage['stats']).symbols,
-        successfulRuns: JSON.parse(localStorage['stats']).successfulRuns,
-        unsuccessfulRuns: JSON.parse(localStorage['stats']).unsuccessfulRuns,
-        spendMoneys: JSON.parse(localStorage['stats']).spendMoneys
-    }
+    stats: JSON.parse(localStorage['stats']),
+    timeInGame: JSON.parse(localStorage['timeInGame']),
+    questTime: new Date(),
+    records: JSON.parse(localStorage['records'])
 };
 
 
 export function rootReducer(state = initialState, action) {
+
     let achievements = JSON.parse(localStorage['achievements']);
 
     switch (action.type) {
         case SELECT_QUEST:
+            const currentDate1 = new Date();
             state.hideNextLevel();
             localStorage.currentQuest = action.payload;
-            console.log(state.timeInGame)
-            return {...state, currentQuest: action.payload};
+            localStorage['questTime'] = currentDate1;
+            
+            return {...state, currentQuest: action.payload, questTime: currentDate1};
         
         case SELECT_STAGE:
             localStorage.currentStage = action.payload;
@@ -86,9 +116,16 @@ export function rootReducer(state = initialState, action) {
         
         case PASS_QUEST:
             const passingLevels = JSON.parse(localStorage['passingLevels']);
+            const currentDate = new Date();
 
             if (state.currentStage == state.passStages && state.currentQuest == state.passQuests) {
                 localStorage['LH;;tabs'] = CryptoJS.AES.encrypt(`${state.money + 5}`, 'Kt0 et0 ch1tayet t0t l0h');
+                
+                const record = [...state.records];
+                record[state.currentStage][state.currentQuest] = (Date.parse(currentDate) - Date.parse(state.questTime)) / 1000;
+                localStorage['records'] = JSON.stringify(record)
+
+
                 if (state.currentQuest > 0) {
                     passingLevels[state.currentStage][state.currentQuest - 1] = 1;
                     localStorage['passingLevels'] = JSON.stringify(passingLevels);
@@ -106,35 +143,52 @@ export function rootReducer(state = initialState, action) {
 
                     localStorage.passStages = state.currentStage + 1;
                     localStorage.passQuests = 0;
-                    return {...state, passStages: state.currentStage + 1, passQuests: 0, money: state.money + 5}
+                    return {...state, passStages: state.currentStage + 1, passQuests: 0, money: state.money + 5, records: record}
                 } else {
                     localStorage.passQuests = state.currentQuest + 1;
-                    return {...state, passQuests: state.currentQuest + 1, money: state.money + 5}
+                    return {...state, passQuests: state.currentQuest + 1, money: state.money + 5, records: record}
                 }
             }
+
+            
+            const record = [...state.records];
+
+            if ((Date.parse(currentDate) - Date.parse(state.questTime)) / 1000
+                < record[state.currentStage][state.currentQuest]) {
+                record[state.currentStage][state.currentQuest] = (Date.parse(currentDate) - Date.parse(state.questTime)) / 1000
+            }
+
+            localStorage['records'] = JSON.stringify(record)
             
             if (passingLevels[state.currentStage][state.currentQuest] > 0) {
+                
+
                 passingLevels[state.currentStage][state.currentQuest] -= 1;
                 localStorage['passingLevels'] = JSON.stringify(passingLevels);
                 localStorage['LH;;tabs'] = CryptoJS.AES.encrypt(`${state.money + 3}`, 'Kt0 et0 ch1tayet t0t l0h');
-                //ACHIEVEMENTS - EARNED N MONEY
+              //ACHIEVEMENTS - EARNED N MONEY
                 if (achievements[7].status === 0) {
                     achievements[7].earned += 3;
                 }
                 localStorage['achievements'] = JSON.stringify(achievements);
+                return {...state, money: state.money + 3, records: record}
+            }     
+            
+            return {...state, records: record}
 
-                return {...state, money: state.money + 3}
-            } return {...state};
             
 
         case NEXT_LEVEL:
+            const currentDate2 = new Date()
+            localStorage['questTime'] = currentDate2;
+            
             if (state.currentQuest == quests[state.currentStage].quests.length - 1) {
                 localStorage.currentStage = state.currentStage + 1;
                 localStorage.currentQuest = 0;
-                return {...state, currentStage: state.currentStage + 1, currentQuest: 0}
+                return {...state, currentStage: state.currentStage + 1, currentQuest: 0, questTime: currentDate2}
             } else {
                 localStorage.currentQuest = state.currentQuest + 1;
-                return {...state, currentQuest: state.currentQuest + 1}
+                return {...state, currentQuest: state.currentQuest + 1, questTime: currentDate2}
             }
 
         case RESET_CODE:
@@ -182,17 +236,41 @@ export function rootReducer(state = initialState, action) {
             return {...state, money: state.money + action.payload};
 
         case SPEND_MONEY:
-            localStorage['stats'] = JSON.stringify({...JSON.parse(localStorage['stats']), spendMoneys: JSON.parse(localStorage['stats']) + action.payload})
+
+            localStorage['stats'] = JSON.stringify({...state.stats, spendMoneys: state.stats.spendMoneys + action.payload})
+
             localStorage['LH;;tabs'] = CryptoJS.AES.encrypt(`${state.money - action.payload}`, 'Kt0 et0 ch1tayet t0t l0h');
+             if (achievements[8].status === 0) {
+                    achievements[8].spend += action.payload;
+                }
+                localStorage['achievements'] = JSON.stringify(achievements);
+            return {...state, money: state.money - action.payload, stats: {...state.stats, spendMoneys: state.stats.spendMoneys + action.payload}};
 
-            if (achievements[8].status === 0) {
-                achievements[8].spend += action.payload;
+        case TICK_TIME_IN_GAME:
+            const time = {...state.timeInGame}
+            if(time.seconds === 59) {
+                if(time.minutes === 59){
+                    time.hours += 1
+                    time.minutes = 0
+                    time.seconds = 0
+                } else {
+                    time.minutes += 1
+                    time.seconds = 0
+                }
+            } else {
+                time.seconds += 1
             }
-            localStorage['achievements'] = JSON.stringify(achievements);
+            
+            localStorage['timeInGame'] = JSON.stringify(time);
+            return {...state, timeInGame: time}
 
-            return {...state, money: state.money - action.payload, spendMoneys: state.spendMoney + action.payload};
+
+        case INITIAL_INTERVAL:
+            return {...state}
+
 
         default:
-            return state
+            return {...state}
     }
 }
+
