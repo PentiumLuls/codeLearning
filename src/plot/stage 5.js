@@ -13,32 +13,20 @@ function factorial(a){
 
 
 ////  quest 2  ////
-const cow = {
-    milk: 15
-}
-
-function MilkCow(cow){
+////fib
+function MilkCow(n){
+   
+        return n <= 1 ? n : MilkCow(n - 1) + MilkCow(n - 2);
     
-    return Milk(cow.milk)
 }
 
-function Milk(milk){
-    return(milk == 0) ? 0 : 5 + Milk(milk-1)
-}
+///function Milk(milk){
+///   return(milk == 0) ? 0 : 5 + Milk(milk-1)
+///}
 
 
-///// quest 3 ////
 
-function pow(a,n){
-    if(n === 1) return a;
-    return a * pow(a,n-1);
-}
-function openpowl(a,b){
- return pow(a,2) +(2 * a * b) + pow(b,2)
-}
-console.log(openpowl(6,-2))
-
-//// quest 4 ///
+//// quest 3 ///
 
 
 
@@ -49,20 +37,95 @@ function milkCows(cows,n){
     return Milk(cows[n].milk) + milkCows(cows,n+1);
 }
 
-function Milk(milk){
+/*function Milk(milk){
     return(milk == 0) ? 0 : 5 + Milk(milk-1)
+}*/
+
+function Milk(milk){
+   return 5 * milk
 }
 
 
 
-//// quest 5 ////
-function pow(total,n,a){
+
+//// quest 4 ////
+function powHelper(total,n,a){
     if(n === 0) return total;
-    return pow(total*a,n-1,a);
+    return powHelper(total*a,n-1,a);
 }
 
-function factorial(a,total){
+function factorialHelper(a,total){
     if(a === 1) return total;
-    return factorial(a-1,total*a)
+    return factorialHelper(a-1,total*a)
+}
+
+function pow(a,n){
+   return powHelper(1,n,a);
+}
+
+function factorial(a){
+   return factorialHelper(a,1)
 }
 //// quest 5 ///
+const cow = {milk:10}
+
+function makeCheese(cow){
+    const newcow = {...cow};
+    const cheeses = [];
+    return makeCheeseHelper(newcow,cheeses,1)
+    
+}
+
+function makeCheeseHelper(cow,cheeses,e){
+    if(cow.milk == 0) return cheeses;
+    else{
+        
+        cheeses.push((2*e).toFixed(1))
+        cow.milk -= 2;
+        return makeCheeseHelper(cow,cheeses,e-0.20);
+    }
+}
+console.log(makeCheese(cow))
+
+
+//// quest 6 ///
+const firms = [{name:'name1',cheeseWeight:5},{name:'name2',cheeseWeight:45},{name:'name3',cheeseWeight:19}]
+
+function maxWeight(firms,n,maxobj){
+    if(n ==  firms.length) return maxobj;
+    return maxWeight(firms,n+1,maxWeightHelper(firms[n],maxobj))
+}
+
+function maxWeightHelper(A, B) {
+    return A.cheeseWeight < B.cheeseWeight ? B : A;
+}
+
+function findWinner(firms){
+    return maxWeight(firms,0,firms[0]).name;
+}
+console.log(findWinner(firms))
+
+////  quest 7 ////
+const cow = {milk:10}
+
+function makeCheese(cow,n){
+    const newcow = {...cow};
+    const cheeses = [];
+    return makeCheeseHelper(newcow,cheeses,0.4,n)
+    
+}
+
+function makeCheeseHelper(cow,cheeses,e,n){
+    if(cow.milk == 0 || n == 0) return cheeses;
+    else{
+        
+        cheeses.push((e).toFixed(1))
+        cow.milk -= 1;
+        return makeCheeseHelper(cow,cheeses,e*1.1,n-1);
+    }
+}
+console.log(makeCheese(cow,5))
+
+
+
+
