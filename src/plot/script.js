@@ -27,6 +27,12 @@ function tick(time) {
 
 
 
+function makeCheese(cow,n){
+    const newcow = {...cow};
+    const cheeses = [];
+    return makeCheeseHelper(newcow,cheeses,0.4,n)
+    
+}
 
 const time = Date()
 
