@@ -16,8 +16,8 @@ const openedBook = require("../../../img/achievements/openedBook_1.png");
 export const achievementsList = [
     {
         id: 0,
-        name: "Brave hero",
-        descriptions: "Pass 3 quests",
+        name: "Beginning of your sorter career",
+        descriptions: "Pass 2 quests in first chapter",
         rewardText: "nope",
         moneyReward: 10,
         image: manuscript1,
@@ -25,8 +25,8 @@ export const achievementsList = [
     },
     {
         id: 1,
-        name: "War dude",
-        descriptions: "Pass 1st stage",
+        name: "It`s only just began",
+        descriptions: "Pass 1st chapter",
         rewardText: "fumes x2",
         moneyReward: 20,
         image: goldMedal,
@@ -34,16 +34,16 @@ export const achievementsList = [
     },
     {
         id: 2,
-        name: "The great Unknown, self-proclaimed master",
-        descriptions: "Pass 3 stages",
+        name: "Failed wedding",
+        descriptions: "Pass 3 chapters",
         rewardText: "reward",
         moneyReward: 50,
-        image: crown,
+        image: manuscript2,
         status: -1
     },
     {
         id: 3,
-        name: "F*cking cheater!",
+        name: "F*cking cheater",
         descriptions: "Use money cheat 1 time",
         rewardText: "reward",
         moneyReward: -10,
@@ -61,7 +61,7 @@ export const achievementsList = [
     },
     {
         id: 5,
-        name: "You`ve just ruined the game!",
+        name: "Grand Game Breaker",
         descriptions: "Use quest unlock cheat 10 times",
         rewardText: "horse power",
         moneyReward: -9999999,
@@ -74,12 +74,12 @@ export const achievementsList = [
         descriptions: "Cheat less then -1000 money",
         rewardText: "dimon",
         moneyReward: 1,
-        image: manuscript2,
+        image: crown,
         status: -1
     },
     {
         id: 7,
-        name: "HZ",
+        name: "The great Unknown, self-proclaimed master",
         descriptions: "Earn 100 money",
         rewardText: "-9999",
         moneyReward: 10,

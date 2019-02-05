@@ -15,7 +15,7 @@ export const updateAchievements = (id, value) => {
 
     ////LEVELS PASSING////
     //PASS 3 QUESTS ACHIEVEMENT
-    if (achievements[0].status === -1 && ((localStorage['passStages'] === 0 && localStorage['passQuests'] >= 3) || (localStorage['passStages'] > 0))) {
+    if (achievements[0].status === -1 && ((localStorage['passStages'] === 0 && localStorage['passQuests'] >= 2) || (localStorage['passStages'] > 0))) {
         achievements[0].status = 1;
     }
     //PASS 1st STAGE
