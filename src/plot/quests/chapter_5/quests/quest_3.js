@@ -2,8 +2,8 @@ export const quest3 =
     {
         title: "Адская экосистема",
         text: `Корова восхищена вашими навыками функционального программирования, а индус и не думает вас отпускать. Оказывается, функции множественной подойки ему тоже недостаточно, ведь у всего индусского поселения закончились запасы сыра. Корова устало вздыхает. Вы молча задаётесь вопросом, откуда здесь вообще индус и корова, и почему она даёт красное молоко.`,
-        regexps: [/(return)/g, /(function)/g, /(cow)/g, /(milk)/g, /(milkACow)/g],
-        regexpsNone: [/(for)/g, /(while)/g, /(var)/g, /(map)/g, /(reduce)/g, /(filter)/g, /(filter)/g,],
+        regexps: [],
+        regexpsNone: [/(for)/g, /(while)/g, /(var)/g, /(let)/g],
         code: `//Мои братья индусы хотят сырууу. Помоги нам сделать сыр,
 //а я пойду його продавать на базар. Напиши шункцию milkACow которая принимает корову,
 //доит её по заказу клиентов и когда молоко закончиться верни масив сыров.
@@ -25,27 +25,32 @@ function milkACow(cow, mass) {
 }
 `,
         test: {
-            code: `let valid = true;
-                    let cow2 = {milk: 10}
-                        let myCow = milkACow(cow2)
-                        if(JSON.stringify(myCow(4)) !== JSON.stringify(undefined)){valid = false};
-                        if(JSON.stringify(myCow(4)) !== JSON.stringify(undefined)){valid = false};
-                        if(JSON.stringify(myCow(4)) !== JSON.stringify([2, 2, 1])){valid = false};
-                        if(cow2.milk !== 10){valid = false};
-                    valid === true`,
-            answer: `function milkACow(cow) {
-                        let newcow = Object.assign({}, cow);
-                        let cheeses = []
-                        return function(int) {
-                            if (int >= newcow.milk) {
-                                cheeses.push(newcow.milk / 2)
-                                newcow.milk = 0
-                                return cheeses;
-                            }
-                        newcow.milk -= int
-                        cheeses.push(int / 2)   
+            code: `describe("3", function() {
+
+               it("shou+ld ",function() {
+                  expect().toEqual();
+               });
+
+            });
+                  const report = runSpecs();
+                        for (var i = 0; i < report.passed.length; i++) {
+                          reporterLog(report.descriptions[i], report.passed[i])
                         }
-                    }
-                    `
+                        if (report.passed.indexOf(false) === -1) { true } else false;`,
+
+            answer: `//    
+
+const cows = [{milk:10}, {milk:5}, {milk:0}];
+
+function milkCows(cows, n) {
+    if (n === cows.length ) return 0;
+    return Milk(cows[n].milk) + milkCows(cows,n+1);
+}
+
+function Milk(milk){
+   return 5 * milk;
+}
+
+terminal.log(milkCows(cows, 0));`
         }
     };
