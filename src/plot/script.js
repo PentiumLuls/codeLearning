@@ -27,4 +27,6 @@ function tick(time) {
 
 
 
-console.log(time);
+
+const time = Date()
+

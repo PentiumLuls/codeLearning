@@ -13,7 +13,7 @@ import {tickTimeInGame, initialInterval, tickQuestTime} from '../../store/action
 import sound from '../../audio/sans.mp3';
 import sound2 from '../../audio/sans.ogg';
 import Profile from '../Profile/Profile';
-import {updateAchievements} from "../Profile/achievementsHandler";
+import {updateAchievements} from "../Profile/Achievements/achievementsHandler";
 
 class App extends Component {
     constructor(props) {

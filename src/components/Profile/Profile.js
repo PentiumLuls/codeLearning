@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Stats from './Stats';
 import Settings from './Settings';
-import Achievements from './Achievements';
+import Achievements from './Achievements/AchievementsRenderer';
 import { connect } from 'react-redux';
 
 
