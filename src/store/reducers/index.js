@@ -158,7 +158,7 @@ export function rootReducer(state = initialState, action) {
                 record[state.currentStage][state.currentQuest] = state.questTime[state.currentStage][state.currentQuest]
 
                 localStorage['records'] = {...record}
-                localStorage['questTime'] = {hours: 0, minutes: 0, seconds: 0}
+                localStorage['questTime'] = JSON.stringify({hours: 0, minutes: 0, seconds: 0})
 
 
                 if (state.currentQuest > 0) {
@@ -188,7 +188,7 @@ export function rootReducer(state = initialState, action) {
             }
 
             localStorage['records'] = {...record}
-            localStorage['questTime'] = {hours: 0, minutes: 0, seconds: 0}
+            localStorage['questTime'] = JSON.stringify({hours: 0, minutes: 0, seconds: 0})
             
             if (passingLevels[state.currentStage][state.currentQuest] > 0) {
                 
@@ -257,7 +257,7 @@ export function rootReducer(state = initialState, action) {
             return {...state, money: state.money + action.payload};
 
         case SPEND_MONEY:
-            localStorage['stats'] = JSON.stringify({...state.stats, spendMoneys: state.spendMoney + action.payload})
+            localStorage['stats'] = JSON.stringify({...state.stats, spendMoneys: state.stats.spendMoneys + action.payload})
 
             localStorage['LH;;tabs'] = CryptoJS.AES.encrypt(`${state.money - action.payload}`, 'Kt0 et0 ch1tayet t0t l0h');
             return {...state, money: state.money - action.payload, spendMoneys: state.spendMoney + action.payload};
