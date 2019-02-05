@@ -9,7 +9,7 @@ import {quests} from '../../plot/quests';
 import Chatbot from '../ChatBot/Chatbot';
 import {connect} from 'react-redux';
 import {changeShowPopup} from '../../store/actions/codeActions';
-import {tickTimeInGame, initialInterval} from '../../store/actions/stats';
+import {tickTimeInGame, initialInterval, tickQuestTime} from '../../store/actions/stats';
 import sound from '../../audio/sans.mp3';
 import sound2 from '../../audio/sans.ogg';
 import Profile from '../Profile/Profile';
@@ -28,7 +28,9 @@ class App extends Component {
             this.props.tickTimeInGame()
         }, 1000)
 
-        this.props.initialInterval();
+
+        this.props.initialInterval()
+
     }
 
     changeButtonState = () => {
@@ -158,7 +160,8 @@ const mapDispatchToProps = dispatch => {
     return {
         changeShowPopup: (can) => dispatch(changeShowPopup(can)),
         tickTimeInGame: () => dispatch(tickTimeInGame()),
-        initialInterval: () => dispatch(initialInterval())
+        initialInterval: () => dispatch(initialInterval()),
+        tickQuestTime: () => dispatch(tickQuestTime())
     }
 };
 

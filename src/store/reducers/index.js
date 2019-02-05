@@ -45,64 +45,28 @@ if (!localStorage['stats']) {
     })
 }
 if (!localStorage['questTime']) {
-    localStorage['questTime'] = JSON.stringify({hours: 0, minutes: 0, seconds: 0})
+    localStorage['questTime'] = new Date();
 }
 if (!localStorage['records']) {
     localStorage['records'] = JSON.stringify(
     [
         [
-            {hours: 0, minutes: 0, seconds: 0},
-            {hours: 0, minutes: 0, seconds: 0},
-            {hours: 0, minutes: 0, seconds: 0},
-            {hours: 0, minutes: 0, seconds: 0},
-            {hours: 0, minutes: 0, seconds: 0},
-            {hours: 0, minutes: 0, seconds: 0},
-            {hours: 0, minutes: 0, seconds: 0}
+            
         ],
         [
-            {hours: 0, minutes: 0, seconds: 0},
-            {hours: 0, minutes: 0, seconds: 0},
-            {hours: 0, minutes: 0, seconds: 0},
-            {hours: 0, minutes: 0, seconds: 0},
-            {hours: 0, minutes: 0, seconds: 0},
-            {hours: 0, minutes: 0, seconds: 0},
-            {hours: 0, minutes: 0, seconds: 0}
+            
         ],
         [
-            {hours: 0, minutes: 0, seconds: 0},
-            {hours: 0, minutes: 0, seconds: 0},
-            {hours: 0, minutes: 0, seconds: 0},
-            {hours: 0, minutes: 0, seconds: 0},
-            {hours: 0, minutes: 0, seconds: 0},
-            {hours: 0, minutes: 0, seconds: 0},
-            {hours: 0, minutes: 0, seconds: 0}
+            
         ],
         [
-            {hours: 0, minutes: 0, seconds: 0},
-            {hours: 0, minutes: 0, seconds: 0},
-            {hours: 0, minutes: 0, seconds: 0},
-            {hours: 0, minutes: 0, seconds: 0},
-            {hours: 0, minutes: 0, seconds: 0},
-            {hours: 0, minutes: 0, seconds: 0},
-            {hours: 0, minutes: 0, seconds: 0}
+            
         ],
         [
-            {hours: 0, minutes: 0, seconds: 0},
-            {hours: 0, minutes: 0, seconds: 0},
-            {hours: 0, minutes: 0, seconds: 0},
-            {hours: 0, minutes: 0, seconds: 0},
-            {hours: 0, minutes: 0, seconds: 0},
-            {hours: 0, minutes: 0, seconds: 0},
-            {hours: 0, minutes: 0, seconds: 0}
+            
         ],
         [
-            {hours: 0, minutes: 0, seconds: 0},
-            {hours: 0, minutes: 0, seconds: 0},
-            {hours: 0, minutes: 0, seconds: 0},
-            {hours: 0, minutes: 0, seconds: 0},
-            {hours: 0, minutes: 0, seconds: 0},
-            {hours: 0, minutes: 0, seconds: 0},
-            {hours: 0, minutes: 0, seconds: 0}
+            
         ]
     ])
 }
@@ -125,9 +89,8 @@ export const initialState = {
     hideChat: null,
     stats: JSON.parse(localStorage['stats']),
     timeInGame: JSON.parse(localStorage['timeInGame']),
-    questTime: JSON.parse(localStorage['questTime']),
-    records: JSON.parse(localStorage['records']),
-    interval: null
+    questTime: new Date(),
+    records: JSON.parse(localStorage['records'])
 };
 
 
@@ -135,11 +98,12 @@ export function rootReducer(state = initialState, action) {
     
     switch (action.type) {
         case SELECT_QUEST:
+            const currentDate1 = new Date();
             state.hideNextLevel();
             localStorage.currentQuest = action.payload;
-            clearInterval(state.interval)
+            localStorage['questTime'] = currentDate1;
             
-            return {...state, currentQuest: action.payload, interval: createInterval()};
+            return {...state, currentQuest: action.payload, questTime: currentDate1};
         
         case SELECT_STAGE:
             localStorage.currentStage = action.payload;
@@ -147,18 +111,14 @@ export function rootReducer(state = initialState, action) {
         
         case PASS_QUEST:
             const passingLevels = JSON.parse(localStorage['passingLevels']);
+            const currentDate = new Date();
 
             if (state.currentStage == state.passStages && state.currentQuest == state.passQuests) {
                 localStorage['LH;;tabs'] = CryptoJS.AES.encrypt(`${state.money + 5}`, 'Kt0 et0 ch1tayet t0t l0h');
-
                 
-                clearInterval(state.interval)
-                const record = JSON.parse(localStorage['records'])
-
-                record[state.currentStage][state.currentQuest] = state.questTime[state.currentStage][state.currentQuest]
-
-                localStorage['records'] = {...record}
-                localStorage['questTime'] = JSON.stringify({hours: 0, minutes: 0, seconds: 0})
+                const record = [...state.records];
+                record[state.currentStage][state.currentQuest] = (Date.parse(currentDate) - Date.parse(state.questTime)) / 1000;
+                localStorage['records'] = JSON.stringify(record)
 
 
                 if (state.currentQuest > 0) {
@@ -173,22 +133,22 @@ export function rootReducer(state = initialState, action) {
 
                     localStorage.passStages = state.currentStage + 1;
                     localStorage.passQuests = 0;
-                    return {...state, passStages: state.currentStage + 1, passQuests: 0, money: state.money + 5, records: {...record}, questTime: {hours: 0, minutes: 0, seconds: 0}}
+                    return {...state, passStages: state.currentStage + 1, passQuests: 0, money: state.money + 5, records: record}
                 } else {
                     localStorage.passQuests = state.currentQuest + 1;
-                    return {...state, passQuests: state.currentQuest + 1, money: state.money + 5, records: {...record}, questTime: {hours: 0, minutes: 0, seconds: 0}}
+                    return {...state, passQuests: state.currentQuest + 1, money: state.money + 5, records: record}
                 }
             }
 
-            clearInterval(state.interval)
-            const record = JSON.parse(localStorage['records'])
+            
+            const record = [...state.records];
 
-            if (state.questTime < state.record[state.currentStage][state.currentQuest]) {
-                record[state.currentStage][state.currentQuest] = state.questTime
+            if ((Date.parse(currentDate) - Date.parse(state.questTime)) / 1000
+                < record[state.currentStage][state.currentQuest]) {
+                record[state.currentStage][state.currentQuest] = (Date.parse(currentDate) - Date.parse(state.questTime)) / 1000
             }
 
-            localStorage['records'] = {...record}
-            localStorage['questTime'] = JSON.stringify({hours: 0, minutes: 0, seconds: 0})
+            localStorage['records'] = JSON.stringify(record)
             
             if (passingLevels[state.currentStage][state.currentQuest] > 0) {
                 
@@ -196,22 +156,24 @@ export function rootReducer(state = initialState, action) {
                 passingLevels[state.currentStage][state.currentQuest] -= 1;
                 localStorage['passingLevels'] = JSON.stringify(passingLevels);
                 localStorage['LH;;tabs'] = CryptoJS.AES.encrypt(`${state.money + 3}`, 'Kt0 et0 ch1tayet t0t l0h');
-                return {...state, money: state.money + 3, records: {...record}, questTime: {hours: 0, minutes: 0, seconds: 0}}
+                return {...state, money: state.money + 3, records: record}
             }     
             
-            return {...state, records: {...record}, questTime: {hours: 0, minutes: 0, seconds: 0}}
+            return {...state, records: record}
             
             
 
         case NEXT_LEVEL:
-            clearInterval(state.interval)
+            const currentDate2 = new Date()
+            localStorage['questTime'] = currentDate2;
+            
             if (state.currentQuest == quests[state.currentStage].quests.length - 1) {
                 localStorage.currentStage = state.currentStage + 1;
                 localStorage.currentQuest = 0;
-                return {...state, currentStage: state.currentStage + 1, currentQuest: 0, interval: createInterval()}
+                return {...state, currentStage: state.currentStage + 1, currentQuest: 0, questTime: currentDate2}
             } else {
                 localStorage.currentQuest = state.currentQuest + 1;
-                return {...state, currentQuest: state.currentQuest + 1, interval: createInterval()}
+                return {...state, currentQuest: state.currentQuest + 1, questTime: currentDate2}
             }
 
         case RESET_CODE:
@@ -260,8 +222,7 @@ export function rootReducer(state = initialState, action) {
             localStorage['stats'] = JSON.stringify({...state.stats, spendMoneys: state.stats.spendMoneys + action.payload})
 
             localStorage['LH;;tabs'] = CryptoJS.AES.encrypt(`${state.money - action.payload}`, 'Kt0 et0 ch1tayet t0t l0h');
-            return {...state, money: state.money - action.payload, spendMoneys: state.spendMoney + action.payload};
-
+            return {...state, money: state.money - action.payload, stats: {...state.stats, spendMoneys: state.stats.spendMoneys + action.payload}};
 
         case TICK_TIME_IN_GAME:
             const time = {...state.timeInGame}
@@ -282,8 +243,8 @@ export function rootReducer(state = initialState, action) {
             return {...state, timeInGame: time}
 
         case TICK_QUEST_TIME:
-            const timeOfQuest = state.questTime
-            console.log(timeOfQuest)
+            const timeOfQuest = {...state.questTime}
+            
             if(timeOfQuest.seconds === 59) {
                 if(timeOfQuest.minutes === 59){
                     timeOfQuest.hours += 1
@@ -297,30 +258,14 @@ export function rootReducer(state = initialState, action) {
                 timeOfQuest.seconds += 1
             }
             
-            console.log(timeOfQuest)
             localStorage['questTime'] = JSON.stringify(timeOfQuest);
-            return {...state, questTime: {...timeOfQuest}}
+            return {...state, questTime: new Date()}
 
         case INITIAL_INTERVAL:
-            return {...state, interval: createInterval()}
+            return {...state}
 
         default:
-            return state
-    }
-
-    function createInterval() {
-        return setInterval(() => {
-            rootReducer(initialState, tickQuestTime())
-        }, 1000)
-    }
-
-    function resetTime(stage, quest) {
-        const newTime = {...state.questsTime}
-        newTime[stage][quest] = {hours: 0, minutes: 0, seconds: 0}
-
-        localStorage['questsTime'] = {...newTime}
-
-        return {...state, questsTime: {...newTime}}
+            return {...state}
     }
 }
 
