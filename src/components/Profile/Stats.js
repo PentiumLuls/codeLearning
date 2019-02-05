@@ -1,7 +1,6 @@
 import React from 'react'
 
 export default (props) => {
-    console.log(props);
     return (
         <div className="profile-top-stats">
             <h3>Статистика</h3>

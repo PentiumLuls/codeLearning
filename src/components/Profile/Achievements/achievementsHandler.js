@@ -92,7 +92,7 @@ const getAchievementJSX = (achievement, key) => {
             </div>
             <div className="achievement-button-wrapper">
                 <button
-                    className={(achievement.status === 1 && buttonsState[achievement.id] === 0) ? null : "achievement-button-disabled"}
+                    className={achievement.status === 1  ? null : "achievement-button-disabled"}
                     onClick={achievement.status === 1 ? handleRewardClick(achievement.id, achievement.moneyReward) : null}>
                     {achievement.rewardText}
                 </button>
