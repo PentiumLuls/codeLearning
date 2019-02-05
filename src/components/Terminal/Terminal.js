@@ -10,6 +10,7 @@ import {
     exportRun,
     exportHideNextCode
 } from '../../store/actions/codeActions'
+import {addSuccessfulRun, addUnsuccessfulRun} from '../../store/actions/statActions'
 
 class Terminal extends Component {
     constructor() {
@@ -91,8 +92,9 @@ class Terminal extends Component {
 
                 if (vm.runInThisContext(codeToEvaluate) === true && regexp.pass === true) {
                     this.unlockQuest();
-
+                    this.props.addSuccessfulRun();
                 } else {
+                    this.props.addUnsuccessfulRun();
                     let information = '';
                     if (regexp.useIt.length !== 0) {
                         information += `You should use ${this.parseRegexp(regexp.useIt)}\n`
@@ -258,7 +260,9 @@ const mapDispatchToProps = dispatch => {
         changeShowPopup: (can) => dispatch(changeShowPopup(can)),
         clearTerminal: (func) => dispatch(clearTerminal(func)),
         exportRun: (func) => dispatch(exportRun(func)),
-        exportHideNextLevel: (func) => dispatch(exportHideNextCode(func))
+        exportHideNextLevel: (func) => dispatch(exportHideNextCode(func)),
+        addSuccessfulRun: () => dispatch(addSuccessfulRun()),
+        addUnsuccessfulRun: () => dispatch(addUnsuccessfulRun())
     }
 };
 

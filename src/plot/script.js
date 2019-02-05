@@ -1,4 +1,31 @@
-const cow = {milk:10}
+const time = {
+    hours: 0,
+    minutes: 0,
+    seconds: 0
+}
+
+const interval = setInterval(() => {
+    tick(time);
+    console.log(time)
+}, 1000)
+
+
+function tick(time) {
+    if(time.seconds === 59) {
+        if(time.minutes === 59){
+            time.hours += 1
+            time.minutes = 0
+            time.seconds = 0
+        } else {
+            time.minutes += 1
+            time.seconds = 0
+        }
+    } else {
+        time.seconds += 1
+    }
+}
+
+
 
 function makeCheese(cow,n){
     const newcow = {...cow};
@@ -7,13 +34,5 @@ function makeCheese(cow,n){
     
 }
 
-function makeCheeseHelper(cow,cheeses,e,n){
-    if(cow.milk == 0 || n == 0) return cheeses;
-    else{
-        
-        cheeses.push((e).toFixed(1))
-        cow.milk -= 1;
-        return makeCheeseHelper(cow,cheeses,e*1.1,n-1);
-    }
-}
-console.log(makeCheese(cow,5))
+const time = Date()
+

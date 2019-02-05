@@ -2,6 +2,7 @@ export const ADD_SYMBOL = "ADD_SUMBOL";
 export const ADD_SUCCESSFUL_RUN = "ADD_SUCCESSFUL_RUN";
 export const ADD_UNSUCCESSFUL_RUN = "ADD_UNSUCCESSFUL_RUN";
 export const ADD_SPENDED_MONEY = "ADD_SPENDED_MONEY";
+export const TICK_TIME_IN_GAME = "TICK_TIME_IN_GAME";
 
 export function addSymbol() {
     return {
@@ -21,8 +22,8 @@ export function addUnsuccessfulRun() {
     }
 }
 
-export function addSpendedMoney() {
+export function tickTimeInGame() {
     return {
-        type: ADD_SPENDED_MONEY
+        type: TICK_TIME_IN_GAME
     }
 }

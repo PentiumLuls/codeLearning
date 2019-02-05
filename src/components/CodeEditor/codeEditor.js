@@ -1,22 +1,24 @@
 import ReactAce from 'react-ace';
 import React, {Component} from 'react';
-import brace from 'brace'
+import brace from 'brace';
+import {addSymbol} from '../../store/actions/statActions'
 import { connect } from 'react-redux';
 
 import 'brace/mode/javascript';
 import 'brace/theme/terminal';
 
 class CodeEditor extends Component {
-    constructor() {
-        super();
+    constructor(props) {
+        super(props);
         this.forUpdate = false;
         this.state = {
             code: localStorage.code || ''
         }
     }
 
-    onChange(newValue, e) {
+    onChange = (newValue, e) => {
         localStorage["code"] = newValue;
+        this.props.addSymbol();
     }
 
     aceWriteCode = (text) => {
@@ -88,5 +90,11 @@ const mapStateToProps = store => {
     }
 }
 
+const mapDispatchToProps = dispatch => {
+    return {
+        addSymbol: () => dispatch(addSymbol())
+    }
+}
 
-export default connect(mapStateToProps)(CodeEditor);
+
+export default connect(mapStateToProps, mapDispatchToProps)(CodeEditor);
