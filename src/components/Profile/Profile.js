@@ -4,6 +4,8 @@ import Settings from './Settings';
 import Achievements from './Achievements/AchievementsRenderer';
 import { connect } from 'react-redux';
 import {addMoney} from "../../store/actions/moneyActions";
+import {setHotKey} from "../../store/actions/codeActions";
+import Popup from "./ChangePhoto";
 
 
 class Profile extends Component {
@@ -11,7 +13,8 @@ class Profile extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            stats: true
+            stats: true,
+            popup: false
         }
     }
 
@@ -37,7 +40,7 @@ class Profile extends Component {
              }, 0)
         });
 
-        
+
         if (!summ && !amount) {
             return "00:00:00"
         }
@@ -51,12 +54,24 @@ class Profile extends Component {
         return average
     };
 
+    openPopup = () => {
+        this.setState({
+            popup: true
+        })
+    }
+
+    togglePopup = () => {
+        this.setState({
+            popup: false
+        })
+    }
+
     render() {
         return (
             <div>
                 <div className="profile-top-wrapper">
                     <div className="profile-top-image-wrapper">
-                        <div className="profile-top-image"><img alt="avatar" src={require("../../img/VanDarkholme.jpg")}/></div>
+                        <div onClick={this.openPopup} className="profile-top-image avatar"><img alt="avatar" src={require("../../img/VanDarkholme.jpg")}/></div>
                     </div>
                     <div className="profile-top-switcher">
                         {this.state.stats
@@ -64,29 +79,32 @@ class Profile extends Component {
                         : <div className="open-stats" onClick={this.openStats}></div>}
                         {this.state.stats
                         ? <Stats stats={this.props.stats} timeInGame={this.props.timeInGame} records={this.props.records} averageTime={this.averageTime()}></Stats>
-                        : <Settings></Settings>}
+                        : <Settings hotKey={this.props.hotKey} setHotKey={this.props.setHotKey}></Settings>}
                     </div>
                 </div>
-                
                 <Achievements addMoney={this.props.addMoney}></Achievements>
+                {this.state.popup ? <Popup togglePopup={this.togglePopup}></Popup> : null}
             </div>
         )
     }
     
 }
 
-const mapDispatchToProps = dispatch => {
-    return {
-        addMoney: (value) => dispatch(addMoney(value))
-    }
-};
 
 const mapStateToProps = store => {
     return {
         stats: store.stats,
         timeInGame: store.timeInGame,
-        records: store.records
+        records: store.records,
+        hotKey: store.hotKey
     }
 }
+
+const mapDispatchToProps = dispatch => {
+    return {
+        addMoney: (value) => dispatch(addMoney(value)),
+        setHotKey: (key) => dispatch(setHotKey(key))
+    }
+};
 
 export default connect(mapStateToProps, mapDispatchToProps)(Profile)

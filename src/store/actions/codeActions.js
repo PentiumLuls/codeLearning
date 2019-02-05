@@ -6,7 +6,7 @@ export const SHOW_ANSWER = 'SHOW_ANSWER';
 export const EXPORT_RUN = 'EXPORT_RUN';
 export const EXPORT_HIDE_NEXT_CODE = 'EXPORT_HIDE_NEXT_CODE';
 export const EXPORT_HIDE_CHAT = 'EXPORT_HIDE_CHAT'; 
-
+export const SET_HOT_KEY = 'SET_HOT_KEY'; 
 
 export function resetCode() {
     return {
@@ -59,6 +59,13 @@ export function exportHideChat(func) {
     return {
         type: EXPORT_HIDE_CHAT,
         payload: func
+    }
+}
+
+export function setHotKey(key) {
+    return {
+        type: SET_HOT_KEY,
+        payload: key
     }
 }
 

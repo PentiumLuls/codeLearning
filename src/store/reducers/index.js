@@ -1,5 +1,6 @@
 import { SELECT_QUEST, SELECT_STAGE, PASS_QUEST, NEXT_LEVEL, NEXT_STEP, PREV_STEP } from '../actions/questActions'
-import { RESET_CODE, WRITE_CODE, CHANGE_SHOW_POPUP, CLEAR_TERMINAL, SHOW_ANSWER, EXPORT_RUN, EXPORT_HIDE_NEXT_CODE, EXPORT_HIDE_CHAT } from '../actions/codeActions'
+import { RESET_CODE, WRITE_CODE, CHANGE_SHOW_POPUP, CLEAR_TERMINAL, SHOW_ANSWER, 
+    EXPORT_RUN, EXPORT_HIDE_NEXT_CODE, EXPORT_HIDE_CHAT, SET_HOT_KEY } from '../actions/codeActions'
 import { SPEND_MONEY, ADD_MONEY} from '../actions/moneyActions'
 import { TICK_TIME_IN_GAME, ADD_SYMBOL, ADD_SUCCESSFUL_RUN, ADD_UNSUCCESSFUL_RUN} from '../actions/statActions'
 import {quests} from '../../plot/quests';
@@ -73,6 +74,9 @@ if (!localStorage['records']) {
         ]
     ])
 }
+if (!localStorage['hotKey']) {
+    localStorage['hotKey'] = 'Ctrl-shift-x'
+}
 
 
 export const initialState = {
@@ -93,7 +97,8 @@ export const initialState = {
     stats: JSON.parse(localStorage['stats']),
     timeInGame: JSON.parse(localStorage['timeInGame']),
     questTime: new Date(),
-    records: JSON.parse(localStorage['records'])
+    records: JSON.parse(localStorage['records']),
+    hotKey: localStorage['hotKey']
 };
 
 
@@ -275,6 +280,10 @@ export function rootReducer(state = initialState, action) {
         case ADD_UNSUCCESSFUL_RUN:
             localStorage['stats'] = JSON.stringify({...state.stats, unsuccessfulRuns: state.stats.unsuccessfulRuns + 1});
             return {...state, stats: {...state.stats, unsuccessfulRuns: state.stats.unsuccessfulRuns + 1}}
+
+        case SET_HOT_KEY:
+            localStorage['hotKey'] = action.payload;
+            return {...state, hotKey: action.payload}
 
         default:
             return {...state}

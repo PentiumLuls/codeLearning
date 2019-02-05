@@ -152,6 +152,7 @@ audio {
     height: 8vw;
     overflow: hidden;
     margin: 0;
+    cursor: pointer;
 }
 
 .avatar img {

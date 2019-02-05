@@ -66,7 +66,7 @@ class CodeEditor extends Component {
                 style={{position: 'relative'}}
                 commands={[{   // commands is array of key bindings.
                     name: 'runCode', //name for the key binding.
-                    bindKey: {win: 'Ctrl-shift-x', mac: 'Command-shift-x'}, //key combination used for the command.
+                    bindKey: {win: this.props.hotKey, mac: this.props.hotKey}, //key combination used for the command.
                     exec: () => { this.props.run() }  //function to execute when keys are pressed.
                   }]}
                 setOptions={{
@@ -86,7 +86,8 @@ class CodeEditor extends Component {
 const mapStateToProps = store => {
     return {
          run: store.run,
-         hideChat: store.hideChat
+         hideChat: store.hideChat,
+         hotKey: store.hotKey
     }
 }
 
