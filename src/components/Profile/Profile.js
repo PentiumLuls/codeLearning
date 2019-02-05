@@ -83,7 +83,7 @@ class Profile extends Component {
                     </div>
                 </div>
 
-                <Achievements addMoney={this.props.addMoney}></Achievements>
+                <Achievements addMoney={this.props.addMoney} timeInGame={this.props.timeInGame}></Achievements>
                 {this.state.popup ? <Popup togglePopup={this.togglePopup}></Popup> : null}
             </div>
         )

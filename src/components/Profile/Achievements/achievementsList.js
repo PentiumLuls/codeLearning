@@ -30,7 +30,7 @@ export const achievementsList = [
         rewardText: "nope",
         moneyReward: 7,
         image: manuscript1,
-        status: -1
+        status: -1,
     },
     {
         id: 1,
@@ -101,7 +101,7 @@ export const achievementsList = [
         descriptions: "Spend 300 money",
         rewardText: "rewarddd",
         moneyReward: 15,
-        image: sword,
+        image: trophyCup,
         status: -1
     },
     {
@@ -131,7 +131,24 @@ export const achievementsList = [
         image: ricardoFlex,
         status: -1
     },
-
+    {
+        id: 12,
+        name: "Loser",
+        descriptions: "Unsuccessful code runs x30",
+        rewardText: "loh",
+        moneyReward: 5,
+        image: trophyCup,
+        status: -1
+    },
+    {
+        id: 13,
+        name: "HZ",
+        descriptions: "Play this game for the 3 hours",
+        rewardText: "Reward?!",
+        moneyReward: 7,
+        image: trophyCup,
+        status: -1
+    },
 ];
 
 //"The great Unknown, self-proclaimed master"
