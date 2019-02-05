@@ -1,7 +1,7 @@
 import { SELECT_QUEST, SELECT_STAGE, PASS_QUEST, NEXT_LEVEL, NEXT_STEP, PREV_STEP } from '../actions/questActions'
 import { RESET_CODE, WRITE_CODE, CHANGE_SHOW_POPUP, CLEAR_TERMINAL, SHOW_ANSWER, EXPORT_RUN, EXPORT_HIDE_NEXT_CODE, EXPORT_HIDE_CHAT } from '../actions/codeActions'
 import { SPEND_MONEY, ADD_MONEY} from '../actions/moneyActions'
-import { TICK_TIME_IN_GAME, ADD_SYMBOL, ADD_SUCCESSFUL_RUN, ADD_UNSUCCESSFUL_RUN} from '../actions/stats'
+import { TICK_TIME_IN_GAME, ADD_SYMBOL, ADD_SUCCESSFUL_RUN, ADD_UNSUCCESSFUL_RUN} from '../actions/statActions'
 import {quests} from '../../plot/quests';
 import CryptoJS from 'crypto-js'
 
@@ -31,10 +31,10 @@ if (!localStorage['passingLevels']) {
         [0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0]]);
 }
 if (!localStorage['achievements']) {
-    localStorage['achievements'] = JSON.stringify([{id: 0, status: 0}, {id: 1, status: 0}, {id: 2, status: 0},
-        {id: 3, status: 0}, {id: 4, status: 0}, {id: 5, status: 0, time: 0}, {id: 6, status: 0, time: 0, payload: 0},
-        {id: 7, status: 0, earned: 0}, {id: 8, status: 0, spend: 0}, {id: 9, status: 0}, {id: 10, status: 0}, {id: 11, status: 0},
-        {id: 12, status: 0}]);
+    localStorage['achievements'] = JSON.stringify([{id: 0, status: -1}, {id: 1, status: -1}, {id: 2, status: -1},
+        {id: 3, status: -1}, {id: 4, status: -1}, {id: 5, status: -1, time: 0}, {id: 6, status: -1, time: 0, payload: 0},
+        {id: 7, status: -1, earned: 0}, {id: 8, status: -1, spend: 0}, {id: 9, status: -1}, {id: 10, status: -1}, {id: 11, status: -1},
+        {id: 12, status: -1}]);
 }
 if (!localStorage['timeInGame']) {
     localStorage['timeInGame'] = JSON.stringify({hours: 0, minutes: 0, seconds: 0})
@@ -54,22 +54,22 @@ if (!localStorage['records']) {
     localStorage['records'] = JSON.stringify(
     [
         [
-            
+
         ],
         [
-            
+
         ],
         [
-            
+
         ],
         [
-            
+
         ],
         [
-            
+
         ],
         [
-            
+
         ]
     ])
 }
@@ -107,7 +107,7 @@ export function rootReducer(state = initialState, action) {
             state.hideNextLevel();
             localStorage.currentQuest = action.payload;
             localStorage['questTime'] = currentDate1;
-            
+
             return {...state, currentQuest: action.payload, questTime: currentDate1};
         
         case SELECT_STAGE:
@@ -120,7 +120,7 @@ export function rootReducer(state = initialState, action) {
 
             if (state.currentStage == state.passStages && state.currentQuest == state.passQuests) {
                 localStorage['LH;;tabs'] = CryptoJS.AES.encrypt(`${state.money + 5}`, 'Kt0 et0 ch1tayet t0t l0h');
-                
+
                 const record = [...state.records];
                 record[state.currentStage][state.currentQuest] = (Date.parse(currentDate) - Date.parse(state.questTime)) / 1000;
                 localStorage['records'] = JSON.stringify(record)
@@ -134,7 +134,7 @@ export function rootReducer(state = initialState, action) {
                     localStorage['passingLevels'] = JSON.stringify(passingLevels);
                 }
                 //ACHIEVEMENTS - EARNED N MONEY
-                if (achievements[7].status === 0) {
+                if (achievements[7].status === -1) {
                     achievements[7].earned += 5;
                 }
                 localStorage['achievements'] = JSON.stringify(achievements);
@@ -150,7 +150,7 @@ export function rootReducer(state = initialState, action) {
                 }
             }
 
-            
+
             const record = [...state.records];
 
             if ((Date.parse(currentDate) - Date.parse(state.questTime)) / 1000
@@ -159,21 +159,21 @@ export function rootReducer(state = initialState, action) {
             }
 
             localStorage['records'] = JSON.stringify(record)
-            
+
             if (passingLevels[state.currentStage][state.currentQuest] > 0) {
-                
+
 
                 passingLevels[state.currentStage][state.currentQuest] -= 1;
                 localStorage['passingLevels'] = JSON.stringify(passingLevels);
                 localStorage['LH;;tabs'] = CryptoJS.AES.encrypt(`${state.money + 3}`, 'Kt0 et0 ch1tayet t0t l0h');
-              //ACHIEVEMENTS - EARNED N MONEY
-                if (achievements[7].status === 0) {
+                //ACHIEVEMENTS - EARNED N MONEY
+                if (achievements[7].status === -1) {
                     achievements[7].earned += 3;
                 }
                 localStorage['achievements'] = JSON.stringify(achievements);
                 return {...state, money: state.money + 3, records: record}
-            }     
-            
+            }
+
             return {...state, records: record}
 
             
@@ -181,7 +181,7 @@ export function rootReducer(state = initialState, action) {
         case NEXT_LEVEL:
             const currentDate2 = new Date()
             localStorage['questTime'] = currentDate2;
-            
+
             if (state.currentQuest == quests[state.currentStage].quests.length - 1) {
                 localStorage.currentStage = state.currentStage + 1;
                 localStorage.currentQuest = 0;
@@ -224,10 +224,10 @@ export function rootReducer(state = initialState, action) {
             return {...state, hideChat: action.payload};
 
         case ADD_MONEY:
-            if (achievements[3].status === 0) {
+            if (achievements[3].status === -1) {
                 achievements[3].status = 2;
             }
-            if (achievements[6].status === 0) {
+            if (achievements[6].status === -1) {
                 achievements[6].payload += action.payload;
             }
             localStorage['achievements'] = JSON.stringify(achievements);
@@ -240,7 +240,7 @@ export function rootReducer(state = initialState, action) {
             localStorage['stats'] = JSON.stringify({...state.stats, spendMoneys: state.stats.spendMoneys + action.payload})
 
             localStorage['LH;;tabs'] = CryptoJS.AES.encrypt(`${state.money - action.payload}`, 'Kt0 et0 ch1tayet t0t l0h');
-             if (achievements[8].status === 0) {
+             if (achievements[8].status === -1) {
                     achievements[8].spend += action.payload;
                 }
                 localStorage['achievements'] = JSON.stringify(achievements);
@@ -260,7 +260,7 @@ export function rootReducer(state = initialState, action) {
             } else {
                 time.seconds += 1
             }
-            
+
             localStorage['timeInGame'] = JSON.stringify(time);
             return {...state, timeInGame: time}
 

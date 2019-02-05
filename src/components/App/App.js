@@ -9,7 +9,7 @@ import {quests} from '../../plot/quests';
 import Chatbot from '../ChatBot/Chatbot';
 import {connect} from 'react-redux';
 import {changeShowPopup} from '../../store/actions/codeActions';
-import {tickTimeInGame} from '../../store/actions/stats';
+import {tickTimeInGame} from '../../store/actions/statActions';
 import sound from '../../audio/sans.mp3';
 import sound2 from '../../audio/sans.ogg';
 import Profile from '../Profile/Profile';

@@ -21,7 +21,7 @@ export const achievementsList = [
         rewardText: "nope",
         moneyReward: 10,
         image: manuscript1,
-        status: 0
+        status: -1
     },
     {
         id: 1,
@@ -30,7 +30,7 @@ export const achievementsList = [
         rewardText: "fumes x2",
         moneyReward: 20,
         image: goldMedal,
-        status: 0
+        status: -1
     },
     {
         id: 2,
@@ -39,7 +39,7 @@ export const achievementsList = [
         rewardText: "reward",
         moneyReward: 50,
         image: crown,
-        status: 0
+        status: -1
     },
     {
         id: 3,
@@ -48,7 +48,7 @@ export const achievementsList = [
         rewardText: "reward",
         moneyReward: -10,
         image: moneyBag,
-        status: 0
+        status: -1
     },
     {
         id: 4,
@@ -57,7 +57,7 @@ export const achievementsList = [
         rewardText: "reward",
         moneyReward: 0,
         image: trophyCup,
-        status: 0
+        status: -1
     },
     {
         id: 5,
@@ -66,7 +66,7 @@ export const achievementsList = [
         rewardText: "horse power",
         moneyReward: -9999999,
         image: ruby,
-        status: 0
+        status: -1
     },
     {
         id: 6,
@@ -75,7 +75,7 @@ export const achievementsList = [
         rewardText: "dimon",
         moneyReward: 1,
         image: manuscript2,
-        status: 0
+        status: -1
     },
     {
         id: 7,
@@ -84,7 +84,7 @@ export const achievementsList = [
         rewardText: "-9999",
         moneyReward: 10,
         image: bluePotion,
-        status: 0
+        status: -1
     },
     {
         id: 8,
@@ -93,7 +93,7 @@ export const achievementsList = [
         rewardText: "rewarddd",
         moneyReward: 30,
         image: sword,
-        status: 0
+        status: -1
     },
     {
         id: 9,
@@ -102,7 +102,7 @@ export const achievementsList = [
         rewardText: "reward",
         moneyReward: 0,
         image: openedBook,
-        status: 0
+        status: -1
     },
     {
         id: 10,
@@ -111,7 +111,7 @@ export const achievementsList = [
         rewardText: "reward",
         moneyReward: 0,
         image: energy,
-        status: 0
+        status: -1
     },
     {
         id: 11,
@@ -120,7 +120,7 @@ export const achievementsList = [
         rewardText: "tupo flex",
         moneyReward: 9999,
         image: heart,
-        status: 0
+        status: -1
     },
 
 ];

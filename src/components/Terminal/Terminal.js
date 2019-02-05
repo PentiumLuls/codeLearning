@@ -10,7 +10,7 @@ import {
     exportRun,
     exportHideNextCode
 } from '../../store/actions/codeActions'
-import {addSuccessfulRun, addUnsuccessfulRun} from '../../store/actions/stats'
+import {addSuccessfulRun, addUnsuccessfulRun} from '../../store/actions/statActions'
 
 class Terminal extends Component {
     constructor() {
