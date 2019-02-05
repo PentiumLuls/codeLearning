@@ -37,7 +37,7 @@ class Profile extends Component {
              }, 0)
         });
 
-        
+
         if (!summ && !amount) {
             return "00:00:00"
         }
@@ -67,12 +67,12 @@ class Profile extends Component {
                         : <Settings></Settings>}
                     </div>
                 </div>
-                
+
                 <Achievements addMoney={this.props.addMoney}></Achievements>
             </div>
         )
     }
-    
+
 }
 
 const mapDispatchToProps = dispatch => {
