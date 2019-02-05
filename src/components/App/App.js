@@ -27,7 +27,7 @@ class App extends Component {
         
         this.globalTime = setInterval(() => {
             this.props.tickTimeInGame()
-        }, 1000)
+        }, 1000);
 
         this.player = null
 
@@ -57,13 +57,14 @@ class App extends Component {
         console.log("Terminal mode x2 toggle");
         this.setState({
             terminalOpen: !this.state.terminalOpen
-        })
+        });
+        updateAchievements(11);
     };
 
     componentDidMount() {
         this.setState({
             player: this.player
-        })
+        });
         this.player.volume = 0.4
     }
 

@@ -12,6 +12,7 @@ let buttonsState = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
 
 export const updateAchievements = (id, value) => {
     let achievements = JSON.parse(localStorage['achievements']);
+    let stats = JSON.parse(localStorage['stats']);
 
     ////LEVELS PASSING////
     //PASS 3 QUESTS ACHIEVEMENT
@@ -56,6 +57,21 @@ export const updateAchievements = (id, value) => {
     //Spend 300 money
     if (achievements[8].status === -1 && achievements[8].spend >= 300) {
         achievements[8].status = 1;
+    }
+    //WRITE 500 SYMBOLS
+    if (achievements[9].status === -1 && stats.symbols >= 500) {
+        achievements[9].status = 1;
+    }
+    //WRITE 10000 SYMBOLS
+    if (achievements[10].status === -1 && stats.symbols >= 10000) {
+        achievements[10].status = 1;
+    }
+    //CLICK '*' button x10
+    if (id === 11 && achievements[11].status === -1) {
+        achievements[11].times += 1;
+        if (achievements[11].times >= 10) {
+            achievements[11].status = 1;
+        }
     }
 
     localStorage['achievements'] = JSON.stringify(achievements);
