@@ -35,20 +35,15 @@ class Profile extends Component {
                 amount += 1;
                 return a+b
              }, 0)
+        });
 
-<<<<<<< HEAD
+        
         if (!summ && !amount) {
             return "00:00:00"
         }
 
-        let average = Math.round(summ / amount)
-        
-=======
-        });
-
         let average = Math.round(summ / amount);
 
->>>>>>> 71e19bd2c85caa9cde3af85dafa8a5c8260b6737
         average = `${average / 360 ^ 0 < 10 ? '0' + (average / 360 ^ 0) : average / 360 ^ 0}
         :${average % 360 / 60 ^ 0 < 10 ? '0' + (average % 360 / 60 ^ 0) : average % 360 / 60 ^ 0 < 10}
         :${average % 21600 < 10 ? '0' + (average % 21600) : average % 21600}`
