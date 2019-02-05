@@ -1,7 +1,7 @@
 import { SELECT_QUEST, SELECT_STAGE, PASS_QUEST, NEXT_LEVEL, NEXT_STEP, PREV_STEP } from '../actions/questActions'
 import { RESET_CODE, WRITE_CODE, CHANGE_SHOW_POPUP, CLEAR_TERMINAL, SHOW_ANSWER, EXPORT_RUN, EXPORT_HIDE_NEXT_CODE, EXPORT_HIDE_CHAT } from '../actions/codeActions'
 import { SPEND_MONEY, ADD_MONEY} from '../actions/moneyActions'
-import { TICK_TIME_IN_GAME, TICK_QUEST_TIME, INITIAL_INTERVAL, tickQuestTime } from '../actions/stats'
+import { TICK_TIME_IN_GAME, ADD_SYMBOL, ADD_SUCCESSFUL_RUN, ADD_UNSUCCESSFUL_RUN} from '../actions/stats'
 import {quests} from '../../plot/quests';
 import CryptoJS from 'crypto-js'
 
@@ -264,13 +264,19 @@ export function rootReducer(state = initialState, action) {
             localStorage['timeInGame'] = JSON.stringify(time);
             return {...state, timeInGame: time}
 
+        case ADD_SYMBOL:
+            localStorage['stats'] = JSON.stringify({...state.stats, symbols: state.stats.symbols + 1});
+            return {...state, stats: {...state.stats, symbols: state.stats.symbols + 1}}
 
-        case INITIAL_INTERVAL:
-            return {...state}
+        case ADD_SUCCESSFUL_RUN:
+            localStorage['stats'] = JSON.stringify({...state.stats, successfulRuns: state.stats.successfulRuns + 1});
+            return {...state, stats: {...state.stats, successfulRuns: state.stats.successfulRuns + 1}}
 
+        case ADD_UNSUCCESSFUL_RUN:
+            localStorage['stats'] = JSON.stringify({...state.stats, unsuccessfulRuns: state.stats.unsuccessfulRuns + 1});
+            return {...state, stats: {...state.stats, unsuccessfulRuns: state.stats.unsuccessfulRuns + 1}}
 
         default:
             return {...state}
     }
 }
-
