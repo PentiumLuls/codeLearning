@@ -26,6 +26,26 @@ class Profile extends Component {
         })
     }
 
+    averageTime = () => {
+        let summ = 0;
+        let amount = 0;
+        this.props.records.forEach((el) => {
+             summ += el.reduce((a, b) => {
+                amount += 1
+                return a+b
+             }, 0)
+             
+        })
+
+        let average = Math.round(summ / amount)
+        
+        average = `${average / 360 ^ 0 < 10 ? '0' + (average / 360 ^ 0) : average / 360 ^ 0}
+        :${average % 360 / 60 ^ 0 < 10 ? '0' + (average % 360 / 60 ^ 0) : average % 360 / 60 ^ 0 < 10}
+        :${average % 21600 < 10 ? '0' + (average % 21600) : average % 21600}`
+
+        return average
+    }
+
     render() {
         return (
             <div>
@@ -38,11 +58,10 @@ class Profile extends Component {
                         ? <div className="open-settings" onClick={this.openSettings}></div>
                         : <div className="open-stats" onClick={this.openStats}></div>}
                         {this.state.stats
-                        ? <Stats></Stats>
+                        ? <Stats stats={this.props.stats} timeInGame={this.props.timeInGame} records={this.props.records} averageTime={this.averageTime()}></Stats>
                         : <Settings></Settings>}
                     </div>
                 </div>
-                
                 <Achievements></Achievements>
             </div>
         )
@@ -52,7 +71,9 @@ class Profile extends Component {
 
 const mapStateToProps = store => {
     return {
-
+        stats: store.stats,
+        timeInGame: store.timeInGame,
+        records: store.records
     }
 }
 
