@@ -2,42 +2,47 @@ export const quest2 =
     {
         title: "Множественная дойка",
         text: `Вы довольны, корова подоена, но индус всё ещё грустный. Оказывается, одиночной функции подойки коровы ему недостаточно, так как тот желает поделиться молоком с другими индусами. К сожалению, корова  может выдержать только ограниченное количество подоёк. Тем не менее, индус настаивает на возможности множественной подойки.`,
-        regexps: [/(return)/g, /(function)/g, /(cow)/g, /(milk)/g, /(milkACow)/g],
-        regexpsNone: [/(for)/g, /(while)/g, /(var)/g, /(map)/g, /(reduce)/g, /(filter)/g, /(filter)/g,],
-        code: `//Брат, да ты крутой, как ты вообще умудрился попасть в функциональный ад?
-//Мне пришло много заказов на молоко. Напиши шункцию milkACow, которая будет доить корову
-//на определенное количество молока и возвращать корову, когда у нее закончится молоко. Придерживайся  второй заповеди,
-//я её толком не знаю, но попробуй использовать высшую и первоклассную функции.
-                
-var cow = {
-    milk: 10
+        regexps: [],
+        regexpsNone: [/(for)/g, /(while)/g, /(var)/g, /(let)/g],
+        code: `//Чертовы коровы перечитались книг по математике. 
+//Теперь, каждая их подойка происходит по формуле последовательности Фибоначи.
+//С каждым разом мне нужно все большее количество ведер, а какое, неизвестно.
+//Вот, если бы я знал количество молока при каждой подойке...
+//Уууу... Братик помоги!
+
+function MilkCow(n) {
+    //YOUR CODE
 }
-                
-function milkACow(cow, mass) {
-    cow.milk -= mass
-    if (cow.milk <= 0) {
-        return cow
-    }
-}`,
+
+terminal.log(MilkCow(2));
+terminal.log(MilkCow(10));`,
         test: {
-            code: `let valid = true;
-                            let cow2 = {milk: 10}
-                                let myCow = milkACow(cow2)
-                                if(JSON.stringify(myCow(4)) !== JSON.stringify(undefined)){valid = false};
-                                if(JSON.stringify(myCow(4)) !== JSON.stringify(undefined)){valid = false};
-                                if(JSON.stringify(myCow(4)) !== JSON.stringify({milk: 0})){valid = false};
-                                if(cow2.milk !== 10){valid = false};
-                            valid === true`,
-            answer: `
-function milkACow(cow) {
-    let newcow = Object.assign({}, cow);
-    return function(int) {
-        if (int >= newcow.milk) {
-            newcow.milk = 0
-            return newcow;
-        }
-    newcow.milk -= int   
-    }
-}`
+            code: `describe("2", function() {
+
+               it("Function 'MilkCow' should return amount of milk in 'n' milking",function() {
+                  expect(MilkCow(2)).toEqual(1);
+                  expect(MilkCow(10)).toEqual(55);
+                  expect(MilkCow(1)).toEqual(1);
+               });
+
+            });
+                  const report = runSpecs();
+                        for (var i = 0; i < report.passed.length; i++) {
+                          reporterLog(report.descriptions[i], report.passed[i])
+                        }
+                        if (report.passed.indexOf(false) === -1) { true } else false;`,
+
+            answer: `//Чертовы коровы перечитались книг по математике. 
+//Теперь, каждая их подойка происходит по формуле последовательности Фибоначи.
+//С каждым разом мне нужно все большее количество ведер, а какое, неизвестно.
+//Вот, если бы я знал количество молока при каждой подойке...
+//Уууу... Братик помоги!
+
+function MilkCow(n) {
+    return n <= 1 ? n : MilkCow(n - 1) + MilkCow(n - 2);
+}
+
+terminal.log(MilkCow(2));
+terminal.log(MilkCow(10));`
         }
     };
