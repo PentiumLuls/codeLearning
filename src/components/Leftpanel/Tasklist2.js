@@ -32,6 +32,15 @@ class Tasklist extends Component {
         }
     }
 
+    getRecord = (stage, quest) => {
+        let record = this.props.records[stage][quest];
+        if (record) {
+            return `${record / 60 ^ 0 < 10 ? '0' + (record / 60 ^ 0) : record / 60 ^ 0 }:${record % 60 < 10 ? '0' + (record % 60) : record % 60}`
+        } 
+        return '00:00'
+        
+    }
+
     generateList = () => {
         if (this.step == 0) {
             return (
@@ -52,7 +61,8 @@ class Tasklist extends Component {
                         className={index <= this.passQuests 
                             || this.currentStage < this.passStages
                             ? "questlist" 
-                            : "questlist inactive"}>{quest.title}<span className="quest-timer">000</span></li>)
+                            : "questlist inactive"}>{quest.title}<span 
+                            className="quest-timer">{this.getRecord(this.currentStage, index)}</span></li>)
                 })
             )
         }   else if (this.step == 2) {
@@ -92,7 +102,8 @@ const mapStateToProps = store => {
         currentStage: store.currentStage,
         currentQuest: store.currentQuest,
         step: store.step,
-        clear: store.clear
+        clear: store.clear,
+        records: store.records
     }
 }
 

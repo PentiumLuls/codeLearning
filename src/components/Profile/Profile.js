@@ -37,6 +37,10 @@ class Profile extends Component {
              
         })
 
+        if (!summ && !amount) {
+            return "00:00:00"
+        }
+
         let average = Math.round(summ / amount)
         
         average = `${average / 360 ^ 0 < 10 ? '0' + (average / 360 ^ 0) : average / 360 ^ 0}
