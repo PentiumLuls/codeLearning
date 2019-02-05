@@ -8,11 +8,11 @@ export const dialogs = [
             {
                 text: [
                     <div className="chat-enter">--- MEPHISTO HAS ENTERED THE CHAT ---</div>,
-                    <div className="mephisto">Mephisto: Приветствую тебя, о грешник.</div>,
-                    <div className="mephisto">Mephisto: Оказался здесь так как  согрешил ты.</div>,
+                    <div className="mephisto">Mephisto: Приветствую тебя, о, грешник.</div>,
+                    <div className="mephisto">Mephisto: Оказался здесь, ведь согрешил ты.</div>,
                     <div className="mephisto">Mephisto: Функции святы и чисты, их не смеет осквернять никто. За грех сей ты и оказался здесь.</div>,
-                    <div className="mephisto">Mephisto: Никогда не покинуть тебе функциональное чистилище сие, обречён ты  на функционирование вечное в аду.</div>,
-                    <div className="mephisto">Mephisto: Приятного времяпровождения~</div>,
+                    <div className="mephisto">Mephisto: Никогда не покинуть тебе функциональное чистилище сие, обречён ты на функционирование вечное в аду.</div>,
+                    <div className="mephisto">Mephisto: Приятного времяпрепровождения~</div>,
                     <div className="chat-enter">--- MEPHISTO HAS LEFT THE CHAT ---</div>,
                     <div className="chat-enter">--- KARADA HAS ENTERED THE CHAT ---</div>,
                     <div className="karada">Karada: I honestly can’t even believe it.</div>,
@@ -40,7 +40,7 @@ export const dialogs = [
                     <div className="karada">Karada: You should learn your place, you know.</div>,
                     <div className="karada">Karada: Wait... What's that confused look on your face? </div>,
                     <div className="chat-enter">--- KABIR HAS ENTERED THE CHAT ---</div>,
-                    <div className="second-character">Kabir: О богиня объектно-ориентированого мира, безупречная и идеальная госпожа Карада!</div>,
+                    <div className="second-character">Kabir: О, Богиня Объектно-Ориентированного Мира, безупречная и идеальная госпожа Карада!</div>,
                     <div className="second-character">Kabir: Наш спаситель потерял воспоминания в горечи и скорби!</div>,
                     <div className="chat-enter">--- KABIR HAS LEFT THE CHAT ---</div>,
                     <div className="karada">Karada: ...oh. That's unfortunate.</div>,
@@ -63,8 +63,8 @@ export const dialogs = [
                     <div className="karada">Karada: I’ll be off seeking new knowledge for you to use as a weapon. I hope you understand that now you are obligated to finish your war preparations and defeat Mephisto once and for all. Don’t let me down.</div>,
                     <div className="chat-enter">--- KARADA HAS LEFT THE CHAT ---</div>,
                     <div className="chat-enter">--- AADHI HAS ENTERED THE CHAT ---</div>,
-                    <div className="second-character">Aadhi: О спаситель, нам опять нужна твоя помощь!</div>,
-                    <div className="second-character">Aadhi: В нашем поселении появилось слишком много индусов!</div>,
+                    <div className="second-character">Aadhi: О, Спаситель, нам опять нужна твоя помощь!</div>,
+                    <div className="second-character">Aadhi: В нашем поселении завелось слишком много индусов!</div>,
                     <div className="second-character">Aadhi: Боюсь, нам не обойтись без государственного строя!</div>,
                     <div className="second-character">Aadhi: Помоги нам построить коммунизм!</div>,
                     <div className="chat-enter">--- AADHI HAS LEFT THE CHAT ---</div>,
@@ -79,8 +79,8 @@ export const dialogs = [
             {
                 text: [
                     <div className="chat-enter">--- ANVI HAS ENTERED THE CHAT ---</div>,
-                    <div className="second-character">ANVI: О спаситель, в деревне - кризис!</div>,
-                    <div className="second-character">ANVI: После нападения демонов наши поля и огороды были опустошены!</div>,
+                    <div className="second-character">ANVI: О, Спаситель, в деревне - кризис!</div>,
+                    <div className="second-character">ANVI: После нападения демонов наши поля и огороды опустошены!</div>,
                     <div className="second-character">ANVI: Процветает голод, мародёрство, грабёж. Кругом смерть!</div>,
                     <div className="chat-enter">--- ANVI HAS LEFT THE CHAT ---</div>,
                 ]
