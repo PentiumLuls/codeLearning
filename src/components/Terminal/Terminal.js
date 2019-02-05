@@ -11,6 +11,8 @@ import {
     exportHideNextCode
 } from '../../store/actions/codeActions'
 import {addSuccessfulRun, addUnsuccessfulRun} from '../../store/actions/statActions'
+import notPass from '../../audio/notPass.ogg';
+import pass from '../../audio/pass.ogg';
 
 class Terminal extends Component {
     constructor() {
@@ -21,7 +23,9 @@ class Terminal extends Component {
             regexps: "",
             regexpsNone: "",
             content: "",
-            showNextLevel: false
+            showNextLevel: false,
+            playNotPass: false,
+            composition: null
         };
         ///////////////////////////////
         const self = this;
@@ -79,7 +83,6 @@ class Terminal extends Component {
     };
 
     run = () => {
-
         try {
             const vm = require('vm');
             const codeToEvaluate = localStorage.getItem("code") + "\n" + this.props.testCode["code"];
@@ -93,8 +96,18 @@ class Terminal extends Component {
                 if (vm.runInThisContext(codeToEvaluate) === true && regexp.pass === true) {
                     this.unlockQuest();
                     this.props.addSuccessfulRun();
+                    this.props.player.pause();
+                    this.setState({
+                        composition: pass,
+                        playNotPass: true
+                    })
                 } else {
                     this.props.addUnsuccessfulRun();
+                    this.props.player.pause();
+                    this.setState({
+                        composition: notPass,
+                        playNotPass: true
+                    })
                     let information = '';
                     if (regexp.useIt.length !== 0) {
                         information += `You should use ${this.parseRegexp(regexp.useIt)}\n`
@@ -202,6 +215,13 @@ class Terminal extends Component {
         })
     };
 
+    endNotPass = () => {
+        this.setState({
+            playNotPass: false
+        })
+        this.props.player.play();
+    }
+
 
     render() {
         this.passStages = this.props.passStages;
@@ -213,6 +233,14 @@ class Terminal extends Component {
 
         return (
             <div className="terminalComponent">
+                {this.state.playNotPass 
+                ? <div>
+                    <audio onEnded={this.endNotPass} src={this.state.composition} controls autoPlay >
+                        Your browser does not support the audio element.
+                    </audio>
+                </div>
+                : null
+            }
                 <div className="button-line">
                     <button className="debug" onClick={this.run}>RUN CODE</button>
                     <button className="debug" onClick={this.clearTerminal}>CLEAR TERMINAL</button>

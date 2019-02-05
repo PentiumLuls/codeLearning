@@ -21,12 +21,15 @@ class App extends Component {
 
         this.state = {
             isEdit: 0,
-            terminalOpen: false
+            terminalOpen: false,
+            player: null
         };
         
         this.globalTime = setInterval(() => {
             this.props.tickTimeInGame()
         }, 1000)
+
+        this.player = null
 
     }
 
@@ -57,6 +60,14 @@ class App extends Component {
         })
     };
 
+    componentDidMount() {
+        this.setState({
+            player: this.player
+        })
+        this.player.volume = 0.4
+    }
+
+
     render() {
         this.passStages = this.props.passStages;
         this.passQuests = this.props.passQuests;
@@ -80,11 +91,10 @@ class App extends Component {
             <div className="main">
 
                 <div>
-                    <audio controls autoPlay loop>
-                        <source src={sound2} type="audio/ogg"/>
-                        <source src={sound} type="audio/mpeg"/>
+                    <audio ref={(element) => {this.player = element}} src={sound2} controls autoPlay loop>
                         Your browser does not support the audio element.
                     </audio>
+                    
                 </div>
                 <div className="leftpanel">
                     <Leftpanel func={this.changeButtonState}
@@ -104,6 +114,7 @@ class App extends Component {
                             </div>
                             <div className={this.state.terminalOpen ? 'terminal open-terminal' : 'terminal'}>
                                 <Terminal
+                                    player={this.state.player}
                                     terminalOpen={this.state.terminalOpen}
                                     className="terminal"
                                     testCode={quests[this.currentStage].quests[this.currentQuest].test}
