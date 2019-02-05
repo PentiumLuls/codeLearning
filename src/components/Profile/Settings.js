@@ -17,7 +17,11 @@ export default (props) => {
                 <option value="v" >v</option>
                 <option value="/" >/</option>
                 <option value="z" >z</option>
-            </select>
+            </select> <br/>
+            <p>Фоновая музыка</p>
+            <input type="range" min="0" max="100" step="2" value="50"></input>
+            <p>Звуки</p>
+            <input type="range" min="0" max="100" step="2" value="50"></input>
         </div>
     )
 }
