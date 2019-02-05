@@ -1,10 +1,10 @@
 import React from 'react'
 import {getAchievementsList} from "./achievementsHandler";
 
-export default () => {
+export default (props) => {
     return (
         <div className="profile-achievements">
-            {getAchievementsList()}
+            {getAchievementsList(props.addMoney)}
         </div>
     )
 }

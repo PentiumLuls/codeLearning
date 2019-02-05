@@ -3,6 +3,7 @@ import Stats from './Stats';
 import Settings from './Settings';
 import Achievements from './Achievements/AchievementsRenderer';
 import { connect } from 'react-redux';
+import {addMoney} from "../../store/actions/moneyActions";
 
 
 class Profile extends Component {
@@ -18,33 +19,33 @@ class Profile extends Component {
         this.setState({
             stats: false
         })
-    }
+    };
 
     openStats = () => {
         this.setState({
             stats: true
         })
-    }
+    };
 
     averageTime = () => {
         let summ = 0;
         let amount = 0;
         this.props.records.forEach((el) => {
              summ += el.reduce((a, b) => {
-                amount += 1
+                amount += 1;
                 return a+b
              }, 0)
-             
-        })
 
-        let average = Math.round(summ / amount)
-        
+        });
+
+        let average = Math.round(summ / amount);
+
         average = `${average / 360 ^ 0 < 10 ? '0' + (average / 360 ^ 0) : average / 360 ^ 0}
         :${average % 360 / 60 ^ 0 < 10 ? '0' + (average % 360 / 60 ^ 0) : average % 360 / 60 ^ 0 < 10}
         :${average % 21600 < 10 ? '0' + (average % 21600) : average % 21600}`
 
         return average
-    }
+    };
 
     render() {
         return (
@@ -62,12 +63,19 @@ class Profile extends Component {
                         : <Settings></Settings>}
                     </div>
                 </div>
-                <Achievements></Achievements>
+                
+                <Achievements addMoney={this.props.addMoney}></Achievements>
             </div>
         )
     }
     
 }
+
+const mapDispatchToProps = dispatch => {
+    return {
+        addMoney: (value) => dispatch(addMoney(value))
+    }
+};
 
 const mapStateToProps = store => {
     return {
@@ -77,4 +85,4 @@ const mapStateToProps = store => {
     }
 }
 
-export default connect(mapStateToProps)(Profile)
+export default connect(mapStateToProps, mapDispatchToProps)(Profile)

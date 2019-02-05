@@ -1,7 +1,7 @@
 import ReactAce from 'react-ace';
 import React, {Component} from 'react';
 import brace from 'brace';
-import {addSymbol} from '../../store/actions/stats'
+import {addSymbol} from '../../store/actions/statActions'
 import { connect } from 'react-redux';
 
 import 'brace/mode/javascript';
