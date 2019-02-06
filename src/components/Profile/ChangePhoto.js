@@ -34,6 +34,7 @@ class Popup extends React.Component {
                         <img alt="Indus" src={require("../img/avatars/placeholder.png")}/>
                         <h3>Индус</h3>
                         <p>Лютый индус существует</p>
+                        <div className="avatar-card-caption">гавно жопа</div>
                     </div>
                 </div>
             </PureModal>

@@ -84,7 +84,11 @@ class Profile extends Component {
             <div>
                 <div className="profile-top-wrapper">
                     <div className="profile-top-image-wrapper">
+<<<<<<< HEAD
                         <div onClick={this.openPopup} className="profile-top-image avatar"><img alt="avatar" src={avatars[this.props.avatar]}/></div>
+=======
+                        <div onClick={this.openPopup} className="profile-top-image"><img alt="avatar" src={require("../img/avatars/VanDarkholme.jpg")}/></div>
+>>>>>>> 208b33788e9c3864a512eb7a0b23e8fe5508c3da
                     </div>
                     <div className="profile-top-switcher">
                         {this.state.stats
