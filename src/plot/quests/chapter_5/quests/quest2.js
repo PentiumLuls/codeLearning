@@ -16,6 +16,9 @@ function MilkCow(n) {
 
 terminal.log(MilkCow(2));
 terminal.log(MilkCow(10));`,
+        hints: [
+            "Formula: F(n) = F(n - 1) + F(n - 2), where 'F' is your function"
+        ],
         test: {
             code: `describe("2", function() {
 

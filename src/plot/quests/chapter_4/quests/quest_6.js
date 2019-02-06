@@ -20,7 +20,7 @@ const hindu2 = createHinduCardTypeB ('stick')('Ojas')(27);
 terminal.log(hindu1);
 terminal.log(hindu2);`,
         hints: [
-            "NOPE !"
+            "Use carrying to collect property and in final function return hindu card"
         ],
         test: {
             code: `function createHinduCardTEST(city) {
