@@ -35,49 +35,49 @@ class Popup extends React.Component {
                         <p>Не ну это бан</p>
                     </div>
                     <div onClick={this.setPhoto.bind(this, 'papich')} className="avatar-card">
-                        <img alt="Roflan" src={require("../img/avatars/papich.jpeg")}/>
+                        <img alt="Papich" src={require("../img/avatars/papich.jpeg")}/>
                         <h3>Орущий челик</h3>
                         <p>Лютый челик орёт</p>
                     </div>
                     <div onClick={this.setPhoto.bind(this, 'reroRero')} className="avatar-card">
-                        <img alt="Roflan" src={require("../img/avatars/reroRero.gif")}/>
+                        <img alt="Kakyoin" src={require("../img/avatars/reroRero.gif")}/>
                         <h3>RERO-RERO-RERO-RERO</h3>
-                        <p>Это шо, жожо референс?!?!</p>
+                        <p>это шо жожорефренс</p>
                     </div>
                     <div onClick={this.setPhoto.bind(this, 'futaba')} className="avatar-card">
-                        <img alt="Roflan" src={require("../img/avatars/futaba.jpg")}/>
-                        <h3>RERO-RERO-RERO-RERO</h3>
-                        <p>Это шо, жожо референс?!?!</p>
+                        <img alt="Best girl" src={require("../img/avatars/futaba.jpg")}/>
+                        <h3>Лучшая девочка</h3>
+                        <p>Единственная и неповторимая лучшая девочка</p>
                     </div>
                     <div onClick={this.setNanachi} className="avatar-card">
-                        <img alt="Roflan" src={require("../img/avatars/nanachi.jpg")}/>
-                        <h3>RERO-RERO-RERO-RERO</h3>
-                        <p>Это шо, жожо референс?!?!</p>
+                        <img alt="Nanachi" src={require("../img/avatars/nanachi.jpg")}/>
+                        <h3>Наначи</h3>
+                        <p>Наначи говорит "Нннааа" 10 часов</p>
                     </div>
                     <div onClick={this.setPhoto.bind(this, 'pikachu')} className="avatar-card">
-                        <img alt="Roflan" src={require("../img/avatars/pikachu.png")}/>
-                        <h3>RERO-RERO-RERO-RERO</h3>
-                        <p>Это шо, жожо референс?!?!</p>
+                        <img alt="owo" src={require("../img/avatars/pikachu.png")}/>
+                        <h3>О.О</h3>
+                        <p>oшo what's this</p>
                     </div>
                     <div onClick={this.setPhoto.bind(this, 'ricardo')} className="avatar-card">
-                        <img alt="Roflan" src={require("../img/avatars/ricardo.jpg")}/>
-                        <h3>RERO-RERO-RERO-RERO</h3>
-                        <p>Это шо, жожо референс?!?!</p>
+                        <img alt="Slavyanin" src={require("../img/avatars/ricardo.jpg")}/>
+                        <h3>Рикардо Милосов</h3>
+                        <p>Советский солдат протягивает руку помощи</p>
                     </div>
                     <div onClick={this.setPhoto.bind(this, 'splinter')} className="avatar-card">
-                        <img alt="Roflan" src={require("../img/avatars/splinter.jpg")}/>
-                        <h3>RERO-RERO-RERO-RERO</h3>
-                        <p>Это шо, жожо референс?!?!</p>
+                        <img alt="Krysa" src={require("../img/avatars/splinter.jpg")}/>
+                        <h3>Сплинтер</h3>
+                        <p>Контент для олдфагов</p>
                     </div>
                     <div onClick={this.setPhoto.bind(this, 'reroRero')} className="avatar-card">
-                        <img alt="Roflan" src={require("../img/avatars/zeroTwo.jpeg")}/>
-                        <h3>RERO-RERO-RERO-RERO</h3>
-                        <p>Это шо, жожо референс?!?!</p>
+                        <img alt="Worst girl" src={require("../img/avatars/zeroTwo.jpeg")}/>
+                        <h3>Худшая девочка</h3>
+                        <p>Худшая девочка в 3D - худшая комбинация</p>
                     </div>
                     <div onClick={this.setPhoto.bind(this, 'denis')} className="avatar-card">
-                        <img alt="Roflan" src={require("../img/avatars/denis.jpeg")}/>
-                        <h3>RERO-RERO-RERO-RERO</h3>
-                        <p>Это шо, жожо референс?!?!</p>
+                        <img alt="Kakoj-to loh" src={require("../img/avatars/denis.jpeg")}/>
+                        <h3>Тысячник</h3>
+                        <p>Ну это челик</p>
                     </div>
                     <div className="avatar-card inactive">
                         <img alt="Indus" src={require("../img/avatars/placeholder.png")}/>
