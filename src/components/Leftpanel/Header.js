@@ -18,7 +18,7 @@ class Header extends Component {
       return (
             <header className="userinfo">
                         <div className="avatar-wrapper">
-                            <div onClick={this.props.func3} className="avatar"><img alt="avatar" src={require("../../img/avatars/VanDarkholme.jpg")}/></div>
+                            <div onClick={this.props.func3} className="avatar"><img alt="avatar" src={require('../../img/avatars/VanDarkholme.jpg')}/></div>
                             <div className="header-money"><p>{this.props.money}</p></div>
                         </div>
                         <div className="userbuttons">
@@ -32,7 +32,8 @@ class Header extends Component {
 
 const mapStateToProps = store => {
     return {
-        money: store.money
+        money: store.money,
+        avatar: store.avatar
     }
 }
 

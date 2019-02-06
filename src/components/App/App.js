@@ -69,9 +69,9 @@ class App extends Component {
         this.player.play();
     }
 
-    componentWillReceiveProps() {
+    componentWillReceiveProps(newProps) {
         if (this.player) {
-            this.player.volume = this.props.musicValue
+            this.player.volume = newProps.musicValue
         }
     }
 
