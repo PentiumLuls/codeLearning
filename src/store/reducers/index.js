@@ -2,7 +2,7 @@ import { SELECT_QUEST, SELECT_STAGE, PASS_QUEST, NEXT_LEVEL, NEXT_STEP, PREV_STE
 import { RESET_CODE, WRITE_CODE, CHANGE_SHOW_POPUP, CLEAR_TERMINAL, SHOW_ANSWER, 
     EXPORT_RUN, EXPORT_HIDE_NEXT_CODE, EXPORT_HIDE_CHAT, SET_HOT_KEY } from '../actions/codeActions'
 import { SPEND_MONEY, ADD_MONEY} from '../actions/moneyActions'
-import { TICK_TIME_IN_GAME, ADD_SYMBOL, ADD_SUCCESSFUL_RUN, ADD_UNSUCCESSFUL_RUN} from '../actions/statActions'
+import { TICK_TIME_IN_GAME, ADD_SYMBOL, ADD_SUCCESSFUL_RUN, ADD_UNSUCCESSFUL_RUN, CHANGE_MUSIC_VALUE, CHANGE_SOUND_VALUE} from '../actions/statActions'
 import {quests} from '../../plot/quests';
 import CryptoJS from 'crypto-js'
 
@@ -35,7 +35,7 @@ if (!localStorage['achievements']) {
     localStorage['achievements'] = JSON.stringify([{id: 0, status: -1}, {id: 1, status: -1}, {id: 2, status: -1},
         {id: 3, status: -1}, {id: 4, status: -1}, {id: 5, status: -1, time: 0}, {id: 6, status: -1, payload: 0},
         {id: 7, status: -1, earned: 0}, {id: 8, status: -1, spend: 0}, {id: 9, status: -1}, {id: 10, status: -1},
-        {id: 11, status: -1, times: 0}, {id: 12, status: -1}], {id: 13, status: -1}, {id: 14, status: -1});
+        {id: 11, status: -1, times: 0}, {id: 12, status: -1}, {id: 13, status: -1}, {id: 14, status: -1}]);
 }
 if (!localStorage['timeInGame']) {
     localStorage['timeInGame'] = JSON.stringify({hours: 0, minutes: 0, seconds: 0})
@@ -77,6 +77,12 @@ if (!localStorage['records']) {
 if (!localStorage['hotKey']) {
     localStorage['hotKey'] = 'Ctrl-shift-x'
 }
+if (!localStorage['musicValue']) {
+    localStorage['musicValue'] = '0.4'
+}
+if (!localStorage['soundValue']) {
+    localStorage['soundValue'] = '1.0'
+}
 
 
 export const initialState = {
@@ -98,7 +104,9 @@ export const initialState = {
     timeInGame: JSON.parse(localStorage['timeInGame']),
     questTime: new Date(),
     records: JSON.parse(localStorage['records']),
-    hotKey: localStorage['hotKey']
+    hotKey: localStorage['hotKey'],
+    musicValue: +localStorage['musicValue'],
+    soundValue: +localStorage['soundValue']
 };
 
 
@@ -284,6 +292,14 @@ export function rootReducer(state = initialState, action) {
         case SET_HOT_KEY:
             localStorage['hotKey'] = action.payload;
             return {...state, hotKey: action.payload}
+
+        case CHANGE_MUSIC_VALUE:
+            localStorage['musicValue'] = action.payload;
+            return {...state, musicValue: action.payload}
+
+        case CHANGE_SOUND_VALUE:
+            localStorage['soundValue'] = action.payload;
+            return {...state, soundValue: action.payload}
 
         default:
             return {...state}

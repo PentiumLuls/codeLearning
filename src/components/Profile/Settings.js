@@ -18,6 +18,12 @@ export default class Settings extends React.Component{
         this.props.setHotKey(`Ctrl+shift+${e.target.value}`);
     }
 
+    change = value => {
+        this.setState({
+            musicValue: value
+        })
+    }
+
     render() {
         return (
             <div className="profile-top-settings">
@@ -31,16 +37,14 @@ export default class Settings extends React.Component{
                     <option value="z" >z</option>
                 </select> <br/><br/>
                 <p>Фоновая музыка</p>
-                <InputRange
-                    draggableTrack={true}
-                    minValue={0}
-                    maxValue={1.0}
+                <input 
+                    id="typeinp" 
+                    type="range"
+                    min="0" max="1" 
+                    defaultValue={this.state.musicValue} 
                     value={this.state.musicValue}
-                    onChange={value => {
-                        this.setState({
-                            musicValue: value
-                        })
-                    }}
+                    onChange={this.change}
+                    step="0.1"
                 /> <br/>
                 <p>Звуки</p>
                 <InputRange
