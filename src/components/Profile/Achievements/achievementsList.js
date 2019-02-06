@@ -31,6 +31,7 @@ export const achievementsList = [
         moneyReward: 7,
         image: manuscript1,
         status: -1,
+        hide: false
     },
     {
         id: 1,
@@ -39,7 +40,8 @@ export const achievementsList = [
         rewardText: "fumes x2",
         moneyReward: 10,
         image: goldMedal,
-        status: -1
+        status: -1,
+        hide: false
     },
     {
         id: 2,
@@ -48,7 +50,8 @@ export const achievementsList = [
         rewardText: "reward",
         moneyReward: 30,
         image: weddingCake,
-        status: -1
+        status: -1,
+        hide: false
     },
     {
         id: 3,
@@ -57,7 +60,8 @@ export const achievementsList = [
         rewardText: "reward",
         moneyReward: -10,
         image: moneyBag1,
-        status: -1
+        status: -1,
+        hide: true
     },
     {
         id: 4,
@@ -66,7 +70,8 @@ export const achievementsList = [
         rewardText: "reward",
         moneyReward: 0,
         image: exclamation,
-        status: -1
+        status: -1,
+        hide: true
     },
     {
         id: 5,
@@ -75,7 +80,8 @@ export const achievementsList = [
         rewardText: "horse power",
         moneyReward: -999,
         image: gameBreaker,
-        status: -1
+        status: -1,
+        hide: true
     },
     {
         id: 6,
@@ -84,7 +90,8 @@ export const achievementsList = [
         rewardText: "dimon",
         moneyReward: 1,
         image: emptyWallet,
-        status: -1
+        status: -1,
+        hide: true
     },
     {
         id: 7,
@@ -93,7 +100,8 @@ export const achievementsList = [
         rewardText: "-9999",
         moneyReward: 5,
         image: moneyBag2,
-        status: -1
+        status: -1,
+        hide: false
     },
     {
         id: 8,
@@ -102,7 +110,8 @@ export const achievementsList = [
         rewardText: "rewarddd",
         moneyReward: 15,
         image: trophyCup,
-        status: -1
+        status: -1,
+        hide: false
     },
     {
         id: 9,
@@ -111,7 +120,8 @@ export const achievementsList = [
         rewardText: "reward",
         moneyReward: 20,
         image: greatPoet,
-        status: -1
+        status: -1,
+        hide: false
     },
     {
         id: 10,
@@ -120,7 +130,8 @@ export const achievementsList = [
         rewardText: "reward",
         moneyReward: 50,
         image: crown,
-        status: -1
+        status: -1,
+        hide: false
     },
     {
         id: 11,
@@ -129,7 +140,8 @@ export const achievementsList = [
         rewardText: "tupo flex",
         moneyReward: 0,
         image: ricardoFlex,
-        status: -1
+        status: -1,
+        hide: false
     },
     {
         id: 12,
@@ -138,7 +150,8 @@ export const achievementsList = [
         rewardText: "loh",
         moneyReward: 5,
         image: trophyCup,
-        status: -1
+        status: -1,
+        hide: false
     },
     {
         id: 13,
@@ -147,7 +160,8 @@ export const achievementsList = [
         rewardText: "Reward?!",
         moneyReward: 7,
         image: trophyCup,
-        status: -1
+        status: -1,
+        hide: false
     },
 ];
 

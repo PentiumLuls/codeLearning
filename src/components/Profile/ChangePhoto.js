@@ -19,6 +19,13 @@ class Popup extends React.Component {
         }
     }
 
+    buyAvatar = (avatar, money) => {
+        if (this.props.money - money >= 0) {
+            this.props.unlockAvatar(avatar);
+            this.props.spendMoney(money);
+        }
+    }
+
     render() {
         return (
             <PureModal
@@ -45,51 +52,55 @@ class Popup extends React.Component {
                         <h3>Орущий челик</h3>
                         <p>Лютый челик орёт</p>
                     </div>
-                    <div onClick={this.setPhoto.bind(this, 'reroRero')} className="avatar-card">
+                    <div onClick={this.props.unlockedAvatars['reroRero'] ? this.setPhoto.bind(this, 'reroRero') : this.buyAvatar.bind(this, 'reroRero', 50)} 
+                        className={this.props.unlockedAvatars['reroRero'] ? "avatar-card" : "avatar-card inactive"}>
                         <img alt="Kakyoin" src={require("../img/avatars/reroRero.gif")}/>
                         <h3>RERO-RERO-RERO-RERO</h3>
                         <p>это шо жожорефренс</p>
+                        {this.props.unlockedAvatars['reroRero'] ? null : <div className="avatar-card-caption">Гони 50 сыра</div>}
                     </div>
-                    <div onClick={this.setPhoto.bind(this, 'futaba')} className="avatar-card">
-                        <img alt="Best girl" src={require("../img/avatars/futaba.jpg")}/>
-                        <h3>Лучшая девочка</h3>
-                        <p>Единственная и неповторимая лучшая девочка</p>
-                    </div>
-                    <div onClick={this.setNanachi} className="avatar-card">
+                    
+                    <div onClick={this.props.unlockedAvatars['nanachi'] ? this.setNanachi : this.buyAvatar.bind(this, 'nanachi', 150)} 
+                        className={this.props.unlockedAvatars['nanachi'] ? "avatar-card" : "avatar-card inactive"}>
                         <img alt="Nanachi" src={require("../img/avatars/nanachi.jpg")}/>
                         <h3>Наначи</h3>
                         <p>Наначи говорит "Нннааа" 10 часов</p>
+                        {this.props.unlockedAvatars['nanachi'] ? null : <div className="avatar-card-caption">Гони 150 сыра</div>}
                     </div>
-                    <div onClick={this.setPhoto.bind(this, 'pikachu')} className="avatar-card">
+                    <div onClick={this.props.unlockedAvatars['pikachu'] ? this.setPhoto.bind(this, 'pikachu') : null} 
+                        className={this.props.unlockedAvatars['pikachu'] ? "avatar-card" : "avatar-card inactive"}>
                         <img alt="owo" src={require("../img/avatars/pikachu.png")}/>
                         <h3>О.О</h3>
                         <p>oшo what's this</p>
+                        {this.props.unlockedAvatars['pikachu'] ? null : <div className="avatar-card-caption">Требуется: </div>}
                     </div>
-                    <div onClick={this.setPhoto.bind(this, 'ricardo')} className="avatar-card">
+                    <div onClick={this.props.unlockedAvatars['ricardo'] ? this.setPhoto.bind(this, 'ricardo') : null} 
+                        className={this.props.unlockedAvatars['ricardo'] ? "avatar-card" : "avatar-card inactive"}>
                         <img alt="Slavyanin" src={require("../img/avatars/ricardo.jpg")}/>
                         <h3>Рикардо Милосов</h3>
                         <p>Советский солдат протягивает руку помощи</p>
+                        {this.props.unlockedAvatars['ricardo'] ? null : <div className="avatar-card-caption">Требуется: </div>}
                     </div>
-                    <div onClick={this.setPhoto.bind(this, 'splinter')} className="avatar-card">
+                    <div onClick={this.props.unlockedAvatars['splinter'] ? this.setPhoto.bind(this, 'splinter') : null} 
+                        className={this.props.unlockedAvatars['splinter'] ? "avatar-card" : "avatar-card inactive"}>
                         <img alt="Krysa" src={require("../img/avatars/splinter.jpg")}/>
                         <h3>Сплинтер</h3>
                         <p>Контент для олдфагов</p>
+                        {this.props.unlockedAvatars['splinter'] ? null : <div className="avatar-card-caption">Требуется: </div>}
                     </div>
-                    <div onClick={this.setPhoto.bind(this, 'zeroTwo')} className="avatar-card">
+                    <div onClick={this.props.unlockedAvatars['zeroTwo'] ? this.setPhoto.bind(this, 'zeroTwo') : null} 
+                        className={this.props.unlockedAvatars['zeroTwo'] ? "avatar-card" : "avatar-card inactive"}>
                         <img alt="Roflan" src={require("../img/avatars/zeroTwo.jpeg")}/>
                         <h3>Худшая девочка</h3>
                         <p>Худшая девочка в 3D - худшая комбинация</p>
+                        {this.props.unlockedAvatars['zeroTwo'] ? null : <div className="avatar-card-caption">Требуется: </div>}
                     </div>
-                    <div onClick={this.setPhoto.bind(this, 'denis')} className="avatar-card">
+                    <div onClick={this.props.unlockedAvatars['denis'] ? this.setPhoto.bind(this, 'denis') : null} 
+                        className={this.props.unlockedAvatars['denis'] ? "avatar-card" : "avatar-card inactive"}>
                         <img alt="Kakoj-to loh" src={require("../img/avatars/denis.jpeg")}/>
                         <h3>Тысячник</h3>
                         <p>Ну это челик</p>
-                    </div>
-                    <div className="avatar-card inactive">
-                        <img alt="Indus" src={require("../img/avatars/placeholder.png")}/>
-                        <h3>Индус</h3>
-                        <p>Лютый индус существует</p>
-                        <div className="avatar-card-caption">гавно жопа</div>
+                        {this.props.unlockedAvatars['denis'] ? null : <div className="avatar-card-caption">Требуется: </div>}
                     </div>
                 </div>
             </PureModal>

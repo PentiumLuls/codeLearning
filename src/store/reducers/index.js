@@ -2,7 +2,7 @@ import { SELECT_QUEST, SELECT_STAGE, PASS_QUEST, NEXT_LEVEL, NEXT_STEP, PREV_STE
 import { RESET_CODE, WRITE_CODE, CHANGE_SHOW_POPUP, CLEAR_TERMINAL, SHOW_ANSWER, 
     EXPORT_RUN, EXPORT_HIDE_NEXT_CODE, EXPORT_HIDE_CHAT, SET_HOT_KEY } from '../actions/codeActions'
 import { SPEND_MONEY, ADD_MONEY} from '../actions/moneyActions'
-import { TICK_TIME_IN_GAME, ADD_SYMBOL, ADD_SUCCESSFUL_RUN, ADD_UNSUCCESSFUL_RUN, CHANGE_MUSIC_VALUE, CHANGE_SOUND_VALUE, CHANGE_AVATAR, CHANGE_MUSIC} from '../actions/statActions'
+import { TICK_TIME_IN_GAME, ADD_SYMBOL, ADD_SUCCESSFUL_RUN, ADD_UNSUCCESSFUL_RUN, CHANGE_MUSIC_VALUE, CHANGE_SOUND_VALUE, CHANGE_AVATAR, CHANGE_MUSIC, UNLOCK_AVATAR} from '../actions/statActions'
 import {quests} from '../../plot/quests';
 import CryptoJS from 'crypto-js'
 
@@ -89,7 +89,11 @@ if (!localStorage['avatar']) {
 if (!localStorage['music']) {
     localStorage['music'] = 'sans'
 }
-
+if (!localStorage['unlockedAvatars']) {
+    localStorage['unlockedAvatars'] = JSON.stringify({vanDam: true, papich: true, 
+        futaba: false, nanachi: false, pikachu: false, reroRero: false, 
+        ricardo: false, splinter: false, zeroTwo: false, denis: false})
+}
 
 
 export const initialState = {
@@ -115,7 +119,8 @@ export const initialState = {
     musicValue: +localStorage['musicValue'],
     soundValue: +localStorage['soundValue'],
     avatar: localStorage['avatar'],
-    music: localStorage['music']
+    music: localStorage['music'],
+    unlockedAvatars: JSON.parse(localStorage['unlockedAvatars'])
 };
 
 
@@ -317,6 +322,13 @@ export function rootReducer(state = initialState, action) {
         case CHANGE_MUSIC:
             localStorage['music'] = action.payload;
             return {...state, music: action.payload}
+
+        case UNLOCK_AVATAR:
+            const avatars = JSON.parse(localStorage['unlockedAvatars']);
+            avatars[action.payload] = true;
+
+            localStorage['unlockedAvatars'] = JSON.stringify(avatars);
+            return {...state, unlockedAvatars: avatars}
 
         default:
             return {...state}
