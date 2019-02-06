@@ -86,6 +86,9 @@ if (!localStorage['soundValue']) {
 if (!localStorage['avatar']) {
     localStorage['avatar'] = 'vanDam'
 }
+if (!localStorage['music']) {
+    localStorage['music'] = 'sans'
+}
 
 
 export const initialState = {

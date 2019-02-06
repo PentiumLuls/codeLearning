@@ -3,7 +3,7 @@ import Stats from './Stats';
 import Settings from './Settings';
 import Achievements from './Achievements/AchievementsRenderer';
 import { connect } from 'react-redux';
-import {addMoney} from "../../store/actions/moneyActions";
+import {addMoney, spendMoney} from "../../store/actions/moneyActions";
 import {setHotKey} from "../../store/actions/codeActions";
 import { changeMusicValue, changeSoundValue, changeAvatar} from "../../store/actions/statActions";
 import Popup from "./ChangePhoto";
@@ -11,14 +11,15 @@ import vanDam from '../img/avatars/VanDarkholme.jpg';
 import papich from '../img/avatars/papich.jpeg';
 import futaba from '../img/avatars/futaba.jpg';
 import nanachi from '../img/avatars/nanachi.jpg';
-import pikachu from '../img/avatars/pikachu';
+import pikachu from '../img/avatars/pikachu.png';
 import reroRero from '../img/avatars/reroRero.gif';
 import ricardo from '../img/avatars/ricardo.jpg';
 import splinter from '../img/avatars/splinter.jpg';
 import zeroTwo from '../img/avatars/zeroTwo.jpeg';
+import denis from '../img/avatars/denis.jpeg'
 
 
-const avatars = {vanDam, papich, futaba, nanachi, pikachu, reroRero, ricardo, splinter, zeroTwo}
+const avatars = {vanDam, papich, futaba, nanachi, pikachu, reroRero, ricardo, splinter, zeroTwo, denis}
 
 
 class Profile extends Component {
@@ -84,11 +85,7 @@ class Profile extends Component {
             <div>
                 <div className="profile-top-wrapper">
                     <div className="profile-top-image-wrapper">
-<<<<<<< HEAD
                         <div onClick={this.openPopup} className="profile-top-image avatar"><img alt="avatar" src={avatars[this.props.avatar]}/></div>
-=======
-                        <div onClick={this.openPopup} className="profile-top-image"><img alt="avatar" src={require("../img/avatars/VanDarkholme.jpg")}/></div>
->>>>>>> 208b33788e9c3864a512eb7a0b23e8fe5508c3da
                     </div>
                     <div className="profile-top-switcher">
                         {this.state.stats
@@ -104,7 +101,7 @@ class Profile extends Component {
                 </div>
 
                 <Achievements addMoney={this.props.addMoney} timeInGame={this.props.timeInGame}></Achievements>
-                {this.state.popup ? <Popup changeAvatar={this.props.changeAvatar} togglePopup={this.togglePopup}></Popup> : null}
+                {this.state.popup ? <Popup spendMoney={this.props.spendMoney} changeAvatar={this.props.changeAvatar} togglePopup={this.togglePopup}></Popup> : null}
             </div>
         )
     }
@@ -129,7 +126,8 @@ const mapDispatchToProps = dispatch => {
         setHotKey: (key) => dispatch(setHotKey(key)),
         changeMusicValue: (value) => dispatch(changeMusicValue(value)),
         changeSoundValue: (value) => dispatch(changeSoundValue(value)),
-        changeAvatar: (value) => dispatch(changeAvatar(value))
+        changeAvatar: (value) => dispatch(changeAvatar(value)),
+        spendMoney: (value) => dispatch(spendMoney(value))
     }
 };
 

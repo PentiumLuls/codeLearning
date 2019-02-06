@@ -4,14 +4,15 @@ import vanDam from '../img/avatars/VanDarkholme.jpg';
 import papich from '../img/avatars/papich.jpeg';
 import futaba from '../img/avatars/futaba.jpg';
 import nanachi from '../img/avatars/nanachi.jpg';
-import pikachu from '../img/avatars/pikachu';
+import pikachu from '../img/avatars/pikachu.png';
 import reroRero from '../img/avatars/reroRero.gif';
 import ricardo from '../img/avatars/ricardo.jpg';
 import splinter from '../img/avatars/splinter.jpg';
 import zeroTwo from '../img/avatars/zeroTwo.jpeg';
+import denis from '../img/avatars/denis.jpeg'
 
 
-const avatars = {vanDam, papich, futaba, nanachi, pikachu, reroRero, ricardo, splinter, zeroTwo}
+const avatars = {vanDam, papich, futaba, nanachi, pikachu, reroRero, ricardo, splinter, zeroTwo, denis}
 
 class Header extends Component {
 
