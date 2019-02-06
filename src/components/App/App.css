@@ -176,6 +176,8 @@ audio {
     box-sizing: border-box;
     padding: calc(50% - 0.7vw) 0;
     visibility: hidden;
+    -webkit-animation: squiggly-anim 0.2s linear infinite;
+    animation: squiggly-anim 0.2s linear infinite;
 }
 
 .avatar img {
