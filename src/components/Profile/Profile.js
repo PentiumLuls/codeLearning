@@ -5,6 +5,7 @@ import Achievements from './Achievements/AchievementsRenderer';
 import { connect } from 'react-redux';
 import {addMoney} from "../../store/actions/moneyActions";
 import {setHotKey} from "../../store/actions/codeActions";
+import { changeMusicValue, changeSoundValue} from "../../store/actions/statActions";
 import Popup from "./ChangePhoto";
 
 
@@ -79,7 +80,10 @@ class Profile extends Component {
                         : <div className="open-stats" onClick={this.openStats}></div>}
                         {this.state.stats
                         ? <Stats stats={this.props.stats} timeInGame={this.props.timeInGame} records={this.props.records} averageTime={this.averageTime()}></Stats>
-                        : <Settings hotKey={this.props.hotKey} setHotKey={this.props.setHotKey}></Settings>}
+                        : <Settings changeMusicValue={this.props.changeMusicValue} 
+                                    changeSoundValue={this.props.changeSoundValue}
+                                    musicValue={this.props.musicValue} soundValue={this.props.soundValue}
+                                    hotKey={this.props.hotKey} setHotKey={this.props.setHotKey}></Settings>}
                     </div>
                 </div>
 
@@ -96,14 +100,18 @@ const mapStateToProps = store => {
         stats: store.stats,
         timeInGame: store.timeInGame,
         records: store.records,
-        hotKey: store.hotKey
+        hotKey: store.hotKey,
+        musicValue: store.musicValue,
+        soundValue: store.soundValue
     }
 }
 
 const mapDispatchToProps = dispatch => {
     return {
         addMoney: (value) => dispatch(addMoney(value)),
-        setHotKey: (key) => dispatch(setHotKey(key))
+        setHotKey: (key) => dispatch(setHotKey(key)),
+        changeMusicValue: (value) => dispatch(changeMusicValue(value)),
+        changeSoundValue: (value) => dispatch(changeSoundValue(value))
     }
 };
 

@@ -65,7 +65,14 @@ class App extends Component {
         this.setState({
             player: this.player
         });
-        this.player.volume = 0.4
+        this.player.volume = this.props.musicValue
+        this.player.play();
+    }
+
+    componentWillReceiveProps() {
+        if (this.player) {
+            this.player.volume = this.props.musicValue
+        }
     }
 
 
@@ -161,7 +168,7 @@ const mapStateToProps = store => {
         code: store.code,
         resets: store.resets,
         showPopup: store.showPopup,
-
+        musicValue: store.musicValue
     }
 };
 

@@ -16,7 +16,6 @@ import pass from '../../audio/pass.ogg';
 
 class Terminal extends Component {
     constructor() {
-
         super();
         this.state = {
             testCode: "testCode",
@@ -41,6 +40,7 @@ class Terminal extends Component {
             self.reporterLog(text, status)
         };
         ///////////////////////////////
+        this.audio = null
     }
 
     log(text, logger) {
@@ -222,6 +222,11 @@ class Terminal extends Component {
         this.props.player.play();
     }
 
+    componentDidUpdate() {
+        if (this.state.playNotPass) {
+            this.audio.volume = this.props.soundValue
+        }
+    }
 
     render() {
         this.passStages = this.props.passStages;
@@ -231,16 +236,18 @@ class Terminal extends Component {
 
         this.props.exportHideNextLevel(this.hideNextLevel);
 
+        
+
         return (
             <div className="terminalComponent">
                 {this.state.playNotPass 
                 ? <div>
-                    <audio onEnded={this.endNotPass} src={this.state.composition} controls autoPlay >
+                    <audio ref={(element) => {this.audio = element}} onEnded={this.endNotPass} src={this.state.composition} autoPlay >
                         Your browser does not support the audio element.
                     </audio>
                 </div>
-                : null
-            }
+                : null        
+                }
                 <div className="button-line">
                     <button className="debug" onClick={this.run}>RUN CODE</button>
                     <button className="debug" onClick={this.clearTerminal}>CLEAR TERMINAL</button>
@@ -275,7 +282,8 @@ const mapStateToProps = store => {
         passStages: store.passStages,
         passQuests: store.passQuests,
         currentStage: store.currentStage,
-        currentQuest: store.currentQuest
+        currentQuest: store.currentQuest,
+        soundValue: store.soundValue
     }
 };
 
