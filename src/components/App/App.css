@@ -167,6 +167,7 @@ audio {
     width: 8vw;
     height: 8vw;
     position: absolute;
+    pointer-events: none;
     top: 0;
     left: 0;
     display: inline-block;
