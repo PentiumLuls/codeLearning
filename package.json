@@ -9,6 +9,7 @@
     "react-ace": "^6.3.2",
     "react-ace-editor": "0.0.3",
     "react-dom": "^16.7.0",
+    "react-input-range": "^1.3.0",
     "react-pure-modal": "^1.5.1",
     "react-redux": "^6.0.0",
     "react-scripts": "2.1.3",
