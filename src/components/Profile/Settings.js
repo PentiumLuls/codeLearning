@@ -1,6 +1,7 @@
 import React from 'react'
 import InputRange from 'react-input-range';
-import 'react-input-range/lib/css/index.css'
+import 'react-input-range/lib/css/index.css';
+import SlidersExample from './SliderExample'
 
 export default class Settings extends React.Component{
     constructor(props) {
@@ -18,12 +19,6 @@ export default class Settings extends React.Component{
         this.props.setHotKey(`Ctrl+shift+${e.target.value}`);
     }
 
-    change = value => {
-        this.setState({
-            musicValue: value
-        })
-    }
-
     render() {
         return (
             <div className="profile-top-settings">
@@ -37,26 +32,10 @@ export default class Settings extends React.Component{
                     <option value="z" >z</option>
                 </select> <br/><br/>
                 <p>Фоновая музыка</p>
-                <input 
-                    id="typeinp" 
-                    type="range"
-                    min="0" max="1" 
-                    defaultValue={this.state.musicValue} 
-                    value={this.state.musicValue}
-                    onChange={this.change}
-                    step="0.1"
-                /> <br/>
+                <SlidersExample value={this.props.musicValue} change={this.props.changeMusicValue}/>
+                 <br/>
                 <p>Звуки</p>
-                <InputRange
-                    minValue={0.0}
-                    maxValue={1.0}
-                    value={this.state.soundValue}
-                    onChange={value => {
-                        this.setState({
-                            soundValue: value
-                        })
-                    }}
-                />
+                <SlidersExample value={this.props.soundValue} change={this.props.changeSoundValue}/>
             </div>
         )
     }
