@@ -63,34 +63,34 @@ function factorial(a) {
 }
 
 //// quest 5 ///
-const cow = {milk: 10}
+const cow = {milk: 10};
 
 function makeCheese(cow) {
-    const newcow = {...cow};
+    const newCow = {...cow};
     const cheeses = [];
-    return makeCheeseHelper(newcow, cheeses, 1)
+    return makeCheeseHelper(newCow, cheeses, 1)
 
 }
 
 function makeCheeseHelper(cow, cheeses, e) {
-    if (cow.milk == 0) return cheeses;
+    if (cow.milk === 0) return cheeses;
     else {
 
-        cheeses.push((2 * e).toFixed(1))
+        cheeses.push((2 * e).toFixed(1));
         cow.milk -= 2;
         return makeCheeseHelper(cow, cheeses, e - 0.20);
     }
 }
 
-console.log(makeCheese(cow))
+console.log(makeCheese(cow));
 
 
 //// quest 6 ///
-const firms = [{name: 'name1', cheeseWeight: 5}, {name: 'name2', cheeseWeight: 45}, {name: 'name3', cheeseWeight: 19}]
+const firms = [{name: 'name1', cheeseWeight: 5}, {name: 'name2', cheeseWeight: 45}, {name: 'name3', cheeseWeight: 19}];
 
-function maxWeight(firms, n, maxobj) {
-    if (n == firms.length) return maxobj;
-    return maxWeight(firms, n + 1, maxWeightHelper(firms[n], maxobj))
+function maxWeight(firms, n, maxWeightCheese) {
+    if (n === firms.length) return maxWeightCheese;
+    return maxWeight(firms, n + 1, maxWeightHelper(firms[n], maxWeightCheese));
 }
 
 function maxWeightHelper(A, B) {
@@ -101,10 +101,10 @@ function findWinner(firms) {
     return maxWeight(firms, 0, firms[0]).name;
 }
 
-console.log(findWinner(firms))
+console.log(findWinner(firms));
 
 ////  quest 7 ////
-const cow = {milk: 10}
+const cow = {milk: 10};
 
 function makeCheese(cow, n) {
     const newcow = {...cow};
@@ -114,16 +114,16 @@ function makeCheese(cow, n) {
 }
 
 function makeCheeseHelper(cow, cheeses, e, n) {
-    if (cow.milk == 0 || n == 0) return cheeses;
+    if (cow.milk === 0 || n === 0) return cheeses;
     else {
 
-        cheeses.push((e).toFixed(1))
+        cheeses.push((e).toFixed(1));
         cow.milk -= 1;
         return makeCheeseHelper(cow, cheeses, e * 1.1, n - 1);
     }
 }
 
-console.log(makeCheese(cow, 5))
+console.log(makeCheese(cow, 5));
 
 
 
