@@ -5,8 +5,20 @@ import Achievements from './Achievements/AchievementsRenderer';
 import { connect } from 'react-redux';
 import {addMoney} from "../../store/actions/moneyActions";
 import {setHotKey} from "../../store/actions/codeActions";
-import { changeMusicValue, changeSoundValue} from "../../store/actions/statActions";
+import { changeMusicValue, changeSoundValue, changeAvatar} from "../../store/actions/statActions";
 import Popup from "./ChangePhoto";
+import vanDam from '../img/avatars/VanDarkholme.jpg';
+import papich from '../img/avatars/papich.jpeg';
+import futaba from '../img/avatars/futaba.jpg';
+import nanachi from '../img/avatars/nanachi.jpg';
+import pikachu from '../img/avatars/pikachu';
+import reroRero from '../img/avatars/reroRero.gif';
+import ricardo from '../img/avatars/ricardo.jpg';
+import splinter from '../img/avatars/splinter.jpg';
+import zeroTwo from '../img/avatars/zeroTwo.jpeg';
+
+
+const avatars = {vanDam, papich, futaba, nanachi, pikachu, reroRero, ricardo, splinter, zeroTwo}
 
 
 class Profile extends Component {
@@ -72,7 +84,7 @@ class Profile extends Component {
             <div>
                 <div className="profile-top-wrapper">
                     <div className="profile-top-image-wrapper">
-                        <div onClick={this.openPopup} className="profile-top-image avatar"><img alt="avatar" src={require("../img/avatars/VanDarkholme.jpg")}/></div>
+                        <div onClick={this.openPopup} className="profile-top-image avatar"><img alt="avatar" src={avatars[this.props.avatar]}/></div>
                     </div>
                     <div className="profile-top-switcher">
                         {this.state.stats
@@ -88,7 +100,7 @@ class Profile extends Component {
                 </div>
 
                 <Achievements addMoney={this.props.addMoney} timeInGame={this.props.timeInGame}></Achievements>
-                {this.state.popup ? <Popup togglePopup={this.togglePopup}></Popup> : null}
+                {this.state.popup ? <Popup changeAvatar={this.props.changeAvatar} togglePopup={this.togglePopup}></Popup> : null}
             </div>
         )
     }
@@ -102,7 +114,8 @@ const mapStateToProps = store => {
         records: store.records,
         hotKey: store.hotKey,
         musicValue: store.musicValue,
-        soundValue: store.soundValue
+        soundValue: store.soundValue,
+        avatar: store.avatar
     }
 }
 
@@ -111,7 +124,8 @@ const mapDispatchToProps = dispatch => {
         addMoney: (value) => dispatch(addMoney(value)),
         setHotKey: (key) => dispatch(setHotKey(key)),
         changeMusicValue: (value) => dispatch(changeMusicValue(value)),
-        changeSoundValue: (value) => dispatch(changeSoundValue(value))
+        changeSoundValue: (value) => dispatch(changeSoundValue(value)),
+        changeAvatar: (value) => dispatch(changeAvatar(value))
     }
 };
 

@@ -84,7 +84,7 @@ if (!localStorage['soundValue']) {
     localStorage['soundValue'] = '1.0'
 }
 if (!localStorage['avatar']) {
-    localStorage['avatar'] = '../../img/avatars/VanDarkholme.jpg'
+    localStorage['avatar'] = 'vanDam'
 }
 
 
@@ -306,6 +306,7 @@ export function rootReducer(state = initialState, action) {
             return {...state, soundValue: action.payload}
 
         case CHANGE_AVATAR:
+            console.log(action.payload)
             localStorage['avatar'] = action.payload;
             return {...state, avatar: action.payload}
 

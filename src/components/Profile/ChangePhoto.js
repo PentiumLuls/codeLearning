@@ -20,20 +20,15 @@ class Popup extends React.Component {
                 ref="modal"
             >
                 <div className="avatar-cards-wrapper">
-                    <div className="avatar-card">
+                    <div onClick={this.props.changeAvatar.bind(this, 'vanDam')} className="avatar-card">
                         <img alt="Van Darkholme" src={require("../img/avatars/VanDarkholme.jpg")}/>
                         <h3>Гачимучи</h3>
                         <p>Не ну это бан</p>
                     </div>
-                    <div className="avatar-card">
-                        <img alt="Roflan" src={require("../img/avatars/placeholder.jpeg")}/>
+                    <div onClick={this.props.changeAvatar.bind(this, 'papich')} className="avatar-card">
+                        <img alt="Roflan" src={require("../img/avatars/papich.jpeg")}/>
                         <h3>Орущий челик</h3>
                         <p>Лютый челик орёт</p>
-                    </div>
-                    <div className="avatar-card">
-                        <img alt="Indus" src={require("../img/avatars/placeholder.png")}/>
-                        <h3>Индус</h3>
-                        <p>Лютый индус существует</p>
                     </div>
                     <div className="avatar-card inactive">
                         <img alt="Indus" src={require("../img/avatars/placeholder.png")}/>

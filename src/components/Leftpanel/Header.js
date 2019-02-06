@@ -1,6 +1,17 @@
 import React, { Component } from 'react';
-import { connect } from 'react-redux'
+import { connect } from 'react-redux';
+import vanDam from '../img/avatars/VanDarkholme.jpg';
+import papich from '../img/avatars/papich.jpeg';
+import futaba from '../img/avatars/futaba.jpg';
+import nanachi from '../img/avatars/nanachi.jpg';
+import pikachu from '../img/avatars/pikachu';
+import reroRero from '../img/avatars/reroRero.gif';
+import ricardo from '../img/avatars/ricardo.jpg';
+import splinter from '../img/avatars/splinter.jpg';
+import zeroTwo from '../img/avatars/zeroTwo.jpeg';
 
+
+const avatars = {vanDam, papich, futaba, nanachi, pikachu, reroRero, ricardo, splinter, zeroTwo}
 
 class Header extends Component {
 
@@ -18,7 +29,7 @@ class Header extends Component {
       return (
             <header className="userinfo">
                         <div className="avatar-wrapper">
-                        <div onClick={this.props.func3} className="avatar"><img alt="avatar" src={require("../img/avatars/VanDarkholme.jpg")}/></div>
+                        <div onClick={this.props.func3} className="avatar"><img alt="avatar" src={avatars[this.props.avatar]}/></div>
                             <div className="header-money"><p>{this.props.money}</p></div>
                         </div>
                         <div className="userbuttons">
