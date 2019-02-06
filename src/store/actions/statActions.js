@@ -7,6 +7,7 @@ export const CHANGE_MUSIC_VALUE = "CHANGE_MUSIC_VALUE";
 export const CHANGE_SOUND_VALUE = "CHANGE_SOUND_VALUE";
 export const CHANGE_AVATAR = "CHANGE_AVATAR";
 export const CHANGE_MUSIC = "CHANGE_MUSIC";
+export const UNLOCK_AVATAR = "UNLOCK_AVATAR";
 
 export function addSymbol() {
     return {
@@ -56,6 +57,13 @@ export function changeAvatar(value) {
 export function changeMusic(value) {
     return {
         type: CHANGE_MUSIC,
+        payload: value
+    }
+}
+
+export function unlockAvatar(value) {
+    return {
+        type: UNLOCK_AVATAR,
         payload: value
     }
 }
