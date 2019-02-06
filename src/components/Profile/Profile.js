@@ -63,7 +63,7 @@ class Profile extends Component {
 
         average = `${average / 360 ^ 0 < 10 ? '0' + (average / 360 ^ 0) : average / 360 ^ 0}
         :${average % 360 / 60 ^ 0 < 10 ? '0' + (average % 360 / 60 ^ 0) : average % 360 / 60 ^ 0 < 10}
-        :${average % 21600 < 10 ? '0' + (average % 21600) : average % 21600}`
+        :${average % 21600 < 10 ? '0' + (average % 21600) : average % 21600}`;
 
         return average
     };
@@ -72,13 +72,13 @@ class Profile extends Component {
         this.setState({
             popup: true
         })
-    }
+    };
 
     togglePopup = () => {
         this.setState({
             popup: false
         })
-    }
+    };
 
     render() {
         return (
@@ -89,22 +89,22 @@ class Profile extends Component {
                     </div>
                     <div className="profile-top-switcher">
                         {this.state.stats
-                        ? <div className="open-settings" onClick={this.openSettings}></div>
-                        : <div className="open-stats" onClick={this.openStats}></div>}
+                        ? <div className="open-settings" onClick={this.openSettings}/>
+                        : <div className="open-stats" onClick={this.openStats}/>}
                         {this.state.stats
-                        ? <Stats stats={this.props.stats} timeInGame={this.props.timeInGame} records={this.props.records} averageTime={this.averageTime()}></Stats>
+                        ? <Stats stats={this.props.stats} timeInGame={this.props.timeInGame} records={this.props.records} averageTime={this.averageTime()}/>
                         : <Settings changeMusicValue={this.props.changeMusicValue} 
                                     changeSoundValue={this.props.changeSoundValue}
                                     musicValue={this.props.musicValue} soundValue={this.props.soundValue}
-                                    hotKey={this.props.hotKey} setHotKey={this.props.setHotKey}></Settings>}
+                                    hotKey={this.props.hotKey} setHotKey={this.props.setHotKey}/>}
                     </div>
                 </div>
 
-                <Achievements addMoney={this.props.addMoney} timeInGame={this.props.timeInGame}></Achievements>
+                <Achievements addMoney={this.props.addMoney} timeInGame={this.props.timeInGame}/>
                 {this.state.popup ? <Popup unlockedAvatars={this.props.unlockedAvatars} unlockAvatar={this.props.unlockAvatar} 
                                             changeMusic={this.props.changeMusic} spendMoney={this.props.spendMoney} 
                                             money={this.props.money} changeAvatar={this.props.changeAvatar} 
-                                            togglePopup={this.togglePopup}></Popup> : null}
+                                            togglePopup={this.togglePopup}/> : null}
             </div>
         )
     }
@@ -123,7 +123,7 @@ const mapStateToProps = store => {
         unlockedAvatars: store.unlockedAvatars,
         money: store.money
     }
-}
+};
 
 const mapDispatchToProps = dispatch => {
     return {

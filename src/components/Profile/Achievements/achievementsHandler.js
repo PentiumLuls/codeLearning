@@ -116,8 +116,8 @@ const getAchievementJSX = (achievement, key) => {
         <div className={achievement.status === 0 || achievement.status === 1 ? "achievement-body" : "achievement-body-inactive"} key={key}>
             <div className="achievement-picture"><img alt="avatar" src={achievement.image}/></div>
             <div className="achievement-text">
-                <div className="achievement-title">{achievement.name}</div>
-                <div className="achievement-description">{achievement.descriptions}</div>
+                <div className="achievement-title">{achievement.status === -1 && achievement.hide === true ? "?????????" : achievement.name}</div>
+                <div className="achievement-description">{achievement.status === -1 && achievement.hide === true ? "????????????????????????" : achievement.descriptions}</div>
             </div>
             <div className="achievement-button-wrapper">
                 <button
