@@ -10,10 +10,12 @@ import Chatbot from '../ChatBot/Chatbot';
 import {connect} from 'react-redux';
 import {changeShowPopup} from '../../store/actions/codeActions';
 import {tickTimeInGame} from '../../store/actions/statActions';
-import sound from '../../audio/sans.mp3';
-import sound2 from '../../audio/sans.ogg';
+import nnnaaa from '../../audio/nnnaaa.ogg'
+import sans from '../../audio/sans.ogg';
 import Profile from '../Profile/Profile';
 import {updateAchievements} from "../Profile/Achievements/achievementsHandler";
+
+const music = {sans, nnnaaa}
 
 class App extends Component {
     constructor(props) {
@@ -21,12 +23,15 @@ class App extends Component {
 
         this.state = {
             isEdit: 0,
-            terminalOpen: false
+            terminalOpen: false,
+            player: null
         };
         
         this.globalTime = setInterval(() => {
             this.props.tickTimeInGame()
-        }, 1000)
+        }, 1000);
+
+        this.player = null
 
     }
 
@@ -54,8 +59,24 @@ class App extends Component {
         console.log("Terminal mode x2 toggle");
         this.setState({
             terminalOpen: !this.state.terminalOpen
-        })
+        });
+        updateAchievements(11);
     };
+
+    componentDidMount() {
+        this.setState({
+            player: this.player
+        });
+        this.player.volume = this.props.musicValue
+        this.player.play();
+    }
+
+    componentWillReceiveProps(newProps) {
+        if (this.player) {
+            this.player.volume = newProps.musicValue
+        }
+    }
+
 
     render() {
         this.passStages = this.props.passStages;
@@ -80,11 +101,10 @@ class App extends Component {
             <div className="main">
 
                 <div>
-                    <audio controls autoPlay loop>
-                        <source src={sound2} type="audio/ogg"/>
-                        <source src={sound} type="audio/mpeg"/>
+                    <audio ref={(element) => {this.player = element}} src={music[this.props.music]} controls autoPlay loop>
                         Your browser does not support the audio element.
                     </audio>
+                    
                 </div>
                 <div className="leftpanel">
                     <Leftpanel func={this.changeButtonState}
@@ -104,6 +124,7 @@ class App extends Component {
                             </div>
                             <div className={this.state.terminalOpen ? 'terminal open-terminal' : 'terminal'}>
                                 <Terminal
+                                    player={this.state.player}
                                     terminalOpen={this.state.terminalOpen}
                                     className="terminal"
                                     testCode={quests[this.currentStage].quests[this.currentQuest].test}
@@ -149,7 +170,8 @@ const mapStateToProps = store => {
         code: store.code,
         resets: store.resets,
         showPopup: store.showPopup,
-
+        musicValue: store.musicValue,
+        music: store.music
     }
 };
 

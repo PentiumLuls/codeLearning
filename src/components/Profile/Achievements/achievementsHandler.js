@@ -2,20 +2,25 @@ import React from 'react';
 import {achievementsList} from "./achievementsList";
 
 let addMoney;
+let timeInGame = {hours: 0, minutes: 0, seconds: 0};
+
 window.unlockAllAchievements = () => {
     let achievements = JSON.parse(localStorage['achievements']);
     achievements.forEach((cur) => {cur.status = 1});
     localStorage['achievements'] = JSON.stringify(achievements);
 };
 
-let buttonsState = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+let buttonsState = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
 
 export const updateAchievements = (id, value) => {
+    console.log(timeInGame);
     let achievements = JSON.parse(localStorage['achievements']);
+    let stats = JSON.parse(localStorage['stats']);
 
     ////LEVELS PASSING////
     //PASS 3 QUESTS ACHIEVEMENT
-    if (achievements[0].status === -1 && ((localStorage['passStages'] === 0 && localStorage['passQuests'] >= 2) || (localStorage['passStages'] > 0))) {
+    if (achievements[0].status === -1 && ((localStorage['passStages'] == 0 && localStorage['passQuests'] >= 2)
+            || (localStorage['passStages'] > 0))) {
         achievements[0].status = 1;
     }
     //PASS 1st STAGE
@@ -57,12 +62,36 @@ export const updateAchievements = (id, value) => {
     if (achievements[8].status === -1 && achievements[8].spend >= 300) {
         achievements[8].status = 1;
     }
+    //WRITE 500 SYMBOLS
+    if (achievements[9].status === -1 && stats.symbols >= 500) {
+        achievements[9].status = 1;
+    }
+    //WRITE 10000 SYMBOLS
+    if (achievements[10].status === -1 && stats.symbols >= 10000) {
+        achievements[10].status = 1;
+    }
+    //CLICK '*' button x10
+    if (id === 11 && achievements[11].status === -1) {
+        achievements[11].times += 1;
+        if (achievements[11].times >= 10) {
+            achievements[11].status = 1;
+        }
+    }
+    if (achievements[12].status === -1 && stats.unsuccessfulRuns >= 30) {
+        achievements[12].status = 1;
+    }
+    if (achievements[13].status === -1 ) {
+        //TODO && timeInGame.hour >= 3
+        achievements[13].status = 1;
+    }
 
     localStorage['achievements'] = JSON.stringify(achievements);
 };
 
-export const getAchievementsList = (addMoney1) => {
+export const getAchievementsList = (addMoney1, timeInGame1) => {
     addMoney = addMoney1;
+    timeInGame = timeInGame1;
+    console.log(timeInGame);
     updateList();
     return achievementsList
         .sort(compareTwoAchieveByStatus)
@@ -87,8 +116,8 @@ const getAchievementJSX = (achievement, key) => {
         <div className={achievement.status === 0 || achievement.status === 1 ? "achievement-body" : "achievement-body-inactive"} key={key}>
             <div className="achievement-picture"><img alt="avatar" src={achievement.image}/></div>
             <div className="achievement-text">
-                <div className="achievement-title">{achievement.name}</div>
-                <div className="achievement-description">{achievement.descriptions}</div>
+                <div className="achievement-title">{achievement.status === -1 && achievement.hide === true ? "?????????" : achievement.name}</div>
+                <div className="achievement-description">{achievement.status === -1 && achievement.hide === true ? "????????????????????????" : achievement.descriptions}</div>
             </div>
             <div className="achievement-button-wrapper">
                 <button

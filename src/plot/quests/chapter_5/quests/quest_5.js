@@ -1,36 +1,80 @@
 export const quest5 =
     {
-        title: "Легенда о великом ублажателе коров",
-        text: `Вы и ваш индусский друг смогли наладить производство сыра, после чего стали самыми успешными предприятелями в индусской деревне в Аду. Кажется, вами восхищается даже Мефистофель. На вырученные деньги вы решаете приобрести ещё несколько коров. Теперь вам каким-то образом нужно вести учёт полученного молока и сыра. Вся робота опять легла на вас. Корова понимающе вздыхает.`,
-        regexps: [/(return)/g, /(reduce)/g],
-        code: `//Брат!! Мы успешны! ПОмоги мне продавать сыр оптом и я посвящу тебя в истинного индуса.
-//Напиши функцию milkACow которая принимает корову,
-//доит её по заказу клиентов и когда молоко закончиться верни массу всего сыра который получился.
-//Но брат, избалованая корова хочет что бы ти использовал стрелочные функции, я думаю это 4 заповедь.
-                
-var cow = {
-    milk: 10
+        title: "5",
+        text: ``,
+        regexps: [],
+        regexpsNone: [/(for)/g, /(while)/g, /(var)/g, /(let)/g],
+        code: `//Допиши функцию 'makeCheeseHelper', которая возвращает массив порций сыра.
+//1 порция сыра = 2 молока * e;
+//Причем, с каждой новой порцией 'e' уменьшается на 0.20
+
+const cow = {milk: 10};
+
+function makeCheese(cow) {
+    const newCow = {...cow};
+    const cheeses = [];
+    return makeCheeseHelper(newCow, cheeses, 1)
 }
-                
-let MassOfCheeses = []
-                
-function milkACow(cow, mass) {
-    cow.milk -= mass
-    cheeses += mass / 2
-    if (cow.milk <= 0) {
-        return cheeses
-    }
-}`,
+
+function makeCheeseHelper(cow, cheeses, e) {
+    //YOUR CODE
+}
+
+terminal.log(makeCheese(cow));`,
         hints: [
-            "hint sample",
-            "hint sample2"
+            "Try to make recursion until the 'cow.milk' === 0 And then return cheeses",
+            "Try to round portions by using 'toFixed(1)'"
         ],
         test: {
-            code: "sumRange(1, 10, 0)",
-            answer: `function sumRange(start, end, acc) {
-                        if (start > end)
-                            return acc;
-                        return sumRange(start + 1, end, acc + start)
-                    }`
+            code: `function makeCheeseTEST(cow) {
+    const newCow = {...cow};
+    const cheeses = [];
+    return makeCheeseHelperTEST(newCow, cheeses, 1)
+}
+
+function makeCheeseHelperTEST(cow, cheeses, e) {
+    if (cow.milk === 0) return cheeses;
+    else {
+        cheeses.push((2 * e).toFixed(1));
+        cow.milk -= 2;
+        return makeCheeseHelperTEST(cow, cheeses, e - 0.20);
+    }
+}
+            
+            describe("5", function() {
+
+               it("should return portions of cheese using formula",function() {
+                  expect(makeCheese({milk: 10})).toEqual(makeCheeseTEST({milk: 10}));
+                  expect(makeCheese({milk: 6})).toEqual(makeCheeseTEST({milk: 6}));
+               });
+
+            });
+                  const report = runSpecs();
+                        for (var i = 0; i < report.passed.length; i++) {
+                          reporterLog(report.descriptions[i], report.passed[i])
+                        }
+                        if (report.passed.indexOf(false) === -1) { true } else false;`,
+            answer: `//Допиши функцию 'makeCheeseHelper', которая возвращает массив порций сыра.
+//1 порция сыра = 2 молока * e;
+//Причем, с каждой новой порцией 'e' уменьшается на 0.20
+
+const cow = {milk: 10};
+
+function makeCheese(cow) {
+    const newCow = {...cow};
+    const cheeses = [];
+    return makeCheeseHelper(newCow, cheeses, 1)
+}
+
+function makeCheeseHelper(cow, cheeses, e) {
+    if (cow.milk === 0) return cheeses;
+    else {
+        cheeses.push((2 * e).toFixed(1));
+        cow.milk -= 2;
+        return makeCheeseHelper(cow, cheeses, e - 0.20);
+    }
+}
+
+terminal.log(makeCheese(cow));`
         }
     };

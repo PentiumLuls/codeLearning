@@ -1,51 +1,69 @@
 export const quest3 =
     {
-        title: "Адская экосистема",
-        text: `Корова восхищена вашими навыками функционального программирования, а индус и не думает вас отпускать. Оказывается, функции множественной подойки ему тоже недостаточно, ведь у всего индусского поселения закончились запасы сыра. Корова устало вздыхает. Вы молча задаётесь вопросом, откуда здесь вообще индус и корова, и почему она даёт красное молоко.`,
-        regexps: [/(return)/g, /(function)/g, /(cow)/g, /(milk)/g, /(milkACow)/g],
-        regexpsNone: [/(for)/g, /(while)/g, /(var)/g, /(map)/g, /(reduce)/g, /(filter)/g, /(filter)/g,],
-        code: `//Мои братья индусы хотят сырууу. Помоги нам сделать сыр,
-//а я пойду його продавать на базар. Напиши шункцию milkACow которая принимает корову,
-//доит её по заказу клиентов и когда молоко закончиться верни масив сыров.
-//Попробуй здалать её такой же крутой как о прошлую .
-//формула сыру: milk / 2.     
+        title: "3",
+        text: ``,
+        regexps: [],
+        regexpsNone: [/(for)/g, /(while)/g, /(var)/g, /(let)/g],
+        code: `//Функция 'milkCows' принимает массив коров и число - с какой коровы начинать
+//Дойку. 1 единица 'milk', что имеет корова равна 5 единицам молока.
+//Не забудь убедиться, что коров для подойки может и не быть!
 
-var cow = {
-    milk: 10
+const cows = [{milk:10}, {milk:5}, {milk:0}];
+
+function milkCows(cows, n) {
+    //YOUR CODE
 }
 
-let cheeses = []
-
-function milkACow(cow, mass) {
-    cow.milk -= mass
-    cheeses.push(maas / 2)
-    if (cow.milk <= 0) {
-        return cheeses
-    }
+function Milk(milk){
+   return 5 * milk;
 }
-`,
+
+terminal.log(milkCows(cows,0));
+terminal.log(milkCows(cows,5));`,
+        hints: [
+            "Don`t forget about opportunity of undefined 'cows'!"
+        ],
         test: {
-            code: `let valid = true;
-                    let cow2 = {milk: 10}
-                        let myCow = milkACow(cow2)
-                        if(JSON.stringify(myCow(4)) !== JSON.stringify(undefined)){valid = false};
-                        if(JSON.stringify(myCow(4)) !== JSON.stringify(undefined)){valid = false};
-                        if(JSON.stringify(myCow(4)) !== JSON.stringify([2, 2, 1])){valid = false};
-                        if(cow2.milk !== 10){valid = false};
-                    valid === true`,
-            answer: `function milkACow(cow) {
-                        let newcow = Object.assign({}, cow);
-                        let cheeses = []
-                        return function(int) {
-                            if (int >= newcow.milk) {
-                                cheeses.push(newcow.milk / 2)
-                                newcow.milk = 0
-                                return cheeses;
-                            }
-                        newcow.milk -= int
-                        cheeses.push(int / 2)   
+            code: `function milkCowsTEST(cows, n) {
+    if (n >= cows.length ) return 0;
+    return MilkTEST(cows[n].milk) + milkCowsTEST(cows, n+1)
+}
+
+function MilkTEST(milk){
+   return 5 * milk;
+}
+            
+            describe("3", function() {
+
+               it("'milkCows' should return sum of milk beginning from cow 'n'",function() {
+                  expect(milkCows(cows,0)).toEqual(milkCowsTEST(cows,0));
+                  expect(milkCows(cows,1)).toEqual(milkCowsTEST(cows,1));
+                  expect(milkCows(cows,6)).toEqual(milkCowsTEST(cows,6));
+               });
+
+            });
+                  const report = runSpecs();
+                        for (var i = 0; i < report.passed.length; i++) {
+                          reporterLog(report.descriptions[i], report.passed[i])
                         }
-                    }
-                    `
+                        if (report.passed.indexOf(false) === -1) { true } else false;`,
+
+            answer: `//Функция 'milkCows' принимает массив коров и число - с какой коровы начинать
+//Дойку. 1 единица 'milk', что имеет корова равна 5 единицам молока.
+//Не забудь убедиться, что коров для подойки может и не быть!
+
+const cows = [{milk:10}, {milk:5}, {milk:0}];
+
+function milkCows(cows, n) {
+    if (n >= cows.length ) return 0;
+    return Milk(cows[n].milk) + milkCows(cows,n+1);
+}
+
+function Milk(milk){
+   return 5 * milk;
+}
+
+terminal.log(milkCows(cows,0));
+terminal.log(milkCows(cows,5));`
         }
     };

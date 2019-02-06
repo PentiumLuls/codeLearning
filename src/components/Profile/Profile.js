@@ -3,9 +3,23 @@ import Stats from './Stats';
 import Settings from './Settings';
 import Achievements from './Achievements/AchievementsRenderer';
 import { connect } from 'react-redux';
-import {addMoney} from "../../store/actions/moneyActions";
+import {addMoney, spendMoney} from "../../store/actions/moneyActions";
 import {setHotKey} from "../../store/actions/codeActions";
+import { changeMusicValue, changeSoundValue, changeAvatar, changeMusic, unlockAvatar} from "../../store/actions/statActions";
 import Popup from "./ChangePhoto";
+import vanDam from '../img/avatars/VanDarkholme.jpg';
+import papich from '../img/avatars/papich.jpeg';
+import futaba from '../img/avatars/futaba.jpg';
+import nanachi from '../img/avatars/nanachi.jpg';
+import pikachu from '../img/avatars/pikachu.png';
+import reroRero from '../img/avatars/reroRero.gif';
+import ricardo from '../img/avatars/ricardo.jpg';
+import splinter from '../img/avatars/splinter.jpg';
+import zeroTwo from '../img/avatars/zeroTwo.jpeg';
+import denis from '../img/avatars/denis.jpeg'
+
+
+const avatars = {vanDam, papich, futaba, nanachi, pikachu, reroRero, ricardo, splinter, zeroTwo, denis}
 
 
 class Profile extends Component {
@@ -49,7 +63,7 @@ class Profile extends Component {
 
         average = `${average / 360 ^ 0 < 10 ? '0' + (average / 360 ^ 0) : average / 360 ^ 0}
         :${average % 360 / 60 ^ 0 < 10 ? '0' + (average % 360 / 60 ^ 0) : average % 360 / 60 ^ 0 < 10}
-        :${average % 21600 < 10 ? '0' + (average % 21600) : average % 21600}`
+        :${average % 21600 < 10 ? '0' + (average % 21600) : average % 21600}`;
 
         return average
     };
@@ -58,33 +72,39 @@ class Profile extends Component {
         this.setState({
             popup: true
         })
-    }
+    };
 
     togglePopup = () => {
         this.setState({
             popup: false
         })
-    }
+    };
 
     render() {
         return (
             <div>
                 <div className="profile-top-wrapper">
                     <div className="profile-top-image-wrapper">
-                        <div onClick={this.openPopup} className="profile-top-image avatar"><img alt="avatar" src={require("../../img/avatars/VanDarkholme.jpg")}/></div>
+                        <div onClick={this.openPopup} className="profile-top-image"><img alt="avatar" src={avatars[this.props.avatar]}/></div>
                     </div>
                     <div className="profile-top-switcher">
                         {this.state.stats
-                        ? <div className="open-settings" onClick={this.openSettings}></div>
-                        : <div className="open-stats" onClick={this.openStats}></div>}
+                        ? <div className="open-settings" onClick={this.openSettings}/>
+                        : <div className="open-stats" onClick={this.openStats}/>}
                         {this.state.stats
-                        ? <Stats stats={this.props.stats} timeInGame={this.props.timeInGame} records={this.props.records} averageTime={this.averageTime()}></Stats>
-                        : <Settings hotKey={this.props.hotKey} setHotKey={this.props.setHotKey}></Settings>}
+                        ? <Stats stats={this.props.stats} timeInGame={this.props.timeInGame} records={this.props.records} averageTime={this.averageTime()}/>
+                        : <Settings changeMusicValue={this.props.changeMusicValue} 
+                                    changeSoundValue={this.props.changeSoundValue}
+                                    musicValue={this.props.musicValue} soundValue={this.props.soundValue}
+                                    hotKey={this.props.hotKey} setHotKey={this.props.setHotKey}/>}
                     </div>
                 </div>
 
-                <Achievements addMoney={this.props.addMoney}></Achievements>
-                {this.state.popup ? <Popup togglePopup={this.togglePopup}></Popup> : null}
+                <Achievements addMoney={this.props.addMoney} timeInGame={this.props.timeInGame}/>
+                {this.state.popup ? <Popup unlockedAvatars={this.props.unlockedAvatars} unlockAvatar={this.props.unlockAvatar} 
+                                            changeMusic={this.props.changeMusic} spendMoney={this.props.spendMoney} 
+                                            money={this.props.money} changeAvatar={this.props.changeAvatar} 
+                                            togglePopup={this.togglePopup}/> : null}
             </div>
         )
     }
@@ -96,14 +116,25 @@ const mapStateToProps = store => {
         stats: store.stats,
         timeInGame: store.timeInGame,
         records: store.records,
-        hotKey: store.hotKey
+        hotKey: store.hotKey,
+        musicValue: store.musicValue,
+        soundValue: store.soundValue,
+        avatar: store.avatar,
+        unlockedAvatars: store.unlockedAvatars,
+        money: store.money
     }
-}
+};
 
 const mapDispatchToProps = dispatch => {
     return {
         addMoney: (value) => dispatch(addMoney(value)),
-        setHotKey: (key) => dispatch(setHotKey(key))
+        setHotKey: (key) => dispatch(setHotKey(key)),
+        changeMusicValue: (value) => dispatch(changeMusicValue(value)),
+        changeSoundValue: (value) => dispatch(changeSoundValue(value)),
+        changeAvatar: (value) => dispatch(changeAvatar(value)),
+        spendMoney: (value) => dispatch(spendMoney(value)),
+        changeMusic: (value) => dispatch(changeMusic(value)),
+        unlockAvatar: (value) => dispatch(unlockAvatar(value))
     }
 };
 
