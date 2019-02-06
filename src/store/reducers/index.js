@@ -91,6 +91,7 @@ if (!localStorage['music']) {
 }
 
 
+
 export const initialState = {
     passStages: +localStorage.passStages,
     passQuests: +localStorage.passQuests,

@@ -7,10 +7,16 @@ class Popup extends React.Component {
 
     setNanachi = () => {
         this.props.changeAvatar('nanachi')
+        if (localStorage['music'] !== 'nnnaaa') {
+            this.props.changeMusic('nnnaaa')
+        }
     }
 
     setPhoto = (photo) => {
         this.props.changeAvatar(photo)
+        if (localStorage['music'] !== 'sans') {
+            this.props.changeMusic('sans')
+        }
     }
 
     render() {
@@ -69,7 +75,7 @@ class Popup extends React.Component {
                         <h3>RERO-RERO-RERO-RERO</h3>
                         <p>Это шо, жожо референс?!?!</p>
                     </div>
-                    <div onClick={this.setPhoto.bind(this, 'reroRero')} className="avatar-card">
+                    <div onClick={this.setPhoto.bind(this, 'zeroTwo')} className="avatar-card">
                         <img alt="Roflan" src={require("../img/avatars/zeroTwo.jpeg")}/>
                         <h3>RERO-RERO-RERO-RERO</h3>
                         <p>Это шо, жожо референс?!?!</p>

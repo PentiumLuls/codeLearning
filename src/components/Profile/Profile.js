@@ -5,7 +5,7 @@ import Achievements from './Achievements/AchievementsRenderer';
 import { connect } from 'react-redux';
 import {addMoney, spendMoney} from "../../store/actions/moneyActions";
 import {setHotKey} from "../../store/actions/codeActions";
-import { changeMusicValue, changeSoundValue, changeAvatar} from "../../store/actions/statActions";
+import { changeMusicValue, changeSoundValue, changeAvatar, changeMusic} from "../../store/actions/statActions";
 import Popup from "./ChangePhoto";
 import vanDam from '../img/avatars/VanDarkholme.jpg';
 import papich from '../img/avatars/papich.jpeg';
@@ -101,7 +101,7 @@ class Profile extends Component {
                 </div>
 
                 <Achievements addMoney={this.props.addMoney} timeInGame={this.props.timeInGame}></Achievements>
-                {this.state.popup ? <Popup spendMoney={this.props.spendMoney} changeAvatar={this.props.changeAvatar} togglePopup={this.togglePopup}></Popup> : null}
+                {this.state.popup ? <Popup changeMusic={this.props.changeMusic} spendMoney={this.props.spendMoney} changeAvatar={this.props.changeAvatar} togglePopup={this.togglePopup}></Popup> : null}
             </div>
         )
     }
@@ -127,7 +127,8 @@ const mapDispatchToProps = dispatch => {
         changeMusicValue: (value) => dispatch(changeMusicValue(value)),
         changeSoundValue: (value) => dispatch(changeSoundValue(value)),
         changeAvatar: (value) => dispatch(changeAvatar(value)),
-        spendMoney: (value) => dispatch(spendMoney(value))
+        spendMoney: (value) => dispatch(spendMoney(value)),
+        changeMusic: (value) => dispatch(changeMusic(value))
     }
 };
 
