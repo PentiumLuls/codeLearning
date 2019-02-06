@@ -10,10 +10,12 @@ import Chatbot from '../ChatBot/Chatbot';
 import {connect} from 'react-redux';
 import {changeShowPopup} from '../../store/actions/codeActions';
 import {tickTimeInGame} from '../../store/actions/statActions';
-import sound from '../../audio/sans.mp3';
-import sound2 from '../../audio/sans.ogg';
+import nnnaaa from '../../audio/nnnaaa.ogg'
+import sans from '../../audio/sans.ogg';
 import Profile from '../Profile/Profile';
 import {updateAchievements} from "../Profile/Achievements/achievementsHandler";
+
+const music = {sans, nnnaaa}
 
 class App extends Component {
     constructor(props) {
@@ -99,7 +101,7 @@ class App extends Component {
             <div className="main">
 
                 <div>
-                    <audio ref={(element) => {this.player = element}} src={sound2} controls autoPlay loop>
+                    <audio ref={(element) => {this.player = element}} src={music[this.props.music]} controls autoPlay loop>
                         Your browser does not support the audio element.
                     </audio>
                     
@@ -168,7 +170,8 @@ const mapStateToProps = store => {
         code: store.code,
         resets: store.resets,
         showPopup: store.showPopup,
-        musicValue: store.musicValue
+        musicValue: store.musicValue,
+        music: store.music
     }
 };
 

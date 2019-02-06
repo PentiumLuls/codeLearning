@@ -6,6 +6,7 @@ export const TICK_TIME_IN_GAME = "TICK_TIME_IN_GAME";
 export const CHANGE_MUSIC_VALUE = "CHANGE_MUSIC_VALUE";
 export const CHANGE_SOUND_VALUE = "CHANGE_SOUND_VALUE";
 export const CHANGE_AVATAR = "CHANGE_AVATAR";
+export const CHANGE_MUSIC = "CHANGE_MUSIC";
 
 export function addSymbol() {
     return {
@@ -48,6 +49,13 @@ export function changeSoundValue(value) {
 export function changeAvatar(value) {
     return {
         type: CHANGE_AVATAR,
+        payload: value
+    }
+}
+
+export function changeMusic(value) {
+    return {
+        type: CHANGE_MUSIC,
         payload: value
     }
 }
