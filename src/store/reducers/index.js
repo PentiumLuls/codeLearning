@@ -21,7 +21,7 @@ if (!localStorage['currentQuest']) {
     localStorage['currentQuest'] = localStorage.passQuests;
 }
 if (!localStorage['whiteList']) {
-    localStorage['whiteList'] = JSON.stringify([[0, 1, 2, 3, 6], [0, 2, 4],[0],[0, 1], [0, 3], []]);
+    localStorage['whiteList'] = JSON.stringify([[0, 1, 2, 3, 6], [0, 2, 4],[0],[0, 1], [0, 3], [0,]]);
 
 }
 if (!localStorage['code']) {
@@ -257,9 +257,6 @@ export function rootReducer(state = initialState, action) {
 
         case ADD_MONEY:
             toastr.success(action.payload + " сыру получено");
-            if (achievements[3].status === -1) {
-                achievements[3].status = 2;
-            }
             if (achievements[6].status === -1) {
                 achievements[6].payload += action.payload;
             }

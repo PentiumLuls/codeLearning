@@ -20,9 +20,9 @@ class Chatbot extends Component {
             showCloud: false,
             answer: false,
             disabled: false
-        }
+        };
 
-        window.cheatForMoney = (amount) => this.props.addMoney(amount)
+        window.cheatForMoney = (amount) => {this.props.addMoney(amount); updateAchievements(3)}
     }
 
     writeReplics = (replics) => {
@@ -119,7 +119,7 @@ class Chatbot extends Component {
             this.setState({
                 replics: [...this.state.replics, <li key={`answer`} className='hint'>Ответ записан в редактор</li>],
                 answer: true
-            })
+            });
             this.props.writeCode(true);
             this.props.showAnswer();
             this.props.spendMoney(20);
@@ -129,13 +129,13 @@ class Chatbot extends Component {
             })
         }
         
-    }
+    };
 
     hideChat = () => {
         this.setState({
             visible: false
         })
-    }
+    };
 
     render() {
 
@@ -194,7 +194,7 @@ const mapStateToProps = store => {
         currentQuest: store.currentQuest,
         money: store.money
     }
-}
+};
 
 const mapDispatchToProps = dispatch => {
     return {
@@ -204,7 +204,7 @@ const mapDispatchToProps = dispatch => {
         addMoney: (amount) => dispatch(addMoney(amount)),
         exportHideChat: (func) => dispatch(exportHideChat(func))
     }
-}
+};
 
 
 export default connect(mapStateToProps, mapDispatchToProps)(Chatbot);
