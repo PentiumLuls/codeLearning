@@ -31,8 +31,7 @@ class App extends Component {
             this.props.tickTimeInGame()
         }, 1000);
 
-        this.player = null
-
+        this.player = null;
     }
 
     changeButtonState = () => {
