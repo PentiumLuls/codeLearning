@@ -2,7 +2,8 @@ import React from 'react';
 import {achievementsList} from "./achievementsList";
 
 let addMoney;
-let timeInGame = {hours: 0, minutes: 0, seconds: 0};
+let unlockAvatar;
+let timeInGame = {};
 
 window.unlockAllAchievements = () => {
     let achievements = JSON.parse(localStorage['achievements']);
@@ -13,7 +14,6 @@ window.unlockAllAchievements = () => {
 let buttonsState = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
 
 export const updateAchievements = (id, value) => {
-    console.log(timeInGame);
     let achievements = JSON.parse(localStorage['achievements']);
     let stats = JSON.parse(localStorage['stats']);
 
@@ -81,17 +81,18 @@ export const updateAchievements = (id, value) => {
         achievements[12].status = 1;
     }
     if (achievements[13].status === -1 ) {
-        //TODO && timeInGame.hour >= 3
-        achievements[13].status = 1;
+        if (timeInGame.hours >= 3) {
+            achievements[13].status = 1;
+        }
     }
 
     localStorage['achievements'] = JSON.stringify(achievements);
 };
 
-export const getAchievementsList = (addMoney1, timeInGame1) => {
+export const getAchievementsList = (addMoney1, timeInGame1, unlockAvatar1) => {
     addMoney = addMoney1;
-    timeInGame = timeInGame1;
-    console.log(timeInGame);
+    unlockAvatar = unlockAvatar1;
+    timeInGame = {...timeInGame1};
     updateList();
     return achievementsList
         .sort(compareTwoAchieveByStatus)
@@ -116,8 +117,8 @@ const getAchievementJSX = (achievement, key) => {
         <div className={achievement.status === 0 || achievement.status === 1 ? "achievement-body" : "achievement-body-inactive"} key={key}>
             <div className="achievement-picture"><img alt="avatar" src={achievement.image}/></div>
             <div className="achievement-text">
-                <div className="achievement-title">{achievement.status === -1 && achievement.hide === true ? "?????????" : achievement.name}</div>
-                <div className="achievement-description">{achievement.status === -1 && achievement.hide === true ? "????????????????????????" : achievement.descriptions}</div>
+                <div className="achievement-title">{achievement.status === -1 && achievement.hide === true ? hideAchievementText(achievement.name) : achievement.name}</div>
+                <div className="achievement-description">{achievement.status === -1 && achievement.hide === true ? hideAchievementText(achievement.descriptions) : achievement.descriptions}</div>
             </div>
             <div className="achievement-button-wrapper">
                 <button
@@ -130,12 +131,21 @@ const getAchievementJSX = (achievement, key) => {
     );
 };
 
+const hideAchievementText = (str) => {
+    //CHANGE STR TO '?' IGNORING ' '
+    let result = "";
+    for (var i = 0; i < str.length; i++) {
+        str[i] == " " ? result += " " : result += "?";
+    }
+    return result;
+};
+
 const handleRewardClick = (id, reward) => {
     return function(e) {
         if (buttonsState[id] === 0) {
             console.log("GIVE MY REWARD!  button: " + id + "  reward: " + reward);
             addMoney(reward);
-            buttonsState[id] = 1
+            buttonsState[id] = 1;
         }
 
         //BUTTON DISABLING

@@ -19,7 +19,7 @@ import zeroTwo from '../img/avatars/zeroTwo.jpeg';
 import denis from '../img/avatars/denis.jpeg'
 
 
-const avatars = {vanDam, papich, futaba, nanachi, pikachu, reroRero, ricardo, splinter, zeroTwo, denis}
+const avatars = {vanDam, papich, futaba, nanachi, pikachu, reroRero, ricardo, splinter, zeroTwo, denis};
 
 
 class Profile extends Component {
@@ -100,7 +100,7 @@ class Profile extends Component {
                     </div>
                 </div>
 
-                <Achievements addMoney={this.props.addMoney} timeInGame={this.props.timeInGame}/>
+                <Achievements addMoney={this.props.addMoney} timeInGame={this.props.timeInGame} unlockAvatar={this.props.unlockAvatar}/>
                 {this.state.popup ? <Popup unlockedAvatars={this.props.unlockedAvatars} unlockAvatar={this.props.unlockAvatar} 
                                             changeMusic={this.props.changeMusic} spendMoney={this.props.spendMoney} 
                                             money={this.props.money} changeAvatar={this.props.changeAvatar} 
@@ -108,7 +108,6 @@ class Profile extends Component {
             </div>
         )
     }
-
 }
 
 const mapStateToProps = store => {

@@ -163,6 +163,16 @@ export const achievementsList = [
         status: -1,
         hide: false
     },
+    {
+        id: 14,
+        name: "Якось",
+        descriptions: "Get hint in first quest",
+        rewardText: "Avatar-'Тысячник'",
+        moneyReward: 7,
+        image: goldMedal,
+        status: -1,
+        hide: false
+    },
 ];
 
 //"The great Unknown, self-proclaimed master"
