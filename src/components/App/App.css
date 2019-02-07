@@ -79,7 +79,6 @@ audio {
     height: 100vh;
     overflow-y: scroll;
     position: relative;
-    z-index: 1000;
 }
 
 .editor {
@@ -973,6 +972,9 @@ input[type=range]:focus::-ms-fill-upper {
     top: 0;
     background-color: black;
     z-index: 10000000;
+    display: none;
+    -webkit-animation: cutscene 1s linear;
+    animation: cutscene 1s linear;
 }
 
 .cutscene-text {
@@ -1094,5 +1096,14 @@ input[type=range]:focus::-ms-fill-upper {
     }
     100% {
         top: 0;
+    }
+}
+
+@keyframes cutscene {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
     }
 }
