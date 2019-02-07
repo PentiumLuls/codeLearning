@@ -1,5 +1,6 @@
 import React from 'react';
 import {achievementsList} from "./achievementsList";
+import * as toastr from "toastr";
 
 //let unlockAvatar;
 let addMoney;
@@ -20,74 +21,89 @@ export const updateAchievements = (id, value) => {
     let stats = JSON.parse(localStorage['stats']);
 
     ////LEVELS PASSING////
-    //PASS 3 QUESTS ACHIEVEMENT
+    //PASS 2 QUESTS ACHIEVEMENT
     if (achievements[0].status === -1 && ((localStorage['passStages'] == 0 && localStorage['passQuests'] >= 2)
         || (localStorage['passStages'] > 0))) {
+        toastr.success(achievementsList[0].descriptions);
         achievements[0].status = 1;
     }
     //PASS 1st STAGE
     if (achievements[1].status === -1 && localStorage['passStages'] >= 1) {
+        toastr.success(achievementsList[1].descriptions);
         achievements[1].status = 1;
     }
     //PASS 3 STAGES
     if (achievements[2].status === -1 && localStorage['passStages'] >= 3) {
+        toastr.success(achievementsList[2].descriptions);
         achievements[2].status = 1;
     }
 
     ////CHEAT ACHIEVEMENTS////
     //MONEY CHEAT USING 1st TIME
     if (achievements[3].status === 2) {
+        toastr.success(achievementsList[3].descriptions);
         achievements[3].status = 1;
     }
     //QUEST UNLOCK CHEAT 1st TIME
     if (id === 4 && achievements[4].status === -1) {
+        toastr.success(achievementsList[4].descriptions);
         achievements[4].status = 1;
     }
     //QUEST UNLOCK CHEAT 10 TIMES
     if (id === 4 && achievements[5].status === -1) {
         achievements[5].time += 1;
         if (achievements[5].time >= 10) {
+            toastr.success(achievementsList[5].descriptions);
             achievements[5].status = 1;
         }
     }
     //MONEY CHEAT -1K money ADDED
     if (achievements[6].status === -1 && achievements[6].payload <= -1000) {
+        toastr.success(achievementsList[6].descriptions);
         achievements[6].status = 1;
     }
 
     ////??????????////
     //Earn 100 money
     if (achievements[7].status === -1 && achievements[7].earned >= 100) {
+        toastr.success(achievementsList[7].descriptions);
         achievements[7].status = 1;
     }
     //Spend 300 money
     if (achievements[8].status === -1 && achievements[8].spend >= 300) {
+        toastr.success(achievementsList[8].descriptions);
         achievements[8].status = 1;
     }
     //WRITE 500 SYMBOLS
     if (achievements[9].status === -1 && stats.symbols >= 500) {
+        toastr.success(achievementsList[9].descriptions);
         achievements[9].status = 1;
     }
     //WRITE 10000 SYMBOLS
     if (achievements[10].status === -1 && stats.symbols >= 5000) {
+        toastr.success(achievementsList[10].descriptions);
         achievements[10].status = 1;
     }
     //CLICK '*' button x10
     if (id === 11 && achievements[11].status === -1) {
         achievements[11].times += 1;
         if (achievements[11].times >= 10) {
+            toastr.success(achievementsList[11].descriptions);
             achievements[11].status = 1;
         }
     }
     if (achievements[12].status === -1 && stats.unsuccessfulRuns >= 30) {
+        toastr.success(achievementsList[12].descriptions);
         achievements[12].status = 1;
     }
     if (achievements[13].status === -1) {
         if (timeInGame.hours >= 3) {
+            toastr.success(achievementsList[13].descriptions);
             achievements[13].status = 1;
         }
     }
     if (id === 14 && achievements[14].status === -1 && localStorage["currentQuest"] == 0 && localStorage["currentStage"] == 0) {
+        toastr.success(achievementsList[14].descriptions);
         achievements[14].status = 1;
     }
 
