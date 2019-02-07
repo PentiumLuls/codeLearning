@@ -95,10 +95,12 @@ class Terminal extends Component {
             } else {
 
                 if (vm.runInThisContext(codeToEvaluate) === true && regexp.pass === true) {
-                    if (this.props.currentStage === 4 && this.props.currentQuest === 6) {
-                        this.setState({
-                            showBlackScreen: true
-                        })
+                    if (this.props.currentStage === 4 && this.props.currentQuest === 5) {
+                        setTimeout(() => {
+                            this.setState({
+                                showBlackScreen: true
+                            })
+                        }, 2000)
                     }
 
                     this.unlockQuest();
@@ -255,7 +257,18 @@ class Terminal extends Component {
 
         return (
             <div className="terminalComponent">
-                {this.state.showBlackScreen ? <div onClick={this.hideBlackScreen}></div> : null}
+                {this.state.showBlackScreen ?  
+                <div onClick={this.hideBlackScreen} className="cutscene">
+                    <div className="cutscene-text">
+                        Вы успешно справились с задачей, однако вскоре после её выполнения в деревню нагрянули бесы,
+                        разрушив всё, что встретили на своём пути. Вы в ужасе бежите к дому вашего индусского брата,
+                        обнаруживая там только руины и следы пожара. Обследуя руины, вы находите лишь окровавленный
+                        камянной крест посреди бывшей гостинной. Ваши глаза наполняются слезами и вы не чувствуете
+                        ничего кроме горькой смеси злости, отчаяния и скорби. Вы тихо опускаетесь на колени пред
+                        камянным крестом.
+                    </div>
+                </div> 
+                : null}
                 {this.state.playNotPass 
                 ? <div>
                     <audio ref={(element) => {this.audio = element}} onEnded={this.endNotPass} src={this.state.composition} autoPlay >
@@ -283,16 +296,6 @@ class Terminal extends Component {
                         this.state.content
                     }
                 </ul>
-                <div className="cutscene">
-                    <div className="cutscene-text">
-                        Вы успешно справились с задачей, однако вскоре после её выполнения в деревню нагрянули бесы,
-                        разрушив всё, что встретили на своём пути. Вы в ужасе бежите к дому вашего индусского брата,
-                        обнаруживая там только руины и следы пожара. Обследуя руины, вы находите лишь окровавленный
-                        камянной крест посреди бывшей гостинной. Ваши глаза наполняются слезами и вы не чувствуете
-                        ничего кроме горькой смеси злости, отчаяния и скорби. Вы тихо опускаетесь на колени пред
-                        камянным крестом.
-                    </div>
-                </div>
             </div>
         );
     }
