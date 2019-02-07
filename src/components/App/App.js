@@ -32,13 +32,7 @@ class App extends Component {
         }, 1000);
 
         this.player = null
-        fetch('https://powerful-woodland-78740.herokuapp.com/users/sign-in', {
-            method: 'PUT'
-        }).then(response => response.json())
-        .then(data => {
-          console.log(data) // Prints result from `response.json()` in getRequest
-        })
-        .catch(error => console.error(error));
+
     }
 
     changeButtonState = () => {
