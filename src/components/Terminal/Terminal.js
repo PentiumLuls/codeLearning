@@ -25,7 +25,8 @@ class Terminal extends Component {
             showNextLevel: false,
             playNotPass: false,
             composition: null,
-            showBlackScreen: false
+            showBlackScreen: false,
+            showEnd: false
         };
         ///////////////////////////////
         const self = this;
@@ -99,6 +100,13 @@ class Terminal extends Component {
                         setTimeout(() => {
                             this.setState({
                                 showBlackScreen: true
+                            })
+                        }, 2000)
+                    }
+                    if (this.props.currentStage === 5 && this.props.currentQuest === 5) {
+                        setTimeout(() => {
+                            this.setState({
+                                showEnd: true
                             })
                         }, 2000)
                     }
@@ -245,6 +253,12 @@ class Terminal extends Component {
         })
     }
 
+    hideEnd = () => {
+        this.setState({
+            showEnd: false
+        })
+    }
+
     render() {
         this.passStages = this.props.passStages;
         this.passQuests = this.props.passQuests;
@@ -269,6 +283,33 @@ class Terminal extends Component {
                     </div>
                 </div> 
                 : null}
+
+                {this.state.showEnd ?  
+                <div onClick={this.hideEnd} className="cutscene">
+                    <div className="cutscene-text">
+                    Спасибо за прохождение нашего квеста, надеемся вам понравилось и вы смогли выучить что-то новое.
+
+Команда разработчиков:
+-Рачкован Евгений
+-Прокопчук Богдана
+-Лапин Констянтин
+-Волков Максим
+
+Бета-тестеры и валидаторы:
+-Дзензур Андрей
+-Шлакоблоков Евгений
+
+Отдельное спасибо компании Interlink и Александру Котову в частности
+ за предоставленую возможность разработки и своевременную помощь.
+
+Если вам понравилась, или даже если не понравилась игра, вступайте в нашу конфу в телеге
+там вы можете написать нам благодарность, или написать какие мы криворукие разрабы, на ваше усмотрение
+
+https://t.me/joinchat/IuhFNxRsZDel-eHXTocl1g
+                    </div>
+                </div> 
+                : null}
+
                 {this.state.playNotPass 
                 ? <div>
                     <audio ref={(element) => {this.audio = element}} onEnded={this.endNotPass} src={this.state.composition} autoPlay >
