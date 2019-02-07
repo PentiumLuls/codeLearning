@@ -4,7 +4,25 @@ export const quest4 =
         text: `LEFT PANEL TEXT`,
         regexps: [],
         regexpsNone: [/(for)/g, /(while)/g, /(var)/g, /(let)/g],
-        code: `CODE IN EDITOR`,
+        code: `class ToolBox {
+            static compose(...fns) {
+                return (arg) =>
+                    fns.reduce((composed, f) => f(composed), arg);
+            }
+        
+            static Filter(callback) {
+                return (mass) => mass.filter(callback);
+            }
+        
+            static Reduce(callback, ...arg) {
+                return (mass) => mass.reduce(callback, ...arg);
+            }
+        
+            static Map(callback) {
+                return (mass) => mass.map(callback);
+            }
+        }
+        `,
         hints: [
             "HINT 1"
         ],

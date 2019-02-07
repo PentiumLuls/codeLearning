@@ -1,11 +1,29 @@
 export const quest3 =
     {
-        title: "2",
+        title: "3",
         text: `LEFT PANEL TEXT`,
         regexps: [],
         regexpsNone: [/(for)/g, /(while)/g, /(var)/g, /(let)/g],
-        code: `// верни строку которая содержит имя и локацию демона-генерала из 6 армии(у него самый большой combatRaiting )
-// формат строки "name: " +demon.name +" location: " + demon.location
+        code: `class ToolBox {
+            static compose(...fns) {
+                return (arg) =>
+                    fns.reduce((composed, f) => f(composed), arg);
+            }
+        
+            static Filter(callback) {
+                return (mass) => mass.filter(callback);
+            }
+        
+            static Reduce(callback, ...arg) {
+                return (mass) => mass.reduce(callback, ...arg);
+            }
+        
+            static Map(callback) {
+                return (mass) => mass.map(callback);
+            }
+        }        
+// верни строку которая содержит имя и локацию демона-генерала из 6 армии(у него самый большой combatRaiting )
+// формат строки "name: " + demon.name + " location: " + demon.location
 
 const demons = [{name: 'Charun',army:3,combatRaiting:487,location:"Demon's castle"},
 {name: 'Asag' ,army:6,combatRaiting:721,location:"Hell lake"},
@@ -24,20 +42,36 @@ function showLocationAndName(demon){
     //YOUR CODE;
 }
 
-const findLeader = compose(Filter(isArmy6),
-                          Reduce(maxRaiting),
-                          showLocationAndName,
-                          )
+const findLeader =   //YOUR CODE;
 
 terminal.log(findLeader(demons)); `,
         hints: [
-            ""
+            "HINT1"
 
             
         ],
         test: {
             code: ``,
-      answer:`// верни строку которая содержит имя и локацию демона-генерала из 6 армии(у него самый большой combatRaiting )
+      answer:`class ToolBox {
+        static compose(...fns) {
+            return (arg) =>
+                fns.reduce((composed, f) => f(composed), arg);
+        }
+    
+        static Filter(callback) {
+            return (mass) => mass.filter(callback);
+        }
+    
+        static Reduce(callback, ...arg) {
+            return (mass) => mass.reduce(callback, ...arg);
+        }
+    
+        static Map(callback) {
+            return (mass) => mass.map(callback);
+        }
+    }       
+    
+// верни строку которая содержит имя и локацию демона-генерала из 6 армии(у него самый большой combatRaiting )
 // формат строки "name: " +demon.name +" location: " + demon.location
       
 const demons = [{name: 'Charun',army:3,combatRaiting:487,location:"Demon's castle"},
