@@ -4,7 +4,7 @@ import {getAchievementsList} from "./achievementsHandler";
 export default (props) => {
     return (
         <div className="profile-achievements">
-            {getAchievementsList(props.addMoney, props.timeInGame)}
+            {getAchievementsList(props.addMoney, props.timeInGame, props.unlockAvatar)}
         </div>
     )
 }
