@@ -99,7 +99,6 @@ export const getAchievementsList = (addMoney1, timeInGame1) => {
     addMoney = addMoney1;
     timeInGame = {...timeInGame1};
     updateList();
-    console.log(achievementsList);
     return achievementsList
         .sort(compareTwoAchieveByStatus)
         .map((current, key) => {return getAchievementJSX(current, key)});
