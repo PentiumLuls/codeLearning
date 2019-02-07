@@ -4,64 +4,101 @@ export const quest2 =
         text: `LEFT PANEL TEXT`,
         regexps: [],
         regexpsNone: [/(for)/g, /(while)/g, /(var)/g, /(let)/g],
-        code: `//Cделай мечи для солдат 
+        code: `//Cделай мечи для солдат
 //Пять единиц железа = один меч
 //Верни количество сделанных мечей
 
-const materials  = [{type:'iron',amount:20},{type:'wood',amount:13},{type:'iron',amount:40}] ;
-        
-function isIron(material) {
-    ////YOUR CODE
+const materials  = [
+    {type:'iron',amount:20},
+    {type:'wood',amount:13},
+    {type:'iron',amount:40}
+];
+
+class ToolBox { 
+    static compose(...fns) { 
+        return (arg) =>
+            fns.reduce((composed, f) => f(composed), arg);
+    }
+
+    static Filter(callback) {
+        return (mass) => mass.filter(callback);
+    }
+
+    static Reduce(callback, ...arg) {
+        return (mass) => mass.reduce(callback, ...arg);
+    }
+
+    static Map(callback) {
+        return (mass) => mass.map(callback);
+    }
 }
-        
-function sumIron(total,iron){
-    //YOUR CODE
-} 
-        
-function makeSwords(amount){
-    //YOUR CODE
-} 
-        
-const swordFactory = //YOUR CODE
-        
-terminal.log(swordFactory(materials));`,
+
+function isIron(material) {
+    return material.type == 'iron';
+}
+
+function sumIron(total, iron) {
+    return total + iron.amount;
+}
+
+function makeSwords(amount) {
+    return amount / 5;
+}
+
+const swordFactory = ToolBox.//YOUR CODE
+terminal.log(swordFactory(materials))`,
         hints: [
             "используй функциональные версии Filter,Reduce в compose",
-            "функция isIron должна возвращать true  если это железо ",
-            "sumIron возвращает количество железа(прибавляет значение поля amount )",
-            "формула расчета количества мечей amount/5",
-            "makeSword возвращает количество мечей"
-
-            //выбери только железо
-//подсчитай количество железа
         ],
         test: {
             code: ``,
 
 
-            answer: `//сделай мечи для солдат 
-// пять единиц железа = один меч
-// верни количество сделанных мечей
+            answer: `//Cделай мечи для солдат
+//Пять единиц железа = один меч
+//Верни количество сделанных мечей
 
-const materials  = [{type:'iron',amount:20},{type:'wood',amount:13},{type:'iron',amount:40}] ;
-        
+const materials  = [
+    {type:'iron',amount:20},
+    {type:'wood',amount:13},
+    {type:'iron',amount:40}
+];
+
+class ToolBox { 
+    static compose(...fns) { 
+        return (arg) =>
+            fns.reduce((composed, f) => f(composed), arg);
+    }
+
+    static Filter(callback) {
+        return (mass) => mass.filter(callback);
+    }
+
+    static Reduce(callback, ...arg) {
+        return (mass) => mass.reduce(callback, ...arg);
+    }
+
+    static Map(callback) {
+        return (mass) => mass.map(callback);
+    }
+}
+
 function isIron(material) {
     return material.type == 'iron';
 }
-            
-function sumIron(total,iron){
+
+function sumIron(total, iron) {
     return total + iron.amount;
-} 
-            
-function makeSwords(amount){
+}
+
+function makeSwords(amount) {
     return amount / 5;
-} 
-            
-const swordFactory = compose(
-                             Filter(isIron),
-                             Reduce(sumIron,0),
-                             makeSwords);
-            
-terminal.log(swordFactory(materials));`
+}
+
+const swordFactory = ToolBox.compose(
+                            ToolBox.Filter(isIron),
+                            ToolBox.Reduce(sumIron,0),
+                            makeSwords);
+terminal.log(swordFactory(materials))`
         }
     };

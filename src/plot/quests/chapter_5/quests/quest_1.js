@@ -46,13 +46,13 @@ terminal.log("5! = " + factorial(5));`,
 
 function pow(a, n) {
     if (n === 1) return a;
-        return a * pow(a, n-1);
+    return a * pow(a, n - 1);
 }
 
 
 function factorial(a) {
     if (a === 1) return 1;
-    return a * factorial(a-1);
+    return a * factorial(a - 1);
 }
 
 terminal.log("2^3 = " + pow(2, 3));
