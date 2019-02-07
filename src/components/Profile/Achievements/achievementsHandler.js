@@ -40,10 +40,10 @@ export const updateAchievements = (id, value) => {
 
     ////CHEAT ACHIEVEMENTS////
     //MONEY CHEAT USING 1st TIME
-    if (achievements[3].status === 2) {
+    /*if (achievements[3].status === 2) {
         toastr.success(achievementsList[3].descriptions);
         achievements[3].status = 1;
-    }
+    }*/
     //QUEST UNLOCK CHEAT 1st TIME
     if (id === 4 && achievements[4].status === -1) {
         toastr.success(achievementsList[4].descriptions);
@@ -58,7 +58,7 @@ export const updateAchievements = (id, value) => {
         }
     }
     //MONEY CHEAT -1K money ADDED
-    if (achievements[6].status === -1 && achievements[6].payload <= -1000) {
+    if (achievements[6].status === -1 && achievements[6].payload <= -100) {
         toastr.success(achievementsList[6].descriptions);
         achievements[6].status = 1;
     }
@@ -168,22 +168,31 @@ const handleRewardClick = (id, reward) => {
     return function (e) {
         if (buttonsState[id] === 0) {
             console.log("GIVE MY REWARD!  button: " + id + "  reward: " + reward);
-            addMoney(reward);
+            if (reward != 0) addMoney(reward);
             buttonsState[id] = 1;
 
             if (id === 2) {
+                toastr.success("Avatar zeroTwo unlocked");
                 window.unlockAvatar("zeroTwo");
             }
+            if (id === 4) {
+                toastr.success("Avatar Хорошая девочка unlocked");
+                window.unlockAvatar("futaba");
+            }
             if (id === 10) {
+                toastr.success("Avatar Сплинтер unlocked");
                 window.unlockAvatar("splinter");
             }
             if (id === 11) {
+                toastr.success("Avatar Рикардо Милосов unlocked");
                 window.unlockAvatar("ricardo");
             }
             if (id === 12) {
+                toastr.success("Avatar Pickachu unlocked");
                 window.unlockAvatar("pikachu");
             }
             if (id === 14) {
+                toastr.success("Avatar Тысячник unlocked");
                 window.unlockAvatar("denis");
             }
         }
