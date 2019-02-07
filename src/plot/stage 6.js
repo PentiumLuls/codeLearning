@@ -1,3 +1,4 @@
+//вставлять в каждый уровень
 const compose = (...fns) => (arg) => 
   fns.reduce((composed, f) => f(composed),arg)
 
@@ -11,7 +12,11 @@ function Reduce(callback,...arg) {
 function Map(callback) {
       return (mass) => mass.map(callback);
 }
+
 ////// quest 1 //////
+
+//туториал по композиции
+// нужно найти максимальный периметр черного прямоугольника;
 const rectangles = [{color: 'red',width:4,height:4,},
 {color: 'black',width:2, height:2,},{color: 'white',width:6,height:9,},
 {color: 'black',width:3,height:3,},{color: 'black',width:4,height:4, },
@@ -30,8 +35,13 @@ const result = compose (
                Map(perimeter),
                Reduce(Math.max)
                )(rectangles)
-///// quest 2 ////
 
+///// quest 2 ////
+//сделай мечи для солдат 
+//выбери только железо
+//подсчитай количество железа
+// пять единиц железа = один меч
+// верни количество сделанных мечей
 const materials  = [{type:'iron',amount:20},{type:'wood',amount:13},{type:'iron',amount:40}] ;
 
 function isIron(material) {
@@ -52,7 +62,12 @@ const swordFactory = compose(
                       makeSwords)
 
 console.log(swordFactory(materials))
+
+
+
 ///// quest 3 ////
+// верни имя и локацию демона-генерала из 6 армии(у него самый большой combatRaiting )
+
 const demons = [{name: 'Charun',army:3,combatRaiting:487,location:'Demon`s castle'},
 {name: 'Asag' ,army:6,combatRaiting:721,location:'Hell lake'},
 {name: 'Bakasura',army:6,combatRaiting:785,location:'Dead garden'},
@@ -75,6 +90,9 @@ console.log(findLeader(demons)) ;
 
 
 ///// quest 4 ////
+//выбери только солдат из 26 легиона
+//сними с них все оружие
+//экипируй их оружием из weapons2
 const persons = [{legion:26,weapons:['stick','bow']},
 {legion:1,weapons:['sword','bow']},{legion:26,weapons:['stick',]},
 {legion:1,weapons:['spear']}] ;
@@ -117,6 +135,12 @@ function isLegion(legionNum){
 console.log(createLegion26(persons)) 
 
 ///// quest 5 ////
+//выбери всех индусов моложе 30 лет
+//вычисли combatRaiting: здоровье* 1.2 + атака * 1.5}
+//выбери индусов с combatRaiting больше 510
+//создай легион индусов с полями number:6,size:0,names:[], sumCombatRaiting:0
+// найди средний сombatRaiting и удали вспомогательное поле sumCombatRaiting;
+
 const persons = [{name: 'Akarsh',age:60,health:400,attack:40 },
 {name: 'Chirag',age:23,health:420,attack:20},
 {name: 'Reyansh',age:25,health:400,attack:45},
@@ -139,7 +163,7 @@ function raitingMore510(hindu){
     return 510 < hindu.combatRaiting;
 }
 
-function createGang(obj,hindu){
+function createLegion(obj,hindu){
        const newobj =  {...obj,
                 size:obj.size +1,
                 sumCombatRaiting:obj.sumCombatRaiting + hindu.combatRaiting,
@@ -158,11 +182,18 @@ function averageRaiting(gang){
  const result = compose(Filter(IsAgeLess30),
                             Map(combatRaiting),
                             Filter(raitingMore510),
-                            Reduce(createGang,{number:6,size:0,names:[], sumCombatRaiting:0}),
+                            Reduce(createLegion,{number:6,size:0,names:[], sumCombatRaiting:0}),
                             averageRaiting
                             )(persons)
  console.log(result)
- ///// quest 6 //////  
+ ///// quest 6 ////// 
+ //выбери все легионы которые находятся 'Demon`s castle'
+ //возврати массив очков атаки легионов
+ //найди сумму урона(сложи все  очки атаки)
+ //вычисли изменения урона(modDamage)
+ //отними урон от здоровья дьявола
+ //проверь победили ли мы дьявола (здоровье <= 0) ? true : false
+ //верни сообщения 'We win!!! если' true или  We lose!!! если false
  const legions  = [{number:13,size:4,names:['Hiran','Jayesh','Ojas','Ranbir'], attack: 300, location:'Demon`s castle'},
 {number:26,size:4,names:['Arnav','Himmat','Mitul','Pranay'], attack: 366, location:'Demon`s castle'},
 {number:6,size:6,names:['Ojas','Faiyaz','Rohan','Tushar','Aarav','Madhup'], attack: 353, location:'Hell lake'}] ;
@@ -198,7 +229,7 @@ function IsWin(health){
 }
 
 function answer(bool){
- return (bool) ? 'We win!!!' :' We lose!!!' 
+ return (bool) ? 'We win!!!' :'We lose!!!' 
 }
 const attackDevil = compose(
                           Filter(isCastle),

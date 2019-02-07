@@ -992,7 +992,6 @@ input[type=range]:focus::-ms-fill-upper {
     top: 0;
     background-color: black;
     z-index: 10000000;
-    display: none;
     -webkit-animation: cutscene 1s linear;
     animation: cutscene 1s linear;
 }
@@ -1003,8 +1002,6 @@ input[type=range]:focus::-ms-fill-upper {
     padding-top: 10vw;
     color: white;
     margin: auto;
-    -webkit-animation: squiggly-anim 0.2s linear infinite;
-    animation: squiggly-anim 0.2s linear infinite;
     font-size: 1.5vw;
 }
 

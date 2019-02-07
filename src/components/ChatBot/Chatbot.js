@@ -4,6 +4,7 @@ import {quests} from "../../plot/quests";
 import { connect } from 'react-redux'
 import { writeCode, showAnswer, exportHideChat } from '../../store/actions/codeActions'
 import { spendMoney, addMoney } from '../../store/actions/moneyActions'
+import {updateAchievements} from "../Profile/Achievements/achievementsHandler";
 
 class Chatbot extends Component {
 
@@ -75,7 +76,7 @@ class Chatbot extends Component {
                     hintsN:1,
                     disabled: true
                 });  
-            };
+            }
             this.props.spendMoney(5);
         } else {
             this.setState({
@@ -83,7 +84,9 @@ class Chatbot extends Component {
             })
         }
         let element = document.getElementById('box');
-        element.scrollTop=element.scrollHeight;        
+        element.scrollTop=element.scrollHeight;
+
+        updateAchievements(14);
     }
 
     clearChat(){
