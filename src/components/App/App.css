@@ -972,7 +972,6 @@ input[type=range]:focus::-ms-fill-upper {
     top: 0;
     background-color: black;
     z-index: 10000000;
-    display: none;
     -webkit-animation: cutscene 1s linear;
     animation: cutscene 1s linear;
 }
