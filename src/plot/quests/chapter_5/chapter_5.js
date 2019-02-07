@@ -7,7 +7,7 @@ import {quest6} from "./quests/quest_6";
 
 export const chapter5 =
     {
-        title: "Кайся глупец",
+        title: "Испорченый рай",
         quests: [
 
             quest1,

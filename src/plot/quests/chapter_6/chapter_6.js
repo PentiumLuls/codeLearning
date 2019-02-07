@@ -7,7 +7,7 @@ import {quest6} from "./quests/quest_6";
 
 export const chapter6 =
     {
-        title: "CHAPTER 6",
+        title: "Человек покорившый ад",
         quests:
             [
                 quest1,
