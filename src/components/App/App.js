@@ -32,7 +32,6 @@ class App extends Component {
         }, 1000);
 
         this.player = null
-
     }
 
     changeButtonState = () => {
@@ -79,6 +78,7 @@ class App extends Component {
 
 
     render() {
+        console.log("render")
         this.passStages = this.props.passStages;
         this.passQuests = this.props.passQuests;
         this.currentStage = this.props.currentStage;
@@ -92,8 +92,9 @@ class App extends Component {
         const canIShowPopup = newList[this.currentStage].indexOf(this.currentQuest) !== -1;
         let indexOfElement = newList[this.currentStage].indexOf(this.currentQuest);
         if (canIShowPopup && this.showPopup) {
-
-            delete newList[this.currentStage][indexOfElement];
+            if (this.state.player) {
+                delete newList[this.currentStage][indexOfElement];
+            }
             localStorage.setItem('whiteList', JSON.stringify(newList))
         }
 
