@@ -257,9 +257,6 @@ export function rootReducer(state = initialState, action) {
 
         case ADD_MONEY:
             toastr.success(action.payload + " сыру получено");
-            if (achievements[3].status === -1) {
-                achievements[3].status = 2;
-            }
             if (achievements[6].status === -1) {
                 achievements[6].payload += action.payload;
             }
