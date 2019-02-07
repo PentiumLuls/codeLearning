@@ -1,3 +1,4 @@
+//вставлять в каждый уровень
 const compose = (...fns) => (arg) => 
   fns.reduce((composed, f) => f(composed),arg)
 
