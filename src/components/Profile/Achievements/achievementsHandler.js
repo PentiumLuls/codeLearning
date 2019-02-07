@@ -24,87 +24,72 @@ export const updateAchievements = (id, value) => {
     //PASS 2 QUESTS ACHIEVEMENT
     if (achievements[0].status === -1 && ((localStorage['passStages'] == 0 && localStorage['passQuests'] >= 2)
         || (localStorage['passStages'] > 0))) {
-        toastr.success(achievementsList[0].descriptions);
-        achievements[0].status = 1;
+        unlockAchievement(0, achievements);
     }
     //PASS 1st STAGE
     if (achievements[1].status === -1 && localStorage['passStages'] >= 1) {
-        toastr.success(achievementsList[1].descriptions);
-        achievements[1].status = 1;
+        unlockAchievement(1, achievements);
     }
     //PASS 3 STAGES
     if (achievements[2].status === -1 && localStorage['passStages'] >= 3) {
-        toastr.success(achievementsList[2].descriptions);
-        achievements[2].status = 1;
+        unlockAchievement(2, achievements);
     }
 
     ////CHEAT ACHIEVEMENTS////
     //MONEY CHEAT USING 1st TIME
-    if (achievements[3].status === 2) {
-        toastr.success(achievementsList[3].descriptions);
-        achievements[3].status = 1;
+    if (id === 3 && achievements[3].status === -1) {
+        unlockAchievement(3, achievements);
     }
     //QUEST UNLOCK CHEAT 1st TIME
     if (id === 4 && achievements[4].status === -1) {
-        toastr.success(achievementsList[4].descriptions);
-        achievements[4].status = 1;
+        unlockAchievement(4, achievements);
     }
     //QUEST UNLOCK CHEAT 10 TIMES
     if (id === 4 && achievements[5].status === -1) {
         achievements[5].time += 1;
         if (achievements[5].time >= 10) {
-            toastr.success(achievementsList[5].descriptions);
-            achievements[5].status = 1;
+            unlockAchievement(5, achievements);
         }
     }
     //MONEY CHEAT -1K money ADDED
-    if (achievements[6].status === -1 && achievements[6].payload <= -1000) {
-        toastr.success(achievementsList[6].descriptions);
-        achievements[6].status = 1;
+    if (achievements[6].status === -1 && achievements[6].payload <= -100) {
+        unlockAchievement(6, achievements);
     }
 
     ////??????????////
     //Earn 100 money
     if (achievements[7].status === -1 && achievements[7].earned >= 100) {
-        toastr.success(achievementsList[7].descriptions);
-        achievements[7].status = 1;
+        unlockAchievement(7, achievements);
     }
     //Spend 300 money
     if (achievements[8].status === -1 && achievements[8].spend >= 300) {
-        toastr.success(achievementsList[8].descriptions);
-        achievements[8].status = 1;
+        unlockAchievement(8, achievements);
     }
     //WRITE 500 SYMBOLS
     if (achievements[9].status === -1 && stats.symbols >= 500) {
-        toastr.success(achievementsList[9].descriptions);
-        achievements[9].status = 1;
+        unlockAchievement(9, achievements);
     }
     //WRITE 10000 SYMBOLS
     if (achievements[10].status === -1 && stats.symbols >= 5000) {
-        toastr.success(achievementsList[10].descriptions);
-        achievements[10].status = 1;
+        unlockAchievement(10, achievements);
     }
     //CLICK '*' button x10
     if (id === 11 && achievements[11].status === -1) {
         achievements[11].times += 1;
         if (achievements[11].times >= 10) {
-            toastr.success(achievementsList[11].descriptions);
-            achievements[11].status = 1;
+            unlockAchievement(11, achievements);
         }
     }
     if (achievements[12].status === -1 && stats.unsuccessfulRuns >= 30) {
-        toastr.success(achievementsList[12].descriptions);
-        achievements[12].status = 1;
+        unlockAchievement(12, achievements);
     }
     if (achievements[13].status === -1) {
         if (timeInGame.hours >= 3) {
-            toastr.success(achievementsList[13].descriptions);
-            achievements[13].status = 1;
+            unlockAchievement(13, achievements);
         }
     }
     if (id === 14 && achievements[14].status === -1 && localStorage["currentQuest"] == 0 && localStorage["currentStage"] == 0) {
-        toastr.success(achievementsList[14].descriptions);
-        achievements[14].status = 1;
+        unlockAchievement(14, achievements);
     }
 
     localStorage['achievements'] = JSON.stringify(achievements);
@@ -114,12 +99,20 @@ export const getAchievementsList = (addMoney1, timeInGame1) => {
     addMoney = addMoney1;
     timeInGame = {...timeInGame1};
     updateList();
+    console.log(achievementsList);
     return achievementsList
         .sort(compareTwoAchieveByStatus)
         .map((current, key) => {return getAchievementJSX(current, key)});
 };
 
 ///////////////////////////////////////////////////////////////////////
+
+const unlockAchievement = (id, achievements) => {
+    const idInList = achievementsList.map((cur) => {return cur.id}).indexOf(id);
+    const descriptions = achievementsList[idInList].descriptions;
+    toastr.success(descriptions);
+    achievements[id].status = 1;
+};
 
 const updateList = () => {
     let achievements = JSON.parse(localStorage['achievements']);
@@ -168,22 +161,31 @@ const handleRewardClick = (id, reward) => {
     return function (e) {
         if (buttonsState[id] === 0) {
             console.log("GIVE MY REWARD!  button: " + id + "  reward: " + reward);
-            addMoney(reward);
+            if (reward != 0) addMoney(reward);
             buttonsState[id] = 1;
 
             if (id === 2) {
+                toastr.success("Avatar Худшая девочка unlocked");
                 window.unlockAvatar("zeroTwo");
             }
+            if (id === 4) {
+                toastr.success("Avatar Хорошая девочка unlocked");
+                window.unlockAvatar("futaba");
+            }
             if (id === 10) {
+                toastr.success("Avatar Сплинтер unlocked");
                 window.unlockAvatar("splinter");
             }
             if (id === 11) {
+                toastr.success("Avatar Рикардо Милосов unlocked");
                 window.unlockAvatar("ricardo");
             }
             if (id === 12) {
+                toastr.success("Avatar Pickachu unlocked");
                 window.unlockAvatar("pikachu");
             }
             if (id === 14) {
+                toastr.success("Avatar Тысячник unlocked");
                 window.unlockAvatar("denis");
             }
         }

@@ -1,28 +1,84 @@
 export const quest1 =
     {
-        title: "QUEST TITLE",
+        title: "QUEST TITLE 1",
         text: `LEFT PANEL TEXT`,
         regexps: [],
         regexpsNone: [/(for)/g, /(while)/g, /(var)/g, /(let)/g],
-        code: `CODE IN EDITOR`,
+        code: `// найди максимальный периметр черного прямоугольника
+
+const rectangles = [{color: 'red',width:4,height:4,},
+{color: 'black',width:2, height:2,},{color: 'white',width:6,height:9,},
+{color: 'black',width:3,height:3,},{color: 'black',width:4,height:4, },
+{color: 'black',width:5,height:5,},{color: 'white',width:4,height:2,},{color: 'red',width:5,height:5,}];
+
+const compose = (...fns) => (arg) => 
+  fns.reduce((composed, f) => f(composed),arg);
+
+
+function Filter(callback) {
+    return (mass) => mass.filter(callback);
+}
+
+function Reduce(callback,...arg) {
+    return (mass) => mass.reduce(callback,...arg);
+}
+
+function Map(callback) {
+      return (mass) => mass.map(callback);
+}
+
+function isBlack(rectangle) {
+    return rectangle.color == 'black';
+}
+        
+function perimeter(rectangle) {
+    return rectangle.width*2 + rectangle.height*2;
+}  
+
+const result`,
         hints: [
-            "HINT 1"
+            "используй функцию compose",
+             "используй функциональные версии Filter,Map,Reduce в compose"
         ],
         test: {
-            code: `describe("", function() {
-
-               it("should ",function() {
-                  expect().toEqual();
-               });
-
-            });
-                  const report = runSpecs();
-                        for (var i = 0; i < report.passed.length; i++) {
-                          reporterLog(report.descriptions[i], report.passed[i])
-                        }
-                        if (report.passed.indexOf(false) === -1) { true } else false;`,
+            code: ``,
 
 
-            answer: `RIGHT CODE`
+        answer: `// найди максимальный периметр черного прямоугольника;
+const rectangles = [{color: 'red',width:4,height:4,},
+{color: 'black',width:2, height:2,},{color: 'white',width:6,height:9,},
+{color: 'black',width:3,height:3,},{color: 'black',width:4,height:4, },
+{color: 'black',width:5,height:5,},{color: 'white',width:4,height:2,},{color: 'red',width:5,height:5,}];
+ 
+const compose = (...fns) => (arg) => 
+  fns.reduce((composed, f) => f(composed),arg);
+
+
+function Filter(callback) {
+    return (mass) => mass.filter(callback);
+}
+
+function Reduce(callback,...arg) {
+    return (mass) => mass.reduce(callback,...arg);
+}
+
+function Map(callback) {
+      return (mass) => mass.map(callback);
+}
+
+function isBlack(rectangle) {
+    return rectangle.color == 'black';
+}
+            
+function perimeter(rectangle) {
+    return rectangle.width*2 + rectangle.height*2;
+}  
+            
+const result = compose (
+                    Filter(isBlack),
+                    Map(perimeter),
+                    Reduce(Math.max)
+                    )(rectangles);
+terminal.log(result);                  `
         }
     };

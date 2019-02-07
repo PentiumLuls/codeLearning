@@ -5,6 +5,8 @@ import { SPEND_MONEY, ADD_MONEY} from '../actions/moneyActions'
 import { TICK_TIME_IN_GAME, ADD_SYMBOL, ADD_SUCCESSFUL_RUN, ADD_UNSUCCESSFUL_RUN, CHANGE_MUSIC_VALUE, CHANGE_SOUND_VALUE, CHANGE_AVATAR, CHANGE_MUSIC, UNLOCK_AVATAR} from '../actions/statActions'
 import {quests} from '../../plot/quests';
 import CryptoJS from 'crypto-js'
+import * as toastr from "toastr";
+import {achievementsList} from "../../components/Profile/Achievements/achievementsList";
 
 if (!localStorage['passStages']) {
     localStorage['passStages'] = 0
@@ -19,7 +21,7 @@ if (!localStorage['currentQuest']) {
     localStorage['currentQuest'] = localStorage.passQuests;
 }
 if (!localStorage['whiteList']) {
-    localStorage['whiteList'] = JSON.stringify([[0, 1, 2, 3, 6], [0, 2, 4],[0],[0, 1], [0, 3], []]);
+    localStorage['whiteList'] = JSON.stringify([[0, 1, 2, 3, 6], [0, 2, 4],[0],[0, 1], [0, 3], [0,]]);
 
 }
 if (!localStorage['code']) {
@@ -148,6 +150,7 @@ export function rootReducer(state = initialState, action) {
 
             if (state.currentStage == state.passStages && state.currentQuest == state.passQuests) {
                 localStorage['LH;;tabs'] = CryptoJS.AES.encrypt(`${state.money + 5}`, 'Kt0 et0 ch1tayet t0t l0h');
+                toastr.success("5 сыру получено");
 
                 const record = [...state.records];
                 record[state.currentStage][state.currentQuest] = (Date.parse(currentDate) - Date.parse(state.questTime)) / 1000;
@@ -186,7 +189,7 @@ export function rootReducer(state = initialState, action) {
                 record[state.currentStage][state.currentQuest] = (Date.parse(currentDate) - Date.parse(state.questTime)) / 1000
             }
 
-            localStorage['records'] = JSON.stringify(record)
+            localStorage['records'] = JSON.stringify(record);
 
             if (passingLevels[state.currentStage][state.currentQuest] > 0) {
 
@@ -194,6 +197,7 @@ export function rootReducer(state = initialState, action) {
                 passingLevels[state.currentStage][state.currentQuest] -= 1;
                 localStorage['passingLevels'] = JSON.stringify(passingLevels);
                 localStorage['LH;;tabs'] = CryptoJS.AES.encrypt(`${state.money + 3}`, 'Kt0 et0 ch1tayet t0t l0h');
+                toastr.success("3 сыру получено");
                 //ACHIEVEMENTS - EARNED N MONEY
                 if (achievements[7].status === -1) {
                     achievements[7].earned += 3;
@@ -202,7 +206,7 @@ export function rootReducer(state = initialState, action) {
                 return {...state, money: state.money + 3, records: record}
             }
 
-            return {...state, records: record}
+            return {...state, records: record};
 
             
 
@@ -252,9 +256,7 @@ export function rootReducer(state = initialState, action) {
             return {...state, hideChat: action.payload};
 
         case ADD_MONEY:
-            if (achievements[3].status === -1) {
-                achievements[3].status = 2;
-            }
+            toastr.success(action.payload + " сыру получено");
             if (achievements[6].status === -1) {
                 achievements[6].payload += action.payload;
             }
@@ -264,7 +266,7 @@ export function rootReducer(state = initialState, action) {
             return {...state, money: state.money + action.payload};
 
         case SPEND_MONEY:
-
+            toastr.success(action.payload + " сыру потрачено");
             localStorage['stats'] = JSON.stringify({...state.stats, spendMoneys: state.stats.spendMoneys + action.payload})
 
             localStorage['LH;;tabs'] = CryptoJS.AES.encrypt(`${state.money - action.payload}`, 'Kt0 et0 ch1tayet t0t l0h');
@@ -275,14 +277,14 @@ export function rootReducer(state = initialState, action) {
             return {...state, money: state.money - action.payload, stats: {...state.stats, spendMoneys: state.stats.spendMoneys + action.payload}};
 
         case TICK_TIME_IN_GAME:
-            const time = {...state.timeInGame}
+            const time = {...state.timeInGame};
             if(time.seconds === 59) {
                 if(time.minutes === 59){
-                    time.hours += 1
-                    time.minutes = 0
+                    time.hours += 1;
+                    time.minutes = 0;
                     time.seconds = 0
                 } else {
-                    time.minutes += 1
+                    time.minutes += 1;
                     time.seconds = 0
                 }
             } else {
@@ -290,46 +292,46 @@ export function rootReducer(state = initialState, action) {
             }
 
             localStorage['timeInGame'] = JSON.stringify(time);
-            return {...state, timeInGame: time}
+            return {...state, timeInGame: time};
 
         case ADD_SYMBOL:
             localStorage['stats'] = JSON.stringify({...state.stats, symbols: state.stats.symbols + 1});
-            return {...state, stats: {...state.stats, symbols: state.stats.symbols + 1}}
+            return {...state, stats: {...state.stats, symbols: state.stats.symbols + 1}};
 
         case ADD_SUCCESSFUL_RUN:
             localStorage['stats'] = JSON.stringify({...state.stats, successfulRuns: state.stats.successfulRuns + 1});
-            return {...state, stats: {...state.stats, successfulRuns: state.stats.successfulRuns + 1}}
+            return {...state, stats: {...state.stats, successfulRuns: state.stats.successfulRuns + 1}};
 
         case ADD_UNSUCCESSFUL_RUN:
             localStorage['stats'] = JSON.stringify({...state.stats, unsuccessfulRuns: state.stats.unsuccessfulRuns + 1});
-            return {...state, stats: {...state.stats, unsuccessfulRuns: state.stats.unsuccessfulRuns + 1}}
+            return {...state, stats: {...state.stats, unsuccessfulRuns: state.stats.unsuccessfulRuns + 1}};
 
         case SET_HOT_KEY:
             localStorage['hotKey'] = action.payload;
-            return {...state, hotKey: action.payload}
+            return {...state, hotKey: action.payload};
 
         case CHANGE_MUSIC_VALUE:
             localStorage['musicValue'] = action.payload;
-            return {...state, musicValue: action.payload}
+            return {...state, musicValue: action.payload};
 
         case CHANGE_SOUND_VALUE:
             localStorage['soundValue'] = action.payload;
-            return {...state, soundValue: action.payload}
+            return {...state, soundValue: action.payload};
 
         case CHANGE_AVATAR:
             localStorage['avatar'] = action.payload;
-            return {...state, avatar: action.payload}
+            return {...state, avatar: action.payload};
 
         case CHANGE_MUSIC:
             localStorage['music'] = action.payload;
-            return {...state, music: action.payload}
+            return {...state, music: action.payload};
 
         case UNLOCK_AVATAR:
             const avatars = JSON.parse(localStorage['unlockedAvatars']);
             avatars[action.payload] = true;
 
             localStorage['unlockedAvatars'] = JSON.stringify(avatars);
-            return {...state, unlockedAvatars: avatars}
+            return {...state, unlockedAvatars: avatars};
 
         default:
             return {...state}

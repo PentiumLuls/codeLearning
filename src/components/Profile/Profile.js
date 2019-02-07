@@ -5,7 +5,7 @@ import Achievements from './Achievements/AchievementsRenderer';
 import { connect } from 'react-redux';
 import {addMoney, spendMoney} from "../../store/actions/moneyActions";
 import {setHotKey} from "../../store/actions/codeActions";
-import { changeMusicValue, changeSoundValue, changeAvatar, changeMusic, unlockAvatar} from "../../store/actions/statActions";
+import { changeMusicValue, changeSoundValue, changeAvatar, changeMusic} from "../../store/actions/statActions";
 import Popup from "./ChangePhoto";
 import vanDam from '../img/avatars/VanDarkholme.jpg';
 import papich from '../img/avatars/papich.jpeg';
