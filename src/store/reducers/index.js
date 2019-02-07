@@ -19,7 +19,8 @@ if (!localStorage['currentQuest']) {
     localStorage['currentQuest'] = localStorage.passQuests;
 }
 if (!localStorage['whiteList']) {
-    localStorage['whiteList'] = JSON.stringify([[0, 1, 2, 3, 6], [0, 2, 4],[0],[0, 1], [], []]);
+    localStorage['whiteList'] = JSON.stringify([[0, 1, 2, 3, 6], [0, 2, 4],[0],[0, 1], [0, 3], []]);
+
 }
 if (!localStorage['code']) {
     localStorage['code'] = quests[0].quests[0].code;

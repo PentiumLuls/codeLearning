@@ -19,7 +19,7 @@ import zeroTwo from '../img/avatars/zeroTwo.jpeg';
 import denis from '../img/avatars/denis.jpeg'
 
 
-const avatars = {vanDam, papich, futaba, nanachi, pikachu, reroRero, ricardo, splinter, zeroTwo, denis}
+const avatars = {vanDam, papich, futaba, nanachi, pikachu, reroRero, ricardo, splinter, zeroTwo, denis};
 
 
 class Profile extends Component {
@@ -108,7 +108,6 @@ class Profile extends Component {
             </div>
         )
     }
-
 }
 
 const mapStateToProps = store => {
@@ -134,7 +133,6 @@ const mapDispatchToProps = dispatch => {
         changeAvatar: (value) => dispatch(changeAvatar(value)),
         spendMoney: (value) => dispatch(spendMoney(value)),
         changeMusic: (value) => dispatch(changeMusic(value)),
-        unlockAvatar: (value) => dispatch(unlockAvatar(value))
     }
 };
 

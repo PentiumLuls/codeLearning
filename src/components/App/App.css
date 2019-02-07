@@ -79,7 +79,6 @@ audio {
     height: 100vh;
     overflow-y: scroll;
     position: relative;
-    z-index: 1000;
 }
 
 .editor {
@@ -965,6 +964,30 @@ input[type=range]:focus::-ms-fill-upper {
     background: #c9200a;
 }
 
+.cutscene {
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    left: 0;
+    top: 0;
+    background-color: black;
+    z-index: 10000000;
+    display: none;
+    -webkit-animation: cutscene 1s linear;
+    animation: cutscene 1s linear;
+}
+
+.cutscene-text {
+    width: 60vw;
+    height: 24vw;
+    padding-top: 10vw;
+    color: white;
+    margin: auto;
+    -webkit-animation: squiggly-anim 0.2s linear infinite;
+    animation: squiggly-anim 0.2s linear infinite;
+    font-size: 1.5vw;
+}
+
 /* Кадры анимации */
 @keyframes border-dance {
     0% {
@@ -1073,5 +1096,14 @@ input[type=range]:focus::-ms-fill-upper {
     }
     100% {
         top: 0;
+    }
+}
+
+@keyframes cutscene {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
     }
 }
