@@ -965,6 +965,27 @@ input[type=range]:focus::-ms-fill-upper {
     background: #c9200a;
 }
 
+.cutscene {
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    left: 0;
+    top: 0;
+    background-color: black;
+    z-index: 10000000;
+}
+
+.cutscene-text {
+    width: 60vw;
+    height: 24vw;
+    padding-top: 10vw;
+    color: white;
+    margin: auto;
+    -webkit-animation: squiggly-anim 0.2s linear infinite;
+    animation: squiggly-anim 0.2s linear infinite;
+    font-size: 1.5vw;
+}
+
 /* Кадры анимации */
 @keyframes border-dance {
     0% {
