@@ -10,7 +10,7 @@ function Reduce(callback,...arg) {
     return (mass) => mass.reduce(callback,...arg);
 }
 function Map(callback) {
-      return (mass) => mass.map(callback);
+    return (mass) => mass.map(callback);
 }
 
 ////// quest 1 //////
@@ -53,7 +53,7 @@ function sumIron(total,iron){
 } 
 
 function makeSwords(amount){
-    return amount / 5
+    return amount / 5 ^ 0
 } 
 
 const swordFactory = compose(
