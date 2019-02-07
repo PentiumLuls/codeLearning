@@ -9,13 +9,13 @@ import {quests} from '../../plot/quests';
 import Chatbot from '../ChatBot/Chatbot';
 import {connect} from 'react-redux';
 import {changeShowPopup} from '../../store/actions/codeActions';
-import {tickTimeInGame} from '../../store/actions/statActions';
+import {tickTimeInGame, unlockAvatar} from '../../store/actions/statActions';
 import nnnaaa from '../../audio/nnnaaa.ogg'
 import sans from '../../audio/sans.ogg';
 import Profile from '../Profile/Profile';
 import {updateAchievements} from "../Profile/Achievements/achievementsHandler";
 
-const music = {sans, nnnaaa}
+const music = {sans, nnnaaa};
 
 class App extends Component {
     constructor(props) {
@@ -137,7 +137,7 @@ class App extends Component {
                         </div>
                         : (this.state.isEdit === 1)
                         ? <HellRules passStages={this.passStages} passQuests={this.passQuests}/>
-                        : <Profile></Profile>
+                        : <Profile unlockAvatar={this.props.unlockAvatar}/>
                 }
                 <div>
                     {
@@ -176,9 +176,11 @@ const mapStateToProps = store => {
 };
 
 const mapDispatchToProps = dispatch => {
+    window.unlockAvatar = (value) => dispatch(unlockAvatar(value));
     return {
         changeShowPopup: (can) => dispatch(changeShowPopup(can)),
-        tickTimeInGame: () => dispatch(tickTimeInGame())
+        tickTimeInGame: () => dispatch(tickTimeInGame()),
+        unlockAvatar: (value) => dispatch(unlockAvatar(value))
     }
 };
 
