@@ -1,6 +1,3 @@
-///// quest 3 ////
-// верни строку которая содержит имя и локацию демона-генерала из 6 армии(у него самый большой combatRaiting )
-// формат строки "name: " + demon.name + " location: " + demon.location
 export const quest3 =
     {
         title: "2",
@@ -10,10 +7,10 @@ export const quest3 =
         code: `// верни строку которая содержит имя и локацию демона-генерала из 6 армии(у него самый большой combatRaiting )
 // формат строки "name: " +demon.name +" location: " + demon.location
 
-const demons = [{name: 'Charun',army:3,combatRaiting:487,location:'Demon's castle'},
-{name: 'Asag' ,army:6,combatRaiting:721,location:'Hell lake'},
-{name: 'Bakasura',army:6,combatRaiting:785,location:'Dead garden'},
-{name: 'Anzu',army:3,combatRaiting:557,location:'Dragon's fields'},];
+const demons = [{name: 'Charun',army:3,combatRaiting:487,location:"Demon's castle"},
+{name: 'Asag' ,army:6,combatRaiting:721,location:"Hell lake"},
+{name: 'Bakasura',army:6,combatRaiting:785,location:"Dead garden"},
+{name: 'Anzu',army:3,combatRaiting:557,location:"Dragon's fields"},];
 
 function isArmy6(demon){
     return demon.army == 6;
@@ -30,9 +27,9 @@ function showLocationAndName(demon){
 const findLeader = compose(Filter(isArmy6),
                           Reduce(maxRaiting),
                           showLocationAndName,
-                          );
+                          )
 
-terminal.log(findLeader(demons)) `,
+terminal.log(findLeader(demons)); `,
         hints: [
             ""
 
@@ -43,10 +40,10 @@ terminal.log(findLeader(demons)) `,
       answer:`// верни строку которая содержит имя и локацию демона-генерала из 6 армии(у него самый большой combatRaiting )
 // формат строки "name: " +demon.name +" location: " + demon.location
       
-const demons = [{name: 'Charun',army:3,combatRaiting:487,location:'Demons castle'},
+const demons = [{name: 'Charun',army:3,combatRaiting:487,location:"Demon's castle"},
 {name: 'Asag' ,army:6,combatRaiting:721,location:'Hell lake'},
 {name: 'Bakasura',army:6,combatRaiting:785,location:'Dead garden'},
-{name: 'Anzu',army:3,combatRaiting:557,location:'Dragons fields'},];
+{name: 'Anzu',army:3,combatRaiting:557,location:"Dragon's fields"},];
       
 function isArmy6(demon){
     return demon.army == 6;
@@ -61,9 +58,8 @@ function showLocationAndName(demon){
 }
       
 const findLeader = compose(Filter(isArmy6),
-                           Reduce(maxRaiting),
-                           showLocationAndName,
-                           );
+                          Reduce(maxRaiting),
+                          showLocationAndName);
       
-terminal.log(findLeader(demons)) `  }
+terminal.log(findLeader(demons)); `  }
     };

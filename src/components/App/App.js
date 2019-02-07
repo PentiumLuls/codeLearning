@@ -24,7 +24,8 @@ class App extends Component {
         this.state = {
             isEdit: 0,
             terminalOpen: false,
-            player: null
+            player: null,
+            start: JSON.parse(localStorage['whiteList'])[0][0] !== 0
         };
         
         this.globalTime = setInterval(() => {
@@ -63,11 +64,13 @@ class App extends Component {
     };
 
     componentDidMount() {
-        this.setState({
-            player: this.player
-        });
-        this.player.volume = this.props.musicValue
-        this.player.play();
+        if (this.state.start){
+            this.setState({
+                player: this.player
+            });
+            this.player.volume = this.props.musicValue
+            this.player.play();
+        }
     }
 
     componentWillReceiveProps(newProps) {
@@ -76,9 +79,16 @@ class App extends Component {
         }
     }
 
+    hideStart = () => {
+        this.setState({
+            start: true
+        })
+    }
+
 
     render() {
-        console.log("render")
+        
+        console.log(this.state.start)
         this.passStages = this.props.passStages;
         this.passQuests = this.props.passQuests;
         this.currentStage = this.props.currentStage;
@@ -91,14 +101,14 @@ class App extends Component {
         const newList = JSON.parse(localStorage.whiteList);
         const canIShowPopup = newList[this.currentStage].indexOf(this.currentQuest) !== -1;
         let indexOfElement = newList[this.currentStage].indexOf(this.currentQuest);
-        if (canIShowPopup && this.showPopup) {
-            if (this.state.player) {
-                delete newList[this.currentStage][indexOfElement];
-            }
+        if (canIShowPopup && this.showPopup && this.state.start) {
+            delete newList[this.currentStage][indexOfElement];
             localStorage.setItem('whiteList', JSON.stringify(newList))
         }
 
         return (
+            this.state.start ?
+
             <div className="main">
 
                 <div>
@@ -153,6 +163,30 @@ class App extends Component {
                 }
 
             </div>
+
+            : <div onClick={this.hideStart} className="cutscene">
+            <div className="cutscene-text">
+            Спасибо за прохождение нашего квеста, надеемся вам понравилось и вы смогли выучить что-то новое.
+
+Команда разработчиков:
+-Рачкован Евгений
+-Прокопчук Богдана
+-Лапин Констянтин
+-Волков Максим
+
+Бета-тестеры и валидаторы:
+-Дзензур Андрей
+-Шлакоблоков Евгений
+
+Отдельное спасибо компании Interlink и Александру Котову в частности
+за предоставленую возможность разработки и своевременную помощь.
+
+Если вам понравилась, или даже если не понравилась игра, вступайте в нашу конфу в телеге
+там вы можете написать нам благодарность, или написать какие мы криворукие разрабы, на ваше усмотрение
+
+https://t.me/joinchat/IuhFNxRsZDel-eHXTocl1g
+            </div>
+        </div> 
         )
 
     }

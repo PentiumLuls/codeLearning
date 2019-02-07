@@ -128,7 +128,15 @@ export const dialogs = [
             {
                 text: [
                     <div className="chat-enter">--- KARADA HAS ENTERED THE CHAT ---</div>,
-                    <div className="karada">Karada: meh</div>,
+                    <div className="karada">Karada: Finally, you are awake.</div>,
+                    <div className="karada">Karada: I even got scared for you there fo a moment. I've never knew I could even feel those emotions.</div>,
+                    <div className="chat-enter">--- Karada lets out a nervous giggle ---</div>,
+                    <div className="karada">Karada: You understand what you must do now, right?.</div>,
+                    <div className="karada">Karada: Right your wrongs and defeat that monster.</div>,
+                    <div className="karada">Karada: If you won't do it, no one will. I truly believe you might be the only one capable of ever doing this..</div>,
+                    <div className="karada">Karada: These people have suffered enough. I've... suffered enough.</div>,
+                    <div className="karada">Karada: I don't want to suffer any longer.</div>,
+                    <div className="chat-enter">--- KARADA HAS LEFT THE CHAT ---</div>
                 ]
             }
         ]
