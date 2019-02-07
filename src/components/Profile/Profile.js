@@ -100,7 +100,7 @@ class Profile extends Component {
                     </div>
                 </div>
 
-                <Achievements addMoney={this.props.addMoney} timeInGame={this.props.timeInGame} unlockAvatar={this.props.unlockAvatar}/>
+                <Achievements addMoney={this.props.addMoney} timeInGame={this.props.timeInGame}/>
                 {this.state.popup ? <Popup unlockedAvatars={this.props.unlockedAvatars} unlockAvatar={this.props.unlockAvatar} 
                                             changeMusic={this.props.changeMusic} spendMoney={this.props.spendMoney} 
                                             money={this.props.money} changeAvatar={this.props.changeAvatar} 
@@ -133,7 +133,6 @@ const mapDispatchToProps = dispatch => {
         changeAvatar: (value) => dispatch(changeAvatar(value)),
         spendMoney: (value) => dispatch(spendMoney(value)),
         changeMusic: (value) => dispatch(changeMusic(value)),
-        unlockAvatar: (value) => dispatch(unlockAvatar(value))
     }
 };
 
