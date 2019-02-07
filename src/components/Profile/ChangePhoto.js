@@ -67,6 +67,14 @@ class Popup extends React.Component {
                         <p>Наначи говорит "Нннааа" 10 часов</p>
                         {this.props.unlockedAvatars['nanachi'] ? null : <div className="avatar-card-caption">Гони 150 сыра</div>}
                     </div>
+                    <div onClick={this.props.unlockedAvatars['futaba'] ? this.setPhoto.bind(this, 'futaba') : null} 
+                        className={this.props.unlockedAvatars['futaba'] ? "avatar-card" : "avatar-card inactive"}>
+                        <img alt="owo" src={require("../img/avatars/futaba.jpg")}/>
+                        <h3>Лучшая девочка</h3>
+                        <p>Девочка покорившая мое сердце однажды, 
+                            и оставшаяся в нем навсегда</p>
+                        {this.props.unlockedAvatars['futaba'] ? null : <div className="avatar-card-caption">Требуется: achievement </div>}
+                    </div>
                     <div onClick={this.props.unlockedAvatars['pikachu'] ? this.setPhoto.bind(this, 'pikachu') : null} 
                         className={this.props.unlockedAvatars['pikachu'] ? "avatar-card" : "avatar-card inactive"}>
                         <img alt="owo" src={require("../img/avatars/pikachu.png")}/>
