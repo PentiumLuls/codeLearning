@@ -75,7 +75,8 @@ class Terminal extends Component {
 
     unlockQuest = () => {
         this.log("Oh wow, you're not entirely hopeless after all. Good job.", '');
-        if (localStorage["passStages"] == 5 && localStorage["passQuests"] == 5) {
+        if (localStorage["passStages"] === '5' && localStorage["passQuests"] === '5' &&
+                localStorage["currentStage"] === '5' && localStorage["currentQuest"] === '5') {
             //IF FINAL LEVEL
             console.log("FINAL LEVEL COMPLETED~");
         } else {
