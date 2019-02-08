@@ -12,6 +12,7 @@ import {changeShowPopup} from '../../store/actions/codeActions';
 import {tickTimeInGame, unlockAvatar} from '../../store/actions/statActions';
 import nnnaaa from '../../audio/nnnaaa.ogg'
 import sans from '../../audio/sans.ogg';
+import indus from '../../img/indus.png';
 import Profile from '../Profile/Profile';
 import {updateAchievements} from "../Profile/Achievements/achievementsHandler";
 
@@ -165,28 +166,10 @@ class App extends Component {
             </div>
 
             : <div onClick={this.hideStart} className="cutscene">
-            <div className="cutscene-text">
-            Спасибо за прохождение нашего квеста, надеемся вам понравилось и вы смогли выучить что-то новое.
-
-Команда разработчиков:
--Рачкован Евгений
--Прокопчук Богдана
--Лапин Констянтин
--Волков Максим
-
-Бета-тестеры и валидаторы:
--Дзензур Андрей
--Шлакоблоков Евгений
-
-Отдельное спасибо компании Interlink и Александру Котову в частности
-за предоставленую возможность разработки и своевременную помощь.
-
-Если вам понравилась, или даже если не понравилась игра, вступайте в нашу конфу в телеге
-там вы можете написать нам благодарность, или написать какие мы криворукие разрабы, на ваше усмотрение
-
-https://t.me/joinchat/IuhFNxRsZDel-eHXTocl1g
-            </div>
-        </div> 
+                    <div className="cutscene-text title">
+                        Functional Hell
+                    </div>
+                </div>
         )
 
     }
@@ -220,4 +203,5 @@ const mapDispatchToProps = dispatch => {
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);
+
 

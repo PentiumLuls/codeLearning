@@ -27,15 +27,15 @@ ul {
     animation: scale 0.2s linear;
 }
 
-button {
+button, .cutscene-text.credits a {
     background-color: red;
-    border: 0.2vw solid white;
+    border: 0.2vw solid #fff;
     margin: 0.1vw;
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
     box-sizing: border-box;
     padding: .5vw 1vw;
-    color: white;
+    color: #fff;
     font-family: inherit;
     font-size: .8vw;
     cursor: pointer;
@@ -44,13 +44,13 @@ button {
 }
 
 button[disabled] {
-    border: 3px solid #e2e2e2;
+    border: 0.18vw solid #e2e2e2;
     background-color: #9e9e9e;
     color: #e2e2e2;
     cursor: not-allowed;
 }
 
-button:active {
+button:active, .cutscene-text.credits a:active {
     animation-name: shake;
     animation-duration: 0.1s;
 }
@@ -75,7 +75,7 @@ audio {
     grid-area: panel;
     background-color: #111;
     width: 25vw;
-    box-shadow: 5px 0 0 0 #111;
+    box-shadow: 0.3vw 0 0 0 #111;
     height: 100vh;
     overflow-y: scroll;
     position: relative;
@@ -88,11 +88,11 @@ audio {
 }
 
 .terminal {
-    white-space: pre-line;
+    #fff-space: pre-line;
     text-transform: uppercase;
     grid-area: terminal;
     width: 75vw;
-    background-color: black;
+    background-color: #000;
     height: 35vh;
     position: relative;
     overflow: hidden;
@@ -106,13 +106,13 @@ audio {
     width: 75vw;
     height: 30vh;
     overflow: auto;
-    padding-bottom: 10px;
+    padding-bottom: 0.6vw;
     box-sizing: border-box;
 }
 
 .button-line {
-    padding: 5px;
-    border-bottom: 5px solid red;
+    padding: 0.3vw;
+    border-bottom: 0.3vw solid red;
 }
 
 .open-terminal {
@@ -171,7 +171,7 @@ audio {
     left: 0;
     display: inline-block;
     background-color: rgba(0, 0, 0, 0.5);
-    color: white;
+    color: #fff;
     text-align: center;
     box-sizing: border-box;
     padding: calc(50% - 0.7vw) 0;
@@ -201,7 +201,7 @@ audio {
     background-color: red;
     width: 17vw;
     box-sizing: border-box;
-    border: 5px solid white;
+    border: 0.3vw solid #fff;
     text-align: center;
     text-transform: uppercase;
     height: 50%;
@@ -216,7 +216,7 @@ audio {
 
 .userbutton:active {
     background-color: #fff;
-    border: 5px solid #000
+    border: 0.3vw solid #000
 }
 
 .userbutton:active p {
@@ -259,7 +259,7 @@ audio {
 /* Стиль для активных кнопок в хедере, который нигде не юзается */
 .active {
     background-color: #fff;
-    border: 5px solid #000;
+    border: 0.3vw solid #000;
 }
 
 .active p {
@@ -270,9 +270,9 @@ audio {
 .Tlist {
     width: 25vw;
     box-sizing: border-box;
-    padding-top: 10px;
+    padding-top: 0.6vw;
     min-height: calc(100vh - 10vh - 8vw);
-    color: white;
+    color: #fff;
 }
 */
 
@@ -287,7 +287,7 @@ audio {
 }
 
 .footer p {
-    color: white;
+    color: #fff;
     margin: auto
 }
 
@@ -311,9 +311,9 @@ audio {
     linear-gradient(90deg, red 50%, transparent 50%),
     linear-gradient(0deg, red 50%, transparent 50%);
     background-repeat: repeat-x, repeat-y, repeat-x, repeat-y;
-    background-size: 15px 5px, 5px 15px, 15px 5px, 5px 15px;
+    background-size: 0.89vw 0.3vw, 0.3vw 0.89vw, 0.89vw 0.3vw, 0.3vw 0.89vw;
     background-position: left top, right top, left bottom, left top;
-    padding: 5px;
+    padding: 0.3vw;
     animation: border-dance 6s infinite linear;
     box-sizing: border-box;
 }
@@ -321,11 +321,11 @@ audio {
 .questlist {
     cursor: pointer;
     transition: all 1s;
-    background-color: white;
-    color: black;
+    background-color: #fff;
+    color: #000;
     position: relative;
     text-align: center;
-    padding: 20px;
+    padding: 1.19vw;
     border-bottom: 2px dashed grey;
     width: 25vw;
     word-wrap: break-word;
@@ -334,8 +334,8 @@ audio {
 }
 
 .questlist:hover {
-    background-color: black;
-    color: white;
+    background-color: #000;
+    color: #fff;
 }
 
 .questlist:hover .quest-timer {
@@ -361,7 +361,7 @@ audio {
 
 .questlist2 {
     color: #fff;
-    padding: 10px 15px;
+    padding: 0.6vw 0.89vw;
     line-height: 1.5vw;
 }
 
@@ -371,8 +371,8 @@ audio {
     right: 0;
     bottom: 0;
     visibility: hidden;
-    background-color: white;
-    color: black;
+    background-color: #fff;
+    color: #000;
     padding: 0.2vw 0.5vw;
     z-index: 1;
 }
@@ -383,7 +383,7 @@ audio {
     height: 2.5vw;
     display: block;
     position: absolute;
-    background-color: white;
+    background-color: #fff;
     left: -1.2vw;
     top: 0.5vw;
     transform: rotate(45deg);
@@ -415,20 +415,20 @@ audio {
 
 .chatbutton-wrapper {
     position: absolute;
-    right: 5px;
-    bottom: 5px;
+    right: 0.3vw;
+    bottom: 0.3vw;
 }
 
 .buttonchatopen {
     z-index: 100;
-    padding: 5px 10px;
+    padding: 0.3vw 0.6vw;
     text-align: center;
 }
 
 .buttonchatclose {
     margin: 0;
     border: 0;
-    padding: 5px 0;
+    padding: 0.3vw 0;
     text-align: center;
     height: 4vh;
     width: 4vh;
@@ -449,17 +449,17 @@ audio {
 
 .bubble {
     position: absolute;
-    bottom: 40px;
-    right: 30px;
+    bottom: 2.38vw;
+    right: 1.79vw;
     animation: scale 0.2s linear;
     display: inline-block;
-    margin: 10px 9px 29px 6px;
+    margin: 0.6vw 0.54vw 1.13vw 0.36vw;
     text-align: center;
     font-weight: 700;
     background-color: #000;
     color: #fff;
-    padding: 5px;
-    box-shadow: 0 -3px #000, 0 -6px #fff, 3px 0 #000, 3px -3px #fff, 6px 0 #fff, 0 3px #000, 0 6px #fff, -3px 0 #000, -3px 3px #fff, -6px 0 #fff, -3px -3px #fff, 3px 3px #fff;
+    padding: 0.3vw;
+    box-shadow: 0 -0.18vw #000, 0 -0.36vw #fff, 0.18vw 0 #000, 0.18vw -0.18vw #fff, 0.36vw 0 #fff, 0 0.18vw #000, 0 0.36vw #fff, -0.18vw 0 #000, -0.18vw 0.18vw #fff, -0.36vw 0 #fff, -0.18vw -0.18vw #fff, 0.18vw 0.18vw #fff;
     transition: all 0.3s ease;
     box-sizing: border-box;
 }
@@ -473,9 +473,9 @@ audio {
     background: #000;
     bottom: -2px;
     z-index: 100;
-    box-shadow: 12px 4px 0 0 #000, 16px 4px 0 0 #000, 20px 4px 0 0 #000, 24px 4px 0 0 #000, 28px 4px 0 0 #000, 12px 8px 0 0 #fff, 16px 8px 0 0 #000, 20px 8px 0 0 #000, 24px 8px 0 0 #000, 28px 8px 0 0 #fff, 16px 12px 0 0 #fff, 20px 12px 0 0 #000, 24px 12px 0 0 #000, 28px 12px 0 0 #fff, 20px 16px 0 0 #fff, 24px 16px 0 0 #000, 28px 16px 0 0 #fff, 24px 20px 0 0 #fff, 28px 20px 0 0 #fff;
-    height: 4px;
-    width: 4px;
+    box-shadow: 0.71vw 0.24vw 0 0 #000, 0.95vw 0.24vw 0 0 #000, 1.19vw 0.24vw 0 0 #000, 1.43vw 0.24vw 0 0 #000, 1.67vw 0.24vw 0 0 #000, 0.71vw 0.48vw 0 0 #fff, 0.95vw 0.48vw 0 0 #000, 1.19vw 0.48vw 0 0 #000, 1.43vw 0.48vw 0 0 #000, 1.67vw 0.48vw 0 0 #fff, 0.95vw 0.71vw 0 0 #fff, 1.19vw 0.71vw 0 0 #000, 1.43vw 0.71vw 0 0 #000, 1.67vw 0.71vw 0 0 #fff, 1.19vw 0.95vw 0 0 #fff, 1.43vw 0.95vw 0 0 #000, 1.67vw 0.95vw 0 0 #fff, 1.43vw 1.19vw 0 0 #fff, 1.67vw 1.19vw 0 0 #fff;
+    height: 0.24vw;
+    width: 0.24vw;
 }
 
 .chat-enter {
@@ -483,39 +483,39 @@ audio {
     text-align: center;
     margin: 0 auto;
     font-size: 0.6vw;
-    padding: 5px 15px;
+    padding: 0.3vw 0.89vw;
 }
 
 .mephistoreplic {
     box-sizing: border-box;
-    margin: 5px 15px;
+    margin: 0.3vw 0.89vw;
 }
 
 .mephisto {
     background: lightcoral;
-    padding: 5px 15px;
+    padding: 0.3vw 0.89vw;
 }
 
 .karada {
     background: lightcyan;
-    padding: 5px 15px;
+    padding: 0.3vw 0.89vw;
 }
 
 .second-character {
     background: khaki;
-    padding: 5px 15px;
+    padding: 0.3vw 0.89vw;
 }
 
 .hint {
-    margin: 20px;
-    padding: 5px;
+    margin: 1.19vw;
+    padding: 0.3vw;
     background-color: #FF8C00;
 }
 
 #hint, #answer {
     height: 2.1vw;
     transition: all 1s;
-    border: .2vw solid white;
+    border: .2vw solid #fff;
 }
 
 #hint {
@@ -529,7 +529,7 @@ audio {
 #hint:before, #answer:before {
     height: 2.1vw;
     background-color: rgba(0, 0, 0, 0.9);
-    color: white;
+    color: #fff;
     display: block;
     position: absolute;
     top: -.2vw;
@@ -597,9 +597,9 @@ audio {
 
 .card {
     cursor: pointer;
-    background-color: black;
+    background-color: #000;
     box-sizing: border-box;
-    border-bottom: 5px solid grey;
+    border-bottom: 0.3vw solid grey;
     text-align: center;
     text-transform: uppercase;
     height: 10vh;
@@ -619,7 +619,7 @@ audio {
 
 .el_rules {
     cursor: pointer;
-    border: 5px dotted grey;
+    border: 0.3vw dotted grey;
     box-sizing: border-box;
 }
 
@@ -629,9 +629,9 @@ audio {
 }
 
 .el_rules p {
-    margin: 0 5px;
+    margin: 0 0.3vw;
     border-bottom: 1px dashed grey;
-    padding: 15px 0;
+    padding: 0.89vw 0;
 }
 
 .el_rules p:last-of-type {
@@ -681,7 +681,7 @@ audio {
     left: 0;
     display: inline-block;
     background-color: rgba(0, 0, 0, 0.5);
-    color: white;
+    color: #fff;
     text-align: center;
     box-sizing: border-box;
     padding: calc(50% - 0.7vw) 0;
@@ -697,11 +697,11 @@ audio {
 }
 
 .avatar-card {
-    box-shadow: 0 -3px #fff, 0 -6px #000, 3px 0 #fff, 3px -3px #000, 6px 0 #000, 0 3px #fff, 0 6px #000, -3px 0 #fff, -3px 3px #000, -6px 0 #000, -3px -3px #000, 3px 3px #000;
+    box-shadow: 0 -0.18vw #fff, 0 -0.36vw #000, 0.18vw 0 #fff, 0.18vw -0.18vw #000, 0.36vw 0 #000, 0 0.18vw #fff, 0 0.36vw #000, -0.18vw 0 #fff, -0.18vw 0.18vw #000, -0.36vw 0 #000, -0.18vw -0.18vw #000, 0.18vw 0.18vw #000;
     box-sizing: border-box;
     width: 22vw;
-    height: calc(100% - 6px);
-    background-color: white;
+    height: calc(100% - 0.36vw);
+    background-color: #fff;
     padding: 1vw 1.5vw;
     transform: scale(0.95);
     opacity: 0.9;
@@ -736,14 +736,14 @@ audio {
 .avatar-card.inactive::before {
     content: '';
     display: block;
-    left: -6px;
-    top: -6px;
+    left: -0.36vw;
+    top: -0.36vw;
     width: inherit;
     height: inherit;
     position: absolute;
-    padding: 9px 6px;
+    padding: 0.54vw 0.36vw;
     z-index: 100000;
-    border-radius: 9px;
+    border-radius: 0.54vw;
     user-select: none;
     cursor: not-allowed;
     opacity: 0.7;
@@ -755,16 +755,16 @@ audio {
 }
 
 .avatar-card-caption {
-    width: calc(100% + 12px);
-    height: calc(100% + 12px);
+    width: calc(100% + 0.71vw);
+    height: calc(100% + 0.71vw);
     position: absolute;
-    padding: calc(50% + 12px) 0;
+    padding: calc(50% + 0.71vw) 0;
     box-sizing: border-box;
     z-index: 100000;
     text-align: center;
-    left: -6px;
-    top: -6px;
-    border-radius: 9px;
+    left: -0.36vw;
+    top: -0.36vw;
+    border-radius: 0.54vw;
     background: rgba(0, 0, 0, 0.7);
     color: #efefef;
     visibility: hidden;
@@ -929,7 +929,7 @@ input[type=range]::-ms-track {
     color: transparent;
 }
 
-input[type=range]::-webkit-slider-thumb{
+input[type=range]::-webkit-slider-thumb {
     height: 1vw;
     width: 1vw;
     border-radius: 0;
@@ -990,7 +990,7 @@ input[type=range]:focus::-ms-fill-upper {
     position: fixed;
     left: 0;
     top: 0;
-    background-color: black;
+    background-color: #000;
     z-index: 10000000;
     -webkit-animation: cutscene 1s linear;
     animation: cutscene 1s linear;
@@ -1000,15 +1000,73 @@ input[type=range]:focus::-ms-fill-upper {
     width: 60vw;
     height: 24vw;
     padding-top: 10vw;
-    color: white;
+    color: #fff;
     margin: auto;
     font-size: 1.5vw;
 }
 
 .cutscene-text.title {
-    font-size: 3vw;
+    font-size: 4vw;
     text-align: center;
-    padding-top: 20vw;
+    padding-top: 22vw;
+    height: 5vw;
+    position: relative;
+}
+
+.cutscene-text.title:before {
+    content: '';
+    display: block;
+    position: absolute;
+    animation: left-title 1s infinite;
+    -webkit-animation: left-title 1s infinite;
+    -moz-animation: left-title 1s infinite;
+    -o-animation: left-title 1s infinite;
+    left: -5vw;
+    bottom: 2.6vw;
+}
+
+.cutscene-text.title:after {
+    content: '';
+    display: block;
+    position: absolute;
+    animation: right-title 1s infinite;
+    -webkit-animation: right-title 1s infinite;
+    -moz-animation: right-title 1s infinite;
+    -o-animation: right-title 1s infinite;
+    right: 2vw;
+    bottom: 2.6vw;
+}
+
+.cutscene-text.credits {
+    padding-top: 2vw;
+    height: 50vw;
+    position: relative;
+    -webkit-animation: star-wars 7s linear;
+    -moz-animation: star-wars 7s linear;
+    -o-animation: star-wars 7s linear;
+}
+
+.cutscene-text.credits span {
+    color: red;
+}
+
+.cutscene-text.credits ul {
+    animation: none;
+}
+
+.cutscene-text.credits li {
+    text-indent: 2vw;
+}
+
+.cutscene-text.credits li:before {
+    content: '- '
+}
+
+.cutscene-text.credits a {
+    text-decoration: none;
+    display: block;
+    margin: 0 auto;
+    text-align: center;
 }
 
 /* Кадры анимации */
@@ -1026,22 +1084,22 @@ input[type=range]:focus::-ms-fill-upper {
         left: 0
     }
     24% {
-        left: -16px
+        left: -0.95vw
     }
     36.5% {
-        left: 20px
+        left: 1.19vw
     }
     49% {
-        left: -26px
+        left: -1.55vw
     }
     61.5% {
-        left: 26px
+        left: 1.55vw
     }
     74% {
-        left: -20px
+        left: -1.19vw
     }
     86.5% {
-        left: 16px
+        left: 0.95vw
     }
     100% {
         left: 0
@@ -1128,5 +1186,80 @@ input[type=range]:focus::-ms-fill-upper {
     }
     100% {
         opacity: 1;
+    }
+}
+
+@keyframes left-title {
+    0%, 16.7% {
+        box-shadow: 3.57vw 0.6vw 0 0 #fff, 3.57vw 1.19vw 0 0 #fff, 3.57vw 1.79vw 0 0 #fff, 3.57vw 2.38vw 0 0 #fff, 3.57vw 2.98vw 0 0 #fff, 4.17vw 2.98vw 0 0 #fff, 4.76vw 2.98vw 0 0 #fff, 5.36vw 2.98vw 0 0 #fff, 5.95vw 2.98vw 0 0 #fff;
+        height: 0.6vw;
+        width: 0.6vw;
+    }
+    16.71%, 33.3% {
+        box-shadow: 3.57vw 0.6vw 0 0 #fff, 3.57vw 1.19vw 0 0 #fff, 2.98vw 1.79vw 0 0 #fff, 3.57vw 1.79vw 0 0 #fff, 2.98vw 2.38vw 0 0 #fff, 3.57vw 2.38vw 0 0 #fff, 2.98vw 2.98vw 0 0 #fff, 3.57vw 2.98vw 0 0 #fff, 4.17vw 2.98vw 0 0 #fff, 4.76vw 2.98vw 0 0 #fff, 5.36vw 2.98vw 0 0 #fff, 5.95vw 2.98vw 0 0 #fff, 2.98vw 3.57vw 0 0 #fff, 3.57vw 3.57vw 0 0 #fff, 4.17vw 3.57vw 0 0 #fff, 4.76vw 3.57vw 0 0 #fff;
+        height: 0.6vw;
+        width: 0.6vw;
+    }
+    33.309999999999995%, 50% {
+        box-shadow: 3.57vw 0.6vw 0 0 #fff, 3.57vw 1.19vw 0 0 #fff, 1.79vw 1.79vw 0 0 #fff, 2.38vw 1.79vw 0 0 #fff, 3.57vw 1.79vw 0 0 #fff, 1.79vw 2.38vw 0 0 #fff, 2.38vw 2.38vw 0 0 #fff, 3.57vw 2.38vw 0 0 #fff, 3.57vw 2.98vw 0 0 #fff, 4.17vw 2.98vw 0 0 #fff, 4.76vw 2.98vw 0 0 #fff, 5.36vw 2.98vw 0 0 #fff, 5.95vw 2.98vw 0 0 #fff, 2.38vw 4.17vw 0 0 #fff, 2.98vw 4.17vw 0 0 #fff, 4.76vw 4.17vw 0 0 #fff, 5.36vw 4.17vw 0 0 #fff, 2.38vw 4.76vw 0 0 #fff, 2.98vw 4.76vw 0 0 #fff, 4.76vw 4.76vw 0 0 #fff, 5.36vw 4.76vw 0 0 #fff;
+        height: 0.6vw;
+        width: 0.6vw;
+    }
+    50.01%, 66.7% {
+        box-shadow: 3.57vw 0.6vw 0 0 #fff, 3.57vw 1.19vw 0 0 #fff, 1.79vw 1.79vw 0 0 #fff, 3.57vw 1.79vw 0 0 #fff, 3.57vw 2.38vw 0 0 #fff, 3.57vw 2.98vw 0 0 #fff, 4.17vw 2.98vw 0 0 #fff, 4.76vw 2.98vw 0 0 #fff, 5.36vw 2.98vw 0 0 #fff, 5.95vw 2.98vw 0 0 #fff, 2.38vw 4.76vw 0 0 #fff, 4.76vw 4.76vw 0 0 #fff;
+        height: 0.6vw;
+        width: 0.6vw;
+    }
+    66.71000000000001%, 83.3% {
+        box-shadow: 3.57vw 0.6vw 0 0 #fff, 1.79vw 1.19vw 0 0 #fff, 3.57vw 1.19vw 0 0 #fff, 1.19vw 1.79vw 0 0 #fff, 2.38vw 1.79vw 0 0 #fff, 3.57vw 1.79vw 0 0 #fff, 1.79vw 2.38vw 0 0 #fff, 3.57vw 2.38vw 0 0 #fff, 3.57vw 2.98vw 0 0 #fff, 4.17vw 2.98vw 0 0 #fff, 4.76vw 2.98vw 0 0 #fff, 5.36vw 2.98vw 0 0 #fff, 5.95vw 2.98vw 0 0 #fff, 2.38vw 4.17vw 0 0 #fff, 4.76vw 4.17vw 0 0 #fff, 1.79vw 4.76vw 0 0 #fff, 2.98vw 4.76vw 0 0 #fff, 4.17vw 4.76vw 0 0 #fff, 5.36vw 4.76vw 0 0 #fff, 2.38vw 5.36vw 0 0 #fff, 4.76vw 5.36vw 0 0 #fff;
+        height: 0.6vw;
+        width: 0.6vw;
+    }
+    83.31%, 100% {
+        box-shadow: 1.79vw 0.6vw 0 0 #fff, 3.57vw 0.6vw 0 0 #fff, 3.57vw 1.19vw 0 0 #fff, 0.6vw 1.79vw 0 0 #fff, 3.57vw 1.79vw 0 0 #fff, 3.57vw 2.38vw 0 0 #fff, 1.79vw 2.98vw 0 0 #fff, 3.57vw 2.98vw 0 0 #fff, 4.17vw 2.98vw 0 0 #fff, 4.76vw 2.98vw 0 0 #fff, 5.36vw 2.98vw 0 0 #fff, 5.95vw 2.98vw 0 0 #fff, 2.38vw 3.57vw 0 0 #fff, 1.19vw 4.76vw 0 0 #fff, 3.57vw 4.76vw 0 0 #fff, 5.95vw 4.76vw 0 0 #fff, 2.38vw 5.95vw 0 0 #fff, 4.76vw 5.95vw 0 0 #fff;
+        height: 0.6vw;
+        width: 0.6vw;
+    }
+}
+
+@keyframes right-title {
+    0%, 16.7% {
+        box-shadow: 2.98vw 0.6vw 0 0 #fff, 2.98vw 1.19vw 0 0 #fff, 2.98vw 1.79vw 0 0 #fff, 2.98vw 2.38vw 0 0 #fff, 0.6vw 2.98vw 0 0 #fff, 1.19vw 2.98vw 0 0 #fff, 1.79vw 2.98vw 0 0 #fff, 2.38vw 2.98vw 0 0 #fff, 2.98vw 2.98vw 0 0 #fff;
+        height: 0.6vw;
+        width: 0.6vw;
+    }
+    16.71%, 33.3% {
+        box-shadow: 2.98vw 0.6vw 0 0 #fff, 2.98vw 1.19vw 0 0 #fff, 2.98vw 1.79vw 0 0 #fff, 3.57vw 1.79vw 0 0 #fff, 2.98vw 2.38vw 0 0 #fff, 3.57vw 2.38vw 0 0 #fff, 0.6vw 2.98vw 0 0 #fff, 1.19vw 2.98vw 0 0 #fff, 1.79vw 2.98vw 0 0 #fff, 2.38vw 2.98vw 0 0 #fff, 2.98vw 2.98vw 0 0 #fff, 3.57vw 2.98vw 0 0 #fff, 1.79vw 3.57vw 0 0 #fff, 2.38vw 3.57vw 0 0 #fff, 2.98vw 3.57vw 0 0 #fff, 3.57vw 3.57vw 0 0 #fff;
+        height: 0.6vw;
+        width: 0.6vw;
+    }
+    33.309999999999995%, 50% {
+        box-shadow: 2.98vw 0.6vw 0 0 #fff, 2.98vw 1.19vw 0 0 #fff, 2.98vw 1.79vw 0 0 #fff, 4.17vw 1.79vw 0 0 #fff, 4.76vw 1.79vw 0 0 #fff, 2.98vw 2.38vw 0 0 #fff, 4.17vw 2.38vw 0 0 #fff, 4.76vw 2.38vw 0 0 #fff, 0.6vw 2.98vw 0 0 #fff, 1.19vw 2.98vw 0 0 #fff, 1.79vw 2.98vw 0 0 #fff, 2.38vw 2.98vw 0 0 #fff, 2.98vw 2.98vw 0 0 #fff, 1.19vw 4.17vw 0 0 #fff, 1.79vw 4.17vw 0 0 #fff, 3.57vw 4.17vw 0 0 #fff, 4.17vw 4.17vw 0 0 #fff, 1.19vw 4.76vw 0 0 #fff, 1.79vw 4.76vw 0 0 #fff, 3.57vw 4.76vw 0 0 #fff, 4.17vw 4.76vw 0 0 #fff;
+        height: 0.6vw;
+        width: 0.6vw;
+    }
+    50.01%, 66.7% {
+        box-shadow: 2.98vw 0.6vw 0 0 #fff, 2.98vw 1.19vw 0 0 #fff, 2.98vw 1.79vw 0 0 #fff, 4.76vw 1.79vw 0 0 #fff, 2.98vw 2.38vw 0 0 #fff, 0.6vw 2.98vw 0 0 #fff, 1.19vw 2.98vw 0 0 #fff, 1.79vw 2.98vw 0 0 #fff, 2.38vw 2.98vw 0 0 #fff, 2.98vw 2.98vw 0 0 #fff, 1.79vw 4.76vw 0 0 #fff, 4.17vw 4.76vw 0 0 #fff;
+        height: 0.6vw;
+        width: 0.6vw;
+    }
+    66.71000000000001%, 83.3% {
+        box-shadow: 2.98vw 0.6vw 0 0 #fff, 2.98vw 1.19vw 0 0 #fff, 4.76vw 1.19vw 0 0 #fff, 2.98vw 1.79vw 0 0 #fff, 4.17vw 1.79vw 0 0 #fff, 5.36vw 1.79vw 0 0 #fff, 2.98vw 2.38vw 0 0 #fff, 4.76vw 2.38vw 0 0 #fff, 0.6vw 2.98vw 0 0 #fff, 1.19vw 2.98vw 0 0 #fff, 1.79vw 2.98vw 0 0 #fff, 2.38vw 2.98vw 0 0 #fff, 2.98vw 2.98vw 0 0 #fff, 1.79vw 4.17vw 0 0 #fff, 4.17vw 4.17vw 0 0 #fff, 1.19vw 4.76vw 0 0 #fff, 2.38vw 4.76vw 0 0 #fff, 3.57vw 4.76vw 0 0 #fff, 4.76vw 4.76vw 0 0 #fff, 1.79vw 5.36vw 0 0 #fff, 4.17vw 5.36vw 0 0 #fff;
+        height: 0.6vw;
+        width: 0.6vw;
+    }
+    83.31%, 100% {
+        box-shadow: 2.98vw 0.6vw 0 0 #fff, 4.76vw 0.6vw 0 0 #fff, 2.98vw 1.19vw 0 0 #fff, 2.98vw 1.79vw 0 0 #fff, 5.95vw 1.79vw 0 0 #fff, 2.98vw 2.38vw 0 0 #fff, 0.6vw 2.98vw 0 0 #fff, 1.19vw 2.98vw 0 0 #fff, 1.79vw 2.98vw 0 0 #fff, 2.38vw 2.98vw 0 0 #fff, 2.98vw 2.98vw 0 0 #fff, 4.76vw 2.98vw 0 0 #fff, 4.17vw 3.57vw 0 0 #fff, 0.6vw 4.76vw 0 0 #fff, 2.98vw 4.76vw 0 0 #fff, 5.36vw 4.76vw 0 0 #fff, 1.79vw 5.95vw 0 0 #fff, 4.17vw 5.95vw 0 0 #fff;
+        height: 0.6vw;
+        width: 0.6vw;
+    }
+}
+
+@keyframes star-wars {
+    0% {
+        bottom: -80vw
+    }
+    100% {
+        bottom: 0;
     }
 }
