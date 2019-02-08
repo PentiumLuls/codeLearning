@@ -1005,6 +1005,12 @@ input[type=range]:focus::-ms-fill-upper {
     font-size: 1.5vw;
 }
 
+.cutscene-text.title {
+    font-size: 3vw;
+    text-align: center;
+    padding-top: 20vw;
+}
+
 /* Кадры анимации */
 @keyframes border-dance {
     0% {

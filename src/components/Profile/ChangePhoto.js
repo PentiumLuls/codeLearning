@@ -80,7 +80,7 @@ class Popup extends React.Component {
                         <img alt="owo" src={require("../img/avatars/pikachu.png")}/>
                         <h3>О.О</h3>
                         <p>oшo what's this</p>
-                        {this.props.unlockedAvatars['pikachu'] ? null : <div className="avatar-card-caption">Требуется: achievement 'Loser'</div>}
+                        {this.props.unlockedAvatars['pikachu'] ? null : <div className="avatar-card-caption">Требуется: achievement 'Аутсайдер'</div>}
                     </div>
                     <div onClick={this.props.unlockedAvatars['ricardo'] ? this.setPhoto.bind(this, 'ricardo') : null} 
                         className={this.props.unlockedAvatars['ricardo'] ? "avatar-card" : "avatar-card inactive"}>
@@ -94,21 +94,21 @@ class Popup extends React.Component {
                         <img alt="Krysa" src={require("../img/avatars/splinter.jpg")}/>
                         <h3>Сплинтер</h3>
                         <p>Контент для олдфагов</p>
-                        {this.props.unlockedAvatars['splinter'] ? null : <div className="avatar-card-caption">Требуется: achievement 'The great Unknown, self-proclaimed master'</div>}
+                        {this.props.unlockedAvatars['splinter'] ? null : <div className="avatar-card-caption">Требуется: achievement 'Великий никто, самопровозглашенный мастер'</div>}
                     </div>
                     <div onClick={this.props.unlockedAvatars['zeroTwo'] ? this.setPhoto.bind(this, 'zeroTwo') : null} 
                         className={this.props.unlockedAvatars['zeroTwo'] ? "avatar-card" : "avatar-card inactive"}>
                         <img alt="Roflan" src={require("../img/avatars/zeroTwo.jpeg")}/>
                         <h3>Худшая девочка</h3>
                         <p>Худшая девочка в 3D - худшая комбинация</p>
-                        {this.props.unlockedAvatars['zeroTwo'] ? null : <div className="avatar-card-caption">Требуется: achievement 'Red wedding'</div>}
+                        {this.props.unlockedAvatars['zeroTwo'] ? null : <div className="avatar-card-caption">Требуется: achievement 'Красная свадьба'</div>}
                     </div>
                     <div onClick={this.props.unlockedAvatars['denis'] ? this.setPhoto.bind(this, 'denis') : null} 
                         className={this.props.unlockedAvatars['denis'] ? "avatar-card" : "avatar-card inactive"}>
                         <img alt="Kakoj-to loh" src={require("../img/avatars/denis.jpeg")}/>
                         <h3>Тысячник</h3>
                         <p>Ну это челик</p>
-                        {this.props.unlockedAvatars['denis'] ? null : <div className="avatar-card-caption">Требуется: achievement 'Strong'</div>}
+                        {this.props.unlockedAvatars['denis'] ? null : <div className="avatar-card-caption">Требуется: achievement 'Сильно'</div>}
                     </div>
                 </div>
             </PureModal>
