@@ -182,6 +182,6 @@ const attackDevil = ToolBox.compose(
     answer
 );
 
-console.log(attackDevil(legions));`
+terminal.log(attackDevil(legions));`
         }
-    }
+    };
