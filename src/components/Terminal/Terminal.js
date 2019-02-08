@@ -38,6 +38,7 @@ class Terminal extends Component {
             self.log(result.join(","), "logger")
         };
         window.unlockQuest = this.unlockQuestCheat;
+        window.unlockAllQuests = () => {localStorage["passStages"] = 5; localStorage["passQuests"] = 5; this.log("All quests unlocked~", "")};
         window.reporterLog = (text, status) => {
             self.reporterLog(text, status)
         };
