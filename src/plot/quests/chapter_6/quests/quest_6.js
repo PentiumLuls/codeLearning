@@ -84,7 +84,7 @@ console.log(attackDevil(legions));`,
         test: {
             code: `describe("", function() {
 
-               it("should ",function() {
+               it("should return result of battle",function() {
                   expect().toEqual();
                });
 
