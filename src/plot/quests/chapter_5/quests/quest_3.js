@@ -5,7 +5,7 @@ export const quest3 =
         regexps: [],
         regexpsNone: [/(for)/g, /(while)/g, /(var)/g, /(let)/g],
         code: `//Функция 'milkCows' принимает массив коров и число - с какой коровы начинать
-//Дойку. 1 единица 'milk', что имеет корова равна 5 единицам молока.
+//Дойку. 1 единица 'milk', что имеет корова, равна 5 единицам молока.
 //Не забудь убедиться, что коров для подойки может и не быть!
 
 const cows = [{milk:10}, {milk:5}, {milk:0}];
@@ -14,7 +14,7 @@ function milkCows(cows, n) {
     //YOUR CODE
 }
 
-function Milk(milk){
+function Milk(milk) {
    return 5 * milk;
 }
 
@@ -55,11 +55,11 @@ function MilkTEST(milk){
 const cows = [{milk:10}, {milk:5}, {milk:0}];
 
 function milkCows(cows, n) {
-    if (n >= cows.length ) return 0;
-    return Milk(cows[n].milk) + milkCows(cows,n+1);
+    if (n >= cows.length) return 0;
+    return Milk(cows[n].milk) + milkCows(cows,n + 1);
 }
 
-function Milk(milk){
+function Milk(milk) {
    return 5 * milk;
 }
 
