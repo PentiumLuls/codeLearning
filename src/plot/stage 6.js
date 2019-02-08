@@ -206,30 +206,25 @@ console.log(result)
 //выбери все легионы которые находятся 'Demon`s castle'
 //возврати массив очков атаки легионов
 //найди сумму урона(сложи все  очки атаки)
-//вычисли изменения урона(modDamage)
+//вычисли изменения урона(modDamage) принимает обьект data и возвращает измененный урон
+//формулы модификации урона
+//modNumber = (data.number == 13) ? 0.1 : 0;
+//modDay = (data.day == 'Friday') ? 0.13 : 0;
+//modShield = (data.shield == true) ? 0.4 : 0;
+//формула изменения урона
+//damage * (1 - modNumber - modDay - modShield)
 //отними урон от здоровья дьявола
 //проверь победили ли мы дьявола (здоровье <= 0) ? true : false
 //верни сообщения 'We win!!! если' true или  We lose!!! если false
-const legions = [{
-    number: 13,
-    size: 4,
-    names: ['Hiran', 'Jayesh', 'Ojas', 'Ranbir'],
-    attack: 300,
-    location: 'Demon`s castle'
-},
-    {number: 26, size: 4, names: ['Arnav', 'Himmat', 'Mitul', 'Pranay'], attack: 366, location: 'Demon`s castle'},
-    {
-        number: 6,
-        size: 6,
-        names: ['Ojas', 'Faiyaz', 'Rohan', 'Tushar', 'Aarav', 'Madhup'],
-        attack: 353,
-        location: 'Hell lake'
+const legions = [{number: 13,size: 4,names: ['Hiran', 'Jayesh', 'Ojas', 'Ranbir'],attack: 300,location: "Demon's castle"},
+{number: 26, size: 4, names: ['Arnav', 'Himmat', 'Mitul', 'Pranay'], attack: 366, location: "Demon's castle"},
+{number: 6,size: 6,names: ['Ojas', 'Faiyaz', 'Rohan', 'Tushar', 'Aarav', 'Madhup'],attack: 353,location: 'Hell lake'
     }];
 const data = {number: 13, day: 'Friday', shield: false};
 const devil = {health: 510};
 
 function isCastle(legion) {
-    return legion.location == 'Demon`s castle';
+    return legion.location == "Demon's castle";
 }
 
 function getAttackScope(legion) {
@@ -263,10 +258,10 @@ function answer(bool) {
     return (bool) ? 'We win!!!' : 'We lose!!!'
 }
 
-const attackDevil = compose(
-    Filter(isCastle),
-    Map(getAttackScope),
-    Reduce(sum, 0),
+const attackDevil = ToolBox.compose(
+    ToolBox.Filter(isCastle),
+    ToolBox.Map(getAttackScope),
+    ToolBox.Reduce(sum, 0),
     modDamage(data),
     attack(devil),
     IsWin,
