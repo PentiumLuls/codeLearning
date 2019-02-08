@@ -29,7 +29,7 @@ export default class SlidersExample extends React.Component {
       var sliders = [];
       for (var i = 0; i < slidersLabels.length; ++i) {
         sliders.push(
-          <div style={{ marginTop: "2.5vw", marginBottom: "2.5vw" }}>
+          <div key={i} style={{ marginTop: "2.5vw", marginBottom: "2.5vw" }}>
             <input
               id={slidersLabels[i]}
               type="range"

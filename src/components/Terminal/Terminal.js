@@ -261,6 +261,7 @@ class Terminal extends Component {
     }
 
     render() {
+        console.log(this.props.player)
         this.passStages = this.props.passStages;
         this.passQuests = this.props.passQuests;
         this.currentStage = this.props.currentStage;
