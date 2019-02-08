@@ -1,5 +1,4 @@
 import React, {Component} from 'react';
-import {quests} from '../../plot/quests'
 import {connect} from 'react-redux';
 import {nextLevel, passQuest} from '../../store/actions/questActions'
 import {
@@ -76,9 +75,15 @@ class Terminal extends Component {
 
     unlockQuest = () => {
         this.log("Oh wow, you're not entirely hopeless after all. Good job.", '');
-        this.setState({
-            showNextLevel: true
-        });
+        if (localStorage["passStages"] === '5' && localStorage["passQuests"] === '5' &&
+                localStorage["currentStage"] === '5' && localStorage["currentQuest"] === '5') {
+            //IF FINAL LEVEL
+            console.log("FINAL LEVEL COMPLETED~");
+        } else {
+            this.setState({
+                showNextLevel: true
+            });
+        }
         this.props.writeCode(false);
         this.props.passQuest();
 
@@ -127,7 +132,7 @@ class Terminal extends Component {
                     this.setState({
                         composition: notPass,
                         playNotPass: true
-                    })
+                    });
                     let information = '';
                     if (regexp.useIt.length !== 0) {
                         information += `You should use ${this.parseRegexp(regexp.useIt)}\n`
@@ -238,9 +243,9 @@ class Terminal extends Component {
     endNotPass = () => {
         this.setState({
             playNotPass: false
-        })
+        });
         this.props.player.play();
-    }
+    };
 
     componentDidUpdate() {
         if (this.state.playNotPass) {
@@ -252,15 +257,16 @@ class Terminal extends Component {
         this.setState({
             showBlackScreen: false
         })
-    }
+    };
 
     hideEnd = () => {
         this.setState({
             showEnd: false
         })
-    }
+    };
 
     render() {
+        console.log(this.props.player);
         this.passStages = this.props.passStages;
         this.passQuests = this.props.passQuests;
         this.currentStage = this.props.currentStage;

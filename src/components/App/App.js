@@ -48,6 +48,11 @@ class App extends Component {
 
     togglePopup = () => {
         this.props.changeShowPopup(false);
+        if (this.state.player === null) {
+            this.setState({
+                player: this.player
+            })
+        }
     };
 
     exportRun = (func) => {
@@ -73,6 +78,7 @@ class App extends Component {
             this.player.play();
         }
     }
+    
 
     componentWillReceiveProps(newProps) {
         if (this.player) {

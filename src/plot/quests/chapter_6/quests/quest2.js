@@ -1,20 +1,15 @@
 export const quest2 =
     {
-        title: "2",
-        text: `LEFT PANEL TEXT`,
+        title: "Мастера меча",
+        text: `После того, как твои воспоминания вернулись к тебе, ты пару дней не мог опомниться. Этот чёртов Мефисто посмел отобрать у тебя твоего брата, воспоминания о нём и твою деревню. Пора дать ему отпор.
+
+        Ты сзываешь народное собрание и рассказываешь индусам о всём, что с тобой произошло, и кто на самом деле виноват во всех их бедах. Вы начинаете экипировать армию.
+        
+        Ты разыскиваешь лучших кузнецов города, чтобы те сделали тебе нужное оружие.
+        `,
         regexps: [],
         regexpsNone: [/(for)/g, /(while)/g, /(var)/g, /(let)/g],
-        code: `//Cделай мечи для солдат
-//Пять единиц железа = один меч
-//Верни количество сделанных мечей
-
-const materials  = [
-    {type:'iron',amount:20},
-    {type:'wood',amount:13},
-    {type:'iron',amount:40}
-];
-
-class ToolBox { 
+        code: `class ToolBox { 
     static compose(...fns) { 
         return (arg) =>
             fns.reduce((composed, f) => f(composed), arg);
@@ -33,6 +28,16 @@ class ToolBox {
     }
 }
 
+//Cделай мечи для солдат
+//Пять единиц железа = один меч
+//Верни количество сделанных мечей
+
+const materials  = [
+    {type:'iron',amount:20},
+    {type:'wood',amount:13},
+    {type:'iron',amount:40}
+];
+
 function isIron(material) {
     return material.type == 'iron';
 }
@@ -45,8 +50,8 @@ function makeSwords(amount) {
     return amount / 5;
 }
 
-const swordFactory = ToolBox.//YOUR CODE
-terminal.log(swordFactory(materials))`,
+const swordFactory = //YOUR CODE
+terminal.log(swordFactory(materials));`,
         hints: [
             "используй функциональные версии Filter,Reduce в compose",
         ],
@@ -70,17 +75,7 @@ terminal.log(swordFactory(materials))`,
                         if (report.passed.indexOf(false) === -1) { true } else false;`,
 
 
-            answer: `//Cделай мечи для солдат
-//Пять единиц железа = один меч
-//Верни количество сделанных мечей
-
-const materials  = [
-    {type:'iron',amount:20},
-    {type:'wood',amount:13},
-    {type:'iron',amount:40}
-];
-
-class ToolBox { 
+            answer: `class ToolBox { 
     static compose(...fns) { 
         return (arg) =>
             fns.reduce((composed, f) => f(composed), arg);
@@ -99,6 +94,16 @@ class ToolBox {
     }
 }
 
+//Cделай мечи для солдат
+//Пять единиц железа = один меч
+//Верни количество сделанных мечей
+
+const materials  = [
+    {type:'iron',amount:20},
+    {type:'wood',amount:13},
+    {type:'iron',amount:40}
+];
+
 function isIron(material) {
     return material.type == 'iron';
 }
@@ -115,6 +120,6 @@ const swordFactory = ToolBox.compose(
                             ToolBox.Filter(isIron),
                             ToolBox.Reduce(sumIron,0),
                             makeSwords);
-terminal.log(swordFactory(materials))`
+terminal.log(swordFactory(materials));`
         }
     };
