@@ -94,7 +94,6 @@ class Chatbot extends Component {
             replics: [],
             replicN:0,
             dialogN: 0,
-            hintsN: 0,
             showCloud: 3
         })
     }
