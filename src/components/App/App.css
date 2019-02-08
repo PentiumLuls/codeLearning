@@ -88,7 +88,7 @@ audio {
 }
 
 .terminal {
-    #fff-space: pre-line;
+    white-space: pre-line;
     text-transform: uppercase;
     grid-area: terminal;
     width: 75vw;
