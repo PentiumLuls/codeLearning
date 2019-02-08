@@ -1,8 +1,20 @@
-import { SELECT_QUEST, SELECT_STAGE, PASS_QUEST, NEXT_LEVEL, NEXT_STEP, PREV_STEP } from '../actions/questActions'
-import { RESET_CODE, WRITE_CODE, CHANGE_SHOW_POPUP, CLEAR_TERMINAL, SHOW_ANSWER, 
-    EXPORT_RUN, EXPORT_HIDE_NEXT_CODE, EXPORT_HIDE_CHAT, SET_HOT_KEY } from '../actions/codeActions'
-import { SPEND_MONEY, ADD_MONEY} from '../actions/moneyActions'
-import { TICK_TIME_IN_GAME, ADD_SYMBOL, ADD_SUCCESSFUL_RUN, ADD_UNSUCCESSFUL_RUN, CHANGE_MUSIC_VALUE, CHANGE_SOUND_VALUE, CHANGE_AVATAR, CHANGE_MUSIC, UNLOCK_AVATAR} from '../actions/statActions'
+import {SELECT_QUEST, SELECT_STAGE, PASS_QUEST, NEXT_LEVEL, NEXT_STEP, PREV_STEP} from '../actions/questActions'
+import {
+    RESET_CODE, WRITE_CODE, CHANGE_SHOW_POPUP, CLEAR_TERMINAL, SHOW_ANSWER,
+    EXPORT_RUN, EXPORT_HIDE_NEXT_CODE, EXPORT_HIDE_CHAT, SET_HOT_KEY
+} from '../actions/codeActions'
+import {SPEND_MONEY, ADD_MONEY} from '../actions/moneyActions'
+import {
+    TICK_TIME_IN_GAME,
+    ADD_SYMBOL,
+    ADD_SUCCESSFUL_RUN,
+    ADD_UNSUCCESSFUL_RUN,
+    CHANGE_MUSIC_VALUE,
+    CHANGE_SOUND_VALUE,
+    CHANGE_AVATAR,
+    CHANGE_MUSIC,
+    UNLOCK_AVATAR
+} from '../actions/statActions'
 import {quests} from '../../plot/quests';
 import CryptoJS from 'crypto-js'
 import * as toastr from "toastr";
@@ -21,7 +33,7 @@ if (!localStorage['currentQuest']) {
     localStorage['currentQuest'] = localStorage.passQuests;
 }
 if (!localStorage['whiteList']) {
-    localStorage['whiteList'] = JSON.stringify([[0, 1, 2, 3, 6], [0, 2, 4],[0],[0, 1], [0, 3], [0,]]);
+    localStorage['whiteList'] = JSON.stringify([[0, 1, 2, 3, 6], [0, 2, 4], [0], [0, 1], [0, 3], [0,]]);
 
 }
 if (!localStorage['code']) {
@@ -56,26 +68,14 @@ if (!localStorage['questTime']) {
 }
 if (!localStorage['records']) {
     localStorage['records'] = JSON.stringify(
-    [
         [
-
-        ],
-        [
-
-        ],
-        [
-
-        ],
-        [
-
-        ],
-        [
-
-        ],
-        [
-
-        ]
-    ])
+            [],
+            [],
+            [],
+            [],
+            [],
+            []
+        ])
 }
 if (!localStorage['hotKey']) {
     localStorage['hotKey'] = 'Ctrl-shift-x'
@@ -93,9 +93,11 @@ if (!localStorage['music']) {
     localStorage['music'] = 'sans'
 }
 if (!localStorage['unlockedAvatars']) {
-    localStorage['unlockedAvatars'] = JSON.stringify({vanDam: true, papich: true, 
-        futaba: false, nanachi: false, pikachu: false, reroRero: false, 
-        ricardo: false, splinter: false, zeroTwo: false, denis: false})
+    localStorage['unlockedAvatars'] = JSON.stringify({
+        vanDam: true, papich: true,
+        futaba: false, nanachi: false, pikachu: false, reroRero: false,
+        ricardo: false, splinter: false, zeroTwo: false, denis: false
+    })
 }
 
 
@@ -139,11 +141,11 @@ export function rootReducer(state = initialState, action) {
             localStorage['questTime'] = currentDate1;
 
             return {...state, currentQuest: action.payload, questTime: currentDate1};
-        
+
         case SELECT_STAGE:
             localStorage.currentStage = action.payload;
             return {...state, currentStage: action.payload};
-        
+
         case PASS_QUEST:
             const passingLevels = JSON.parse(localStorage['passingLevels']);
             const currentDate = new Date();
@@ -170,14 +172,25 @@ export function rootReducer(state = initialState, action) {
                 }
                 localStorage['achievements'] = JSON.stringify(achievements);
 
-                if (state.currentQuest == quests[state.currentStage].quests.length - 1) {
-
-                    localStorage.passStages = state.currentStage + 1;
-                    localStorage.passQuests = 0;
-                    return {...state, passStages: state.currentStage + 1, passQuests: 0, money: state.money + 5, records: record}
+                if (localStorage["passStages"] == 5 && localStorage["passQuests"] == 5) {
+                    //IF FINAL LEVEL
+                    return {...state, money: state.money + 5, records: record};
                 } else {
-                    localStorage.passQuests = state.currentQuest + 1;
-                    return {...state, passQuests: state.currentQuest + 1, money: state.money + 5, records: record}
+                    if (state.currentQuest == quests[state.currentStage].quests.length - 1) {
+
+                        localStorage.passStages = state.currentStage + 1;
+                        localStorage.passQuests = 0;
+                        return {
+                            ...state,
+                            passStages: state.currentStage + 1,
+                            passQuests: 0,
+                            money: state.money + 5,
+                            records: record
+                        }
+                    } else {
+                        localStorage.passQuests = state.currentQuest + 1;
+                        return {...state, passQuests: state.currentQuest + 1, money: state.money + 5, records: record}
+                    }
                 }
             }
 
@@ -208,12 +221,10 @@ export function rootReducer(state = initialState, action) {
 
             return {...state, records: record};
 
-            
 
         case NEXT_LEVEL:
-            const currentDate2 = new Date()
+            const currentDate2 = new Date();
             localStorage['questTime'] = currentDate2;
-
             if (state.currentQuest == quests[state.currentStage].quests.length - 1) {
                 localStorage.currentStage = state.currentStage + 1;
                 localStorage.currentQuest = 0;
@@ -223,9 +234,14 @@ export function rootReducer(state = initialState, action) {
                 return {...state, currentQuest: state.currentQuest + 1, questTime: currentDate2}
             }
 
+
         case RESET_CODE:
             localStorage.code = quests[state.currentStage].quests[state.currentQuest].code;
-            return {...state, code: quests[state.currentStage].quests[state.currentQuest].code, resets: state.resets + 1};
+            return {
+                ...state,
+                code: quests[state.currentStage].quests[state.currentQuest].code,
+                resets: state.resets + 1
+            };
 
         case NEXT_STEP:
             return {...state, step: state.step + 1};
@@ -267,19 +283,26 @@ export function rootReducer(state = initialState, action) {
 
         case SPEND_MONEY:
             toastr.success(action.payload + " сыра потрачено");
-            localStorage['stats'] = JSON.stringify({...state.stats, spendMoneys: state.stats.spendMoneys + action.payload})
+            localStorage['stats'] = JSON.stringify({
+                ...state.stats,
+                spendMoneys: state.stats.spendMoneys + action.payload
+            })
 
             localStorage['LH;;tabs'] = CryptoJS.AES.encrypt(`${state.money - action.payload}`, 'Kt0 et0 ch1tayet t0t l0h');
-             if (achievements[8].status === -1) {
-                    achievements[8].spend += action.payload;
-                }
-                localStorage['achievements'] = JSON.stringify(achievements);
-            return {...state, money: state.money - action.payload, stats: {...state.stats, spendMoneys: state.stats.spendMoneys + action.payload}};
+            if (achievements[8].status === -1) {
+                achievements[8].spend += action.payload;
+            }
+            localStorage['achievements'] = JSON.stringify(achievements);
+            return {
+                ...state,
+                money: state.money - action.payload,
+                stats: {...state.stats, spendMoneys: state.stats.spendMoneys + action.payload}
+            };
 
         case TICK_TIME_IN_GAME:
             const time = {...state.timeInGame};
-            if(time.seconds === 59) {
-                if(time.minutes === 59){
+            if (time.seconds === 59) {
+                if (time.minutes === 59) {
                     time.hours += 1;
                     time.minutes = 0;
                     time.seconds = 0
@@ -303,7 +326,10 @@ export function rootReducer(state = initialState, action) {
             return {...state, stats: {...state.stats, successfulRuns: state.stats.successfulRuns + 1}};
 
         case ADD_UNSUCCESSFUL_RUN:
-            localStorage['stats'] = JSON.stringify({...state.stats, unsuccessfulRuns: state.stats.unsuccessfulRuns + 1});
+            localStorage['stats'] = JSON.stringify({
+                ...state.stats,
+                unsuccessfulRuns: state.stats.unsuccessfulRuns + 1
+            });
             return {...state, stats: {...state.stats, unsuccessfulRuns: state.stats.unsuccessfulRuns + 1}};
 
         case SET_HOT_KEY:
