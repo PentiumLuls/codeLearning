@@ -1,7 +1,8 @@
 export const quest1 =
     {
-        title: "QUEST TITLE 1",
-        text: `LEFT PANEL TEXT`,
+        title: "Pipe. Туториал 1",
+        text: `Опять фигуры, вокруг фигуры, вся жизнь – фигуры. Ты окружён болью и абстракционизмом. Тебе некуда бежать.
+        `,
         regexps: [],
         regexpsNone: [/(for)/g, /(while)/g, /(var)/g, /(let)/g],
         code: `// найди максимальный периметр черного прямоугольника;
