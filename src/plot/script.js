@@ -13,28 +13,44 @@ function Map(callback) {
 }
 
 
-const rectangles = [{color: 'red',width:4,height:4,},
-{color: 'black',width:2, height:2,},{color: 'white',width:6,height:9,},
-{color: 'black',width:3,height:3,},{color: 'black',width:4,height:4, },
-{color: 'black',width:5,height:5,},{color: 'white',width:4,height:2,},{color: 'red',width:5,height:5,}];
+const persons = [{legion: 26, weapons: ['stick', 'bow']},{legion: 1, weapons: ['sword', 'bow']},
+ {legion: 26, weapons: ['stick',]},{legion: 1, weapons: ['spear']}];
 
-function isBlack(rectangle) {
-    return rectangle.color == 'black';
-    };
+const weapons2 = ['sword', 'spear'];
 
-function perimeter(rectangle) {
-        return rectangle.width*2 + rectangle.height*2;
-}  
+function equipWeapons(weapons) {
+    return (hindu) => {
 
-function max(a,b){
- return a < b ? b : a;
+        const newHindu = {...hindu};
+        newHindu.weapons = newHindu.weapons.concat(weapons);
+
+
+        return newHindu;
+    }
 }
 
-const result = compose (
-               Filter(isBlack),
-               Map(perimeter),
-               Reduce(max)
-               )(rectangles);
-console.log(result);
+function disEquipWeapons(hindu) {
+    newHindu = {...hindu}
+    newHindu.weapons = []
+    return newHindu
+}
+
+function isLegion(legionNum) {
+    return (hindu) => {
+        return hindu.legion == legionNum;
+    }
+}
+
+
+const equipWeaponLeg26 = equipWeapons(weapons2);
+const isLegion26 = isLegion(26);
+
+const createLegion26 = compose(
+    Filter(isLegion26),
+    Map(disEquipWeapons),
+    Map(equipWeaponLeg26)
+)
+
+console.log(createLegion26(persons))
 
 

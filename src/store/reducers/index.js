@@ -150,7 +150,7 @@ export function rootReducer(state = initialState, action) {
 
             if (state.currentStage == state.passStages && state.currentQuest == state.passQuests) {
                 localStorage['LH;;tabs'] = CryptoJS.AES.encrypt(`${state.money + 5}`, 'Kt0 et0 ch1tayet t0t l0h');
-                toastr.success("5 сыру получено");
+                toastr.success("5 сыра получено");
 
                 const record = [...state.records];
                 record[state.currentStage][state.currentQuest] = (Date.parse(currentDate) - Date.parse(state.questTime)) / 1000;
@@ -197,7 +197,7 @@ export function rootReducer(state = initialState, action) {
                 passingLevels[state.currentStage][state.currentQuest] -= 1;
                 localStorage['passingLevels'] = JSON.stringify(passingLevels);
                 localStorage['LH;;tabs'] = CryptoJS.AES.encrypt(`${state.money + 3}`, 'Kt0 et0 ch1tayet t0t l0h');
-                toastr.success("3 сыру получено");
+                toastr.success("3 сыра получено");
                 //ACHIEVEMENTS - EARNED N MONEY
                 if (achievements[7].status === -1) {
                     achievements[7].earned += 3;
@@ -256,7 +256,7 @@ export function rootReducer(state = initialState, action) {
             return {...state, hideChat: action.payload};
 
         case ADD_MONEY:
-            toastr.success(action.payload + " сыру получено");
+            toastr.success(action.payload + " сыра получено");
             if (achievements[6].status === -1) {
                 achievements[6].payload += action.payload;
             }
@@ -266,7 +266,7 @@ export function rootReducer(state = initialState, action) {
             return {...state, money: state.money + action.payload};
 
         case SPEND_MONEY:
-            toastr.success(action.payload + " сыру потрачено");
+            toastr.success(action.payload + " сыра потрачено");
             localStorage['stats'] = JSON.stringify({...state.stats, spendMoneys: state.stats.spendMoneys + action.payload})
 
             localStorage['LH;;tabs'] = CryptoJS.AES.encrypt(`${state.money - action.payload}`, 'Kt0 et0 ch1tayet t0t l0h');
