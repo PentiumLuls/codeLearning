@@ -1,5 +1,4 @@
 import React, {Component} from 'react';
-import {quests} from '../../plot/quests'
 import {connect} from 'react-redux';
 import {nextLevel, passQuest} from '../../store/actions/questActions'
 import {
@@ -76,9 +75,15 @@ class Terminal extends Component {
 
     unlockQuest = () => {
         this.log("Oh wow, you're not entirely hopeless after all. Good job.", '');
-        this.setState({
-            showNextLevel: true
-        });
+        if (localStorage["passStages"] === '5' && localStorage["passQuests"] === '5' &&
+                localStorage["currentStage"] === '5' && localStorage["currentQuest"] === '5') {
+            //IF FINAL LEVEL
+            console.log("FINAL LEVEL COMPLETED~");
+        } else {
+            this.setState({
+                showNextLevel: true
+            });
+        }
         this.props.writeCode(false);
         this.props.passQuest();
 
@@ -127,7 +132,7 @@ class Terminal extends Component {
                     this.setState({
                         composition: notPass,
                         playNotPass: true
-                    })
+                    });
                     let information = '';
                     if (regexp.useIt.length !== 0) {
                         information += `You should use ${this.parseRegexp(regexp.useIt)}\n`
@@ -238,9 +243,9 @@ class Terminal extends Component {
     endNotPass = () => {
         this.setState({
             playNotPass: false
-        })
+        });
         this.props.player.play();
-    }
+    };
 
     componentDidUpdate() {
         if (this.state.playNotPass) {
@@ -252,16 +257,15 @@ class Terminal extends Component {
         this.setState({
             showBlackScreen: false
         })
-    }
+    };
 
     hideEnd = () => {
         this.setState({
             showEnd: false
         })
-    }
+    };
 
     render() {
-        console.log(this.props.player)
         this.passStages = this.props.passStages;
         this.passQuests = this.props.passQuests;
         this.currentStage = this.props.currentStage;
@@ -286,30 +290,33 @@ class Terminal extends Component {
                 </div> 
                 : null}
 
-                {this.state.showEnd ?  
-                <div onClick={this.hideEnd} className="cutscene">
-                    <div className="cutscene-text">
-                    Спасибо за прохождение нашего квеста, надеемся вам понравилось и вы смогли выучить что-то новое.
+                {this.state.showEnd ?
+                    <div onClick={this.hideEnd} className="cutscene">
+                        <div className="cutscene-text credits">
+                            <p>Спасибо за прохождение нашего квеста. Надеемся, вам понравилось, и вы смогли выучить что-то новое.</p>
 
-Команда разработчиков:
--Рачкован Евгений
--Прокопчук Богдана
--Лапин Констянтин
--Волков Максим
+                            <ul>
+                                Команда разработчиков:
+                                <li>Рачкован Евгений</li>
+                                <li>Прокопчук Богдана</li>
+                                <li>Лапин Констянтин</li>
+                                <li>Волков Максим</li>
+                            </ul>
+                            <ul>
+                                Бета-тестеры и валидаторы:
+                                <li>Дзензур Андрей</li>
+                                <li>Шлакоблоков Евгений</li>
+                            </ul>
 
-Бета-тестеры и валидаторы:
--Дзензур Андрей
--Шлакоблоков Евгений
+                            <p>Отдельное спасибо компании <span>Interlink</span> и <span>Александру Котову</span> в частности
+                                за предоставленую возможность разработки и своевременную помощь.</p>
 
-Отдельное спасибо компании Interlink и Александру Котову в частности
- за предоставленую возможность разработки и своевременную помощь.
+                            <p>Если вам понравилась, или даже не понравилась игра, вступайте в нашу конфу в телеге.
+                                Там вы можете написать нам благодарность, или же какие мы криворукие разрабы, на ваше усмотрение.</p>
 
-Если вам понравилась, или даже если не понравилась игра, вступайте в нашу конфу в телеге
-там вы можете написать нам благодарность, или написать какие мы криворукие разрабы, на ваше усмотрение
-
-https://t.me/joinchat/IuhFNxRsZDel-eHXTocl1g
+                            <a href="https://t.me/joinchat/IuhFNxRsZDel-eHXTocl1g" target="_blank">Вступить в конфу</a>
+                        </div>
                     </div>
-                </div> 
                 : null}
 
                 {this.state.playNotPass 
