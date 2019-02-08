@@ -72,6 +72,14 @@ class App extends Component {
             this.player.play();
         }
     }
+    
+    componentDidUpdate() {
+        if (this.state.player === null) {
+            this.setState({
+                player: this.player
+            })
+        }
+    }
 
     componentWillReceiveProps(newProps) {
         if (this.player) {
