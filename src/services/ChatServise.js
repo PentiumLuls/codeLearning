@@ -1,4 +1,4 @@
-const ADDRES = 'ws://localhost:8080/ws';
+const ADDRES = 'ws://0.tcp.ngrok.io:13923/ws';
 
 let ws = null
 let username = null
