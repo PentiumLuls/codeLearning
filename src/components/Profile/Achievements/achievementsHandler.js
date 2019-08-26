@@ -99,7 +99,6 @@ export const getAchievementsList = (addMoney1, timeInGame1) => {
     addMoney = addMoney1;
     timeInGame = {...timeInGame1};
     updateList();
-    console.log(achievementsList);
     return achievementsList
         .sort(compareTwoAchieveByStatus)
         .map((current, key) => {return getAchievementJSX(current, key)});
@@ -160,32 +159,31 @@ const hideAchievementText = (str) => {
 const handleRewardClick = (id, reward) => {
     return function (e) {
         if (buttonsState[id] === 0) {
-            console.log("GIVE MY REWARD!  button: " + id + "  reward: " + reward);
             if (reward != 0) addMoney(reward);
             buttonsState[id] = 1;
 
             if (id === 2) {
-                toastr.success("Avatar Худшая девочка unlocked");
+                toastr.success("Аватар Худшая девочка получен");
                 window.unlockAvatar("zeroTwo");
             }
             if (id === 4) {
-                toastr.success("Avatar Хорошая девочка unlocked");
+                toastr.success("Аватар Хорошая девочка получен");
                 window.unlockAvatar("futaba");
             }
             if (id === 10) {
-                toastr.success("Avatar Сплинтер unlocked");
+                toastr.success("Аватар Сплинтер получен");
                 window.unlockAvatar("splinter");
             }
             if (id === 11) {
-                toastr.success("Avatar Рикардо Милосов unlocked");
+                toastr.success("Аватар Рикардо Милосов получен");
                 window.unlockAvatar("ricardo");
             }
             if (id === 12) {
-                toastr.success("Avatar Pickachu unlocked");
+                toastr.success("Аватар Pickachu получен");
                 window.unlockAvatar("pikachu");
             }
             if (id === 14) {
-                toastr.success("Avatar Тысячник unlocked");
+                toastr.success("Аватар Тысячник получен");
                 window.unlockAvatar("denis");
             }
         }

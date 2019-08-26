@@ -61,7 +61,7 @@ class Profile extends Component {
 
         let average = Math.round(summ / amount);
 
-        average = `${average / 360 ^ 0 < 10 ? '0' + (average / 360 ^ 0) : average / 360 ^ 0}:${(average / 60 ^ 0) < 10 ? '0' + (average / 60 ^ 0) : average  / 60 ^ 0}:${average % 21600 < 10 ? '0' + (average % 360 % 60 % 60) : average % 360 % 60 % 60}`;
+        average = `${(average / 360 ^ 0) < 10 ? '0' + (average / 360 ^ 0) : average / 360 ^ 0}:${(average / 60 ^ 0) < 10 ? '0' + (average / 60 ^ 0) : average  / 60 ^ 0}:${(average % 360 % 60 % 60) < 10 ? '0' + (average % 360 % 60 % 60) : average % 360 % 60 % 60}`;
 
         return average
     };
