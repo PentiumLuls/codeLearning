@@ -1,24 +1,14 @@
-import openSocket from 'socket.io-client';
-
 const ADDRES = 'ws://localhost:8080/ws';
 
 let ws = null
 let username = null
-let msgHandler = null
 
-export function connect_socket(name, messageHandler) {
-    msgHandler = messageHandler
+export function connect_socket(name) {
     if (!ws) {
         username = name + "." + Math.random();
         ws = new WebSocket(ADDRES);
-        ws.addEventListener('message', e => {
-        let msg = JSON.parse(e.data);
-            console.log("Message from socket:", msg);
-            if (msg.username !== username) {
-                msgHandler(msg);
-            }
-        })
     }
+    return ws
 }
 
 export async function send(msg) {
@@ -29,4 +19,12 @@ export async function send(msg) {
         })
     );
       
+}
+
+export function connected() {
+    return !!ws
+}
+
+export function getName() {
+    return username ? username : '';
 }

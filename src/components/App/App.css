@@ -474,6 +474,10 @@ audio {
     overflow: scroll;
 }
 
+.chat_ul{
+    /* padding-bottom: 40px; */
+}
+
 .bubble {
     position: absolute;
     bottom: 2.38vw;
@@ -513,6 +517,14 @@ audio {
     padding: 0.3vw 0.89vw;
 }
 
+.chat-enter_facke {
+    color: #b2b2b2;
+    text-align: center;
+    margin: 0 auto;
+    font-size: 0.1vw;
+    padding: 0.1vw 0.1vw;
+}
+
 .mephistoreplic {
     box-sizing: border-box;
     margin: 0.3vw 0.89vw;
@@ -540,7 +552,7 @@ audio {
     background-color: red;
     color: white;
     border: 2px solid black;
-    padding: 2px 5px;
+    padding: 5px 5px;
     height: 100%;
 }
 
@@ -1330,4 +1342,31 @@ input[type=range]:focus::-ms-fill-upper {
     100% {
         bottom: 0;
     }
+}
+
+.name_input {
+    height: 30px;
+    width: 80%;
+    padding: 0 30px;
+    margin: 5% 20% 5% 5%;
+    background-color: #222222;
+    color: white;
+    font-size: 1vw;
+    font-family: 'Press Start 2P', cursive;
+    letter-spacing: 2px;
+    line-height: 1.5;
+}
+
+.connect_chat__button {
+    /* margin: 10%; */
+    padding: 15px 40px;
+    text-align: center;
+    vertical-align: center;
+    margin-left: 35%;
+}
+
+.text {
+    color: white;
+    padding-top: 50px;
+    text-align: center;
 }
