@@ -5,7 +5,7 @@ import Achievements from './Achievements/AchievementsRenderer';
 import { connect } from 'react-redux';
 import {addMoney, spendMoney} from "../../store/actions/moneyActions";
 import {setHotKey} from "../../store/actions/codeActions";
-import { changeMusicValue, changeSoundValue, changeAvatar, changeMusic, unlockAvatar} from "../../store/actions/statActions";
+import { changeMusicValue, changeSoundValue, changeAvatar, changeMusic} from "../../store/actions/statActions";
 import Popup from "./ChangePhoto";
 import vanDam from '../img/avatars/VanDarkholme.jpg';
 import papich from '../img/avatars/papich.jpeg';
@@ -19,7 +19,7 @@ import zeroTwo from '../img/avatars/zeroTwo.jpeg';
 import denis from '../img/avatars/denis.jpeg'
 
 
-const avatars = {vanDam, papich, futaba, nanachi, pikachu, reroRero, ricardo, splinter, zeroTwo, denis}
+const avatars = {vanDam, papich, futaba, nanachi, pikachu, reroRero, ricardo, splinter, zeroTwo, denis};
 
 
 class Profile extends Component {
@@ -61,9 +61,7 @@ class Profile extends Component {
 
         let average = Math.round(summ / amount);
 
-        average = `${average / 360 ^ 0 < 10 ? '0' + (average / 360 ^ 0) : average / 360 ^ 0}
-        :${average % 360 / 60 ^ 0 < 10 ? '0' + (average % 360 / 60 ^ 0) : average % 360 / 60 ^ 0 < 10}
-        :${average % 21600 < 10 ? '0' + (average % 21600) : average % 21600}`;
+        average = `${average / 360 ^ 0 < 10 ? '0' + (average / 360 ^ 0) : average / 360 ^ 0}:${(average / 60 ^ 0) < 10 ? '0' + (average / 60 ^ 0) : average  / 60 ^ 0}:${average % 21600 < 10 ? '0' + (average % 360 % 60 % 60) : average % 360 % 60 % 60}`;
 
         return average
     };
@@ -92,7 +90,8 @@ class Profile extends Component {
                         ? <div className="open-settings" onClick={this.openSettings}/>
                         : <div className="open-stats" onClick={this.openStats}/>}
                         {this.state.stats
-                        ? <Stats stats={this.props.stats} timeInGame={this.props.timeInGame} records={this.props.records} averageTime={this.averageTime()}/>
+                        ? <Stats stats={this.props.stats} timeInGame={this.props.timeInGame} records={this.props.records}
+                         averageTime={this.averageTime()}/>
                         : <Settings changeMusicValue={this.props.changeMusicValue} 
                                     changeSoundValue={this.props.changeSoundValue}
                                     musicValue={this.props.musicValue} soundValue={this.props.soundValue}
@@ -108,7 +107,6 @@ class Profile extends Component {
             </div>
         )
     }
-
 }
 
 const mapStateToProps = store => {
@@ -134,7 +132,6 @@ const mapDispatchToProps = dispatch => {
         changeAvatar: (value) => dispatch(changeAvatar(value)),
         spendMoney: (value) => dispatch(spendMoney(value)),
         changeMusic: (value) => dispatch(changeMusic(value)),
-        unlockAvatar: (value) => dispatch(unlockAvatar(value))
     }
 };
 

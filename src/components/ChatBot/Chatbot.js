@@ -1,9 +1,12 @@
 import React, {Component} from 'react';
 import {dialogs} from "../../plot/dialogs";
 import {quests} from "../../plot/quests";
-import { connect } from 'react-redux'
-import { writeCode, showAnswer, exportHideChat } from '../../store/actions/codeActions'
-import { spendMoney, addMoney } from '../../store/actions/moneyActions'
+import { connect } from 'react-redux';
+import { writeCode, showAnswer, exportHideChat } from '../../store/actions/codeActions';
+import { spendMoney, addMoney } from '../../store/actions/moneyActions';
+import {updateAchievements} from "../Profile/Achievements/achievementsHandler";
+import { connect_socket, send} from "../../services/ChatServise";
+import { UsersChat } from "./UsersChat"
 
 class Chatbot extends Component {
 
@@ -18,10 +21,11 @@ class Chatbot extends Component {
             hintsN: 0,
             showCloud: false,
             answer: false,
-            disabled: false
-        }
+            disabled: false,
+            userChat: false
+        };
 
-        window.cheatForMoney = (amount) => this.props.addMoney(amount)
+        window.cheatForMoney = (amount) => {this.props.addMoney(amount); updateAchievements(3)}
     }
 
     writeReplics = (replics) => {
@@ -75,7 +79,7 @@ class Chatbot extends Component {
                     hintsN:1,
                     disabled: true
                 });  
-            };
+            }
             this.props.spendMoney(5);
         } else {
             this.setState({
@@ -83,7 +87,9 @@ class Chatbot extends Component {
             })
         }
         let element = document.getElementById('box');
-        element.scrollTop=element.scrollHeight;        
+        element.scrollTop=element.scrollHeight;
+
+        updateAchievements(14);
     }
 
     clearChat(){
@@ -116,7 +122,7 @@ class Chatbot extends Component {
             this.setState({
                 replics: [...this.state.replics, <li key={`answer`} className='hint'>Ответ записан в редактор</li>],
                 answer: true
-            })
+            });
             this.props.writeCode(true);
             this.props.showAnswer();
             this.props.spendMoney(20);
@@ -126,32 +132,39 @@ class Chatbot extends Component {
             })
         }
         
-    }
+    };
 
     hideChat = () => {
         this.setState({
             visible: false
         })
+    };
+
+    switchToStory() {
+        this.setState({
+            userChat: false
+        });
+    }
+
+    switchToUser() {
+        this.setState({
+            userChat: true
+        });
     }
 
     render() {
+        let chatPanel;
 
         if (this.props.currentQuest === 0 && this.state.showCloud === 0) {
             this.setState({showCloud: 1})
         }
 
-        if (this.state.visible)
-
-            return (
-                
-                <div className='chatbot'>
-                    <div className="bot-top-panel">
-                        <button className='buttonchatclose' onClick={this.showChat.bind(this)}>X</button>
-                    </div>
-                    <div className="dialogbox" id='box' ><ul>{this.state.replics.map((replic) => {
-                        return (replic)
-                    })}</ul></div>
-            { /*<button className='chatbutton' onClick={this.getDialogs.bind(this)}>nextDialog</button>*/}
+        if (this.state.userChat) {
+            chatPanel = <UsersChat />;
+        } else {
+            chatPanel = <div><div className="dialogbox" id='box' ><ul>{this.state.replics.map((replic) => {
+                    return (replic)
+                })}</ul></div>
                 <div className="bot-bottom-panel">
                     {this.state.disabled 
                     ? <button disabled className='chatbutton' id="hint" onClick={this.getHints.bind(this)}>HINT</button>
@@ -160,7 +173,20 @@ class Chatbot extends Component {
                     ? <button disabled className='chatbutton' id="answer" onClick={this.showAnswer}>ANSWER</button>
                     : <button className='chatbutton' id="answer" onClick={this.showAnswer}>ANSWER</button>}
                     <button className='chatbutton' id="clear-chat" onClick={this.clearChat.bind(this)}>CLEAR CHAT</button>
-                </div>
+                </div></div>
+        }
+
+        if (this.state.visible)
+
+            return (
+                
+                <div className='chatbot'>
+                    <div className="bot-top-panel">
+                        <button disabled={!this.state.userChat} className='switch_chat_button' onClick={this.switchToStory.bind(this)}>Story chat</button>
+                        <button disabled={this.state.userChat} className='switch_chat_button' onClick={this.switchToUser.bind(this)}>Users chat</button>
+                        <button className='buttonchatclose' onClick={this.showChat.bind(this)}>X</button>
+                    </div>
+                    {chatPanel}
                 </div>
             );
         return (
@@ -191,7 +217,7 @@ const mapStateToProps = store => {
         currentQuest: store.currentQuest,
         money: store.money
     }
-}
+};
 
 const mapDispatchToProps = dispatch => {
     return {
@@ -201,7 +227,7 @@ const mapDispatchToProps = dispatch => {
         addMoney: (amount) => dispatch(addMoney(amount)),
         exportHideChat: (func) => dispatch(exportHideChat(func))
     }
-}
+};
 
 
 export default connect(mapStateToProps, mapDispatchToProps)(Chatbot);

@@ -106,7 +106,19 @@ export const dialogs = [
             //1 Dialogs
             {
                 text: [
-                    <div className="chat-enter">CHAPTER 5 DIALOGS</div>,
+                    <div className="chat-enter">--- KARADA HAS ENTERED THE CHAT ---</div>,
+                    <div className="karada">Karada: What's going on? What is all of this supposed to mean?</div>,
+                    <div className="chat-enter">--- AADHI HAS ENTERED THE CHAT ---</div>,
+                    <div className="second-character">Aadhi: Наш спаситель обезумел!</div>,
+                    <div className="second-character">Aadhi: Теперь он никакой не спаситель, а всего лишь тиран!</div>,
+                    <div className="chat-enter">--- AADHI HAS LEFT THE CHAT ---</div>,
+                    <div className="karada">Karada: ...I know what might be the issue.</div>,
+                    <div className="karada">Karada: Mephisto is playing with his mind again. This is not the person he is supposed to be.</div>,
+                    <div className="karada">Karada: Listen, mongrel! You need to remember who you are!</div>,
+                    <div className="karada">Karada: You need to remember why you are doing all of this.</div>,
+                    <div className="karada">Karada: Your reasoning and your purpose. Let it all come back to you.</div>,
+                    <div className="chat-enter">--- You feel a strong surge of energy. Suddenly, your memories start to come back. ---</div>,
+                    <div className="chat-enter">--- You pass out. ---</div>,
                 ]
             }
         ],
@@ -115,7 +127,16 @@ export const dialogs = [
             //1 Dialogs
             {
                 text: [
-                    <div className="chat-enter">CHAPTER 6 DIALOGS</div>,
+                    <div className="chat-enter">--- KARADA HAS ENTERED THE CHAT ---</div>,
+                    <div className="karada">Karada: Finally, you are awake.</div>,
+                    <div className="karada">Karada: I even got scared for you there fo a moment. I've never knew I could even feel those emotions.</div>,
+                    <div className="chat-enter">--- Karada lets out a nervous giggle ---</div>,
+                    <div className="karada">Karada: You understand what you must do now, right?.</div>,
+                    <div className="karada">Karada: Right your wrongs and defeat that monster.</div>,
+                    <div className="karada">Karada: If you won't do it, no one will. I truly believe you might be the only one capable of ever doing this..</div>,
+                    <div className="karada">Karada: These people have suffered enough. I've... suffered enough.</div>,
+                    <div className="karada">Karada: I don't want to suffer any longer.</div>,
+                    <div className="chat-enter">--- KARADA HAS LEFT THE CHAT ---</div>
                 ]
             }
         ]

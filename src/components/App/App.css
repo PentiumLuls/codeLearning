@@ -79,7 +79,6 @@ audio {
     height: 100vh;
     overflow-y: scroll;
     position: relative;
-    z-index: 1000;
 }
 
 .editor {
@@ -414,10 +413,24 @@ audio {
     height: 8vh;
 }
 
+.bot-bottom-panel-chat {
+    width: 100%;
+    padding: 2vh 1vw;
+    box-sizing: border-box;
+    height: 14vh;
+}
+
 .chatbutton-wrapper {
     position: absolute;
     right: 5px;
     bottom: 5px;
+
+}
+
+.chatbutton-chat {
+    height: 100%;
+    text-align: center;
+    vertical-align: center;
 }
 
 .buttonchatopen {
@@ -438,12 +451,25 @@ audio {
     background-color: red;
 }
 
+.switch_chat_button {
+    z-index: 100;
+    background-color: red;
+    text-align: center;
+    height: 4vh;
+}
+
 #clear-chat {
     float: right;
 }
 
 .dialogbox {
     height: 48vh;
+    background-color: #222222;
+    overflow: scroll;
+}
+
+.dialogbox-chat {
+    height: 42vh;
     background-color: #222222;
     overflow: scroll;
 }
@@ -492,6 +518,32 @@ audio {
     margin: 5px 15px;
 }
 
+.mephistoreplic_someone {
+    box-sizing: border-box;
+    margin: 5px 15px;
+    padding: 10px 5px;
+    background: rgb(219, 197, 0);
+    word-break: break-all;
+    line-height: 1.5;
+}
+
+.mephistoreplic_user {
+    box-sizing: border-box;
+    margin: 5px 15px;
+    padding: 10px 5px;
+    background: rgb(4, 150, 175);
+    word-break: break-all;
+    line-height: 1.5;
+}
+
+.username {
+    background-color: red;
+    color: white;
+    border: 2px solid black;
+    padding: 2px 5px;
+    height: 100%;
+}
+
 .mephisto {
     background: lightcoral;
     padding: 5px 15px;
@@ -517,6 +569,21 @@ audio {
     height: 2.1vw;
     transition: all 1s;
     border: .2vw solid white;
+}
+
+textarea {
+    resize: none;
+}
+
+.message_area {
+    height: 100%;
+    width: 75%;
+    background-color: #222222;
+    color: white;
+    font-size: 1vw;
+    font-family: 'Press Start 2P', cursive;
+    letter-spacing: 2px;
+    line-height: 1.5;
 }
 
 #hint {
@@ -902,7 +969,15 @@ input[type=range]:focus {
     outline: none;
 }
 
-input[type=range]::-webkit-slider-runnable-track,
+input[type=range]::-webkit-slider-runnable-track {
+    width: 100%;
+    height: 0.3vw;
+    cursor: pointer;
+    animate: .01s;
+    border-radius: 1vw;
+    background: #c9200a;
+}
+
 input[type=range]::-moz-range-track {
     width: 100%;
     height: 0.3vw;
@@ -922,7 +997,19 @@ input[type=range]::-ms-track {
     color: transparent;
 }
 
-input[type=range]::-webkit-slider-thumb, input[type=range]::-moz-range-thumb {
+input[type=range]::-webkit-slider-thumb{
+    height: 1vw;
+    width: 1vw;
+    border-radius: 0;
+    border: 0;
+    transform: rotate(45deg);
+    background: #b71b07;
+    cursor: pointer;
+    -webkit-appearance: none;
+    margin-top: -.4vw;
+}
+
+input[type=range]::-moz-range-thumb {
     height: 1vw;
     width: 1vw;
     border-radius: 0;
@@ -934,7 +1021,7 @@ input[type=range]::-webkit-slider-thumb, input[type=range]::-moz-range-thumb {
 }
 
 input[type=range]:focus::-webkit-slider-runnable-track {
-    background: #367ebd;
+    background: #c9200a;
 }
 
 input[type=range]::-ms-fill-lower {
@@ -963,6 +1050,27 @@ input[type=range]:focus::-ms-fill-lower {
 
 input[type=range]:focus::-ms-fill-upper {
     background: #c9200a;
+}
+
+.cutscene {
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    left: 0;
+    top: 0;
+    background-color: black;
+    z-index: 10000000;
+    -webkit-animation: cutscene 1s linear;
+    animation: cutscene 1s linear;
+}
+
+.cutscene-text {
+    width: 60vw;
+    height: 24vw;
+    padding-top: 10vw;
+    color: white;
+    margin: auto;
+    font-size: 1.5vw;
 }
 
 /* Кадры анимации */
@@ -1073,5 +1181,14 @@ input[type=range]:focus::-ms-fill-upper {
     }
     100% {
         top: 0;
+    }
+}
+
+@keyframes cutscene {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
     }
 }

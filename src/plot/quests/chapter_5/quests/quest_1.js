@@ -1,7 +1,7 @@
 export const quest1 =
     {
-        title: "1",
-        text: ``,
+        title: "Рекурсия. Туториал 1",
+        text: `Я в реке. Пуская река сама несёт меня. Это - большой метеорит, который несётся в пространстве бесконечного космоса. Хорошо бы, если туман рассеялся, а я вдруг приплыл домой.`,
         regexps: [],
         regexpsNone: [/(for)/g, /(while)/g, /(var)/g, /(let)/g],
         code: `//Напиши функции pow и factorial, которые подносят в степень
@@ -46,13 +46,13 @@ terminal.log("5! = " + factorial(5));`,
 
 function pow(a, n) {
     if (n === 1) return a;
-        return a * pow(a, n-1);
+    return a * pow(a, n - 1);
 }
 
 
 function factorial(a) {
     if (a === 1) return 1;
-    return a * factorial(a-1);
+    return a * factorial(a - 1);
 }
 
 terminal.log("2^3 = " + pow(2, 3));

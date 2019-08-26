@@ -9,13 +9,13 @@ import {quests} from '../../plot/quests';
 import Chatbot from '../ChatBot/Chatbot';
 import {connect} from 'react-redux';
 import {changeShowPopup} from '../../store/actions/codeActions';
-import {tickTimeInGame} from '../../store/actions/statActions';
+import {tickTimeInGame, unlockAvatar} from '../../store/actions/statActions';
 import nnnaaa from '../../audio/nnnaaa.ogg'
 import sans from '../../audio/sans.ogg';
 import Profile from '../Profile/Profile';
 import {updateAchievements} from "../Profile/Achievements/achievementsHandler";
 
-const music = {sans, nnnaaa}
+const music = {sans, nnnaaa};
 
 class App extends Component {
     constructor(props) {
@@ -24,14 +24,15 @@ class App extends Component {
         this.state = {
             isEdit: 0,
             terminalOpen: false,
-            player: null
+            player: null,
+            start: JSON.parse(localStorage['whiteList'])[0][0] !== 0
         };
         
         this.globalTime = setInterval(() => {
             this.props.tickTimeInGame()
         }, 1000);
 
-        this.player = null;
+        this.player = null
     }
 
     changeButtonState = () => {
@@ -63,11 +64,19 @@ class App extends Component {
     };
 
     componentDidMount() {
-        this.setState({
-            player: this.player
-        });
-        this.player.volume = this.props.musicValue
-        this.player.play();
+        if (this.state.start){
+            this.setState({
+                player: this.player
+            });
+            this.player.volume = this.props.musicValue
+            this.player.play();
+        }
+
+        fetch('http://localhost:9292/', {mode: 'no-cors'}).then(() => {
+            console.log("ok")
+        }).catch((e) => {
+            console.log(e)
+        })
     }
 
     componentWillReceiveProps(newProps) {
@@ -76,8 +85,16 @@ class App extends Component {
         }
     }
 
+    hideStart = () => {
+        this.setState({
+            start: true
+        })
+    }
+
 
     render() {
+        
+        console.log(this.state.start)
         this.passStages = this.props.passStages;
         this.passQuests = this.props.passQuests;
         this.currentStage = this.props.currentStage;
@@ -90,13 +107,14 @@ class App extends Component {
         const newList = JSON.parse(localStorage.whiteList);
         const canIShowPopup = newList[this.currentStage].indexOf(this.currentQuest) !== -1;
         let indexOfElement = newList[this.currentStage].indexOf(this.currentQuest);
-        if (canIShowPopup && this.showPopup) {
-
+        if (canIShowPopup && this.showPopup && this.state.start) {
             delete newList[this.currentStage][indexOfElement];
             localStorage.setItem('whiteList', JSON.stringify(newList))
         }
 
         return (
+            this.state.start ?
+
             <div className="main">
 
                 <div>
@@ -136,7 +154,7 @@ class App extends Component {
                         </div>
                         : (this.state.isEdit === 1)
                         ? <HellRules passStages={this.passStages} passQuests={this.passQuests}/>
-                        : <Profile></Profile>
+                        : <Profile unlockAvatar={this.props.unlockAvatar}/>
                 }
                 <div>
                     {
@@ -151,6 +169,30 @@ class App extends Component {
                 }
 
             </div>
+
+            : <div onClick={this.hideStart} className="cutscene">
+            <div className="cutscene-text">
+            Спасибо за прохождение нашего квеста, надеемся вам понравилось и вы смогли выучить что-то новое.
+
+Команда разработчиков:
+-Рачкован Евгений
+-Прокопчук Богдана
+-Лапин Констянтин
+-Волков Максим
+
+Бета-тестеры и валидаторы:
+-Дзензур Андрей
+-Шлакоблоков Евгений
+
+Отдельное спасибо компании Interlink и Александру Котову в частности
+за предоставленую возможность разработки и своевременную помощь.
+
+Если вам понравилась, или даже если не понравилась игра, вступайте в нашу конфу в телеге
+там вы можете написать нам благодарность, или написать какие мы криворукие разрабы, на ваше усмотрение
+
+https://t.me/joinchat/IuhFNxRsZDel-eHXTocl1g
+            </div>
+        </div> 
         )
 
     }
@@ -175,9 +217,11 @@ const mapStateToProps = store => {
 };
 
 const mapDispatchToProps = dispatch => {
+    window.unlockAvatar = (value) => dispatch(unlockAvatar(value));
     return {
         changeShowPopup: (can) => dispatch(changeShowPopup(can)),
-        tickTimeInGame: () => dispatch(tickTimeInGame())
+        tickTimeInGame: () => dispatch(tickTimeInGame()),
+        unlockAvatar: (value) => dispatch(unlockAvatar(value))
     }
 };
 

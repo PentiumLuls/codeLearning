@@ -24,7 +24,9 @@ class Terminal extends Component {
             content: "",
             showNextLevel: false,
             playNotPass: false,
-            composition: null
+            composition: null,
+            showBlackScreen: false,
+            showEnd: false
         };
         ///////////////////////////////
         const self = this;
@@ -94,13 +96,30 @@ class Terminal extends Component {
             } else {
 
                 if (vm.runInThisContext(codeToEvaluate) === true && regexp.pass === true) {
+                    if (this.props.currentStage === 4 && this.props.currentQuest === 5) {
+                        setTimeout(() => {
+                            this.setState({
+                                showBlackScreen: true
+                            })
+                        }, 2000)
+                    }
+                    if (this.props.currentStage === 5 && this.props.currentQuest === 5) {
+                        setTimeout(() => {
+                            this.setState({
+                                showEnd: true
+                            })
+                        }, 2000)
+                    }
+
                     this.unlockQuest();
                     this.props.addSuccessfulRun();
                     this.props.player.pause();
+
                     this.setState({
                         composition: pass,
                         playNotPass: true
                     })
+                    
                 } else {
                     this.props.addUnsuccessfulRun();
                     this.props.player.pause();
@@ -228,6 +247,18 @@ class Terminal extends Component {
         }
     }
 
+    hideBlackScreen = () => {
+        this.setState({
+            showBlackScreen: false
+        })
+    }
+
+    hideEnd = () => {
+        this.setState({
+            showEnd: false
+        })
+    }
+
     render() {
         this.passStages = this.props.passStages;
         this.passQuests = this.props.passQuests;
@@ -240,6 +271,45 @@ class Terminal extends Component {
 
         return (
             <div className="terminalComponent">
+                {this.state.showBlackScreen ?  
+                <div onClick={this.hideBlackScreen} className="cutscene">
+                    <div className="cutscene-text">
+                        Вы успешно справились с задачей, однако вскоре после её выполнения в деревню нагрянули бесы,
+                        разрушив всё, что встретили на своём пути. Вы в ужасе бежите к дому вашего индусского брата,
+                        обнаруживая там только руины и следы пожара. Обследуя руины, вы находите лишь окровавленный
+                        камянной крест посреди бывшей гостинной. Ваши глаза наполняются слезами и вы не чувствуете
+                        ничего кроме горькой смеси злости, отчаяния и скорби. Вы тихо опускаетесь на колени пред
+                        камянным крестом.
+                    </div>
+                </div> 
+                : null}
+
+                {this.state.showEnd ?  
+                <div onClick={this.hideEnd} className="cutscene">
+                    <div className="cutscene-text">
+                    Спасибо за прохождение нашего квеста, надеемся вам понравилось и вы смогли выучить что-то новое.
+
+Команда разработчиков:
+-Рачкован Евгений
+-Прокопчук Богдана
+-Лапин Констянтин
+-Волков Максим
+
+Бета-тестеры и валидаторы:
+-Дзензур Андрей
+-Шлакоблоков Евгений
+
+Отдельное спасибо компании Interlink и Александру Котову в частности
+ за предоставленую возможность разработки и своевременную помощь.
+
+Если вам понравилась, или даже если не понравилась игра, вступайте в нашу конфу в телеге
+там вы можете написать нам благодарность, или написать какие мы криворукие разрабы, на ваше усмотрение
+
+https://t.me/joinchat/IuhFNxRsZDel-eHXTocl1g
+                    </div>
+                </div> 
+                : null}
+
                 {this.state.playNotPass 
                 ? <div>
                     <audio ref={(element) => {this.audio = element}} onEnded={this.endNotPass} src={this.state.composition} autoPlay >

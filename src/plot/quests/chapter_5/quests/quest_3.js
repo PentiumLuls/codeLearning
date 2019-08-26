@@ -1,11 +1,11 @@
 export const quest3 =
     {
-        title: "3",
-        text: ``,
+        title: "Адская экосистема",
+        text: `Вы с индусом решаете подзаработать деньжат, хоть и не совсем  честным, так сказать, путём. Вы наняли индусскую гадалку, которая утверждает, что умеет предсказывать дату смерти любого человека. Таким образом вы, индус и гадалка обманываете наивных индусов, и к вам скоро выстраивается очередь из индусов, которые свято уверены в том, что скоро умрут. Они просят вас помочь посчитать, сколько молока они ещё успеют надоить с коров для своей семьи. Вы им с радостью помогаете.`,
         regexps: [],
         regexpsNone: [/(for)/g, /(while)/g, /(var)/g, /(let)/g],
         code: `//Функция 'milkCows' принимает массив коров и число - с какой коровы начинать
-//Дойку. 1 единица 'milk', что имеет корова равна 5 единицам молока.
+//Дойку. 1 единица 'milk', что имеет корова, равна 5 единицам молока.
 //Не забудь убедиться, что коров для подойки может и не быть!
 
 const cows = [{milk:10}, {milk:5}, {milk:0}];
@@ -14,7 +14,7 @@ function milkCows(cows, n) {
     //YOUR CODE
 }
 
-function Milk(milk){
+function Milk(milk) {
    return 5 * milk;
 }
 
@@ -55,11 +55,11 @@ function MilkTEST(milk){
 const cows = [{milk:10}, {milk:5}, {milk:0}];
 
 function milkCows(cows, n) {
-    if (n >= cows.length ) return 0;
-    return Milk(cows[n].milk) + milkCows(cows,n+1);
+    if (n >= cows.length) return 0;
+    return Milk(cows[n].milk) + milkCows(cows,n + 1);
 }
 
-function Milk(milk){
+function Milk(milk) {
    return 5 * milk;
 }
 
