@@ -1,7 +1,5 @@
 import ReactAce from 'react-ace';
 import React, {Component} from 'react';
-import brace from 'brace';
-import {addSymbol} from '../../store/actions/statActions'
 import { connect } from 'react-redux';
 
 import 'brace/mode/javascript';
@@ -10,44 +8,19 @@ import 'brace/theme/terminal';
 class CodeEditor extends Component {
     constructor(props) {
         super(props);
-        this.forUpdate = false;
         this.state = {
-            code: localStorage.code || ''
+            code: ''
         }
     }
 
     onChange = (newValue, e) => {
-        localStorage["code"] = newValue;
-        this.props.addSymbol();
+        console.log(newValue);
     }
 
     aceWriteCode = (text) => {
-        //this.ace.editor.setValue(text || "")
         this.setState({
             code: text
         })
-    }
-
-
-    componentWillReceiveProps(nextProps) {
-        if (nextProps.writeCode) {
-            if (this.forUpdate == false) {
-                if (this.props.answer){
-                    this.aceWriteCode(nextProps.textAnswer);
-                    this.forUpdate = false
-                } else {
-                    this.aceWriteCode(nextProps.text);
-                    this.forUpdate = false
-                }
-            }
-        }
-    }
-
-    shouldComponentUpdate(nextProps) {
-        if (nextProps.writeCode || this.props.hideChat === null) {
-            return true
-        }
-        return false
     }
 
     render() {
@@ -93,7 +66,6 @@ const mapStateToProps = store => {
 
 const mapDispatchToProps = dispatch => {
     return {
-        addSymbol: () => dispatch(addSymbol())
     }
 }
 
